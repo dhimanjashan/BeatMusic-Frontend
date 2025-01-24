@@ -1,0 +1,826 @@
+body {
+  background-color: rgb(19, 19, 46);
+  font-family: "Nunito", serif;
+}
+nav {
+  height: 45px;
+  background-color: black;
+  color: white;
+  top: 0px;
+  position: sticky;
+  z-index: 1000;
+}
+span {
+  color: crimson;
+}
+
+li a {
+  color: white;
+  margin: 20px;
+  text-decoration: none;
+  padding: 20px;
+}
+.navbar ul {
+  display: flex;
+  margin-top: -23px;
+  margin-left: 380px;
+  list-style: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+h1 {
+  display: flex;
+  justify-content: center;
+  width: 20%;
+  color: white;
+  margin: 0px;
+}
+.container2 {
+  display: flex;
+  margin-top: -42px;
+  margin-right: 20px;
+}
+#btn1 {
+  padding: 4px;
+  margin-left: 1068px;
+
+  /* float: right; */
+  border: none;
+  color: white;
+  background: transparent;
+  text-decoration: none;
+}
+
+.hr {
+  height: 12px;
+  margin-top: 9px;
+}
+#btn2 {
+  padding: 4px;
+  margin-right: 12px;
+  margin-top: 1px;
+  border: none;
+  color: white;
+  background: transparent;
+  text-decoration: none;
+}
+#btn1:hover,
+#btn2:hover {
+  cursor: pointer;
+  color: rgb(180, 54, 79);
+}
+#btn3 {
+  padding: 4px;
+  margin-top: 1px;
+  border: none;
+  color: crimson;
+  background: transparent;
+}
+#btn3:hover {
+  color: rgb(180, 54, 79);
+  cursor: pointer;
+}
+#homeheading1 {
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60%;
+  margin-top: 40px;
+  margin-bottom: -45px;
+  margin-left: 250px;
+}
+.container3 {
+  height: 280px;
+  width: 88%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  color: white;
+  font-size: 35px;
+  margin: 65px 76px;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 15px;
+  border: 1px solid white;
+  box-sizing: border-box;
+}
+.container4 {
+  height: 280px;
+  width: 88%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  color: white;
+  font-size: 35px;
+  margin: 65px 76px;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 15px;
+  border: 1px solid white;
+  box-sizing: border-box;
+}
+
+.box1 {
+  width: 95%;
+  height: 88%;
+}
+.card {
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  width: 230px;
+  text-align: center;
+}
+#image1 {
+  width: 160px;
+  height: auto;
+  border-radius: 5px;
+  margin-left: 0px;
+  border: 1px solid white;
+}
+#homebtn1 {
+  float: left;
+  margin-left: 80px;
+  padding: 10px;
+  border-radius: 20px;
+  outline: none;
+  border: none;
+  background-color: crimson;
+  color: white;
+}
+#homebtn1:hover {
+  cursor: pointer;
+  background-color: rgb(180, 54, 79);
+}
+.container5 {
+  height: 433px;
+  width: 25%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: white;
+  font-size: 35px;
+  margin: 60px 94px;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 15px;
+  border: 1px solid white;
+  box-sizing: border-box;
+}
+.container7 {
+  height: 433px;
+  width: 25%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  float: right;
+  color: white;
+  font-size: 35px;
+  position: relative;
+  top: -533px;
+  margin-right: 100px;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 15px;
+  border: 1px solid white;
+  box-sizing: border-box;
+  margin-top: 40px;
+}
+#heading1 {
+  height: auto;
+  width: auto;
+  margin-top: -20px;
+  font-size: 28px;
+  text-align: center;
+}
+.paragraph {
+  font-size: 20px;
+  text-align: left;
+  padding: 10px;
+  margin-top: 40px;
+}
+
+.container6 {
+  margin-top: 40px;
+}
+
+#btn4 {
+  padding: 14px;
+  margin-left: 0px;
+  border: none;
+  border-radius: 20px;
+  background-color: crimson;
+  color: white;
+}
+#btn5 {
+  padding: 14px;
+  margin-left: 50px;
+  border: none;
+  border-radius: 20px;
+  background-color: rgb(39, 35, 36);
+  color: white;
+}
+#btn4:hover {
+  background-color: rgb(180, 54, 79);
+  cursor: pointer;
+}
+#btn5:hover {
+  background-color: rgb(51, 40, 40);
+  cursor: pointer;
+}
+
+.container8 {
+  width: 100%;
+  height: 70%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: -495px;
+  margin-right: -180px;
+}
+
+#image8 {
+  width: 23%;
+  height: 40%;
+  border-radius: 15px;
+}
+
+.container9 {
+  width: 100%;
+  height: 70%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+}
+
+#image9 {
+  width: 23%;
+  height: 40%;
+  border-radius: 15px;
+}
+#hr2 {
+  margin-top: 50px;
+}
+
+/* PlayerControls's css */
+
+.Musiclistcontainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  bottom: 0px;
+  position: sticky;
+  margin-top: 766px;
+}
+
+.music-player {
+  height: 80px;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-size: 35px;
+  color: black;
+  text-align: center;
+  background-color: crimson;
+  border: 1px solid white;
+  margin-left: -1px;
+}
+
+.progress-bar {
+  width: 80%;
+  height: 3px;
+  background-color: black;
+  position: relative;
+  border-radius: 10px;
+  margin-bottom: 12px;
+}
+.progress-bar:hover {
+  cursor: pointer;
+}
+.progress {
+  width: 0;
+  height: 100%;
+  border-radius: 10px;
+}
+
+/* Login form css */
+
+.Logincontainer {
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 93%;
+  height: 480px;
+  margin: 30px 40px;
+  border: 2px solid white;
+  flex-direction: column;
+  border-radius: 30px;
+  position: absolute;
+  z-index: -1;
+}
+
+.Loginimage {
+  width: 25%;
+  height: 460px;
+  float: right;
+  margin-top: 41px;
+  margin-right: 62px;
+  border: 0px solid black;
+  border-radius: 30px;
+}
+.LoginBox1 {
+  width: 50%;
+  height: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.Loginheading {
+  font-size: 40px;
+  margin-top: -350px;
+  margin-left: -430px;
+  font-weight: bold;
+  font-family: "Fredoka", sans-serif;
+}
+
+.Loginparagraph {
+  font-size: 25px;
+  display: flex;
+  text-align: center;
+  width: 70%;
+  margin-top: -400px;
+  font-weight: bold;
+}
+
+.LoginBox2 {
+  width: 70%;
+  height: 60%;
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+  font-size: 130px;
+  margin-top: 120px;
+  margin-left: 240px;
+  font-family: "Montserrat", sans-serif;
+}
+.Loginusername {
+  height: 35px;
+  width: 413px;
+  font-size: 14px;
+  padding: 3px 1px;
+  border-radius: 10px;
+}
+.LoginBox3 {
+  width: 70%;
+  height: 60%;
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+  font-size: 130px;
+  margin-top: 190px;
+  margin-left: 240px;
+}
+.Loginpassword {
+  height: 35px;
+  width: 413px;
+  font-size: 14px;
+  padding: 3px 1px;
+  border-radius: 10px;
+}
+.Logincheckbox {
+  width: 62%;
+  height: 48%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-top: 204px;
+  margin-left: 40px;
+  font-size: 15px;
+  position: absolute;
+  accent-color: darkorchid;
+  font-family: "Nunito", sans-serif;
+}
+.Logincheckbox:hover {
+  color: rgb(78, 76, 76);
+}
+.Loginpara1 {
+  width: 135px;
+  height: 100px;
+  cursor: pointer;
+  margin-top: 100px;
+  margin-left: 170px;
+  font-family: "Nunito", sans-serif;
+}
+.Loginpara1:hover {
+  color: rgb(78, 76, 76);
+}
+
+.LoginBox4 {
+  width: 80%;
+  height: 30%;
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+  margin-top: 190px;
+  margin-left: 240px;
+}
+
+.Loginbutton {
+  background-color: darkorchid;
+  color: white;
+  width: 100px;
+  height: 46px;
+  border-radius: 30px;
+  border: none;
+  font-size: 15px;
+  margin-top: 210px;
+  font-family: "PT Sans", sans-serif;
+}
+.Loginbutton:hover {
+  background-color: rgb(184, 87, 233);
+  color: white;
+  cursor: pointer;
+}
+.Loginpara2 {
+  margin-top: 40px;
+  font-family: "PT Sans", sans-serif;
+}
+.Loginpara3 {
+  margin-top: -34px;
+  margin-left: 180px;
+  color: darkorchid;
+  font-family: "PT Sans", sans-serif;
+}
+.Loginpara3:hover {
+  color: rgb(202, 124, 241);
+  cursor: pointer;
+}
+
+/* MusicList code */
+
+.music-playerButton {
+  display: flex;
+  padding: 10px;
+  margin-right: -40px;
+  margin-top: 10px;
+}
+
+.music-playerButton i {
+  margin-right: 95px;
+  color: black;
+}
+.music-playerButton i:hover {
+  cursor: pointer;
+  color: cornsilk;
+}
+
+.musicContainer1 {
+  color: white;
+  margin-left: 20px;
+  margin-top: -360px;
+}
+
+.musicContainer2 {
+  bottom: 0px;
+  position: sticky;
+  color: bisque;
+  font-size: 23px;
+  text-align: center;
+  border-radius: 15px;
+}
+
+#musiclistheading {
+  width: 100%;
+  color: crimson;
+  font-size: 35px;
+}
+
+.musiclistImage {
+  width: 100%;
+  height: 55%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#artistImage {
+  width: 25%;
+  height: 100%;
+  top: 0px;
+  position: sticky;
+  margin-left: 800px;
+  margin-top: 50px;
+}
+
+/* New music's css */
+
+.newmusicContainer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.newmusicheading {
+  width: 50%;
+  margin-top: 10px;
+  color: crimson;
+}
+
+/* New music section's css */
+
+.newmusicContainer1 {
+  color: white;
+  margin-left: 20px;
+  margin-top: -320px;
+}
+.newmusicimageContainer {
+  width: 100%;
+  height: 55%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.newmusicImage {
+  width: 25%;
+  height: 100%;
+  top: 0px;
+  position: sticky;
+  margin-left: 800px;
+  margin-top: 50px;
+}
+
+/* Create Account's css */
+.accountContainer1 {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+#createAccountheading1 {
+  width: 50%;
+  margin-top: 10px;
+  color: crimson;
+}
+.accountContainer2 {
+  width: 100%;
+  height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-top: 60px;
+  border-radius: 50px;
+}
+.accountContainer3 {
+  width: 40%;
+  height: 420px;
+  background-color: white;
+  border-radius: 60px;
+}
+.createAccountheading2 {
+  color: black;
+  width: 95%;
+  justify-content: center;
+  align-items: center;
+  font-size: 45px;
+  margin-top: 20px;
+}
+.createAccountheading3 {
+  color: black;
+  width: 95%;
+  margin-top: 0px;
+}
+.createAccountheading4 {
+  color: #0088ff;
+}
+.accountContainer4 {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  height: 70%;
+}
+.accountContainer4 input {
+  width: 70%;
+  height: 100%;
+  margin-bottom: 20px;
+  padding: 15px;
+  border-radius: 40px;
+  background-color: rgb(212, 209, 209);
+  color: black;
+  font-size: 16px;
+  border: none;
+}
+.accountContainer4 input:hover {
+  border: 2px solid black;
+}
+.createAccountbtn {
+  width: 76%;
+  padding: 16px;
+  border-radius: 40px;
+  background-color: #0088ff;
+  margin-bottom: 20px;
+  border: none;
+  font-size: 16px;
+}
+.createAccountbtn:hover {
+  cursor: pointer;
+  background-color: rgb(38, 148, 244);
+}
+
+/* Favourite component's css */
+
+.favouriteContainer1 {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+#favouriteHeading1 {
+  width: 50%;
+  margin-top: 10px;
+  color: crimson;
+}
+.favouriteContainer2 {
+  width: 100%;
+  margin-left: 20px;
+}
+#favouriteHeading2 {
+  width: 25%;
+  margin-top: 20px;
+}
+
+/* About component's css */
+.aboutcontainer1 {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.aboutheading1 {
+  width: 50%;
+  margin-top: 10px;
+  color: crimson;
+}
+
+.aboutcontainer2 {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.aboutcontainer3 {
+  height: 433px;
+  width: 25%;
+  display: flex;
+  justify-content: center;
+  text-align: justify;
+  color: black;
+  background: rgb(34, 193, 195);
+  background: linear-gradient(
+    0deg,
+    rgba(34, 193, 195, 1) 0%,
+    rgba(253, 187, 45, 1) 100%
+  );
+  border-radius: 15px;
+  border: 2px solid white;
+  box-sizing: border-box;
+}
+.aboutcontainer4 {
+  height: 433px;
+  width: 25%;
+  display: flex;
+  justify-content: center;
+  color: black;
+  margin: 60px 94px;
+  background: rgb(238, 174, 202);
+  background: radial-gradient(
+    circle,
+    rgba(238, 174, 202, 1) 0%,
+    rgba(148, 187, 233, 1) 100%
+  );
+  border-radius: 15px;
+  border: 2px solid white;
+  box-sizing: border-box;
+  text-align: justify;
+}
+.aboutcontainer3:hover {
+  background: rgb(238, 174, 202);
+  background: radial-gradient(
+    circle,
+    rgba(238, 174, 202, 1) 0%,
+    rgba(148, 187, 233, 1) 100%
+  );
+}
+.aboutcontainer4:hover {
+  background: rgb(34, 193, 195);
+  background: linear-gradient(
+    0deg,
+    rgba(34, 193, 195, 1) 0%,
+    rgba(253, 187, 45, 1) 100%
+  );
+}
+.aboutcontainer5:hover {
+  background: rgb(238, 174, 202);
+  background: radial-gradient(
+    circle,
+    rgba(238, 174, 202, 1) 0%,
+    rgba(148, 187, 233, 1) 100%
+  );
+}
+
+.aboutcontainer5 {
+  height: 433px;
+  width: 25%;
+  display: flex;
+  justify-content: center;
+  color: black;
+  background: rgb(34, 193, 195);
+  background: linear-gradient(
+    0deg,
+    rgba(34, 193, 195, 1) 0%,
+    rgba(253, 187, 45, 1) 100%
+  );
+  border-radius: 15px;
+  border: 2px solid white;
+  box-sizing: border-box;
+  text-align: justify;
+}
+.aboutheading2 {
+  color: crimson;
+  margin-left: 130px;
+}
+.aboutheading3 {
+  color: crimson;
+  margin-left: 130px;
+}
+.aboutheading4 {
+  color: crimson;
+  margin-left: 130px;
+}
+
+.aboutparagraph1 {
+  color: black;
+  margin-top: 80px;
+  margin-left: -192px;
+  width: auto;
+}
+.aboutparagraph2 {
+  color: black;
+  margin-top: 80px;
+  margin-left: -192px;
+  width: auto;
+}
+.aboutparagraph3 {
+  color: black;
+  margin-top: 80px;
+  margin-left: -192px;
+  width: auto;
+}
+
+/* Help container's css */
+.helpContainer1 {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.helpHeading1 {
+  width: 50%;
+  margin-top: 10px;
+  color: crimson;
+}
+
+.footerContainer {
+  background-color: #1a1a1a;
+  color: white;
+  bottom: 0px;
+  position: sticky;
+  margin-top: 435px;
+  text-align: center;
+}
+
+.footer {
+  padding: 14px;
+  font-size: 18px;
+  margin-left: 400px;
+}
