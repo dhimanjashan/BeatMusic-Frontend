@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import Footer from "./Footer";
 
-const Home = ({ setImage, setMusic,setArtistname }) => {
+const Home = ({ setImage, setMusic,setartistHeading }) => {
   const navigate = useNavigate();
 
   const handleamrinderClick = (e) => {
@@ -10,7 +10,7 @@ const Home = ({ setImage, setMusic,setArtistname }) => {
     navigate("/musiclist");
     setImage("amrinder-gill.jpg");
     setMusic("Dildarian mp3 song download by Amrinder Gill in album Dildarian");
-    setArtistname('Amrinder Gill')
+    setartistHeading('Hanji Shoneyo Suniye Song Amrinder Gill De')
   };
   const handlesunandaClick = (e) => {
     e.preventDefault();
@@ -19,21 +19,21 @@ const Home = ({ setImage, setMusic,setArtistname }) => {
     setMusic(
       "Parlour Te mp3 song download by Sunanda Sharma in album Parlour Te"
     );
-    setArtistname('Sunanda Sharma')
+    setartistHeading('Hanji Shoneyo Suniye Song Sunanda Sharma De')
   };
   const handlearjanClick = (e) => {
     e.preventDefault();
     navigate("/musiclist");
     setImage("arjan-dhillon.jpg");
     setMusic("2-2 Asle mp3 song download by Arjan Dhillon in album 2-2 Asle");
-    setArtistname('Arjan Dhillon')
+    setartistHeading('Hanji Shoneyo Suniye Song Arjan Dhillon De')
   };
   const handlenimratClick = (e) => {
     e.preventDefault();
     navigate("/musiclist");
     setImage("nimrat-khaira.jpg");
     // setMusic("Door Door mp3 song download by Nimrat Khaira in album Door Door");
-    setArtistname('Nimrat Khaira')
+    setartistHeading('Hanji Shoneyo Suniye Song Nimrat Khaira De')
   };
   const handlejordanClick = (e) => {
     e.preventDefault();
@@ -42,47 +42,61 @@ const Home = ({ setImage, setMusic,setArtistname }) => {
     setMusic(
       "Handsome Jatta mp3 song download by Jordan Sandhu in album Handsome Jatta"
     );
-    setArtistname('Jordan Sandhu')
+    setartistHeading('Hanji Shoneyo Suniye Song Jordan Sandhu De')
   };
   const handleEdsheeranClick = (e) => {
     e.preventDefault();
     navigate("/musiclist");
-    setImage("jordan-sandhu.jpg");
+    setImage("Ed-sheeran-cropped.jpg");
     setMusic("Edsheeran mp3 song download by Jordan Sandhu in album Edsheeran");
-    setArtistname('Ed Sheeran')
+    setartistHeading('Here is the list of Ed Sheeran Songs')
   };
   const handleDualipaClick = (e) => {
     e.preventDefault();
     navigate("/musiclist");
-    setImage("jordan-sandhu.jpg");
+    setImage("dua-lipa-cropped.jpg");
     setMusic("Dualipa mp3 song download by Jordan Sandhu in album Dualipa");
-    setArtistname('Dua Lipa')
+    setartistHeading('Here is the list of Dua Lipa Songs')
   };
   const handleJustinbieberClick = (e) => {
     e.preventDefault();
     navigate("/musiclist");
-    setImage("jordan-sandhu.jpg");
+    setImage("justin-bieber-cropped.webp");
     setMusic(
       "Justinbieber mp3 song download by Jordan Sandhu in album Justinbieber"
     );
-    setArtistname('Justin Bieber')
+    setartistHeading('Here is the list of Justin Bieber Songs')
   };
   const handleOliviarodrigoClick = (e) => {
     e.preventDefault();
     navigate("/musiclist");
-    setImage("jordan-sandhu.jpg");
+    setImage("olivia-rodrigocropped.jpg");
     setMusic(
       "Oliviarodrigo mp3 song download by Jordan Sandhu in album Oliviarodrigo"
     );
-    setArtistname('Olivia Rodrigo')
+    setartistHeading('Here is the list of Olivia Rodrigo Songs')
   };
   const handleSamsmithClick = (e) => {
     e.preventDefault();
     navigate("/musiclist");
-    setImage("jordan-sandhu.jpg");
+    setImage("sam-smith-cropped.jpg");
     setMusic("Samsmith mp3 song download by Jordan Sandhu in album Samsmith");
-    setArtistname('Sam Smith')
+    setartistHeading('Here is the list of Sam Smith Songs')
   };
+  const handleNewMusic=()=>{
+navigate('/newmusic')
+  }
+const handlePunjabiSongs=()=>{
+  navigate('/punjabisongs');
+}
+const handleEnglishSongs=()=>{
+  navigate('/englishsongs');
+}
+const handleTrendingSongs=()=>{
+  navigate('/trendingsongs');
+}
+
+
   return (
     <>
       <h2 id="homeheading1">Top Punjabi Artist's playlist</h2>
@@ -184,8 +198,8 @@ const Home = ({ setImage, setMusic,setArtistname }) => {
         </p>
 
         <div className="container6">
-          <button id="btn4">Punjabi Songs</button>
-          <button id="btn5">English Songs</button>
+          <button id="btn4" onClick={handlePunjabiSongs}>Punjabi Songs</button>
+          <button id="btn5" onClick={handleEnglishSongs}>English Songs</button>
         </div>
       </div>
       <div className="container7">
@@ -200,8 +214,8 @@ const Home = ({ setImage, setMusic,setArtistname }) => {
         </p>
 
         <div className="container6">
-          <button id="btn4">Trending Tracks</button>
-          <button id="btn5">New Releases</button>
+          <button id="btn4" onClick={handleTrendingSongs}>Trending Songs</button>
+          <button id="btn5" onClick={handleNewMusic}>New Releases</button>
         </div>
       </div>
       <div className="container8">

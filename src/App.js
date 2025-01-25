@@ -13,12 +13,15 @@ import Musiclist from "./components/Musiclist";
 import CreateAccount from "./components/createAccount";
 import AmrinderGill from "./components/AmrinderGill";
 import NimratSongs from "./components/NimratSongs";
+import PunjabiSongs from "./components/punjabiSongs";
+import EnglishSongs from "./components/EnglishSongs";
+import TrendingSongs from "./components/TrendingSongs";
 
 function App() {
   const [heading, setHeading] = useState("");
   const [image, setImage] = useState("");
   const [music, setMusic] = useState("");
-  const [artistname, setArtistname] = useState("");
+  const [artistHeading, setartistHeading] = useState("");
   const [audio, setAudio] = useState("");
   const [isPlaying, setisPlaying] = useState(false);
 
@@ -33,7 +36,7 @@ function App() {
               <Home
                 setImage={setImage}
                 setMusic={setMusic}
-                setArtistname={setArtistname}
+                setartistHeading={setartistHeading}
               />
             }
           />
@@ -53,11 +56,14 @@ function App() {
           <Route exact path="/about" element={<About />} />
           <Route exact path="/login" element={<Login />} />
           <Route exact path="/help" element={<Help />} />
+          <Route exact path="/punjabisongs" element={<PunjabiSongs />} />
+          <Route exact path="/englishsongs" element={<EnglishSongs />} />
+          <Route exact path="/trendingsongs" element={<TrendingSongs />} />
           <Route
             exact
             path="/musiclist"
             element={
-              <Musiclist image={image} music={music} artistname={artistname} />
+              <Musiclist image={image} music={music} artistHeading={artistHeading} />
             }
           />
           <Route exact path="/createAccount" element={<CreateAccount />} />
