@@ -44,8 +44,6 @@ h1 {
 #btn1 {
   padding: 4px;
   margin-left: 1068px;
-
-  /* float: right; */
   border: none;
   color: white;
   background: transparent;
@@ -281,36 +279,24 @@ h1 {
 
 .Musiclistcontainer {
   width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   bottom: 0px;
   position: sticky;
-  margin-top: 766px;
+  margin-top: 12px;
+  overflow: hidden;
 }
 
 .music-player {
   height: 80px;
-  width: 100vw;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  font-size: 35px;
+  width: 102%;
+  font-size: 30px;
   color: black;
-  text-align: center;
   background-color: crimson;
-  border: 1px solid white;
-  margin-left: -1px;
 }
 
 .progress-bar {
-  width: 80%;
-  height: 3px;
-  background-color: black;
-  position: relative;
-  border-radius: 10px;
-  margin-bottom: 12px;
+  width: 100%;
+  height: 4px;
+  border-radius: 20px;
 }
 .progress-bar:hover {
   cursor: pointer;
@@ -480,10 +466,9 @@ h1 {
 /* MusicList code */
 
 .music-playerButton {
-  display: flex;
-  padding: 10px;
+  padding: 5px;
   margin-right: -40px;
-  margin-top: 10px;
+  margin-top: 12px;
 }
 
 .music-playerButton i {
@@ -497,8 +482,9 @@ h1 {
 
 .musicContainer1 {
   color: white;
-  margin-left: 20px;
-  margin-top: -360px;
+  margin-left: 32px;
+  margin-top: -380px;
+  width: auto;
 }
 
 .musicContainer2 {
@@ -507,11 +493,13 @@ h1 {
   color: bisque;
   font-size: 23px;
   text-align: center;
-  border-radius: 15px;
+  /* border-radius: 15px; */
+  width: 100%;
+  overflow: auto;
 }
 
 #musiclistheading {
-  width: 100%;
+  width: 96%;
   color: crimson;
   font-size: 35px;
 }
@@ -553,12 +541,12 @@ h1 {
 .newmusicContainer1 {
   color: white;
   margin-left: 20px;
-  margin-top: -460px;
+  margin-top: 0px;
+  font-size: 18px;
 }
 .newmusicContainer2 {
   color: white;
   margin-left: 20px;
-  /* margin-top: -320px; */
 }
 .newmusicimageContainer {
   width: 100%;
@@ -824,61 +812,88 @@ h1 {
   color: crimson;
   color: crimson;
 }
+.helpContainer2 {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.helpContainer3 {
+  width: 50%;
+  height: 100%;
+  background-color: cornsilk;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.helpHeading2 {
+  font-size: 70px;
+  width: 100%;
+  text-align: center;
+  color: black;
+}
+.helpHeading3 {
+  width: 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 12px;
+}
+.helpContainer4 {
+  width: 100%;
+  height: 100%;
+  background-color: rgb(95, 88, 88);
+}
 
 /* Punjabi Songs's css */
-.PunjabiSongsContainer{
+.PunjabiSongsContainer {
   width: 100%;
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.PunjabiSongsheading{
+.PunjabiSongsheading {
   width: 100%;
   margin-top: 0px;
   margin-bottom: -9px;
   color: white;
   background-color: grey;
 }
-.punjabiSongsContainer2{
-width: 100%;
-height: 100%;
+.punjabiSongsContainer2 {
+  width: 100%;
+  height: 100%;
 }
-.punjabiSongsContainer3{
+.punjabiSongsContainer3 {
   color: black;
   position: relative;
   margin-top: -8px;
   padding: 30px 60px;
   font-size: 1.5rem;
   font-weight: bold;
-  /* color: #fff; */
   background-color: cornsilk;
-  clip-path: path('M0 0 ... [adjust logic')
+  clip-path: path("M0 0 ... [adjust logic");
 }
-
-
-
-
-
-
-
 
 /* English Songs's css */
-.englishSongsContainer{
+.englishSongsContainer {
   width: 100%;
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.englishSongsHeading{
+.englishSongsHeading {
   width: 100%;
   margin-top: 0px;
   margin-bottom: -9px;
   color: white;
   background-color: grey;
 }
-.englishSongsContainer2{
+.englishSongsContainer2 {
   color: black;
   position: relative;
   margin-top: -8px;
@@ -886,25 +901,25 @@ height: 100%;
   font-size: 1.5rem;
   font-weight: bold;
   background-color: cornsilk;
-  clip-path: path('M0 0 ... [adjust logic')
+  clip-path: path("M0 0 ... [adjust logic");
 }
 
 /* Trending Songs's css */
-.trendingSongContainer{
+.trendingSongContainer {
   width: 100%;
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.trendingSongHeading{
+.trendingSongHeading {
   width: 100%;
   margin-top: 0px;
   margin-bottom: -9px;
   color: white;
   background-color: grey;
 }
-.trendingSongContainer2{
+.trendingSongContainer2 {
   color: black;
   position: relative;
   margin-top: -8px;
@@ -912,10 +927,52 @@ height: 100%;
   font-size: 1.5rem;
   font-weight: bold;
   background-color: cornsilk;
-  clip-path: path('M0 0 ... [adjust logic')
+  clip-path: path("M0 0 ... [adjust logic");
 }
 
+/* PlayerSustem's Css */
+.playerSystemContainer1 {
+  width: 30%;
+  height: 405px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: crimson;
+  position: fixed;
+  border-radius: 200px;
+  top: 175px;
+  right: 100px;
+  z-index: 1000;
+}
+.playerSystemMusicplayerButton i {
+  padding: 25px;
+  font-size: 18px;
+  color: black;
+}
 
+.playerSystemMusicplayerButton i:hover {
+  cursor: pointer;
+  color: cornsilk;
+}
+.playerSystemProgressBar {
+  width: 300px;
+  height: 4px;
+  border-radius: 20px;
+  background-color: black;
+  margin-top: 44px;
+  margin-left: 0px;
+}
+.playerSystemProgressBar:hover {
+  cursor: pointer;
+}
+.playerSystemProgress {
+  width: 0;
+  height: 100%;
+  border-radius: 10px;
+}
+
+/* Footer's css */
 .footerContainer {
   background-color: #1a1a1a;
   color: white;

@@ -1,4 +1,5 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import PlayerControl from "./PlayerControl";
 import ArtistImages from "./ArtistImages";
 import NimratSongs from "./NimratSongs";
@@ -12,27 +13,61 @@ import OliviaRodrigo from "./OliviaRodrigo";
 import SamSmith from "./SamSmith";
 
 const Musiclist = ({ image, music, artistHeading }) => {
+  const heading = useSelector((state) => state.string.heading);
   return (
     <>
-      <h1 id="musiclistheading">{artistHeading}</h1>
+      <h1 id="musiclistheading">{heading}</h1>
       <hr></hr>
       <ArtistImages image={image} />
-      <div className="musicContainer1">
-        <p style={{ cursor: "pointer" }}>
-          {artistHeading === "Hanji Shoneyo Suniye Song Nimrat Khaira De" ? <NimratSongs /> : ""}
-          {artistHeading === "Hanji Shoneyo Suniye Song Amrinder Gill De" ? <AmrinderGill /> : ""}
-          {artistHeading === "Hanji Shoneyo Suniye Song Sunanda Sharma De" ? <SunandaSharma /> : ""}
-          {artistHeading === "Hanji Shoneyo Suniye Song Arjan Dhillon De" ? <ArjanDhillon /> : ""}
-          {artistHeading === "Hanji Shoneyo Suniye Song Jordan Sandhu De" ? <JordanSandhu /> : ""}
+      <div>
+        {heading === "Hanji Shoneyo Suniye Song Nimrat Khaira De 🎵" ? (
+          <NimratSongs />
+        ) : (
+          ""
+        )}
+        {heading === "Hanji Shoneyo Suniye Song Amrinder Gill De 🎵" ? (
+          <AmrinderGill />
+        ) : (
+          ""
+        )}
+        {heading === "Hanji Shoneyo Suniye Song Sunanda Sharma De 🎵" ? (
+          <SunandaSharma />
+        ) : (
+          ""
+        )}
+        {heading === "Hanji Shoneyo Suniye Song Arjan Dhillon De 🎵" ? (
+          <ArjanDhillon />
+        ) : (
+          ""
+        )}
+        {heading === "Hanji Shoneyo Suniye Song Jordan Sandhu De 🎵" ? (
+          <JordanSandhu />
+        ) : (
+          ""
+        )}
 
-          {artistHeading === "Here is the list of Ed Sheeran Songs" ? <EdSheeran /> : ""}
-          {artistHeading === "Here is the list of Dua Lipa Songs" ? <DuaLipa /> : ""}
-          {artistHeading === "Here is the list of Justin Bieber Songs" ? <DuaLipa /> : ""}
-          {artistHeading === "Here is the list of Olivia Rodrigo Songs" ? <OliviaRodrigo /> : ""}
-          {artistHeading === "Here is the list of Sam Smith Songs" ? <SamSmith /> : ""}
-        </p>
+        {heading === "Here is the list of Ed Sheeran Songs 🎵" ? (
+          <EdSheeran />
+        ) : (
+          ""
+        )}
+        {heading === "Here is the list of Dua Lipa Songs 🎵" ? <DuaLipa /> : ""}
+        {heading === "Here is the list of Justin Bieber Songs 🎵" ? (
+          <DuaLipa />
+        ) : (
+          ""
+        )}
+        {heading === "Here is the list of Olivia Rodrigo Songs 🎵" ? (
+          <OliviaRodrigo />
+        ) : (
+          ""
+        )}
+        {heading === "Here is the list of Sam Smith Songs 🎵" ? (
+          <SamSmith />
+        ) : (
+          ""
+        )}
       </div>
-      <PlayerControl />
     </>
   );
 };

@@ -1,101 +1,81 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import Footer from "./Footer";
+import { bindActionCreators } from "redux";
+import { useDispatch, useSelector } from "react-redux";
+import { actionCreator } from "../state/index.js";
 
-const Home = ({ setImage, setMusic,setartistHeading }) => {
+const Home = ({ setImage, setartistHeading }) => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const headline = useSelector((state) => state.heading);
+  const { artistHeadline } = bindActionCreators(actionCreator, dispatch);
 
   const handleamrinderClick = (e) => {
     e.preventDefault();
     navigate("/musiclist");
     setImage("amrinder-gill.jpg");
-    setMusic("Dildarian mp3 song download by Amrinder Gill in album Dildarian");
-    setartistHeading('Hanji Shoneyo Suniye Song Amrinder Gill De')
+    artistHeadline("Hanji Shoneyo Suniye Song Amrinder Gill De 🎵");
   };
   const handlesunandaClick = (e) => {
     e.preventDefault();
     navigate("/musiclist");
     setImage("sunanda-sharma.jpg");
-    setMusic(
-      "Parlour Te mp3 song download by Sunanda Sharma in album Parlour Te"
-    );
-    setartistHeading('Hanji Shoneyo Suniye Song Sunanda Sharma De')
+    artistHeadline("Hanji Shoneyo Suniye Song Sunanda Sharma De 🎵");
   };
   const handlearjanClick = (e) => {
     e.preventDefault();
     navigate("/musiclist");
     setImage("arjan-dhillon.jpg");
-    setMusic("2-2 Asle mp3 song download by Arjan Dhillon in album 2-2 Asle");
-    setartistHeading('Hanji Shoneyo Suniye Song Arjan Dhillon De')
+    artistHeadline("Hanji Shoneyo Suniye Song Arjan Dhillon De 🎵");
   };
   const handlenimratClick = (e) => {
     e.preventDefault();
     navigate("/musiclist");
     setImage("nimrat-khaira.jpg");
-    // setMusic("Door Door mp3 song download by Nimrat Khaira in album Door Door");
-    setartistHeading('Hanji Shoneyo Suniye Song Nimrat Khaira De')
+    artistHeadline("Hanji Shoneyo Suniye Song Nimrat Khaira De 🎵");
   };
   const handlejordanClick = (e) => {
     e.preventDefault();
     navigate("/musiclist");
     setImage("jordan-sandhu.jpg");
-    setMusic(
-      "Handsome Jatta mp3 song download by Jordan Sandhu in album Handsome Jatta"
-    );
-    setartistHeading('Hanji Shoneyo Suniye Song Jordan Sandhu De')
+    artistHeadline("Hanji Shoneyo Suniye Song Jordan Sandhu De 🎵");
   };
   const handleEdsheeranClick = (e) => {
     e.preventDefault();
     navigate("/musiclist");
     setImage("Ed-sheeran-cropped.jpg");
-    setMusic("Edsheeran mp3 song download by Jordan Sandhu in album Edsheeran");
-    setartistHeading('Here is the list of Ed Sheeran Songs')
+    artistHeadline("Here is the list of Ed Sheeran Songs 🎵");
   };
   const handleDualipaClick = (e) => {
     e.preventDefault();
     navigate("/musiclist");
     setImage("dua-lipa-cropped.jpg");
-    setMusic("Dualipa mp3 song download by Jordan Sandhu in album Dualipa");
-    setartistHeading('Here is the list of Dua Lipa Songs')
+    artistHeadline("Here is the list of Dua Lipa Songs 🎵");
   };
   const handleJustinbieberClick = (e) => {
     e.preventDefault();
     navigate("/musiclist");
     setImage("justin-bieber-cropped.webp");
-    setMusic(
-      "Justinbieber mp3 song download by Jordan Sandhu in album Justinbieber"
-    );
-    setartistHeading('Here is the list of Justin Bieber Songs')
+    artistHeadline("Here is the list of Justin Bieber Songs 🎵");
   };
   const handleOliviarodrigoClick = (e) => {
     e.preventDefault();
     navigate("/musiclist");
     setImage("olivia-rodrigocropped.jpg");
-    setMusic(
-      "Oliviarodrigo mp3 song download by Jordan Sandhu in album Oliviarodrigo"
-    );
-    setartistHeading('Here is the list of Olivia Rodrigo Songs')
+    artistHeadline("Here is the list of Olivia Rodrigo Songs 🎵");
   };
   const handleSamsmithClick = (e) => {
     e.preventDefault();
     navigate("/musiclist");
     setImage("sam-smith-cropped.jpg");
-    setMusic("Samsmith mp3 song download by Jordan Sandhu in album Samsmith");
-    setartistHeading('Here is the list of Sam Smith Songs')
+    artistHeadline("Here is the list of Sam Smith Songs 🎵");
   };
-  const handleNewMusic=()=>{
-navigate('/newmusic')
-  }
-const handlePunjabiSongs=()=>{
-  navigate('/punjabisongs');
-}
-const handleEnglishSongs=()=>{
-  navigate('/englishsongs');
-}
-const handleTrendingSongs=()=>{
-  navigate('/trendingsongs');
-}
 
+  const handleSimpleNavigation = (path) => {
+    navigate(path);
+    window.scrollTo(0, 0);
+  };
 
   return (
     <>
@@ -198,8 +178,18 @@ const handleTrendingSongs=()=>{
         </p>
 
         <div className="container6">
-          <button id="btn4" onClick={handlePunjabiSongs}>Punjabi Songs</button>
-          <button id="btn5" onClick={handleEnglishSongs}>English Songs</button>
+          <button
+            id="btn4"
+            onClick={() => handleSimpleNavigation("/punjabimusic")}
+          >
+            Punjabi Songs
+          </button>
+          <button
+            id="btn5"
+            onClick={() => handleSimpleNavigation("/englishsongs")}
+          >
+            English Songs
+          </button>
         </div>
       </div>
       <div className="container7">
@@ -214,8 +204,15 @@ const handleTrendingSongs=()=>{
         </p>
 
         <div className="container6">
-          <button id="btn4" onClick={handleTrendingSongs}>Trending Songs</button>
-          <button id="btn5" onClick={handleNewMusic}>New Releases</button>
+          <button
+            id="btn4"
+            onClick={() => handleSimpleNavigation("/trendingsongs")}
+          >
+            Trending Songs
+          </button>
+          <button id="btn5" onClick={() => handleSimpleNavigation("/newmusic")}>
+            New Releases
+          </button>
         </div>
       </div>
       <div className="container8">

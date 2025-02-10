@@ -1,7 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const Favourite = ({ heading }) => {
+const Favourite = ({ song }) => {
+  const handleclick = () => {
+    console.log(song);
+  };
+
   return (
     <>
       <div className="favouriteContainer1">
@@ -9,9 +13,9 @@ const Favourite = ({ heading }) => {
       </div>
       <hr />
       <div className="favouriteContainer2">
-        <h1 id="favouriteHeading2">
-          {heading}
-        </h1>
+        <p onClick={handleclick} style={{ color: song ? "white" : "green" }}>
+          {song ? `You favourited: ${song.title}` : "No song selected"}
+        </p>
       </div>
     </>
   );

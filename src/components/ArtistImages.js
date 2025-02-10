@@ -1,16 +1,13 @@
-import React from 'react'
+import React from "react";
 
-const ArtistImages = ({image}) => {
+const ArtistImages = ({ image }) => {
   return (
     <>
-    <div className="musiclistImage">
-        <img
-          src={image}
-          id="artistImage"
-        ></img>
+      <div className="musiclistImage">
+        <img src={image} id="artistImage"></img>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default ArtistImages
+export default ArtistImages;

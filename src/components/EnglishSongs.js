@@ -1,4 +1,5 @@
 import React from "react";
+import PlayerSystem from "./PlayerSystem";
 
 const EnglishSongs = () => {
   return (
@@ -10,6 +11,7 @@ const EnglishSongs = () => {
       </div>
       <hr></hr>
       <div className="englishSongsContainer2">
+      <PlayerSystem/>
         <p>1. Blinding Lights - The Weeknd</p>
         <p>2. Shape of You - Ed Sheeran</p>
         <p>3. Levitating - Dua Lipa</p>
