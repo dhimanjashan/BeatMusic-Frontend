@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-// Create an Audio instance globally
+// Global Audio instance
 const audioElement = new Audio();
 
 const initialState = {
@@ -13,26 +13,16 @@ const audioSlice = createSlice({
   name: "audio",
   initialState,
   reducers: {
-    playAudio: {
-      reducer: (state, action) => {
-        const { songUrl, song } = action.payload;
+    playAudio: (state, action) => {
+      const { songUrl, song } = action.payload;
 
-        if (state.currentSong?.id !== song?.id) {
-          state.audioElement.src = songUrl;
-          state.audioElement.load();
-          state.currentSong = song;
-        }
+      if (!state.currentSong || state.currentSong.id !== song.id) {
+        state.audioElement.src = songUrl;
+        state.audioElement.load();
+      }
 
-        state.audioElement.oncanplaythrough = () => {
-          state.audioElement.play().catch((error) => {
-            console.error("Error playing audio:", error);
-          });
-          state.isPlaying = true;
-        };
-      },
-      prepare: (songUrl, song) => {
-        return { payload: { songUrl, song } };
-      },
+      state.currentSong = song;
+      state.isPlaying = true;
     },
     pauseAudio: (state) => {
       state.audioElement.pause();

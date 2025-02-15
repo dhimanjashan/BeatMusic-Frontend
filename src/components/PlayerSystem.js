@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Favourite from "./Favourite";
+import { useSelector } from "react-redux";
 
 const PlayerSystem = ({
   audio,
-  isPlaying,
   handlePlayPause,
+  handleFavourite,
   handleNext,
   handlePrevious,
   song,
@@ -14,29 +15,24 @@ const PlayerSystem = ({
   const [progress, setProgress] = useState(0);
   const [showFavourite, setShowFavourite] = useState(false);
   const navigate = useNavigate();
+  const { isPlaying, audioElement } = useSelector((state) => state.audio);
 
   useEffect(() => {
-    if (!audio) return;
+    if (!audioElement) return;
 
     const updateProgress = () => {
-      if (audio.duration > 0) {
-        setProgress((audio.currentTime / audio.duration) * 100 || 0);
+      if (audioElement.duration > 0) {
+        setProgress(
+          (audioElement.currentTime / audioElement.duration) * 100 || 0
+        );
       }
     };
 
-    audio.addEventListener("timeupdate", updateProgress);
+    audioElement.addEventListener("timeupdate", updateProgress);
     return () => {
-      audio.removeEventListener("timeupdate", updateProgress);
+      audioElement.removeEventListener("timeupdate", updateProgress);
     };
-  }, [audio, isPlaying]);
-
-  const handleFavourite = () => {
-    setShowFavourite(true);
-    console.log(song);
-    {
-      showFavourite && <Favourite song={song} />;
-    }
-  };
+  }, [audioElement]);
 
   return (
     <>

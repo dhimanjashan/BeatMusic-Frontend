@@ -1,6 +1,5 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import PlayerControl from "./PlayerControl";
 import ArtistImages from "./ArtistImages";
 import NimratSongs from "./NimratSongs";
 import AmrinderGill from "./AmrinderGill";
@@ -16,8 +15,8 @@ const Musiclist = ({ image, music, artistHeading }) => {
   const heading = useSelector((state) => state.string.heading);
   return (
     <>
-      <h1 id="musiclistheading">{heading}</h1>
-      <hr></hr>
+      <h1 className="musiclistheading1">{heading}</h1>
+      <hr className="musiclistHr"></hr>
       <ArtistImages image={image} />
       <div>
         {heading === "Hanji Shoneyo Suniye Song Nimrat Khaira De 🎵" ? (

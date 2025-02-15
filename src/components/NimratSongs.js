@@ -1,13 +1,18 @@
-import React from "react";
-import { useState, useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { playAudio, pauseAudio } from "../state/audioSlice";
 import PlayerControl from "./PlayerControl";
+import { addFavourite, removeFavourite } from "../state/favouriteSlice";
 
 const NimratSongs = () => {
   const [data, setData] = useState(null);
-  const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = useRef(null);
-  const [isLoading, setisLoading] = useState(false);
-  const [currentSong, setcurrentSong] = useState(null);
+  const dispatch = useDispatch();
+  const { isPlaying, currentSong, audioElement } = useSelector(
+    (state) => state.audio
+  );
+  const favouriteSongs = useSelector((state) => state.favourite.favouriteSongs);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -15,135 +20,161 @@ const NimratSongs = () => {
   const songs = [
     {
       id: "6791f5d2bcb2c977364113ba",
-      title: "Sohne Sohne Suit mp3 song Nimrat Khaira in album Nimmo.",
+      title: "Sohne Sohne Suit mp3 song by Nimrat Khaira.",
     },
     {
       id: "67931e76f7a1211383f70d37",
-      title:
-        "Suit mp3 song Nimrat Khaira featuring Mankirt Aulakh in album Nimmo.",
+      title: "Suit mp3 song by Nimrat Khaira featuring Mankirt Aulakh.",
     },
     {
       id: "6793349547bdbe21860441f0",
-      title: "Ranihaar mp3 song Nimrat Khaira in album Nimmo.",
+      title: "Ranihaar mp3 song by Nimrat Khaira.",
     },
     {
       id: "679334c947bdbe21860441f3",
-      title: "Designer mp3 song Nimrat Khaira in album Nimmo.",
+      title: "Designer mp3 song by Nimrat Khaira.",
     },
     {
       id: "679334f247bdbe21860441f5",
-      title: "Lehnga mp3 song Nimrat Khaira in album Nimmo.",
+      title: "Lehnga mp3 song by Nimrat Khaira.",
     },
     {
       id: "6793350b47bdbe21860441f7",
-      title: "Ishq Kacheri mp3 song Nimrat Khaira in album Nimmo.",
+      title: "Ishq Kacheri mp3 song by Nimrat Khaira.",
     },
     {
       id: "6793352647bdbe21860441f9",
-      title: "Time Chakda mp3 song Nimrat Khaira in album Nimmo.",
+      title: "Time Chakda mp3 song by Nimrat Khaira.",
     },
     {
       id: "6793354647bdbe21860441fc",
-      title: "SP De Rank Wargi mp3 song Nimrat Khaira in album Nimmo.",
+      title: "SP De Rank Wargi mp3 song by Nimrat Khaira.",
     },
-    { id: "67a711c131755642e981aaa3", title: "59. Gall Mukk Gyi mp3 song by Nimrat Khaira" },
+    {
+      id: "67a711c131755642e981aaa3",
+      title: "Gall Mukk Gyi mp3 song by Nimrat Khaira",
+    },
     {
       id: "6793357147bdbe21860441fe",
-      title: "Salute Vajde mp3 song Nimrat Khaira in album Nimmo.",
+      title: "Salute Vajde mp3 song by Nimrat Khaira.",
     },
     {
       id: "6793358c47bdbe2186044200",
-      title: "Rohab Rakhdi mp3 song Nimrat Khaira in album Nimmo.",
+      title: "Rohab Rakhdi mp3 song by Nimrat Khaira.",
     },
     {
       id: "679335a747bdbe2186044202",
-      title:
-        "Sira E Hou mp3 song Nimrat Khaira featuring Amrit Maan in album Nimmo.",
+      title: "Sira E Hou mp3 song by Nimrat Khaira featuring Amrit Maan.",
     },
   ];
 
   const handleClick = async (songIndex) => {
     if (isLoading) return;
-    setisLoading(true);
+    setIsLoading(true);
 
     const song = songs[songIndex];
     try {
       const response = await fetch("http://localhost:5000/songs", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ songId: song.id }),
       });
       const data = await response.json();
-      setData(data);
-      console.log(data);
 
-      if (audioRef.current) {
-        audioRef.current.src = data.file_path;
-        audioRef.current.load();
-        setcurrentSong(song);
-        await audioRef.current.play();
-        setIsPlaying(true);
+      if (!data.file_path || typeof data.file_path !== "string") {
+        console.error("Invalid file path received:", data.file_path);
+        return;
+      }
+
+      if (audioElement) {
+        audioElement.src = data.file_path;
+        audioElement.load();
+
+        audioElement.oncanplaythrough = () => {
+          audioElement
+            .play()
+            .then(() => {
+              dispatch(playAudio({ songUrl: data.file_path, song }));
+            })
+            .catch((error) => {
+              console.error("Error playing audio:", error);
+            });
+        };
       }
     } catch (error) {
       console.error("Error fetching data from backend:", error);
     } finally {
-      setisLoading(false);
+      setIsLoading(false);
     }
   };
 
-  const handlePlayPause = () => {
-    if (audioRef.current) {
-      if (isPlaying) {
-        audioRef.current.pause();
-      } else {
-        audioRef.current.play();
-      }
-      setIsPlaying(!isPlaying);
-    }
-  };
-  const handleNext = () => {
+  const handleNext = async () => {
     if (isLoading || !currentSong) return;
+
     const currentIndex = songs.findIndex((song) => song.id === currentSong.id);
     if (currentIndex < songs.length - 1) {
-      handleClick(currentIndex + 1);
+      await handleClick(currentIndex + 1);
     } else {
       console.log("No more songs left!");
     }
   };
+
   const handlePrevious = async () => {
-      if (isLoading || !currentSong) return;
-  
-      const currentIndex = songs.findIndex((song) => song.id === currentSong.id);
-      if (currentIndex < songs.length - 1) {
-        await handleClick(currentIndex - 1);
-      } else {
-        console.log("No more songs left!");
-      }
+    if (isLoading || !currentSong) return;
+
+    const currentIndex = songs.findIndex((song) => song.id === currentSong.id);
+    if (currentIndex > 0) {
+      await handleClick(currentIndex - 1);
+    } else {
+      console.log("No more songs left!");
+    }
+  };
+
+  const handlePlayPause = () => {
+    if (!audioElement) return;
+
+    if (isPlaying) {
+      audioElement.pause();
+      dispatch(pauseAudio());
+    } else {
+      audioElement.play();
+      dispatch(playAudio({ songUrl: currentSong.songUrl, song: currentSong }));
+    }
+  };
+
+  const handleFavourite = () => {
+    if (!currentSong) return;
+    const isFavourite = favouriteSongs.some((fav) => fav.id === currentSong.id);
+
+    if (isFavourite) {
+      dispatch(removeFavourite(currentSong.id));
+    } else {
+      dispatch(addFavourite(currentSong));
+    }
+  };
+
+  useEffect(() => {
+    const audio = audioElement;
+    const handleEnded = () => {
+      handleNext();
     };
-    useEffect(()=>{
-      const audio=audioRef.current;
-      const handleEnded=()=>{
-        handleNext();
-      }
-      audio.addEventListener("ended",handleEnded);
-      return ()=>{
-        audio.removeEventListener("ended",handleEnded);
-      }
-    },[currentSong,isLoading]);
+    audio.addEventListener("ended", handleEnded);
+    return () => {
+      audio.removeEventListener("ended", handleEnded);
+    };
+  }, [currentSong, isLoading]);
 
   return (
     <>
-      <div  className="musicContainer1">
+      <div className="musicContainer1">
         {songs.map((song, index) => (
           <p
             key={song.id}
             onClick={() => handleClick(index)}
             style={{
               cursor: "pointer",
-              color: currentSong?.id === song.id ? "crimson" : "white",
-              fontWeight: currentSong?.id === song.id ? "bold" : "normal",
+              color: currentSong?.id === song.id ? "white" : "black",
+              fontWeight: currentSong?.id === song.id ? "bolder" : "bold",
             }}
           >
             {song.title}
@@ -157,6 +188,7 @@ const NimratSongs = () => {
         handlePlayPause={handlePlayPause}
         isPlaying={isPlaying}
         handlePrevious={handlePrevious}
+        handleFavourite={handleFavourite}
       />
     </>
   );

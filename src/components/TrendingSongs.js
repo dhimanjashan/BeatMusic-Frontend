@@ -9,7 +9,7 @@ const TrendingSongs = () => {
       </div>
       <hr></hr>
       <div className="trendingSongContainer2">
-      <PlayerSystem/>
+        <PlayerSystem />
         <p>1. Lock - Sidhu Moose Wala</p>
         <p>2. WAVY - Karan Aujla</p>
         <p>3. Sit Down Son - Navaan Sandhu</p>

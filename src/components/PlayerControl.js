@@ -1,13 +1,19 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 
-const PlayerControl = ({ handleNext, handlePrevious, handlePlayPause }) => {
+const PlayerControl = ({
+  handleNext,
+  handlePrevious,
+  handlePlayPause,
+  handleRepeat,
+  handleFavourite,
+}) => {
   const [progress, setProgress] = useState(0);
   const navigate = useNavigate();
   const { isPlaying, audioElement } = useSelector((state) => state.audio);
-
+  
   useEffect(() => {
     if (!audioElement) return;
 
@@ -25,9 +31,7 @@ const PlayerControl = ({ handleNext, handlePrevious, handlePlayPause }) => {
     };
   }, [audioElement]);
 
-  const handleFavourite = () => {
-    navigate("/favourite");
-  };
+  
 
   return (
     <div className="musicContainer2">
@@ -36,11 +40,11 @@ const PlayerControl = ({ handleNext, handlePrevious, handlePlayPause }) => {
           <div className="progress-bar">
             <div
               className="progress"
-              style={{ width: `${progress}%`, backgroundColor: "cornsilk" }}
+              style={{ width: `${progress}%`, backgroundColor: "black" }}
             ></div>
           </div>
           <div className="music-playerButton">
-            <i className="fa-solid fa-repeat"></i>
+            <i onClick={handleRepeat} className="fa-solid fa-repeat"></i>
             <i
               onClick={handlePrevious}
               className="fa-solid fa-backward-fast fa-sm"

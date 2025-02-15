@@ -166,62 +166,78 @@ const Home = ({ setImage, setartistHeading }) => {
           </button>
         </div>
       </div>
+      <div className="bigContainer">
+        <div className="container5">
+          <h1 id="heading1">
+            <span>Listen</span>&nbsp;to new music.
+          </h1>
+          <p className="paragraph">
+            Rabindranath Tagore: “Music fills the infinite between two souls. It
+            has its origin in the unseen, and it moves us in ways beyond words.
+            The melodies we cherish are not just sounds but echoes of the
+            emotions and dreams that live within us. Music is the purest form of
+            art, and bringing harmony to the world.”
+          </p>
 
-      <div className="container5">
-        <h1 id="heading1">
-          <span>Listen</span>&nbsp;to new music.
-        </h1>
-        <p className="paragraph">
-          Music is a universal language that transcends boundaries and connects
-          people from all walks of life. It has the power to evoke emotions,
-          tell stories, inspire creativity, and create unforgettable moments.
-        </p>
+          <div className="container6">
+            <button
+              id="btn4"
+              onClick={() => handleSimpleNavigation("/punjabimusic")}
+            >
+              Punjabi Songs
+            </button>
+            <button
+              id="btn5"
+              onClick={() => handleSimpleNavigation("/englishsongs")}
+            >
+              English Songs
+            </button>
+          </div>
+        </div>
 
-        <div className="container6">
-          <button
-            id="btn4"
-            onClick={() => handleSimpleNavigation("/punjabimusic")}
-          >
-            Punjabi Songs
-          </button>
-          <button
-            id="btn5"
-            onClick={() => handleSimpleNavigation("/englishsongs")}
-          >
-            English Songs
-          </button>
+        <div className="midContainer">
+          <h1 id="heading1">
+            <span>Power</span>&nbsp;of Music
+          </h1>
+          <p className="paragraph">
+            Sarojini Naidu: "Music is the voice of the soul, the unspoken poetry
+            of the heart that transcends time and space. It is the gentle
+            whisper of the breeze, the rhythmic dance of raindrops, and the
+            eternal song of the universe. In its melody, the burdens of life are
+            lightened, and in its harmony, the spirit finds peace. Just as a
+            bird sings without reason, so does music flow freely."
+          </p>
+        </div>
+
+        <div className="container7">
+          <h1 id="heading1">
+            <span>Feel</span>&nbsp;the Rhythm
+          </h1>
+          <p className="paragraph">
+            A. R. Rahman: "Music is not just a sound; it is an experience that
+            connects souls. It has the power to heal, to bring joy, and to
+            inspire change. A single melody can evoke a thousand emotions, and a
+            simple rhythm can unite people beyond borders. It is the language of
+            the heart, spoken and understood by all."
+          </p>
+
+          <div className="container6">
+            <button
+              id="btn4"
+              onClick={() => handleSimpleNavigation("/trendingsongs")}
+            >
+              Trending Songs
+            </button>
+            <button
+              id="btn5"
+              onClick={() => handleSimpleNavigation("/newmusic")}
+            >
+              New Releases
+            </button>
+          </div>
         </div>
       </div>
-      <div className="container7">
-        <h1 id="heading1">
-          <span>Feel</span>&nbsp;the Rhythm
-        </h1>
-        <p className="paragraph">
-          Music is more than just sound; it's an expression of emotion and
-          culture that resonates with people across the globe. Music has the
-          ability to transport us to different times, evoke memories, and even
-          change our mood.
-        </p>
-
-        <div className="container6">
-          <button
-            id="btn4"
-            onClick={() => handleSimpleNavigation("/trendingsongs")}
-          >
-            Trending Songs
-          </button>
-          <button id="btn5" onClick={() => handleSimpleNavigation("/newmusic")}>
-            New Releases
-          </button>
-        </div>
-      </div>
-      <div className="container8">
-        <img src="mobile headphone logo.jpg" id="image8"></img>
-      </div>
-      <div className="container9">
-        <img src="music play logo.jpg" id="image9"></img>
-      </div>
-      <hr id="hr2"></hr>
+      <hr className="hr2"></hr>
       <Footer />
     </>
   );

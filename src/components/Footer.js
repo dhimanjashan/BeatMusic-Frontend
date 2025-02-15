@@ -6,7 +6,7 @@ const Footer = () => {
       <div className="footerContainer">
         <footer className="footer">
           {" "}
-          &copy; www.BeatMusic.com. All rights reserved.
+          &copy; www.<span>Beat</span>Music.com. All rights reserved.
         </footer>
       </div>
     </>

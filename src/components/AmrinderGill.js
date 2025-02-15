@@ -2,30 +2,60 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import PlayerControl from "./PlayerControl";
 import { playAudio, pauseAudio } from "../state/audioSlice";
+import { addFavourite, removeFavourite } from "../state/favouriteSlice";
 
 const AmrinderGill = () => {
   const dispatch = useDispatch();
   const { isPlaying, currentSong, audioElement } = useSelector(
     (state) => state.audio
   );
+  const favouriteSongs = useSelector((state) => state.favourite.favouriteSongs);
   const [isLoading, setIsLoading] = useState(false);
+  const [repeat, setRepeat] = useState(false);
 
   const songs = [
-    { id: "679355ef47bdbe2186044204", title: "Dildarian - Judaa" },
-    { id: "679358cf47bdbe2186044206", title: "Ki Samjhaiye - Judaa" },
-    { id: "6793590947bdbe2186044208", title: "Yarrian - Judaa" },
-    { id: "6793599347bdbe218604420a", title: "Judaa - Judaa" },
-    { id: "679359d247bdbe218604420c", title: "Baapu" },
-    { id: "67935b8447bdbe2186044218", title: "Dubda Sooraj" },
-    { id: "67935a0347bdbe218604420e", title: "Kurta Suha - Angrej" },
-    { id: "67935a5847bdbe2186044210", title: "Supna" },
-    { id: "67935be147bdbe218604421a", title: "That Girl" },
-    { id: "67935a7f47bdbe2186044212", title: "Heerey - Love Punjab" },
+    {
+      id: "679355ef47bdbe2186044204",
+      title: "Dildarian song by Amrinder Gill",
+    },
+    {
+      id: "679358cf47bdbe2186044206",
+      title: "Ki Samjhaiye song by Amrinder Gill",
+    },
+    {
+      id: "6793590947bdbe2186044208",
+      title: "Yarrian song by Amrinder Gill",
+    },
+    {
+      id: "6793599347bdbe218604420a",
+      title: "Judaa song by Amrinder Gill",
+    },
+    { id: "679359d247bdbe218604420c", title: "Baapu song by Amrinder Gill" },
+    {
+      id: "67935b8447bdbe2186044218",
+      title: "Dubda Sooraj song by Amrinder Gill",
+    },
+    {
+      id: "67935a0347bdbe218604420e",
+      title: "Kurta Suha - Angrej song by Amrinder Gill",
+    },
+    { id: "67935a5847bdbe2186044210", title: "Supna song by Amrinder Gill" },
+    {
+      id: "67935be147bdbe218604421a",
+      title: "That Girl song by Amrinder Gill",
+    },
+    {
+      id: "67935a7f47bdbe2186044212",
+      title: "Heerey - Love Punjab song by Amrinder Gill",
+    },
     {
       id: "67935acb47bdbe2186044214",
-      title: "Chal Jindiye - Judaa 3 Chapter One",
+      title: "Chal Jindiye song by Amrinder Gill",
     },
-    { id: "67935b2647bdbe2186044216", title: "Ocean Eyes" },
+    {
+      id: "67935b2647bdbe2186044216",
+      title: "Ocean Eyes song by Amrinder Gill",
+    },
   ];
 
   const handleClick = async (songIndex) => {
@@ -33,6 +63,7 @@ const AmrinderGill = () => {
     setIsLoading(true);
 
     const song = songs[songIndex];
+
     try {
       const response = await fetch("http://localhost:5000/songs", {
         method: "POST",
@@ -41,14 +72,24 @@ const AmrinderGill = () => {
       });
       const data = await response.json();
 
+      if (!data.file_path || typeof data.file_path !== "string") {
+        console.error("Invalid file path received:", data.file_path);
+        return;
+      }
+
       if (audioElement) {
         audioElement.src = data.file_path;
         audioElement.load();
+
         audioElement.oncanplaythrough = () => {
-          audioElement.play().catch((error) => {
-            console.error("Error playing audio:", error);
-          });
-          dispatch(playAudio({ songUrl: data.file_path, song }));
+          audioElement
+            .play()
+            .then(() => {
+              dispatch(playAudio({ songUrl: data.file_path, song }));
+            })
+            .catch((error) => {
+              console.error("Error playing audio:", error);
+            });
         };
       }
     } catch (error) {
@@ -57,7 +98,6 @@ const AmrinderGill = () => {
       setIsLoading(false);
     }
   };
-
   const handleNext = async () => {
     if (isLoading || !currentSong) return;
 
@@ -82,27 +122,45 @@ const AmrinderGill = () => {
 
   const handlePlayPause = () => {
     if (!audioElement) return;
+
     if (isPlaying) {
       audioElement.pause();
       dispatch(pauseAudio());
-    } else if (currentSong) {
-      audioElement.play().catch((error) => {
-        console.error("Error playing audio:", error);
-      });
+    } else {
+      audioElement.play();
       dispatch(playAudio({ songUrl: currentSong.songUrl, song: currentSong }));
     }
+  };
+  const handleFavourite = () => {
+    if (!currentSong) return;
+    const isFavourite = favouriteSongs.some((fav) => fav.id === currentSong.id);
+
+    if (isFavourite) {
+      dispatch(removeFavourite(currentSong.id));
+    } else {
+      dispatch(addFavourite(currentSong));
+    }
+  };
+
+  const handleRepeat = () => {
+    setRepeat(!repeat);
   };
 
   useEffect(() => {
     const audio = audioElement;
     const handleEnded = () => {
-      handleNext();
+      if (repeat) {
+        audio.currentTime = 0;
+        audio.play();
+      } else {
+        handleNext();
+      }
     };
     audio.addEventListener("ended", handleEnded);
     return () => {
       audio.removeEventListener("ended", handleEnded);
     };
-  }, [currentSong, isLoading]);
+  }, [currentSong, isLoading, repeat]);
 
   return (
     <>
@@ -113,11 +171,11 @@ const AmrinderGill = () => {
             onClick={() => handleClick(index)}
             style={{
               cursor: "pointer",
-              color: currentSong?.id === song.id ? "crimson" : "white",
-              fontWeight: currentSong?.id === song.id ? "bold" : "normal",
+              color: currentSong?.id === song.id ? "white" : "black",
+              fontWeight: currentSong?.id === song.id ? "bolder" : "bold",
             }}
           >
-            {song.title} by Amrinder Gill
+            {song.title}
           </p>
         ))}
       </div>
@@ -126,6 +184,8 @@ const AmrinderGill = () => {
         handleNext={handleNext}
         handlePrevious={handlePrevious}
         handlePlayPause={handlePlayPause}
+        handleFavourite={handleFavourite}
+        handleRepeat={handleRepeat}
       />
     </>
   );

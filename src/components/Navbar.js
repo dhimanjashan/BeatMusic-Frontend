@@ -1,77 +1,90 @@
-import React from "react";
+import React, { act, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-const Navbar = () => {
+const Navbar = ({ activeLink, setActiveLink }) => {
   const navigate = useNavigate();
-  const handleClickHome = (e) => {
-    e.preventDefault();
-    navigate("/");
-  };
-  const handleClickNewmusic = (e) => {
-    e.preventDefault();
-    navigate("/newmusic");
-  };
+  const [menuOpen, setMenuOpen] = useState(false);
 
-  const handleLoginClick = (e) => {
-    e.preventDefault();
-    navigate("/login");
+  const handleNavigation = (link, path) => {
+    setActiveLink(link);
+    navigate(path);
+    setMenuOpen(false);
   };
-  const handlefavourite = (e) => {
-    e.preventDefault();
-    navigate("/favourite");
-  };
-  const handleabout = (e) => {
-    e.preventDefault();
-    navigate("/about");
-  };
-  const handleclickhelp = (e) => {
-    e.preventDefault();
-    navigate("/help");
-  };
-  const handlecreateAccount = (e) => {
-    e.preventDefault();
-    navigate("/createAccount");
-  };
-
   return (
     <>
       <nav className="navbar">
         <h1>
           <span>Beat</span>Music
         </h1>
-        <ul>
+        <div className="menu-toggle" onClick={() => setMenuOpen(!menuOpen)}>
+          &#9776;
+        </div>
+        <ul className={menuOpen ? "nav-links show" : "nav-links"}>
           <li>
-            <Link to="/" onClick={handleClickHome}>
+            <Link
+              to="/"
+              onClick={() => handleNavigation("home", "/")}
+              className={activeLink === "home" ? "active" : ""}
+            >
               Home
             </Link>
           </li>
           <li>
-            <a href="/newmusic" onClick={handleClickNewmusic}>
+            <Link
+              to="/newmusic"
+              onClick={() => handleNavigation("newmusic", "/newmusic")}
+              className={activeLink === "newmusic" ? "active" : ""}
+            >
               New music
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="/favourite" onClick={handlefavourite}>
+            <Link
+              to="/favourite"
+              onClick={() => handleNavigation("favourite", "/favourite")}
+              className={activeLink === "favourite" ? "active" : ""}
+            >
               Favourite
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="/about" onClick={handleabout}>
+            <Link
+              to="/about"
+              onClick={() => handleNavigation("about", "/about")}
+              className={activeLink === "about" ? "active" : ""}
+            >
               About
-            </a>
+            </Link>
           </li>
-        </ul>
-        <div className="container2">
-          <a href="/help" id="btn1" onClick={handleclickhelp}>
-            Help
-          </a>
-          <hr className="hr" />
-          <a href="/login" id="btn2" onClick={handleLoginClick}>
-            Login
-          </a>
-          <button id="btn3" onClick={handlecreateAccount}>
-            Create an account
-          </button>
-        </div>
+        {/* <div className={menuOpen ? "nav-links show" : "nav-links"}> */}
+          <div className="container2">
+            <Link
+              to="/help"
+              id="btn1"
+              onClick={() => handleNavigation("help", "/help")}
+              className={activeLink === "help" ? "active" : ""}
+            >
+              Help
+            </Link>
+            <hr className="hr" />
+            <Link
+              to="/login"
+              id="btn2"
+              onClick={() => handleNavigation("login", "/login")}
+              className={activeLink === "login" ? "active" : ""}
+            >
+              Login
+            </Link>
+            <button
+              id="btn3"
+              onClick={() =>
+                handleNavigation("createaccount", "/createaccount")
+              }
+              >
+              Create an account
+            </button>
+          </div>
+              </ul>
+        {/* </div> */}
       </nav>
     </>
   );

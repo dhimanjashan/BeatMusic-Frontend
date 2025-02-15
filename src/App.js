@@ -16,23 +16,23 @@ import NimratSongs from "./components/NimratSongs";
 import EnglishSongs from "./components/EnglishSongs";
 import TrendingSongs from "./components/TrendingSongs";
 import PunjabiMusic from "./components/PunjabiMusic";
-import PlayerSystem from "./components/PlayerSystem";
 import MusicApp from "./components/Music";
+import Reset from "./components/Reset";
 
 function App() {
-  const [heading, setHeading] = useState("");
   const [image, setImage] = useState("");
   const [music, setMusic] = useState("");
   const [audio, setAudio] = useState("");
   const [isPlaying, setisPlaying] = useState(false);
   const [favouriteTitle, setFavouriteTitle] = useState(null);
-  
+  const [activeLink, setActiveLink] = useState("");
+  const [song, setsong] = useState(null);
+  const [favourite, setfavourite] = useState(false);
 
   return (
     <Router>
-      <Navbar />
+      <Navbar activeLink={activeLink} setActiveLink={setActiveLink} />
       <div className="container">
-        
         <Routes>
           <Route
             path="/"
@@ -42,7 +42,7 @@ function App() {
           <Route
             exact
             path="/amrindergill"
-            element={<AmrinderGill setAudio={setAudio} />}
+            element={<AmrinderGill setsong={setsong} />}
           />
           <Route
             exact
@@ -52,15 +52,16 @@ function App() {
           <Route
             exact
             path="/playmusic"
-            element={<PlayerControl audio={audio} />}
+            element={<PlayerControl setfavourite={setfavourite} />}
           />
           <Route
             exact
             path="/favourite"
-            element={<Favourite />}
+            element={<Favourite song={song} favourite={favourite} />}
           />
           <Route exact path="/about" element={<About />} />
           <Route exact path="/login" element={<Login />} />
+          <Route exact path="/reset" element={<Reset />} />
           <Route exact path="/help" element={<Help />} />
           <Route exact path="/punjabimusic" element={<PunjabiMusic />} />
           <Route exact path="/englishsongs" element={<EnglishSongs />} />
@@ -70,8 +71,16 @@ function App() {
             path="/musiclist"
             element={<Musiclist image={image} music={music} />}
           />
-          <Route exact path="/createAccount" element={<CreateAccount />} />
-          <Route exact path="/musicapp" element={<MusicApp favouriteTitle={favouriteTitle} />} />
+          <Route
+            exact
+            path="/createAccount"
+            element={<CreateAccount setActiveLink={setActiveLink} />}
+          />
+          <Route
+            exact
+            path="/musicapp"
+            element={<MusicApp favouriteTitle={favouriteTitle} />}
+          />
         </Routes>
       </div>
     </Router>

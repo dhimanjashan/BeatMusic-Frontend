@@ -1,12 +1,18 @@
 import React, { useRef, useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { playAudio, pauseAudio } from "../state/audioSlice";
 import PlayerControl from "./PlayerControl";
+import { addFavourite, removeFavourite } from "../state/favouriteSlice";
 
 const SunandaSharma = () => {
   const audioRef = useRef(null);
-  const [isPlaying, setisPlaying] = useState(false);
   const [data, setdata] = useState("");
-  const [currentSong, setcurrentSong] = useState(null);
-  const [isLoading, setisLoading] = useState(false);
+  const dispatch = useDispatch();
+  const { isPlaying, currentSong, audioElement } = useSelector(
+    (state) => state.audio
+  );
+  const favouriteSongs = useSelector((state) => state.favourite.favouriteSongs);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -91,67 +97,93 @@ const SunandaSharma = () => {
 
   const handleClick = async (songIndex) => {
     if (isLoading) return;
-    setisLoading(true);
+    setIsLoading(true);
+
     const song = songs[songIndex];
 
     try {
       const response = await fetch("http://localhost:5000/songs", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ songId: song.id }),
       });
-
       const data = await response.json();
-      setdata(data);
 
-      if (audioRef.current) {
-        audioRef.current.src = data.file_path;
-        audioRef.current.load();
-        setcurrentSong(song);
-        await audioRef.current.play();
-        setisPlaying(true);
+      if (!data.file_path || typeof data.file_path !== "string") {
+        console.error("Invalid file path received:", data.file_path);
+        return;
+      }
+
+      if (audioElement) {
+        audioElement.src = data.file_path;
+        audioElement.load();
+
+        audioElement.oncanplaythrough = () => {
+          audioElement
+            .play()
+            .then(() => {
+              dispatch(playAudio({ songUrl: data.file_path, song }));
+            })
+            .catch((error) => {
+              console.error("Error playing audio:", error);
+            });
+        };
       }
     } catch (error) {
       console.error("Error fetching data from backend:", error);
     } finally {
-      setisLoading(false);
+      setIsLoading(false);
     }
   };
 
-  const handlePlayPause = () => {
-    if (audioRef.current) {
-      if (isPlaying) {
-        audioRef.current.pause();
-      } else {
-        audioRef.current.play();
-      }
-      setisPlaying(!isPlaying);
-    }
-  };
-
-  const handleNext = () => {
+  const handleNext = async () => {
     if (isLoading || !currentSong) return;
+
     const currentIndex = songs.findIndex((song) => song.id === currentSong.id);
     if (currentIndex < songs.length - 1) {
-      handleClick(currentIndex + 1);
+      await handleClick(currentIndex + 1);
     } else {
       console.log("No more songs left!");
     }
   };
+
   const handlePrevious = async () => {
     if (isLoading || !currentSong) return;
 
     const currentIndex = songs.findIndex((song) => song.id === currentSong.id);
-    if (currentIndex < songs.length - 1) {
+    if (currentIndex > 0) {
       await handleClick(currentIndex - 1);
     } else {
       console.log("No more songs left!");
     }
   };
+
+  const handlePlayPause = () => {
+    if (!audioElement) return;
+
+    if (isPlaying) {
+      audioElement.pause();
+      dispatch(pauseAudio());
+    } else {
+      audioElement.play();
+      dispatch(playAudio({ songUrl: currentSong.songUrl, song: currentSong }));
+    }
+  };
+
+  const handleFavourite = () => {
+    if (!currentSong) return;
+
+    const isFavourite = favouriteSongs.some((fav) => fav.id === currentSong.id);
+
+    if (isFavourite) {
+      dispatch(removeFavourite(currentSong.id));
+    } else {
+      dispatch(addFavourite(currentSong));
+    }
+  };
+
   useEffect(() => {
-    const audio = audioRef.current;
+    const audio = audioElement;
     const handleEnded = () => {
       handleNext();
     };
@@ -170,8 +202,8 @@ const SunandaSharma = () => {
             onClick={() => handleClick(index)}
             style={{
               cursor: "pointer",
-              color: currentSong?.id === song.id ? "crimson" : "white",
-              fontWeight: currentSong?.id === song.id ? "bold" : "normal",
+              color: currentSong?.id === song.id ? "white" : "black",
+              fontWeight: currentSong?.id === song.id ? "bolder" : "bold",
             }}
           >
             {song.title}
@@ -185,6 +217,7 @@ const SunandaSharma = () => {
         handlePlayPause={handlePlayPause}
         isPlaying={isPlaying}
         handlePrevious={handlePrevious}
+        handleFavourite={handleFavourite}
       />
     </>
   );
