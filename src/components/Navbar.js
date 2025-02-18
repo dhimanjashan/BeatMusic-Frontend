@@ -1,24 +1,46 @@
-import React, { act, useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 const Navbar = ({ activeLink, setActiveLink }) => {
   const navigate = useNavigate();
   const [menuOpen, setMenuOpen] = useState(false);
+  const navRef = useRef(null);
 
   const handleNavigation = (link, path) => {
+    console.log("clicked")
     setActiveLink(link);
     navigate(path);
     setMenuOpen(false);
   };
+  const handleClickOutside = (event) => {
+    if (navRef.current && !navRef.current.contains(event.target)) {
+      setMenuOpen(false);
+    }
+  };
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+  
   return (
     <>
-      <nav className="navbar">
-        <h1>
-          <span>Beat</span>Music
+      <nav className="navbar" ref={navRef} >
+        <div className={menuOpen ? "nav-links show" : "musicHeading"}>
+
+        <h1 className="navbarMusicHeading">
+          <span >Beat</span>Music
         </h1>
+        </div>
         <div className="menu-toggle" onClick={() => setMenuOpen(!menuOpen)}>
           &#9776;
         </div>
+        <div className={`nav-overlay ${menuOpen ? "open" : ""}`} ref={navRef} >
+          <button className="close-btn" onClick={() => setMenuOpen(false)}>
+            &times;
+          </button>
         <ul className={menuOpen ? "nav-links show" : "nav-links"}>
+            <div className="container2">
           <li>
             <Link
               to="/"
@@ -33,7 +55,7 @@ const Navbar = ({ activeLink, setActiveLink }) => {
               to="/newmusic"
               onClick={() => handleNavigation("newmusic", "/newmusic")}
               className={activeLink === "newmusic" ? "active" : ""}
-            >
+              >
               New music
             </Link>
           </li>
@@ -42,7 +64,7 @@ const Navbar = ({ activeLink, setActiveLink }) => {
               to="/favourite"
               onClick={() => handleNavigation("favourite", "/favourite")}
               className={activeLink === "favourite" ? "active" : ""}
-            >
+              >
               Favourite
             </Link>
           </li>
@@ -55,17 +77,15 @@ const Navbar = ({ activeLink, setActiveLink }) => {
               About
             </Link>
           </li>
-        {/* <div className={menuOpen ? "nav-links show" : "nav-links"}> */}
-          <div className="container2">
             <Link
               to="/help"
               id="btn1"
               onClick={() => handleNavigation("help", "/help")}
               className={activeLink === "help" ? "active" : ""}
-            >
+              >
               Help
             </Link>
-            <hr className="hr" />
+            <hr className={menuOpen ? "nav-links show" : "hr"} />
             <Link
               to="/login"
               id="btn2"
@@ -82,9 +102,10 @@ const Navbar = ({ activeLink, setActiveLink }) => {
               >
               Create an account
             </button>
+              </div>
+        </ul>
           </div>
-              </ul>
-        {/* </div> */}
+
       </nav>
     </>
   );

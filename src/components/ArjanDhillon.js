@@ -213,19 +213,21 @@ const ArjanDhillon = () => {
   return (
     <>
       <div className="musicContainer1">
-        {songs.map((song, index) => (
-          <p
-            key={song.id}
-            onClick={() => handleClick(index)}
-            style={{
-              cursor: "pointer",
-              color: currentSong?.id === song.id ? "white" : "black",
-              fontWeight: currentSong?.id === song.id ? "bolder" : "bold",
-            }}
-          >
-            {song.title}
-          </p>
-        ))}
+        <div className="specialmusicContainer2">
+          {songs.map((song, index) => (
+            <p
+              key={song.id}
+              onClick={() => handleClick(index)}
+              style={{
+                cursor: "pointer",
+                color: currentSong?.id === song.id ? "white" : "black",
+                fontWeight: currentSong?.id === song.id ? "bolder" : "bold",
+              }}
+            >
+              {song.title}
+            </p>
+          ))}
+        </div>
       </div>
       <audio ref={audioRef} />
       <PlayerControl

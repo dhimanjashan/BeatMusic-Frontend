@@ -13,7 +13,7 @@ const PlayerControl = ({
   const [progress, setProgress] = useState(0);
   const navigate = useNavigate();
   const { isPlaying, audioElement } = useSelector((state) => state.audio);
-  
+
   useEffect(() => {
     if (!audioElement) return;
 
@@ -30,8 +30,6 @@ const PlayerControl = ({
       audioElement.removeEventListener("timeupdate", updateProgress);
     };
   }, [audioElement]);
-
-  
 
   return (
     <div className="musicContainer2">

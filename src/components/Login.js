@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import Footer from "./Footer";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -34,6 +35,7 @@ const Login = () => {
           </form>
         </div>
       </div>
+      <Footer />
     </>
   );
 };

@@ -1,4 +1,5 @@
 import React from "react";
+import Footer from "./Footer";
 
 const Help = () => {
   return (
@@ -14,28 +15,28 @@ const Help = () => {
           <div className="faq-container">
             <div className="faq-item">
               <label className="faq-question" for="faq1">
-                What is MusicBeat?
+                What is BeatMusic?
               </label>
               <input type="checkbox" id="faq1" />
               <div className="faq-answer">
-                MusicBeat is an online platform that allows users to listen
+                BeatMusic is an online platform that allows users to listen
                 music. You can enjoy high-quality music anytime, anywhere.
               </div>
             </div>
             <div className="faq-item">
               <label className="faq-question" for="faq2">
-                Is MusicBeat free to use?
+                Is BeatMusic free to use?
               </label>
               <input type="checkbox" id="faq2" />
               <div className="faq-answer">
-                Yes, MusicBeat offers a free version. We also provide premium
+                Yes, BeatMusic offers a free version. We also provide premium
                 plans with additional features such as offline playback, no ads,
                 and high-quality streaming as the time changes.
               </div>
             </div>
             <div className="faq-item">
               <label className="faq-question" for="faq3">
-                How do I play a song on MusicBeat?
+                How do I play a song on BeatMusic?
               </label>
               <input type="checkbox" id="faq3" />
               <div className="faq-answer">
@@ -45,7 +46,7 @@ const Help = () => {
             <div className="faq-item">
               <label className="faq-question" for="faq4">
                 {" "}
-                What should I do if MusicBeat is not working properly?
+                What should I do if BeatMusic is not working properly?
               </label>
               <input type="checkbox" id="faq4" />
               <div className="faq-answer">
@@ -57,11 +58,11 @@ const Help = () => {
             <div className="faq-item">
               <label className="faq-question" for="faq5">
                 {" "}
-                Does MusicBeat work on all devices and browsers?
+                Does BeatMusic work on all devices and browsers?
               </label>
               <input type="checkbox" id="faq5" />
               <div className="faq-answer">
-                Yes, MusicBeat is compatible with most modern browsers and
+                Yes, BeatMusic is compatible with most modern browsers and
                 available as a mobile app for iOS and Android.
               </div>
             </div>
@@ -71,12 +72,12 @@ const Help = () => {
               </label>
               <input type="checkbox" id="faq6" />
               <div className="faq-answer">
-                Email us at support@musicbeat.com for assistance.
+                Email us at support@BeatMusic.com for assistance.
               </div>
             </div>
             <div className="faq-item">
               <label className="faq-question" for="faq7">
-                Is my personal data safe on MusicBeat?
+                Is my personal data safe on BeatMusic?
               </label>
               <input type="checkbox" id="faq7" />
               <div className="faq-answer">
@@ -90,7 +91,7 @@ const Help = () => {
               </label>
               <input type="checkbox" id="faq8" />
               <div className="faq-answer">
-                Go to "Settings" - "Account" - "Delete Account." Once deleted,
+                Go to Settings &gt; Account &gt; Delete Account. Once deleted,
                 your data cannot be recovered.
               </div>
             </div>
@@ -115,6 +116,7 @@ const Help = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </>
   );
 };

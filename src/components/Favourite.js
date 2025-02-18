@@ -134,7 +134,9 @@ const Favourite = () => {
             </p>
           ))
         ) : (
-          <p style={{ fontWeight: "bold" }}>No favourite songs added yet.</p>
+          <div className="favouriteContainer2">
+            <p style={{ fontWeight: "bold" }}>No favourite songs added yet.</p>
+          </div>
         )}
       </div>
       <PlayerControl

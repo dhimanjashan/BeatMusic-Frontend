@@ -12,7 +12,6 @@ const AmrinderGill = () => {
   const favouriteSongs = useSelector((state) => state.favourite.favouriteSongs);
   const [isLoading, setIsLoading] = useState(false);
   const [repeat, setRepeat] = useState(false);
-
   const songs = [
     {
       id: "679355ef47bdbe2186044204",
@@ -61,9 +60,7 @@ const AmrinderGill = () => {
   const handleClick = async (songIndex) => {
     if (isLoading) return;
     setIsLoading(true);
-
     const song = songs[songIndex];
-
     try {
       const response = await fetch("http://localhost:5000/songs", {
         method: "POST",
@@ -165,19 +162,21 @@ const AmrinderGill = () => {
   return (
     <>
       <div className="musicContainer1">
-        {songs.map((song, index) => (
-          <p
-            key={song.id}
-            onClick={() => handleClick(index)}
-            style={{
-              cursor: "pointer",
-              color: currentSong?.id === song.id ? "white" : "black",
-              fontWeight: currentSong?.id === song.id ? "bolder" : "bold",
-            }}
-          >
-            {song.title}
-          </p>
-        ))}
+        <div className="specialmusicContainer2">
+          {songs.map((song, index) => (
+            <p
+              key={song.id}
+              onClick={() => handleClick(index)}
+              style={{
+                cursor: "pointer",
+                color: currentSong?.id === song.id ? "white" : "black",
+                fontWeight: currentSong?.id === song.id ? "bolder" : "bold",
+              }}
+            >
+              {song.title}
+            </p>
+          ))}
+        </div>
       </div>
 
       <PlayerControl

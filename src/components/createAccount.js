@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
+import Footer from "./Footer";
 
 const CreateAccount = ({ setActiveLink }) => {
   const navigate = useNavigate();
-
   const handleNavigation = () => {
     setActiveLink("login");
     navigate("/login");
@@ -30,7 +30,6 @@ const CreateAccount = ({ setActiveLink }) => {
               Login
             </Link>
           </h3>
-
           <div className="accountContainer4">
             <input type="string" placeholder="First Name"></input>
             <input type="email" placeholder="Email"></input>
@@ -39,6 +38,7 @@ const CreateAccount = ({ setActiveLink }) => {
           </div>
         </div>
       </div>
+      <Footer />
     </>
   );
 };

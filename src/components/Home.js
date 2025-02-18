@@ -1,11 +1,11 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import Footer from "./Footer";
 import { bindActionCreators } from "redux";
 import { useDispatch, useSelector } from "react-redux";
 import { actionCreator } from "../state/index.js";
+import Footer from "./Footer";
 
-const Home = ({ setImage, setartistHeading }) => {
+const Home = ({ setImage, setActiveLink }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const headline = useSelector((state) => state.heading);
@@ -76,6 +76,11 @@ const Home = ({ setImage, setartistHeading }) => {
     navigate(path);
     window.scrollTo(0, 0);
   };
+  const handleloginNaviagtion = () => {
+    setActiveLink("newmusic");
+    navigate("/newmusic");
+    window.scrollTo(0, 0);
+  };
 
   return (
     <>
@@ -83,7 +88,11 @@ const Home = ({ setImage, setartistHeading }) => {
       <div className="container3">
         <div className="box1">
           <div className="card">
-            <img src="Amrinder Gill.jpg" id="image1"></img>
+            <img
+              src="Amrinder Gill.jpg"
+              id="image1"
+              onClick={handleamrinderClick}
+            ></img>
           </div>
           <button id="homebtn1" onClick={handleamrinderClick}>
             Play Now
@@ -91,7 +100,11 @@ const Home = ({ setImage, setartistHeading }) => {
         </div>
         <div className="box1">
           <div className="card">
-            <img src="sunanda sharma.png" id="image1"></img>
+            <img
+              src="sunanda sharma.png"
+              id="image1"
+              onClick={handlesunandaClick}
+            ></img>
           </div>
           <button id="homebtn1" onClick={handlesunandaClick}>
             Play Now
@@ -99,7 +112,11 @@ const Home = ({ setImage, setartistHeading }) => {
         </div>
         <div className="box1">
           <div className="card">
-            <img src="arjan dhillon.jpg" id="image1"></img>
+            <img
+              src="arjan dhillon.jpg"
+              id="image1"
+              onClick={handlearjanClick}
+            ></img>
           </div>
           <button id="homebtn1" onClick={handlearjanClick}>
             Play Now
@@ -107,7 +124,11 @@ const Home = ({ setImage, setartistHeading }) => {
         </div>
         <div className="box1">
           <div className="card">
-            <img src="nimrat khaira logo.jpg" id="image1"></img>
+            <img
+              src="nimrat khaira logo.jpg"
+              id="image1"
+              onClick={handlenimratClick}
+            ></img>
           </div>
           <button id="homebtn1" onClick={handlenimratClick}>
             Play Now
@@ -115,7 +136,11 @@ const Home = ({ setImage, setartistHeading }) => {
         </div>
         <div className="box1">
           <div className="card">
-            <img src="jordan sandhu.jpg" id="image1"></img>
+            <img
+              src="jordan sandhu.jpg"
+              id="image1"
+              onClick={handlejordanClick}
+            ></img>
           </div>
           <button id="homebtn1" onClick={handlejordanClick}>
             Play Now
@@ -127,7 +152,11 @@ const Home = ({ setImage, setartistHeading }) => {
       <div className="container4">
         <div className="box1">
           <div className="card">
-            <img src="ed sheeran.jpg" id="image1"></img>
+            <img
+              src="ed sheeran.jpg"
+              id="image1"
+              onClick={handleEdsheeranClick}
+            ></img>
           </div>
           <button id="homebtn1" onClick={handleEdsheeranClick}>
             Play Now
@@ -135,7 +164,11 @@ const Home = ({ setImage, setartistHeading }) => {
         </div>
         <div className="box1">
           <div className="card">
-            <img src="dua lipa.jpg" id="image1"></img>
+            <img
+              src="dua lipa.jpg"
+              id="image1"
+              onClick={handleDualipaClick}
+            ></img>
           </div>
           <button id="homebtn1" onClick={handleDualipaClick}>
             Play Now
@@ -143,7 +176,11 @@ const Home = ({ setImage, setartistHeading }) => {
         </div>
         <div className="box1">
           <div className="card">
-            <img src="justin bieber.jpg" id="image1"></img>
+            <img
+              src="justin bieber.jpg"
+              id="image1"
+              onClick={handleJustinbieberClick}
+            ></img>
           </div>
           <button id="homebtn1" onClick={handleJustinbieberClick}>
             Play Now
@@ -151,7 +188,11 @@ const Home = ({ setImage, setartistHeading }) => {
         </div>
         <div className="box1">
           <div className="card">
-            <img src="olivia rodrigo.jpg" id="image1"></img>
+            <img
+              src="olivia rodrigo.jpg"
+              id="image1"
+              onClick={handleOliviarodrigoClick}
+            ></img>
           </div>
           <button id="homebtn1" onClick={handleOliviarodrigoClick}>
             Play Now
@@ -159,7 +200,11 @@ const Home = ({ setImage, setartistHeading }) => {
         </div>
         <div className="box1">
           <div className="card">
-            <img src="sam smith.jpg" id="image1"></img>
+            <img
+              src="sam smith.jpg"
+              id="image1"
+              onClick={handleSamsmithClick}
+            ></img>
           </div>
           <button id="homebtn1" onClick={handleSamsmithClick}>
             Play Now
@@ -169,7 +214,7 @@ const Home = ({ setImage, setartistHeading }) => {
       <div className="bigContainer">
         <div className="container5">
           <h1 id="heading1">
-            <span>Listen</span>&nbsp;to new music.
+            <span>Listen</span>&nbsp;to new music
           </h1>
           <p className="paragraph">
             Rabindranath Tagore: “Music fills the infinite between two souls. It
@@ -228,16 +273,13 @@ const Home = ({ setImage, setartistHeading }) => {
             >
               Trending Songs
             </button>
-            <button
-              id="btn5"
-              onClick={() => handleSimpleNavigation("/newmusic")}
-            >
+            <button id="btn5" onClick={() => handleloginNaviagtion()}>
               New Releases
             </button>
           </div>
         </div>
       </div>
-      <hr className="hr2"></hr>
+      <div className="homeLastDiv"></div>
       <Footer />
     </>
   );

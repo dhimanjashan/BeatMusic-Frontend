@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { playAudio, pauseAudio } from "../state/audioSlice";
 import { addFavourite, removeFavourite } from "../state/favouriteSlice";
 import PlayerSystem from "./PlayerSystem";
+import PlayerControl from "./PlayerControl";
 
 const PunjabiMusic = () => {
   const audioRef = useRef(null);
@@ -13,6 +14,7 @@ const PunjabiMusic = () => {
   );
   const favouriteSongs = useSelector((state) => state.favourite.favouriteSongs);
   const [isLoading, setIsLoading] = useState(false);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 900);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -335,7 +337,13 @@ const PunjabiMusic = () => {
       audio.removeEventListener("ended", handleEnded);
     };
   }, [currentSong, isLoading, repeat]);
-
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 900);
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
   return (
     <>
       <div className="PunjabiSongsContainer">
@@ -346,14 +354,24 @@ const PunjabiMusic = () => {
       <hr></hr>
       <div className="punjabiSongsContainer2">
         <div className="punjabiSongsContainer3">
-          <PlayerSystem
-            audio={audioRef.current}
-            handleNext={handleNext}
-            handlePlayPause={handlePlayPause}
-            handleFavourite={handleFavourite}
-            handlePrevious={handlePrevious}
-            handleRepeat={handleRepeat}
-          />
+          {isMobile ? (
+            <PlayerControl
+              handleNext={handleNext}
+              handlePlayPause={handlePlayPause}
+              isPlaying={isPlaying}
+              handlePrevious={handlePrevious}
+              handleFavourite={handleFavourite}
+            />
+          ) : (
+            <PlayerSystem
+              audio={audioRef.current}
+              handleNext={handleNext}
+              handlePlayPause={handlePlayPause}
+              handleFavourite={handleFavourite}
+              handlePrevious={handlePrevious}
+              handleRepeat={handleRepeat}
+            />
+          )}
           {songs.map((song, index) => (
             <p
               key={song.id}

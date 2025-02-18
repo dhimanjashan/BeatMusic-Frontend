@@ -17,7 +17,7 @@ import EnglishSongs from "./components/EnglishSongs";
 import TrendingSongs from "./components/TrendingSongs";
 import PunjabiMusic from "./components/PunjabiMusic";
 import MusicApp from "./components/Music";
-import Reset from "./components/Reset";
+import Reset from "./components/Reset"; 
 
 function App() {
   const [image, setImage] = useState("");
@@ -36,7 +36,7 @@ function App() {
         <Routes>
           <Route
             path="/"
-            element={<Home setImage={setImage} setMusic={setMusic} />}
+            element={<Home setImage={setImage} setActiveLink={setActiveLink} />}
           />
           <Route exact path="/newmusic" element={<Newmusic />} />
           <Route

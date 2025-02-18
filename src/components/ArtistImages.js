@@ -4,7 +4,9 @@ const ArtistImages = ({ image }) => {
   return (
     <>
       <div className="musiclistImage">
-        <img src={image} id="artistImage"></img>
+        <div id="artistImage">
+          <img src={image}></img>
+        </div>
       </div>
     </>
   );

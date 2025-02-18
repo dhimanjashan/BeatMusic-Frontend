@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import Footer from "./Footer";
 
 const Reset = () => {
   const navigate = useNavigate();
@@ -18,7 +19,7 @@ const Reset = () => {
             Enter your email to receive a password reset link.
           </p>
           <form action="#" method="POST">
-            <div class="input-group">
+            <div className="input-group">
               <label for="email">Email Address</label>
               <input type="email" id="email" name="email" required />
             </div>
@@ -33,6 +34,7 @@ const Reset = () => {
           </form>
         </div>
       </div>
+      <Footer />
     </>
   );
 };

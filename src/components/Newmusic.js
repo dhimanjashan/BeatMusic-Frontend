@@ -3,6 +3,7 @@ import PlayerSystem from "./PlayerSystem";
 import { useDispatch, useSelector } from "react-redux";
 import { playAudio, pauseAudio } from "../state/audioSlice";
 import { addFavourite, removeFavourite } from "../state/favouriteSlice";
+import PlayerControl from "./PlayerControl";
 
 const Newmusic = () => {
   const audioRef = useRef(null);
@@ -13,6 +14,7 @@ const Newmusic = () => {
   );
   const favouriteSongs = useSelector((state) => state.favourite.favouriteSongs);
   const [isLoading, setIsLoading] = useState(false);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 900);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -229,7 +231,13 @@ const Newmusic = () => {
       audio.removeEventListener("ended", handleEnded);
     };
   }, [currentSong, isLoading, repeat]);
-
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 900);
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
   return (
     <>
       <div className="newmusicContainer">
@@ -239,27 +247,39 @@ const Newmusic = () => {
       </div>
       <hr className="newMusicHr"></hr>
       <div className="newmusicContainer1">
-        <PlayerSystem
-          audio={audioRef.current}
-          handleNext={handleNext}
-          handlePlayPause={handlePlayPause}
-          handleFavourite={handleFavourite}
-          handlePrevious={handlePrevious}
-          handleRepeat={handleRepeat}
-        />
-        {newPunjabiSongs.map((song, index) => (
-          <p
-            key={song.id}
-            onClick={() => handleClick(index)}
-            style={{
-              cursor: "pointer",
-              color: currentSong?.id === song.id ? "white" : "black",
-              fontWeight: currentSong?.id === song.id ? "bolder" : "bold",
-            }}
-          >
-            {song.title}
-          </p>
-        ))}
+        <div className="newmusicContainer2">
+          {isMobile ? (
+            <PlayerControl
+              handleNext={handleNext}
+              handlePlayPause={handlePlayPause}
+              isPlaying={isPlaying}
+              handlePrevious={handlePrevious}
+              handleFavourite={handleFavourite}
+            />
+          ) : (
+            <PlayerSystem
+              audio={audioRef.current}
+              handleNext={handleNext}
+              handlePlayPause={handlePlayPause}
+              handleFavourite={handleFavourite}
+              handlePrevious={handlePrevious}
+              handleRepeat={handleRepeat}
+            />
+          )}
+          {newPunjabiSongs.map((song, index) => (
+            <p
+              key={song.id}
+              onClick={() => handleClick(index)}
+              style={{
+                cursor: "pointer",
+                color: currentSong?.id === song.id ? "white" : "black",
+                fontWeight: currentSong?.id === song.id ? "bolder" : "bold",
+              }}
+            >
+              {song.title}
+            </p>
+          ))}
+        </div>
       </div>
       <audio ref={audioRef} />
     </>
