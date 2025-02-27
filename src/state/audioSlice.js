@@ -1,12 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-// Global Audio instance
-const audioElement = new Audio();
-
 const initialState = {
-  audioElement,
   isPlaying: false,
   currentSong: null,
+  audioElement: new Audio(),
 };
 
 const audioSlice = createSlice({
@@ -14,22 +11,20 @@ const audioSlice = createSlice({
   initialState,
   reducers: {
     playAudio: (state, action) => {
-      const { songUrl, song } = action.payload;
-
-      if (!state.currentSong || state.currentSong.id !== song.id) {
-        state.audioElement.src = songUrl;
-        state.audioElement.load();
-      }
-
-      state.currentSong = song;
       state.isPlaying = true;
+      state.currentSong = action.payload.song;
+      state.audioElement.src = action.payload.songUrl;
+      state.audioElement.play();
     },
     pauseAudio: (state) => {
-      state.audioElement.pause();
       state.isPlaying = false;
+      state.audioElement.pause();
+    },
+    setAudioElement: (state, action) => {
+      state.audioElement = action.payload;
     },
   },
 });
 
-export const { playAudio, pauseAudio } = audioSlice.actions;
+export const { playAudio, pauseAudio, setAudioElement } = audioSlice.actions;
 export default audioSlice.reducer;

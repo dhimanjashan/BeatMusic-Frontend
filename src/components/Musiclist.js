@@ -11,61 +11,27 @@ import DuaLipa from "./DuaLipa";
 import OliviaRodrigo from "./OliviaRodrigo";
 import SamSmith from "./SamSmith";
 
-const Musiclist = ({ image, music, artistHeading }) => {
-  const heading = useSelector((state) => state.string.heading);
+const Musiclist = () => {
+  const heading = useSelector((state) => state.stringReducer.heading);
+  let storedHeading = localStorage.getItem("heading");
+  let storedImage=localStorage.getItem("image");
+
   return (
     <>
       <h1 className="musiclistheading1">{heading}</h1>
       <hr className="musiclistHr"></hr>
-      <ArtistImages image={image} />
+      <ArtistImages image={storedImage} /> 
       <div>
-        {heading === "Hanji Shoneyo Suniye Song Nimrat Khaira De 🎵" ? (
-          <NimratSongs />
-        ) : (
-          ""
-        )}
-        {heading === "Hanji Shoneyo Suniye Song Amrinder Gill De 🎵" ? (
-          <AmrinderGill />
-        ) : (
-          ""
-        )}
-        {heading === "Hanji Shoneyo Suniye Song Sunanda Sharma De 🎵" ? (
-          <SunandaSharma />
-        ) : (
-          ""
-        )}
-        {heading === "Hanji Shoneyo Suniye Song Arjan Dhillon De 🎵" ? (
-          <ArjanDhillon />
-        ) : (
-          ""
-        )}
-        {heading === "Hanji Shoneyo Suniye Song Jordan Sandhu De 🎵" ? (
-          <JordanSandhu />
-        ) : (
-          ""
-        )}
-
-        {heading === "Here is the list of Ed Sheeran Songs 🎵" ? (
-          <EdSheeran />
-        ) : (
-          ""
-        )}
-        {heading === "Here is the list of Dua Lipa Songs 🎵" ? <DuaLipa /> : ""}
-        {heading === "Here is the list of Justin Bieber Songs 🎵" ? (
-          <DuaLipa />
-        ) : (
-          ""
-        )}
-        {heading === "Here is the list of Olivia Rodrigo Songs 🎵" ? (
-          <OliviaRodrigo />
-        ) : (
-          ""
-        )}
-        {heading === "Here is the list of Sam Smith Songs 🎵" ? (
-          <SamSmith />
-        ) : (
-          ""
-        )}
+        {storedHeading === "Hanji Shoneyo Suniye Song Nimrat Khaira De 🎵"? <NimratSongs />:""}
+        {storedHeading === "Hanji Shoneyo Suniye Song Amrinder Gill De 🎵" && <AmrinderGill />}
+        {storedHeading === "Hanji Shoneyo Suniye Song Sunanda Sharma De 🎵" && <SunandaSharma />}
+        {storedHeading === "Hanji Shoneyo Suniye Song Arjan Dhillon De 🎵" && <ArjanDhillon />}
+        {storedHeading === "Hanji Shoneyo Suniye Song Jordan Sandhu De 🎵" && <JordanSandhu />}
+        {storedHeading === "Here is the list of Ed Sheeran Songs 🎵" && <EdSheeran />}
+        {storedHeading === "Here is the list of Dua Lipa Songs 🎵" && <DuaLipa />}
+        {storedHeading === "Here is the list of Justin Bieber Songs 🎵" && <DuaLipa />}
+        {storedHeading === "Here is the list of Olivia Rodrigo Songs 🎵" && <OliviaRodrigo />}
+        {storedHeading === "Here is the list of Sam Smith Songs 🎵" && <SamSmith />}
       </div>
     </>
   );

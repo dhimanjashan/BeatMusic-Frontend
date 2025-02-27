@@ -1,5 +1,5 @@
 import "./App.css";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import Home from "./components/Home";
 import Login from "./components/Login";
 import Navbar from "./components/Navbar";
@@ -19,10 +19,18 @@ import PunjabiMusic from "./components/PunjabiMusic";
 import MusicApp from "./components/Music";
 import Reset from "./components/Reset"; 
 
+import { useDispatch } from "react-redux";
+import { setupAudioListeners } from "./state/actionCreator/index";
+
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(setupAudioListeners());
+  }, [dispatch]);
+
   const [image, setImage] = useState("");
   const [music, setMusic] = useState("");
-  const [audio, setAudio] = useState("");
   const [isPlaying, setisPlaying] = useState(false);
   const [favouriteTitle, setFavouriteTitle] = useState(null);
   const [activeLink, setActiveLink] = useState("");

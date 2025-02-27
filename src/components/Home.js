@@ -1,75 +1,93 @@
-import React from "react";
+import React,{useEffect} from "react";
 import { useNavigate } from "react-router-dom";
 import { bindActionCreators } from "redux";
 import { useDispatch, useSelector } from "react-redux";
 import { actionCreator } from "../state/index.js";
 import Footer from "./Footer";
 
-const Home = ({ setImage, setActiveLink }) => {
+const Home = ({ setActiveLink }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const headline = useSelector((state) => state.heading);
   const { artistHeadline } = bindActionCreators(actionCreator, dispatch);
+  const SET_HEADING = "SET_HEADING";
+
+  const changeHeading = (newHeading) => {
+    dispatch({ type: "SET_HEADING", payload: newHeading });
+    localStorage.setItem("heading", newHeading);
+  };
+
+  const changeImage=(newImage)=>{
+    dispatch({type:"SET_IMAGE",payload:newImage});
+    localStorage.setItem("image",newImage); 
+  }
+
+    useEffect(() => {
+      const storedHeading = localStorage.getItem("heading");
+      if (storedHeading) {
+        dispatch({ type: SET_HEADING, payload: storedHeading }); // ✅ Restore heading
+      }
+    }, [dispatch]);
 
   const handleamrinderClick = (e) => {
     e.preventDefault();
     navigate("/musiclist");
-    setImage("amrinder-gill.jpg");
-    artistHeadline("Hanji Shoneyo Suniye Song Amrinder Gill De 🎵");
+    changeImage("amrinder-gill.jpg");
+    changeHeading("Hanji Shoneyo Suniye Song Amrinder Gill De 🎵");
   };
   const handlesunandaClick = (e) => {
     e.preventDefault();
     navigate("/musiclist");
-    setImage("sunanda-sharma.jpg");
-    artistHeadline("Hanji Shoneyo Suniye Song Sunanda Sharma De 🎵");
+    changeImage("sunanda-sharma.jpg");
+    changeHeading("Hanji Shoneyo Suniye Song Sunanda Sharma De 🎵");
   };
   const handlearjanClick = (e) => {
     e.preventDefault();
     navigate("/musiclist");
-    setImage("arjan-dhillon.jpg");
-    artistHeadline("Hanji Shoneyo Suniye Song Arjan Dhillon De 🎵");
+    changeImage("arjan-dhillon.jpg");
+    changeHeading("Hanji Shoneyo Suniye Song Arjan Dhillon De 🎵");
   };
   const handlenimratClick = (e) => {
     e.preventDefault();
     navigate("/musiclist");
-    setImage("nimrat-khaira.jpg");
+    changeImage("nimrat-khaira.jpg");
     artistHeadline("Hanji Shoneyo Suniye Song Nimrat Khaira De 🎵");
+    changeHeading("Hanji Shoneyo Suniye Song Nimrat Khaira De 🎵");
   };
   const handlejordanClick = (e) => {
     e.preventDefault();
     navigate("/musiclist");
-    setImage("jordan-sandhu.jpg");
-    artistHeadline("Hanji Shoneyo Suniye Song Jordan Sandhu De 🎵");
+    changeImage("jordan-sandhu.jpg");
+    changeHeading("Hanji Shoneyo Suniye Song Jordan Sandhu De 🎵");
   };
   const handleEdsheeranClick = (e) => {
     e.preventDefault();
     navigate("/musiclist");
-    setImage("Ed-sheeran-cropped.jpg");
-    artistHeadline("Here is the list of Ed Sheeran Songs 🎵");
+    changeImage("Ed-sheeran-cropped.jpg");
+    changeHeading("Here is the list of Ed Sheeran Songs 🎵");
   };
   const handleDualipaClick = (e) => {
     e.preventDefault();
     navigate("/musiclist");
-    setImage("dua-lipa-cropped.jpg");
-    artistHeadline("Here is the list of Dua Lipa Songs 🎵");
+    changeImage("dua-lipa-cropped.jpg");
+    changeHeading("Here is the list of Dua Lipa Songs 🎵");
   };
   const handleJustinbieberClick = (e) => {
     e.preventDefault();
     navigate("/musiclist");
-    setImage("justin-bieber-cropped.webp");
-    artistHeadline("Here is the list of Justin Bieber Songs 🎵");
+    changeImage("justin-bieber-cropped.webp");
+    changeHeading("Here is the list of Justin Bieber Songs 🎵");
   };
   const handleOliviarodrigoClick = (e) => {
     e.preventDefault();
     navigate("/musiclist");
-    setImage("olivia-rodrigocropped.jpg");
-    artistHeadline("Here is the list of Olivia Rodrigo Songs 🎵");
+    changeImage("olivia-rodrigocropped.jpg");
+    changeHeading("Here is the list of Olivia Rodrigo Songs 🎵");
   };
   const handleSamsmithClick = (e) => {
     e.preventDefault();
     navigate("/musiclist");
-    setImage("sam-smith-cropped.jpg");
-    artistHeadline("Here is the list of Sam Smith Songs 🎵");
+    changeImage("sam-smith-cropped.jpg");
+    changeHeading("Here is the list of Sam Smith Songs 🎵");
   };
 
   const handleSimpleNavigation = (path) => {

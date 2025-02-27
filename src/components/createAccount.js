@@ -31,9 +31,9 @@ const CreateAccount = ({ setActiveLink }) => {
             </Link>
           </h3>
           <div className="accountContainer4">
-            <input type="string" placeholder="First Name"></input>
-            <input type="email" placeholder="Email"></input>
-            <input type="password" placeholder="Password"></input>
+            <input type="string" placeholder="First Name"  className="custom-input"></input>
+            <input type="email" placeholder="Email" className="custom-input"></input>
+            <input type="password" placeholder="Password" className="custom-input"></input>
             <button className="createAccountbtn">Sign up</button>
           </div>
         </div>

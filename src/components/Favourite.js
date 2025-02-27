@@ -19,7 +19,7 @@ const Favourite = () => {
     const song = favouriteSongs[songIndex];
 
     try {
-      const response = await fetch("http://localhost:5000/songs", {
+      const response = await fetch("http://172.20.10.4:5000/files/", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ songId: song.id }),

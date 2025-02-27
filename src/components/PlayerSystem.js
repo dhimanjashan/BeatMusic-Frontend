@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect,useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 
@@ -12,7 +12,7 @@ const PlayerSystem = ({
   handleRepeat,
 }) => {
   const [progress, setProgress] = useState(0);
-  const [showFavourite, setShowFavourite] = useState(false);
+  const progressContainerRef = useRef(null);
   const navigate = useNavigate();
   const { isPlaying, audioElement } = useSelector((state) => state.audio);
 
@@ -33,14 +33,37 @@ const PlayerSystem = ({
     };
   }, [audioElement]);
 
+  useEffect(() => {
+      const progressContainer = progressContainerRef.current;
+      if (!progressContainer || !audioElement) return;
+  
+      const handleProgressClick = (event) => {
+        const rect = progressContainer.getBoundingClientRect();
+        const clickX = event.clientX - rect.left;
+        const width = rect.width;
+        const percentage = clickX / width;
+        audioElement.currentTime = percentage * audioElement.duration;
+        audioElement.play(); // Play the song after seeking
+      };
+  
+      progressContainer.addEventListener("click", handleProgressClick);
+  
+      return () => {
+        progressContainer.removeEventListener("click", handleProgressClick);
+      };
+    }, [audioElement]);
+
   return (
     <>
       <div className="playerSystemContainer1">
-        <div className="playerSystemProgressBar">
+        <div className="playerSystemProgressBar" >
+        <div className="progress-bar" ref={progressContainerRef} style={{ cursor: "pointer" }}>
           <div
             className="progress"
-            style={{ width: `${progress}%`, backgroundColor: "cornsilk" }}
+            style={{ width: `${progress}%`, backgroundColor: "black" }}
           ></div>
+          </div>
+
         </div>
         <div className="playerSystemMusicplayerButton">
           <i onClick={handleRepeat} className="fa-solid fa-repeat"></i>
