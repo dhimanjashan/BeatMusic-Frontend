@@ -1,7 +1,7 @@
 import React,{useEffect} from "react";
 import { useNavigate } from "react-router-dom";
 import { bindActionCreators } from "redux";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { actionCreator } from "../state/index.js";
 import Footer from "./Footer";
 

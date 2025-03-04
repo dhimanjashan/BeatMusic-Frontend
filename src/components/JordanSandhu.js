@@ -3,10 +3,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { playAudio, pauseAudio } from "../state/audioSlice";
 import PlayerControl from "./PlayerControl";
 import { addFavourite, removeFavourite } from "../state/favouriteSlice";
+import { useNavigate } from "react-router-dom";
 
 const JordanSandhu = () => {
   const audioRef = useRef(null);
-  const dispatch = useDispatch();
+   const [repeat, setRepeat] = useState(false);
+    const [find, setfind] = useState(false);
+      const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+    const dispatch = useDispatch();
+      const navigate = useNavigate();
   const { isPlaying, currentSong, audioElement } = useSelector(
     (state) => state.audio
   );
@@ -190,28 +195,52 @@ const JordanSandhu = () => {
     }
   };
 
-  const handleFavourite = () => {
-    if (!currentSong) return;
+const handleFavourite = () => {
+      const isAuthenticated=find;
+      if (!isAuthenticated) {
+        setfind(true); // Set authentication state
+        navigate("/heart"); // Redirect to login/signup
+        return;
+      }
+        if (!currentSong) return;
+        const isFavourite = favouriteSongs.some(
+          (fav) => fav.id === currentSong.id
+        );
+  
+        if (isFavourite) {
+          dispatch(removeFavourite(currentSong.id));
+        } else {
+          dispatch(addFavourite(currentSong));
+        }
+    };
+    useEffect(() => {
+      if (find) {
+        navigate("/heart"); // Redirect to auth page if not logged in
+      }
+    }, [find]);
 
-    const isFavourite = favouriteSongs.some((fav) => fav.id === currentSong.id);
-
-    if (isFavourite) {
-      dispatch(removeFavourite(currentSong.id));
-    } else {
-      dispatch(addFavourite(currentSong));
-    }
-  };
-
-  useEffect(() => {
-    const audio = audioElement;
-    const handleEnded = () => {
+  const handleRepeat = () => {
+      setRepeat(!repeat);
+    };
+  
+    useEffect(() => {
+      if (!audioElement) return;
+    
+      const handleEnded = () => {
+        if (repeat) {
+          audioElement.currentTime = 0;
+          audioElement.play();
+        } else {
       handleNext();
-    };
-    audio.addEventListener("ended", handleEnded);
-    return () => {
-      audio.removeEventListener("ended", handleEnded);
-    };
-  }, [currentSong, isLoading]);
+        }
+      };
+    
+      audioElement.addEventListener("ended", handleEnded);
+      
+      return () => {
+        audioElement.removeEventListener("ended", handleEnded);
+      };
+    }, [currentSong, isLoading, repeat, audioElement]);
 
   return (
     <>
@@ -240,6 +269,7 @@ const JordanSandhu = () => {
         isPlaying={isPlaying}
         handlePrevious={handlePrevious}
         handleFavourite={handleFavourite}
+        handleRepeat={handleRepeat}
       />
     </>
   );

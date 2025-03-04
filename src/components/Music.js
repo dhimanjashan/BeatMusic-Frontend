@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import PunjabiMusic from "./PunjabiMusic";
+import React from "react";
 import Favourite from "./Favourite";
 
 const MusicApp = ({ favouriteTitle }) => {

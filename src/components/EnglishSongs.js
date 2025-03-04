@@ -6,7 +6,7 @@ const EnglishSongs = () => {
     <>
       <div className="englishSongsContainer">
         <h1 className="englishSongsHeading">
-          Here is the list of English Songs
+          Here is the list of English Songs 🎵
         </h1>
       </div>
       <hr></hr>

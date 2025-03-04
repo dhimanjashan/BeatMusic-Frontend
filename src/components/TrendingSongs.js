@@ -5,7 +5,7 @@ const TrendingSongs = () => {
   return (
     <>
       <div className="trendingSongContainer">
-        <h1 className="trendingSongHeading">Chako Trending Songs</h1>
+        <h1 className="trendingSongHeading">Chako Trending Songs 🎵</h1>
       </div>
       <hr></hr>
       <div className="trendingSongContainer2">

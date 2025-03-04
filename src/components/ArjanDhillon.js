@@ -5,10 +5,15 @@ import PlayerControl from "./PlayerControl";
 import { useDispatch, useSelector } from "react-redux";
 import { playAudio, pauseAudio } from "../state/audioSlice";
 import { addFavourite, removeFavourite } from "../state/favouriteSlice";
+import { useNavigate } from "react-router-dom";
+
 
 const ArjanDhillon = () => {
   const dispatch = useDispatch();
+      const navigate = useNavigate();
   const { play } = bindActionCreators(actionCreator, dispatch);
+      const [find, setfind] = useState(false);
+      const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
   const [isLoading, setIsLoading] = useState(false);
   const { isPlaying, currentSong, audioElement } = useSelector(
     (state) => state.audio
@@ -177,16 +182,25 @@ const ArjanDhillon = () => {
     }
   };
 
-  const handleFavourite = () => {
-    if (!currentSong) return;
-    const isFavourite = favouriteSongs.some((fav) => fav.id === currentSong.id);
+const handleFavourite = () => {
+      // const isAuthenticated=find;
+      if (!isAuthenticated) {
+        setfind(true); // Set authentication state
+        navigate("/heart"); // Redirect to login/signup
+        return;
+      }
+        if (!currentSong) return;
+        const isFavourite = favouriteSongs.some(
+          (fav) => fav.id === currentSong.id
+        );
+  
+        if (isFavourite) {
+          dispatch(removeFavourite(currentSong.id));
+        } else {
+          dispatch(addFavourite(currentSong));
+        }
+    };
 
-    if (isFavourite) {
-      dispatch(removeFavourite(currentSong.id));
-    } else {
-      dispatch(addFavourite(currentSong));
-    }
-  };
 
   const handleRepeat = () => {
     setRepeat(!repeat);

@@ -1,18 +1,16 @@
 import React, { useState, useEffect, useRef } from "react";
 import PropTypes from "prop-types";
-import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 const PlayerControl = ({
   handleNext,
   handlePrevious,
   handlePlayPause,
-  handleRepeat,
   handleFavourite,
+  handleRepeat,
 }) => {
   const [progress, setProgress] = useState(0);
   const progressContainerRef = useRef(null);
-  const navigate = useNavigate();
   const { isPlaying, audioElement } = useSelector((state) => state.audio);
 
   useEffect(() => {
@@ -43,7 +41,7 @@ const PlayerControl = ({
       const width = rect.width;
       const percentage = clickX / width;
       audioElement.currentTime = percentage * audioElement.duration;
-      audioElement.play(); // Play the song after seeking
+      audioElement.play();
     };
 
     progressContainer.addEventListener("click", handleProgressClick);
@@ -52,19 +50,36 @@ const PlayerControl = ({
       progressContainer.removeEventListener("click", handleProgressClick);
     };
   }, [audioElement]);
+  const [repeat, setRepeat] = useState(false);
+
+  const colorRepeat = () => {
+    setRepeat((prevRepeat) => !prevRepeat); // Toggle repeat state
+    handleRepeat(); 
+  };
 
   return (
     <div className="musicContainer2">
       <div className="Musiclistcontainer">
         <div className="music-player">
-          <div className="progress-bar" ref={progressContainerRef} style={{ cursor: "pointer" }}>
+          <div
+            className="progress-bar"
+            ref={progressContainerRef}
+            style={{ cursor: "pointer" }}
+          >
             <div
               className="progress"
               style={{ width: `${progress}%`, backgroundColor: "black" }}
             ></div>
           </div>
           <div className="music-playerButton">
-            <i onClick={handleRepeat} className="fa-solid fa-repeat"></i>
+            <i
+              onClick={colorRepeat}
+              className="fa-solid fa-repeat"
+              style={{
+                color: repeat ? "cornsilk" : "black",
+                cursor: "pointer",
+              }}
+            ></i>
             <i
               onClick={handlePrevious}
               className="fa-solid fa-backward-fast fa-sm"

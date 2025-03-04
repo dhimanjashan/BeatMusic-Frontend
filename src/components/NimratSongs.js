@@ -3,11 +3,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { playAudio, pauseAudio } from "../state/audioSlice";
 import PlayerControl from "./PlayerControl";
 import { addFavourite, removeFavourite } from "../state/favouriteSlice";
+import { useNavigate } from "react-router-dom";
 
 const NimratSongs = () => {
-  const [data, setData] = useState(null);
+ const [repeat, setRepeat] = useState(false);
   const audioRef = useRef(null);
+  const [find, setfind] = useState(false);
+    const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
   const dispatch = useDispatch();
+    const navigate = useNavigate();
   const { isPlaying, currentSong, audioElement } = useSelector(
     (state) => state.audio
   );
@@ -143,27 +147,52 @@ const NimratSongs = () => {
     }
   };
 
-  const handleFavourite = () => {
-    if (!currentSong) return;
-    const isFavourite = favouriteSongs.some((fav) => fav.id === currentSong.id);
+ const handleFavourite = () => {
+       const isAuthenticated=find;
+       if (!isAuthenticated) {
+         setfind(true); // Set authentication state
+         navigate("/heart"); // Redirect to login/signup
+         return;
+       }
+         if (!currentSong) return;
+         const isFavourite = favouriteSongs.some(
+           (fav) => fav.id === currentSong.id
+         );
+   
+         if (isFavourite) {
+           dispatch(removeFavourite(currentSong.id));
+         } else {
+           dispatch(addFavourite(currentSong));
+         }
+     };
+     useEffect(() => {
+       if (find) {
+         navigate("/heart"); // Redirect to auth page if not logged in
+       }
+     }, [find]);
 
-    if (isFavourite) {
-      dispatch(removeFavourite(currentSong.id));
-    } else {
-      dispatch(addFavourite(currentSong));
-    }
-  };
-
-  useEffect(() => {
-    const audio = audioElement;
-    const handleEnded = () => {
-      handleNext();
-    };
-    audio.addEventListener("ended", handleEnded);
-    return () => {
-      audio.removeEventListener("ended", handleEnded);
-    };
-  }, [currentSong, isLoading]);
+ const handleRepeat = () => {
+     setRepeat(!repeat);
+   };
+ 
+   useEffect(() => {
+     if (!audioElement) return;
+   
+     const handleEnded = () => {
+       if (repeat) {
+         audioElement.currentTime = 0;
+         audioElement.play();
+       } else {
+     handleNext();
+       }
+     };
+   
+     audioElement.addEventListener("ended", handleEnded);
+     
+     return () => {
+       audioElement.removeEventListener("ended", handleEnded);
+     };
+   }, [currentSong, isLoading, repeat, audioElement]);
 
   return (
     <>
@@ -192,6 +221,7 @@ const NimratSongs = () => {
         isPlaying={isPlaying}
         handlePrevious={handlePrevious}
         handleFavourite={handleFavourite}
+        handleRepeat={handleRepeat}
       />
     </>
   );

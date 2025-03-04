@@ -5,7 +5,8 @@ import audioReducer from "../audioSlice";
 import favouriteReducer from "../favouriteSlice";
 import stringSlice from "./stringSlice";
 import setimage from "./setimage";
-
+import authReducer from "../authSlice";
+import UserReducer from "../userSlice";
 
 const rootReducer = combineReducers({
   string: setstring,
@@ -14,6 +15,8 @@ const rootReducer = combineReducers({
   favourite: favouriteReducer,
   stringReducer:stringSlice,
   artistImage:setimage,
+  auth: authReducer, 
+  user: UserReducer,
 });
 
 export default rootReducer;

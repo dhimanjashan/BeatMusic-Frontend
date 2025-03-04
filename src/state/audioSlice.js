@@ -13,7 +13,6 @@ const audioSlice = createSlice({
     playAudio: (state, action) => {
       state.isPlaying = true;
       state.currentSong = action.payload.song;
-      state.audioElement.src = action.payload.songUrl;
       state.audioElement.play();
     },
     pauseAudio: (state) => {

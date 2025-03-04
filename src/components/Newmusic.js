@@ -4,11 +4,17 @@ import { useDispatch, useSelector } from "react-redux";
 import { playAudio, pauseAudio } from "../state/audioSlice";
 import { addFavourite, removeFavourite } from "../state/favouriteSlice";
 import PlayerControl from "./PlayerControl";
+import { useNavigate } from "react-router-dom";
+import Heart from "./Heart";
 
 const Newmusic = () => {
   const audioRef = useRef(null);
   const [repeat, setRepeat] = useState(false);
+  const [find, setfind] = useState(false);
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { isPlaying, currentSong, audioElement } = useSelector(
     (state) => state.audio
   );
@@ -132,7 +138,7 @@ const Newmusic = () => {
     try {
       const response = await fetch("http://172.20.10.4:5000/files/", {
         method: "POST",
-        headers: { "Content-Type":"application/json"},
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ songId: song.id }),
       });
       const data = await response.json();
@@ -202,15 +208,28 @@ const Newmusic = () => {
     }
   };
   const handleFavourite = () => {
-    if (!currentSong) return;
-    const isFavourite = favouriteSongs.some((fav) => fav.id === currentSong.id);
-
-    if (isFavourite) {
-      dispatch(removeFavourite(currentSong.id));
-    } else {
-      dispatch(addFavourite(currentSong));
+    const isAuthenticated=find;
+    if (!isAuthenticated) {
+      setfind(true); // Set authentication state
+      navigate("/heart"); // Redirect to login/signup
+      return;
     }
+      if (!currentSong) return;
+      const isFavourite = favouriteSongs.some(
+        (fav) => fav.id === currentSong.id
+      );
+
+      if (isFavourite) {
+        dispatch(removeFavourite(currentSong.id));
+      } else {
+        dispatch(addFavourite(currentSong));
+      }
   };
+  useEffect(() => {
+    if (find) {
+      navigate("/heart"); // Redirect to auth page if not logged in
+    }
+  }, [find]);
 
   const handleRepeat = () => {
     setRepeat(!repeat);

@@ -3,12 +3,10 @@ import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 const PlayerSystem = ({
-  audio,
   handlePlayPause,
   handleFavourite,
   handleNext,
   handlePrevious,
-  song,
   handleRepeat,
 }) => {
   const [progress, setProgress] = useState(0);
