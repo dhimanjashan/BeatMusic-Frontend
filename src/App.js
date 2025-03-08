@@ -21,6 +21,7 @@ import Reset from "./components/Reset";
 import Heart from "./components/Heart";
 import ShowFavourite from "./components/ShowFavourite";
 import User from "./components/User";
+import AlertModal from "./components/AlertModal";
 
 function App() {
   const [image, setImage] = useState("");
@@ -30,13 +31,13 @@ function App() {
   const [activeLink, setActiveLink] = useState("");
   const [song, setsong] = useState(null); 
   const [favourite, setfavourite] = useState(false);
-  const [logged, setlogged] = useState(false);
   const [userID, setuserID] = useState(' ');
-
+const [alertMessage, setAlertMessage] = useState("");
+const [musicId,setmusicId]=useState(" ");
 
   return (
     <Router>
-      <Navbar activeLink={activeLink} setActiveLink={setActiveLink} logged={logged} />
+      <Navbar activeLink={activeLink} setActiveLink={setActiveLink} />
       <div className="container">
         <Routes>
           <Route
@@ -47,7 +48,7 @@ function App() {
           <Route
             exact
             path="/amrindergill"
-            element={<AmrinderGill setsong={setsong} />}
+            element={<AmrinderGill setmusicId={setmusicId} />}
           />
           <Route
             exact
@@ -65,11 +66,12 @@ function App() {
             element={<Favourite song={song} favourite={favourite} />}
           />
           <Route exact path="/about" element={<About />} />
-          <Route exact path="/login" element={<Login setlogged={setlogged} setuserID={setuserID} />} />
+          <Route exact path="/login" element={<Login setuserID={setuserID} />} />
           <Route exact path="/reset" element={<Reset />} />
           <Route exact path="/help" element={<Help />} />
           <Route exact path="/heart" element={<Heart />} />
-          <Route exact path="/user" element={<User userID={userID} />} />
+          <Route exact path="/user" element={<User musicId={musicId} />} />
+          <Route exact path="/alertModal" element={<AlertModal />} />
           <Route exact path="/showFavourite" element={<ShowFavourite />} />
           <Route exact path="/punjabimusic" element={<PunjabiMusic />} />
           <Route exact path="/englishsongs" element={<EnglishSongs />} />

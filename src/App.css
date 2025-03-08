@@ -11,9 +11,11 @@ body {
   0% {
     background-position: 12% 50%;
   }
+
   50% {
     background-position: 100% 50%;
   }
+
   100% {
     background-position: 0% 50%;
   }
@@ -23,6 +25,7 @@ body {
 span {
   color: #ff7e5f;
 }
+
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -64,6 +67,7 @@ span {
   font-size: 18px;
   margin-right: 80px;
 }
+
 .nav-links li a:hover {
   color: #ff7e5f;
 }
@@ -86,6 +90,7 @@ span {
   font-size: 24px;
   cursor: pointer;
 }
+
 .container2 {
   display: flex;
   align-items: center;
@@ -102,9 +107,11 @@ span {
   color: #ff7e5f;
   font-weight: bold;
 }
+
 .container2 a:hover {
   color: #ff7e5f;
 }
+
 .container2 hr {
   height: 20px;
   border: none;
@@ -113,8 +120,9 @@ span {
 }
 
 .container2 button {
-  background-color: #ff7e5f;
-  color: white;
+  /* background-color: #ff7e5f; */
+  background: none;
+  color: #ff7e5f;
   border: none;
   padding: 4px 20px;
   cursor: pointer;
@@ -122,8 +130,9 @@ span {
   border-radius: 5px;
   margin-right: 20px;
 }
+
 .container2 button:hover {
-  background-color: #feb47b;
+  color: #feb47b;
 }
 
 /* Home css */
@@ -138,6 +147,7 @@ span {
   margin-bottom: -45px;
   margin-left: 250px;
 }
+
 .container3 {
   height: 280px;
   width: 91%;
@@ -154,6 +164,7 @@ span {
   box-sizing: border-box;
   overflow-y: auto;
 }
+
 .container4 {
   height: 280px;
   width: 91%;
@@ -169,15 +180,18 @@ span {
   border: 3px solid black;
   box-sizing: border-box;
 }
+
 .box1 {
   width: 95%;
   height: 88%;
 }
+
 .card {
   border-radius: 10px;
   width: 260px;
   text-align: center;
 }
+
 #image1 {
   width: 160px;
   height: auto;
@@ -186,17 +200,21 @@ span {
   transform-origin: bottom center;
   animation: bottomRotate 3s infinite linear;
 }
+
 @keyframes bottomRotate {
   0% {
     transform: rotate(3deg);
   }
+
   50% {
     transform: rotate(-5deg);
   }
+
   100% {
     transform: rotate(3deg);
   }
 }
+
 #homebtn1 {
   float: left;
   margin-left: 90px;
@@ -207,10 +225,12 @@ span {
   background-color: crimson;
   color: white;
 }
+
 #homebtn1:hover {
   cursor: pointer;
   background-color: rgb(180, 54, 79);
 }
+
 .container5 {
   width: 25%;
   color: white;
@@ -221,6 +241,7 @@ span {
   box-sizing: border-box;
   margin-right: 120px;
 }
+
 .midContainer {
   height: 433px;
   width: 25%;
@@ -232,6 +253,7 @@ span {
   box-sizing: border-box;
   margin-right: 120px;
 }
+
 .container7 {
   width: 25%;
   color: white;
@@ -240,17 +262,20 @@ span {
   background-color: rgba(0, 0, 0, 0.5);
   border-radius: 15px;
 }
+
 #heading1 {
   height: auto;
   width: auto;
   font-size: 28px;
   text-align: center;
 }
+
 .paragraph {
   font-size: 20px;
   text-align: left;
   padding: 10px;
 }
+
 .bigContainer {
   height: 100%;
   display: flex;
@@ -267,6 +292,7 @@ span {
   background-color: #ff7e5f;
   color: white;
 }
+
 #btn5 {
   padding: 14px;
   margin-left: 50px;
@@ -275,10 +301,12 @@ span {
   background-color: rgb(39, 35, 36);
   color: white;
 }
+
 #btn4:hover {
   background-color: #e2755a;
   cursor: pointer;
 }
+
 #btn5:hover {
   background-color: rgb(51, 40, 40);
   cursor: pointer;
@@ -300,6 +328,7 @@ span {
   z-index: -1;
   height: 83px;
 }
+
 .music-player {
   height: 95px;
   width: 102%;
@@ -307,14 +336,17 @@ span {
   color: black;
   background: linear-gradient(90deg, #ff7e5f, #feb47b);
 }
+
 .progress-bar {
   width: 100%;
   height: 5px;
   /* border: 1px solid black; */
 }
+
 .progress-bar:hover {
   cursor: pointer;
 }
+
 .progress {
   width: 0;
   height: 100%;
@@ -518,6 +550,7 @@ h2 {
   margin-right: 145px;
   color: black;
 }
+
 .music-playerButton i:hover {
   cursor: pointer;
   color: cornsilk;
@@ -525,16 +558,34 @@ h2 {
 
 .musicContainer1 {
   height: 100%;
-  display: flex;
+  width: 100%;
+  display: grid;
   align-items: center;
   margin-left: 42px;
 }
 
 .specialmusicContainer2 {
+  height: 20%;
+  width: 100%;
   margin-left: 42px;
-  margin-top: 220px;
   font-size: 18px;
+  position: sticky;
 }
+
+.specialmusicContainer3 {
+  height: 50%;
+  width: 100%;
+  font-size: 18px;
+  position: sticky;
+}
+
+.specialmusicContainer4 {
+  height: 60%;
+  width: 100%;
+  font-size: 18px;
+  position: sticky;
+}
+
 .musicContainer2 {
   bottom: 0px;
   position: sticky;
@@ -555,6 +606,7 @@ h2 {
   font-size: 32px;
   margin-top: 5px;
 }
+
 .musiclistHr {
   height: 2px;
   background-color: white;
@@ -573,10 +625,12 @@ h2 {
   margin-top: -20px;
   animation: scaleAnimation 8s infinite alternate ease-in-out;
 }
+
 @keyframes scaleAnimation {
   0% {
     transform: scale(1);
   }
+
   100% {
     transform: scale(1.4);
   }
@@ -591,6 +645,7 @@ h2 {
   justify-content: center;
   align-items: center;
 }
+
 .newmusicheading {
   width: 100%;
   display: flex;
@@ -602,6 +657,7 @@ h2 {
   font-size: 28px;
   padding: 10px;
 }
+
 .newMusicHr {
   height: 2px;
   background-color: white;
@@ -616,6 +672,7 @@ h2 {
   font-size: 18px;
   height: 100%;
 }
+
 .newmusicContainer2 {
   color: white;
   position: relative;
@@ -624,6 +681,7 @@ h2 {
   font-size: 1.2rem;
   font-weight: bold;
 }
+
 .newmusicimageContainer {
   width: 100%;
   height: 55%;
@@ -648,17 +706,20 @@ h2 {
   justify-content: center;
   text-align: center;
 }
+
 #createAccountheading1 {
   width: 50%;
   margin-top: 10px;
   margin-bottom: 0px;
   color: black;
 }
+
 .accountHr {
   height: 2px;
   background-color: white;
   border: none;
 }
+
 .accountContainer2 {
   width: 100%;
   height: 400px;
@@ -668,12 +729,14 @@ h2 {
   text-align: center;
   margin-top: 80px;
 }
+
 .accountContainer3 {
   width: 40%;
   height: 450px;
   background-color: black;
   border-radius: 20px;
 }
+
 .createAccountheading2 {
   color: white;
   width: 95%;
@@ -682,14 +745,17 @@ h2 {
   font-size: 45px;
   margin-top: 20px;
 }
+
 .createAccountheading3 {
   color: white;
   width: 95%;
   margin-top: -22px;
 }
+
 .createAccountheading4 {
   color: #0088ff;
 }
+
 .accountContainer4 {
   display: flex;
   flex-direction: column;
@@ -698,6 +764,7 @@ h2 {
   align-items: center;
   height: 70%;
 }
+
 .accountContainer4 input {
   width: 70%;
   height: 30px;
@@ -712,14 +779,18 @@ h2 {
   outline: none;
   font-weight: bold;
 }
+
 .custom-input::placeholder {
   color: black;
-  opacity: 1; /* Fully visible */
+  opacity: 1;
+  /* Fully visible */
 }
+
 .accountContainer4 input:focus {
   background: rgba(255, 255, 255, 1);
   box-shadow: 0px 0px 12px rgba(255, 255, 255, 0.9);
 }
+
 .createAccountbtn {
   width: 76%;
   padding: 16px;
@@ -731,6 +802,7 @@ h2 {
   font-size: 16px;
   font-weight: bold;
 }
+
 .createAccountbtn:hover {
   cursor: pointer;
   background-color: rgb(38, 148, 244);
@@ -746,6 +818,7 @@ h2 {
   justify-content: center;
   text-align: center;
 }
+
 .favouriteHeading1 {
   width: 100%;
   color: black;
@@ -774,11 +847,13 @@ h2 {
   justify-content: center;
   align-items: center;
 }
+
 .aboutheading1 {
   margin-top: 5px;
   margin-bottom: 5px;
   color: black;
 }
+
 .aboutHr {
   height: 2px;
   background-color: white;
@@ -807,6 +882,7 @@ h2 {
   font-weight: bold;
   padding: 4px;
 }
+
 .aboutcontainer4 {
   height: 433px;
   width: 25%;
@@ -828,10 +904,12 @@ h2 {
   cursor: pointer;
   background-color: #c9a87a;
 }
+
 .aboutcontainer4:hover {
   cursor: pointer;
   background-color: #9aa5d5;
 }
+
 .aboutcontainer5:hover {
   cursor: pointer;
   background-color: #c57c64;
@@ -857,9 +935,11 @@ h2 {
   color: crimson;
   margin-left: 80px;
 }
+
 .aboutheading3 {
   color: crimson;
 }
+
 .aboutheading4 {
   color: crimson;
 }
@@ -886,6 +966,7 @@ h2 {
   justify-content: center;
   align-items: center;
 }
+
 .helpContainer3 {
   width: 80%;
   height: 100%;
@@ -898,17 +979,20 @@ h2 {
   margin-top: 40px;
   margin-bottom: 85px;
 }
+
 .helpHeading2 {
   font-size: 70px;
   width: 100%;
   text-align: center;
   color: black;
 }
+
 .questions {
   color: crimson;
   font-size: 70px;
   margin-top: -50px;
 }
+
 .helpHeading3 {
   width: 40%;
   display: flex;
@@ -919,11 +1003,13 @@ h2 {
   font-family: "Inter", serif;
   color: black;
 }
+
 .helpContainer4 {
   width: 100%;
   height: 100%;
   background-color: rgb(95, 88, 88);
 }
+
 .faq-container {
   width: 80%;
   margin-bottom: 40px;
@@ -932,12 +1018,15 @@ h2 {
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
+
 .faq-item {
   border-bottom: 1px solid #ddd;
 }
+
 .faq-item:last-child {
   border-bottom: none;
 }
+
 .faq-question {
   font-weight: bold;
   cursor: pointer;
@@ -947,16 +1036,19 @@ h2 {
   border-radius: 5px;
   margin-bottom: 5px;
 }
+
 .faq-answer {
   display: none;
   padding: 10px;
   background: #fafafa;
   border-radius: 5px;
 }
+
 input[type="checkbox"] {
   display: none;
 }
-input[type="checkbox"]:checked + .faq-answer {
+
+input[type="checkbox"]:checked+.faq-answer {
   display: block;
 }
 
@@ -968,6 +1060,7 @@ input[type="checkbox"]:checked + .faq-answer {
   justify-content: center;
   align-items: center;
 }
+
 .PunjabiSongsheading {
   width: 100%;
   display: flex;
@@ -979,11 +1072,13 @@ input[type="checkbox"]:checked + .faq-answer {
   background-color: grey;
   padding: 4px;
 }
+
 .punjabiSongsContainer2 {
   width: 100%;
   height: 100%;
   background-color: cornsilk;
 }
+
 .punjabiSongsContainer3 {
   color: black;
   position: relative;
@@ -1001,6 +1096,7 @@ input[type="checkbox"]:checked + .faq-answer {
   justify-content: center;
   align-items: center;
 }
+
 .englishSongsHeading {
   width: 100%;
   display: flex;
@@ -1012,6 +1108,7 @@ input[type="checkbox"]:checked + .faq-answer {
   background-color: grey;
   padding: 4px;
 }
+
 .englishSongsContainer2 {
   color: black;
   position: relative;
@@ -1031,6 +1128,7 @@ input[type="checkbox"]:checked + .faq-answer {
   justify-content: center;
   align-items: center;
 }
+
 .trendingSongHeading {
   width: 100%;
   display: flex;
@@ -1042,6 +1140,7 @@ input[type="checkbox"]:checked + .faq-answer {
   background-color: grey;
   padding: 4px;
 }
+
 .trendingSongContainer2 {
   color: black;
   position: relative;
@@ -1066,8 +1165,9 @@ input[type="checkbox"]:checked + .faq-answer {
   border-radius: 400px;
   top: 175px;
   right: 100px;
-  z-index: 1000;
+  z-index: 999;
 }
+
 .playerSystemMusicplayerButton i {
   padding: 30px;
   font-size: 20px;
@@ -1078,6 +1178,7 @@ input[type="checkbox"]:checked + .faq-answer {
   cursor: pointer;
   color: cornsilk;
 }
+
 .playerSystemProgressBar {
   width: 350px;
   height: 4px;
@@ -1085,16 +1186,18 @@ input[type="checkbox"]:checked + .faq-answer {
   margin-left: 0px;
   border: 1px solid black;
 }
+
 .playerSystemProgressBar:hover {
   cursor: pointer;
 }
+
 .playerSystemProgress {
   width: 0;
   height: 100%;
 }
 
 /* Container Styling */
-.bigHeartContainer{
+.bigHeartContainer {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1109,7 +1212,7 @@ input[type="checkbox"]:checked + .faq-answer {
 
 .heartContainer {
   text-align: center;
-  margin-bottom:50px;
+  margin-bottom: 50px;
 }
 
 /* Card with smooth shadow */
@@ -1161,9 +1264,17 @@ input[type="checkbox"]:checked + .faq-answer {
 
 /* Background Gradient Animation */
 @keyframes gradientAnimation {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 
@@ -1177,15 +1288,17 @@ input[type="checkbox"]:checked + .faq-answer {
   color: white;
   text-align: center;
 }
-.showContainer2{
+
+.showContainer2 {
   background: rgba(255, 255, 255, 0.15);
   padding: 50px;
   border-radius: 15px;
   backdrop-filter: blur(12px);
   box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.3);
   animation: fadeIn 1.2s ease-in-out;
-margin-bottom: 80px;
+  margin-bottom: 80px;
 }
+
 .showHeading {
   font-size: 2.5rem;
   margin-bottom: 15px;
@@ -1196,8 +1309,8 @@ margin-bottom: 80px;
 
 .showParagraph {
   font-size: 1.3rem;
-            margin-bottom: 25px;
-            opacity: 0.9;
+  margin-bottom: 25px;
+  opacity: 0.9;
 }
 
 .showButton {
@@ -1221,8 +1334,15 @@ margin-bottom: 80px;
 
 /* Animations */
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(-20px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 
@@ -1232,6 +1352,7 @@ margin-bottom: 80px;
   position: relative;
   text-align: center;
 }
+
 .user-icon {
   width: 40px;
   height: 40px;
@@ -1242,12 +1363,12 @@ margin-bottom: 80px;
   align-items: center;
   cursor: pointer;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: 0px 6px 25px rgba(255, 65, 108, 0.7);
 }
+
 .user-icon:hover {
   transform: scale(1.2);
-  box-shadow: 0px 0px 35px rgba(255, 65, 108, 0.9);
 }
+
 .userImg {
   width: 80px;
   height: 80px;
@@ -1255,9 +1376,10 @@ margin-bottom: 80px;
   margin-top: 0px;
   margin-bottom: 6px;
 }
+
 .profile-modal {
   position: fixed;
-  /* top: 130px; */
+  top: 35px;
   /* left: 50%; */
   transform: translateX(-50%) scale(0.9);
   background: rgba(255, 255, 255, 0.1);
@@ -1265,35 +1387,43 @@ margin-bottom: 80px;
   border-radius: 20px;
   padding: 40px;
   width: 380px;
-  right:-250px ;
+  right: -250px;
   /* display: none; */
   flex-direction: column;
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
   transition: all 0.3s ease-in-out;
   text-align: center;
 }
+
 .profile-modal.show {
   display: flex;
   transform: translateX(-50%) scale(1);
   opacity: 1;
 }
+
 .user-info {
   color: black;
   margin-bottom: 20px;
 }
+
 .user-info h3 {
   font-size: 28px;
   margin-top: 0px;
+  margin-bottom: 0px;
 }
+
 .user-info p {
   font-size: 18px;
   opacity: 0.9;
+  /* margin-top: 0px; */
 }
+
 .btn-container {
   display: flex;
   gap: 15px;
   justify-content: center;
 }
+
 .userBtn {
   width: 140px;
   padding: 40px;
@@ -1305,20 +1435,263 @@ margin-bottom: 80px;
   font-size: 16px;
   transition: all 0.3s ease;
 }
+
 #logout {
   background: #ff4757;
   color: white;
 }
+
 #logout:hover {
   background: #e84118;
 }
+
 #delete {
   background: #1e90ff;
   color: white;
 }
+
 #delete:hover {
   background: #007bff;
 }
+
+
+/* Alert's css */
+
+/* Overlay to cover the background */
+/* Fullscreen Overlay */
+/* Fullscreen Overlay */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+.alert-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(5px);
+  animation: fadeIn 0.3s ease-out;
+  font-family: 'Poppins', sans-serif;
+}
+
+.alert-modal-content {
+  background-color: white;
+  padding: 0;
+  border-radius: 12px;
+  max-width: 450px;
+  width: 90%;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  transform: translateY(0);
+  animation: slideUp 0.4s ease-out;
+  overflow: hidden;
+}
+
+.alert-modal-header {
+  padding: 20px 25px 15px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.alert-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 15px;
+  font-size: 20px;
+  color: white;
+}
+
+.alert-icon.success {
+  background-color: #2E7D32;
+  /* Darker green for better contrast */
+}
+
+.alert-icon.warning {
+  background-color: #E65100;
+  color: black;
+  /* Darker orange for better contrast */
+}
+
+.alert-icon.error {
+  background-color: #C62828;
+  /* Darker red for better contrast */
+}
+
+.alert-icon.info {
+  background-color: #0D47A1;
+  /* Darker blue for better contrast */
+}
+
+.alert-modal-header h2 {
+  margin: 0;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #212121;
+  /* Darker text color */
+  flex-grow: 1;
+}
+
+.close-button {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #757575;
+  position: absolute;
+  right: 20px;
+  top: 15px;
+  transition: color 0.2s;
+}
+
+.close-button:hover {
+  color: #212121;
+
+}
+
+.alert-modal-body {
+  padding: 20px 25px;
+  color: #424242;
+  /* Darker text for better readability */
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.alert-modal-body p {
+  margin: 0;
+}
+
+.alert-modal-footer {
+  padding: 15px 25px 20px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.alert-button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: 'Poppins', sans-serif;
+  color: white;
+}
+
+.cancel-button {
+  background-color: #E0E0E0;
+  color: #424242;
+}
+
+.cancel-button:hover {
+  background-color: #BDBDBD;
+  color: white !important;
+}
+
+.confirm-button {
+  color: #E65100;
+  font-weight: 600;
+}
+
+.confirm-button.success {
+  background-color: #2E7D32;
+}
+
+.confirm-button.warning {
+  background-color: #E65100;
+  color: white;
+}
+
+.confirm-button.error {
+  background-color: #C62828;
+}
+
+.confirm-button.info {
+  background-color: #0D47A1;
+}
+
+.confirm-button:hover {
+  filter: brightness(1.1);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  /* color: white !important; */
+}
+
+.confirm-button:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+/* Content border colors based on type */
+.alert-modal-content.success {
+  border-top: 5px solid #2E7D32;
+}
+
+.alert-modal-content.warning {
+  border-top: 5px solid #E65100;
+}
+
+.alert-modal-content.error {
+  border-top: 5px solid #C62828;
+}
+
+.alert-modal-content.info {
+  border-top: 5px solid #0D47A1;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  .alert-modal-content {
+    width: 95%;
+  }
+
+  .alert-modal-header {
+    padding: 15px 20px 10px;
+  }
+
+  .alert-modal-body,
+  .alert-modal-footer {
+    padding: 15px 20px;
+  }
+
+  .alert-button {
+    padding: 8px 16px;
+  }
+}
+
 
 
 /* Footer's css */
@@ -1400,38 +1773,46 @@ margin-bottom: 80px;
     margin-left: 1200px;
     margin-top: 120px;
   }
+
   .musicContainer1 {
     margin-top: -900px;
   }
 }
+
 @media screen and (max-width: 2250px) {
   #artistImage {
     margin-bottom: 160px;
   }
+
   .musicContainer1 {
     margin-top: -1020px;
   }
 }
+
 @media screen and (max-width: 2050px) {
   #artistImage {
     margin-bottom: 220px;
   }
+
   .musicContainer1 {
     margin-top: -1020px;
   }
 }
+
 @media screen and (max-width: 1920px) {
   #artistImage {
     margin-bottom: 230px;
     margin-left: 1100px;
   }
 }
+
 @media screen and (max-width: 1820px) {
   #artistImage {
     margin-bottom: 260px;
     margin-left: 1100px;
   }
 }
+
 @media screen and (max-width: 1750px) {
   #artistImage {
     margin-bottom: 300px;
@@ -1445,62 +1826,75 @@ margin-bottom: 80px;
     margin-bottom: 200px;
     margin-left: 0px;
   }
+
   #artistImage {
     margin-bottom: 360px;
     margin-left: 1000px;
   }
 }
+
 @media screen and (max-width: 1550px) {
   .specialmusicContainer2 {
     margin-bottom: 200px;
     margin-left: 0px;
   }
+
   #artistImage {
     margin-bottom: 440px;
     margin-left: 1000px;
   }
 }
+
 @media screen and (max-width: 1440px) {
   #artistImage {
     margin-bottom: 540px;
     margin-left: 800px;
   }
+
   .specialmusicContainer2 {
     margin-top: -600px;
   }
+
   .aboutheading2,
   .aboutheading3,
   .aboutheading4 {
     margin-left: 65px;
   }
+
   .aboutheading3,
   .aboutheading4 {
     margin-right: 75px;
   }
+
   .aboutcontainer3 {
     height: 463px;
     width: 24%;
     padding: 4px;
   }
+
   .aboutcontainer4 {
     height: 463px;
     width: 24%;
     padding: 4px;
   }
+
   .aboutcontainer5 {
     height: 463px;
     width: 24%;
     padding: 4px;
   }
+
   .aboutcontainer2 {
     margin-top: 35px;
   }
 }
+
 @media screen and (max-width: 1350px) {
   #artistImage {
     margin-bottom: 640px;
     margin-left: 800px;
   }
+
   .specialmusicContainer2 {
     margin-top: -600px;
   }
@@ -1510,25 +1904,30 @@ margin-bottom: 80px;
   .aboutheading4 {
     margin-left: 60px;
   }
+
   .aboutheading3,
   .aboutheading4 {
     margin-right: 75px;
   }
+
   .aboutcontainer3 {
     height: 500px;
     width: 25%;
     padding: 4px;
   }
+
   .aboutcontainer4 {
     height: 500px;
     width: 25%;
     padding: 4px;
   }
+
   .aboutcontainer5 {
     height: 500px;
     width: 25%;
     padding: 4px;
   }
+
   .aboutcontainer2 {
     margin-top: 45px;
     font-size: 16px;
@@ -1540,13 +1939,16 @@ margin-bottom: 80px;
     margin-bottom: 700px;
     margin-left: 800px;
   }
+
   .aboutheading2 {
     margin-left: 50px;
   }
+
   .aboutheading3,
   .aboutheading4 {
     margin-right: 65px;
   }
+
   #createAccountheading1 {
     font-size: 34px;
     width: 100%;
@@ -1559,34 +1961,41 @@ margin-bottom: 80px;
     margin-bottom: 770px;
     margin-left: 800px;
   }
+
   .aboutheading2 {
     margin-left: 220px;
   }
+
   .aboutheading3,
   .aboutheading4 {
     margin-right: 65px;
   }
+
   .aboutcontainer3 {
     height: 500px;
     width: 60%;
     padding: 4px;
   }
+
   .aboutcontainer4 {
     height: 500px;
     width: 60%;
     padding: 4px;
   }
+
   .aboutcontainer5 {
     height: 500px;
     width: 60%;
     padding: 4px;
   }
+
   .aboutparagraph1,
   .aboutparagraph2,
   .aboutparagraph3 {
     height: 74%;
     font-size: 22px;
   }
+
   .aboutcontainer2 {
     margin-top: 45px;
     flex-direction: column;
@@ -1594,72 +2003,88 @@ margin-bottom: 80px;
     margin-bottom: 45px;
   }
 }
+
 @media screen and (max-width: 1000px) {
   #artistImage {
     margin-bottom: 670px;
     margin-left: 500px;
   }
+
   .createAccountheading2 {
     font-size: 38px;
   }
+
   .createAccountheading3 {
     font-size: 17px;
   }
+
   .accountContainer3 {
     width: 50%;
     margin-top: 100px;
   }
+
   #createAccountheading1 {
     font-size: 36px;
     width: 100%;
     text-align: center;
   }
 }
+
 @media screen and (max-width: 900px) {
   #artistImage {
     margin-bottom: 700px;
     margin-left: 500px;
   }
+
   .aboutheading2 {
     margin-left: 160px;
   }
+
   .aboutheading3,
   .aboutheading4 {
     margin-right: 75px;
   }
+
   .aboutcontainer3 {
     height: 600px;
     width: 60%;
     padding: 4px;
   }
+
   .aboutcontainer4 {
     height: 600px;
     width: 60%;
     padding: 4px;
   }
+
   .aboutcontainer5 {
     height: 600px;
     width: 60%;
     padding: 4px;
   }
 }
+
 @media screen and (max-width: 840px) {
   #artistImage {
     margin-bottom: 720px;
     margin-left: 500px;
   }
+
   .aboutheading2 {
     margin-left: 140px;
   }
+
   .accountContainer3 {
     width: 60%;
     margin-top: 100px;
   }
+
   #createAccountheading1 {
     font-size: 36px;
     width: 100%;
     text-align: center;
   }
+
   #btn3 {
     /* margin-top: 10px; */
     margin-left: 30px;
@@ -1667,30 +2092,36 @@ margin-bottom: 80px;
     width: 140px;
   }
 }
+
 @media screen and (max-width: 750px) {
   #artistImage {
     margin-bottom: 800px;
     margin-left: 500px;
   }
+
   .aboutcontainer3 {
     height: 630px;
     width: 65%;
     padding: 4px;
   }
+
   .aboutcontainer4 {
     height: 630px;
     width: 65%;
     padding: 4px;
   }
+
   .aboutcontainer5 {
     height: 630px;
     width: 65%;
     padding: 4px;
   }
+
   .accountContainer3 {
     width: 70%;
     margin-top: 100px;
   }
+
   #createAccountheading1 {
     font-size: 34px;
     width: 100%;
@@ -1702,12 +2133,15 @@ margin-bottom: 80px;
   .musicContainer1 {
     width: 100%;
     display: flex;
-    flex-direction: column; /* Stack image and songs vertically */
+    flex-direction: column;
+    /* Stack image and songs vertically */
     align-items: center;
   }
+
   .musiclistheading1 {
     text-align: center;
   }
+
   .specialmusicContainer2 {
     margin-left: 10px;
     font-size: 25px;
@@ -1715,39 +2149,48 @@ margin-bottom: 80px;
     display: flex;
     flex-direction: column;
   }
+
   .musiclistImage {
     width: 235px;
   }
+
   #artistImage img {
     margin-bottom: 0px;
     margin-left: 300px;
   }
+
   .newmusicContainer2 {
     padding: 30px 46px;
     bottom: 20px;
   }
+
   .punjabiSongsContainer3 {
     padding: 36px 46px;
     bottom: 20px;
   }
+
   .aboutheading2 {
     margin-left: 100px;
   }
+
   .aboutcontainer3 {
     height: 550px;
     width: 70%;
     padding: 4px;
   }
+
   .aboutcontainer4 {
     height: 550px;
     width: 70%;
     padding: 4px;
   }
+
   .aboutcontainer5 {
     height: 550px;
     width: 70%;
     padding: 4px;
   }
+
   .aboutparagraph1,
   .aboutparagraph2,
   .aboutparagraph3 {
@@ -1763,56 +2206,68 @@ margin-bottom: 80px;
     left: 0;
     z-index: 1000;
   }
+
   .specialmusicContainer2 {
     margin-left: 80px;
     font-size: 24px;
     margin-top: -400px;
   }
+
   .music-playerButton i {
     margin-right: 65px;
     color: black;
   }
+
   .accountContainer3 {
     width: 80%;
     margin-top: 100px;
   }
+
   #createAccountheading1 {
     font-size: 30px;
     width: 100%;
     text-align: center;
   }
 }
+
 @media screen and (max-width: 600px) {
   .musiclistImage {
     width: 200px;
   }
+
   .specialmusicContainer2 {
     margin-top: -400px;
   }
+
   .aboutheading2 {
     margin-left: 120px;
   }
+
   .aboutcontainer3 {
     height: 500px;
     width: 75%;
     padding: 4px;
   }
+
   .aboutcontainer4 {
     height: 500px;
     width: 75%;
     padding: 4px;
   }
+
   .aboutcontainer5 {
     height: 500px;
     width: 75%;
     padding: 4px;
   }
+
   .aboutcontainer2 {
     margin-top: 45px;
     flex-direction: column;
     font-size: 14px;
     margin-bottom: 45px;
   }
+
   .aboutparagraph1,
   .aboutparagraph2,
   .aboutparagraph3 {
@@ -1828,61 +2283,75 @@ margin-bottom: 80px;
     left: 0;
     z-index: 1000;
   }
+
   .specialmusicContainer2 {
     margin-top: -400px;
   }
+
   .musiclistImage {
     width: 150px;
   }
+
   .musiclistheading1 {
     width: 100%;
     font-size: 20px;
   }
+
   .aboutheading2 {
     margin-left: 90px;
   }
+
   .aboutcontainer3 {
     height: 540px;
     width: 79%;
     padding: 9px;
   }
+
   .aboutcontainer4 {
     height: 520px;
     width: 79%;
     padding: 9px;
   }
+
   .aboutcontainer5 {
     height: 520px;
     width: 79%;
     padding: 9px;
   }
+
   .aboutparagraph1 {
     font-size: 18px;
   }
+
   .aboutcontainer2 {
     margin-top: 45px;
     flex-direction: column;
     font-size: 14px;
     margin-bottom: 45px;
   }
+
   .aboutparagraph1,
   .aboutparagraph2,
   .aboutparagraph3 {
     font-size: 20px;
   }
+
   .createAccountheading2 {
     font-size: 36px;
   }
+
   .accountContainer3 {
     width: 90%;
     margin-top: 100px;
   }
+
   #createAccountheading1 {
     font-size: 28px;
     width: 100%;
     text-align: center;
   }
 }
+
 @media screen and (max-width: 490px) {
   .musicContainer1 {
     width: 100%;
@@ -1891,13 +2360,16 @@ margin-bottom: 80px;
     left: 0;
     z-index: 1000;
   }
+
   .specialmusicContainer2 {
     margin-top: -400px;
     margin-left: 10px;
   }
+
   .musiclistImage {
     width: 140px;
   }
+
   .musiclistheading1 {
     width: 100%;
     display: flex;
@@ -1906,83 +2378,102 @@ margin-bottom: 80px;
     text-align: center;
     font-size: 16px;
   }
+
   .music-playerButton {
     padding: 5px;
     margin-right: -30px;
     margin-top: 10px;
     font-size: 25px;
   }
+
   .music-playerButton i {
     margin-right: 45px;
     color: black;
   }
+
   .Musiclistcontainer {
     height: 63px;
   }
+
   .aboutheading2 {
     margin-left: 90px;
   }
+
   .aboutcontainer3 {
     height: 620px;
     width: 79%;
     padding: 9px;
   }
+
   .aboutcontainer4 {
     height: 580px;
     width: 79%;
     padding: 9px;
   }
+
   .aboutcontainer5 {
     height: 580px;
     width: 79%;
     padding: 9px;
   }
+
   .aboutparagraph1 {
     font-size: 18px;
   }
+
   .aboutcontainer2 {
     margin-top: 45px;
     flex-direction: column;
     font-size: 14px;
     margin-bottom: 45px;
   }
+
   .aboutparagraph1,
   .aboutparagraph2,
   .aboutparagraph3 {
     font-size: 19px;
   }
 }
+
 @media screen and (max-width: 400px) {
   .musiclistImage {
     width: 100px;
     margin-top: -40px;
   }
+
   .specialmusicContainer2 {
     margin-left: 5px;
     font-size: 18px;
     margin-top: -390px;
   }
+
   .aboutheading2 {
     margin-left: 60px;
   }
+
   .aboutcontainer3 {
     height: 560px;
   }
+
   .aboutcontainer4 {
     height: 520px;
   }
+
   .aboutcontainer5 {
     height: 520px;
   }
+
   .aboutparagraph1,
   .aboutparagraph2,
   .aboutparagraph3 {
     font-size: 17px;
   }
+
   .aboutheading3 {
     margin-right: 70px;
   }
 }
+
 @media screen and (max-width: 380px) {
   .musicContainer1 {
     width: 100%;
@@ -1997,81 +2488,100 @@ margin-bottom: 80px;
     font-size: 18px;
     margin-top: -390px;
   }
+
   .musiclistImage {
     width: 80px;
   }
+
   .music-playerButton i {
     margin-right: 35px;
     color: black;
   }
+
   .aboutheading2 {
     margin-left: 40px;
   }
+
   .aboutcontainer3 {
     height: 520px;
     width: 79%;
     padding: 9px;
   }
+
   .aboutcontainer4 {
     height: 520px;
     width: 79%;
     padding: 9px;
   }
+
   .aboutcontainer5 {
     height: 520px;
     width: 79%;
     padding: 9px;
   }
+
   .aboutparagraph1 {
     font-size: 18px;
   }
+
   .aboutcontainer2 {
     margin-top: 45px;
     flex-direction: column;
     font-size: 14px;
     margin-bottom: 45px;
   }
+
   .aboutparagraph1,
   .aboutparagraph2,
   .aboutparagraph3 {
     font-size: 15px;
   }
+
   .createAccountheading2 {
     font-size: 32px;
   }
+
   .createAccountheading3 {
     font-size: 15px;
   }
+
   .accountContainer3 {
     width: 90%;
     margin-top: 60px;
   }
+
   #createAccountheading1 {
     font-size: 26px;
     width: 100%;
     text-align: center;
   }
 }
+
 @media screen and (max-width: 300px) {
   .musiclistImage {
     width: 40px;
   }
+
   .music-playerButton i {
     margin-right: 25px;
     color: black;
   }
+
   .createAccountheading2 {
     font-size: 26px;
   }
+
   .createAccountheading3 {
     font-size: 12px;
     margin-bottom: 30px;
   }
+
   .accountContainer3 {
     width: 90%;
     height: 90%;
     margin-top: 100px;
   }
+
   #createAccountheading1 {
     font-size: 24px;
     width: 100%;
@@ -2085,6 +2595,7 @@ margin-bottom: 80px;
     text-align: left;
     padding: 10px;
   }
+
   .helpContainer3 {
     width: 85%;
     height: 90%;
@@ -2097,12 +2608,15 @@ margin-bottom: 80px;
     margin-top: 40px;
     margin-bottom: 75px;
   }
+
   .helpHeading2 {
     font-size: 60px;
   }
+
   .questions {
     font-size: 60px;
   }
+
   .musicContainer1 {
     margin-left: 32px;
     margin-top: -380px;
@@ -2116,11 +2630,13 @@ margin-bottom: 80px;
     width: 30%;
     height: 420px;
   }
+
   .playerSystemMusicplayerButton i {
     padding: 25px;
     font-size: 18px;
     color: black;
   }
+
   .playerSystemProgressBar {
     width: 300px;
     height: 5px;
@@ -2148,44 +2664,55 @@ margin-bottom: 80px;
     overflow-x: auto;
     scroll-behavior: smooth;
     white-space: nowrap;
-    scrollbar-width: none; /* Hide scrollbar in Firefox */
-    -ms-overflow-style: none; /* Hide scrollbar in IE/Edge */
+    scrollbar-width: none;
+    /* Hide scrollbar in Firefox */
+    -ms-overflow-style: none;
+    /* Hide scrollbar in IE/Edge */
     scroll-snap-type: x mandatory;
   }
+
   .container4 {
     height: 240px;
     width: 86%;
     display: flex;
-    justify-content: flex-start; /* Align items to the left */
+    justify-content: flex-start;
+    /* Align items to the left */
     align-items: center;
     flex-direction: row;
     color: white;
     font-size: 35px;
-    margin: 55px auto; /* Center the container */
+    margin: 55px auto;
+    /* Center the container */
     text-align: center;
     border-radius: 15px;
     border: 2px solid black;
     overflow-x: auto;
     scroll-behavior: smooth;
     white-space: nowrap;
-    scrollbar-width: none; /* Hide scrollbar in Firefox */
-    -ms-overflow-style: none; /* Hide scrollbar in IE/Edge */
+    scrollbar-width: none;
+    /* Hide scrollbar in Firefox */
+    -ms-overflow-style: none;
+    /* Hide scrollbar in IE/Edge */
     scroll-snap-type: x mandatory;
   }
+
   .box1 {
     width: 260px;
     height: 88%;
   }
+
   .card {
     border-radius: 10px;
     width: 210px;
     text-align: center;
   }
+
   #image1 {
     width: 140px;
     height: auto;
     border-radius: 25px;
   }
+
   #homebtn1 {
     float: left;
     margin-left: 66px;
@@ -2196,6 +2723,7 @@ margin-bottom: 80px;
     background-color: crimson;
     color: white;
   }
+
   .bigContainer {
     height: 100%;
     display: flex;
@@ -2203,6 +2731,7 @@ margin-bottom: 80px;
     justify-content: center;
     align-content: center;
   }
+
   .container5 {
     width: 86%;
     color: white;
@@ -2213,6 +2742,7 @@ margin-bottom: 80px;
     box-sizing: border-box;
     margin-left: 90px;
   }
+
   .midContainer {
     height: 233px;
     width: 86%;
@@ -2225,6 +2755,7 @@ margin-bottom: 80px;
     margin-left: 90px;
     margin-top: 50px;
   }
+
   .container7 {
     width: 86%;
     color: white;
@@ -2235,19 +2766,23 @@ margin-bottom: 80px;
     border-radius: 15px;
     margin-top: 50px;
   }
+
   #btn4 {
     margin-bottom: 20px;
   }
+
   .playerSystemContainer1 {
     top: 285px;
     width: 30%;
     height: 380px;
   }
+
   .playerSystemMusicplayerButton i {
     padding: 25px;
     font-size: 18px;
     color: black;
   }
+
   .playerSystemProgressBar {
     width: 300px;
     height: 5px;
@@ -2259,6 +2794,7 @@ margin-bottom: 80px;
 }
 
 @media screen and (max-width: 1160px) {
+
   .container5,
   .midContainer,
   .container7 {
@@ -2272,6 +2808,7 @@ margin-bottom: 80px;
     align-items: center;
     z-index: 1000;
   }
+
   .close-btn {
     position: absolute;
     top: 15px;
@@ -2282,6 +2819,7 @@ margin-bottom: 80px;
     border: none;
     cursor: pointer;
   }
+
   .nav-overlay {
     position: fixed;
     top: -100%;
@@ -2295,16 +2833,19 @@ margin-bottom: 80px;
 
     z-index: 999;
   }
+
   .nav-overlay.open {
     top: 0;
     right: 50px;
   }
+
   .navbarMusicHeading {
     width: 22%;
     text-align: center;
     margin-top: -2px;
     font-size: 24px;
   }
+
   .nav-links {
     display: none;
     flex-direction: column;
@@ -2335,20 +2876,24 @@ margin-bottom: 80px;
     z-index: 1000;
     font-size: 20px;
   }
+
   #btn1 {
     margin-top: 70px;
     margin-bottom: 16px;
     font-size: 18px;
   }
+
   #btn2 {
     font-size: 18px;
     margin-top: -40px;
   }
+
   #btn3 {
     margin-top: -15px;
     margin-left: 30px;
     font-size: 18px;
   }
+
   .navbar li {
     line-height: 0;
     font-size: 18px;
@@ -2356,15 +2901,18 @@ margin-bottom: 80px;
     margin-bottom: -90px;
     margin-left: 80px;
   }
+
   .navbar h1 {
     font-size: 20px;
     font-weight: bold;
     margin-left: 10px;
   }
+
   .nav-links.show {
     display: flex;
     color: white;
   }
+
   .musicHeading {
     margin-top: 15px;
   }
@@ -2373,16 +2921,19 @@ margin-bottom: 80px;
     display: block;
     margin-right: 0px;
   }
+
   .playerSystemContainer1 {
     top: 255px;
     width: 31%;
     height: 370px;
   }
+
   .playerSystemMusicplayerButton i {
     padding: 20px;
     font-size: 18px;
     color: black;
   }
+
   .playerSystemProgressBar {
     width: 280px;
     height: 5px;
@@ -2397,21 +2948,25 @@ margin-bottom: 80px;
   #homeheading1 {
     margin-left: 180px;
   }
+
   .container5,
   .midContainer,
   .container7 {
     margin-left: 70px;
   }
+
   .playerSystemContainer1 {
     top: 315px;
     width: 34%;
     height: 320px;
   }
+
   .playerSystemMusicplayerButton i {
     padding: 14px;
     font-size: 18px;
     color: black;
   }
+
   .playerSystemProgressBar {
     width: 220px;
     height: 5px;
@@ -2421,21 +2976,26 @@ margin-bottom: 80px;
     margin-left: 0px;
   }
 }
+
 @media screen and (max-width: 900px) {
   #homeheading1 {
     margin-left: 150px;
   }
+
   .container5,
   .midContainer,
   .container7 {
     margin-left: 60px;
   }
+
   .helpHeading2 {
     font-size: 50px;
   }
+
   .questions {
     font-size: 50px;
   }
+
   .helpHeading3 {
     width: 60%;
     display: flex;
@@ -2446,12 +3006,15 @@ margin-bottom: 80px;
     font-family: "Inter", serif;
     color: black;
   }
+
   .playerSystemContainer1 {
     display: none;
   }
+
   .Musiclistcontainer {
     left: 0px;
   }
+
   .music-player {
     height: 80px;
     width: 100%;
@@ -2461,21 +3024,25 @@ margin-bottom: 80px;
     background: linear-gradient(90deg, #ff7e5f, #feb47b);
   }
 }
+
 @media screen and (max-width: 700px) {
   #homeheading1 {
     margin-left: 130px;
     font-size: 14px;
   }
+
   .container5,
   .midContainer,
   .container7 {
     margin-left: 50px;
   }
+
   .login-container {
     padding: 30px;
     height: 40%;
     width: 320px;
   }
+
   .reset-container {
     padding: 30px;
     height: 38%;
@@ -2484,6 +3051,7 @@ margin-bottom: 80px;
 }
 
 @media screen and (max-width: 600px) {
+
   .container5,
   .container7,
   .midContainer {
@@ -2491,18 +3059,22 @@ margin-bottom: 80px;
     height: auto;
     font-size: 10px;
   }
+
   .paragraph {
     font-size: 15px;
     padding: 0px;
     text-align: left;
   }
+
   .helpHeading2 {
     font-size: 40px;
     margin-bottom: 50px;
   }
+
   .questions {
     font-size: 40px;
   }
+
   .helpHeading3 {
     width: 80%;
     display: flex;
@@ -2513,6 +3085,7 @@ margin-bottom: 80px;
     font-family: "Inter", serif;
     color: black;
   }
+
   .newmusicheading {
     font-size: 18px;
     display: flex;
@@ -2520,13 +3093,16 @@ margin-bottom: 80px;
     text-align: center;
     padding: 10px;
   }
+
   .favouriteHeading1 {
     font-size: 18px;
   }
+
   .favouriteContainer2 {
     margin-top: 30px;
     margin-left: 30px;
   }
+
   .PunjabiSongsheading {
     font-size: 26px;
     padding: 10px;
@@ -2535,22 +3111,27 @@ margin-bottom: 80px;
   .navbarMusicHeading {
     width: 24%;
   }
+
   .nav-overlay {
     width: 50%;
   }
 }
+
 @media screen and (max-width: 520px) {
+
   .container5,
   .container7 {
     font-size: 6px;
     height: auto;
   }
+
   #heading1 {
     height: auto;
     width: auto;
     font-size: 24px;
     text-align: center;
   }
+
   #btn5 {
     padding: 14px;
     margin-left: 40px;
@@ -2559,42 +3140,53 @@ margin-bottom: 80px;
     background-color: rgb(39, 35, 36);
     color: white;
   }
+
   .login-container {
     padding: 30px;
     height: 35%;
     width: 280px;
   }
+
   .input-group input {
     width: 85%;
   }
+
   .login-button {
     width: 93%;
     margin-right: 24px;
   }
+
   .login-container h2 {
     font-size: 18px;
   }
+
   .forgot-password {
     margin-right: 20px;
   }
+
   .reset-container {
     padding: 30px;
     height: 35%;
     width: 280px;
   }
+
   .input-group input {
     width: 85%;
   }
+
   .reset-button {
     width: 93%;
     margin-right: 24px;
   }
+
   .reset-container h2 {
     font-size: 18px;
   }
+
   .navbarMusicHeading {
     width: 30%;
   }
+
   .nav-overlay {
     width: 60%;
   }
@@ -2607,11 +3199,13 @@ margin-bottom: 80px;
     font-size: 15px;
     text-align: center;
   }
+
   .container5,
   .container7,
   .midContainer {
     margin-left: 40px;
   }
+
   #btn5 {
     padding: 14px;
     margin-left: 40px;
@@ -2620,12 +3214,15 @@ margin-bottom: 80px;
     background-color: rgb(39, 35, 36);
     color: white;
   }
+
   .paragraph {
     padding: 2px;
   }
+
   .navbarMusicHeading {
     width: 30%;
   }
+
   .nav-overlay {
     width: 60%;
   }
@@ -2636,21 +3233,25 @@ margin-bottom: 80px;
     margin-left: 90px;
     font-size: 14px;
   }
+
   .paragraph {
     padding: 2px;
   }
 }
+
 @media screen and (max-width: 450px) {
   #homeheading1 {
     margin-left: 50px;
     font-size: 14px;
     width: 75%;
   }
+
   .container5,
   .container7,
   .midContainer {
     margin-left: 35px;
   }
+
   #btn5 {
     padding: 14px;
     margin-left: 40px;
@@ -2659,67 +3260,83 @@ margin-bottom: 80px;
     background-color: rgb(39, 35, 36);
     color: white;
   }
+
   .paragraph {
     padding: 2px;
   }
+
   .PunjabiSongsheading {
     font-size: 22px;
     padding: 10px;
   }
+
   .login-container {
     padding: 30px;
     height: 33%;
     width: 250px;
   }
+
   .input-group input {
     width: 85%;
   }
+
   .login-button {
     width: 86%;
     margin-right: 10px;
   }
+
   .login-container h2 {
     font-size: 18px;
     margin-top: 0px;
   }
+
   .forgot-password {
     margin-right: 20px;
     margin-bottom: 60px;
   }
+
   .reset-container {
     padding: 30px;
     height: 33%;
     width: 250px;
   }
+
   .input-group input {
     width: 85%;
   }
+
   .reset-button {
     width: 86%;
     margin-right: 10px;
   }
+
   .reset-container h2 {
     font-size: 18px;
     margin-top: 0px;
   }
+
   .navbarMusicHeading {
     width: 35%;
   }
+
   .nav-overlay {
     width: 65%;
   }
 }
 
 @media screen and (max-width: 390px) {
+
   .container5,
   .container7 {
     height: auto;
   }
+
   .container5,
   .container7,
   .midContainer {
     margin-left: 30px;
   }
+
   .paragraph {
     padding: 2px;
   }
@@ -2729,13 +3346,16 @@ margin-bottom: 80px;
     font-size: 12px;
     text-align: center;
   }
+
   .helpHeading2 {
     font-size: 30px;
     margin-bottom: 50px;
   }
+
   .questions {
     font-size: 30px;
   }
+
   .PunjabiSongsheading {
     font-size: 18px;
     padding: 6px;
@@ -2744,105 +3364,130 @@ margin-bottom: 80px;
     align-items: center;
     text-align: center;
   }
+
   .login-container {
     margin-bottom: 80px;
     padding: 30px;
     height: 45%;
     width: 250px;
   }
+
   .input-group input {
     width: 92%;
   }
+
   .login-button {
     width: 100%;
     margin-left: 2px;
   }
+
   .login-container h2 {
     font-size: 18px;
     margin-top: 0px;
   }
+
   .forgot-password {
     margin-right: 20px;
     margin-bottom: 60px;
   }
+
   .reset-container {
     margin-bottom: 80px;
     padding: 30px;
     height: 40%;
     width: 250px;
   }
+
   .input-group input {
     width: 92%;
   }
+
   .reset-button {
     width: 100%;
     margin-left: 2px;
   }
+
   .reset-container h2 {
     font-size: 18px;
     margin-top: 0px;
   }
+
   #createAccountheading1 {
     font-size: 24px;
   }
+
   .accountContainer2 {
     margin-bottom: 120px;
     margin-top: 0px;
   }
+
   .accountContainer3 {
     height: 95%;
     width: 85%;
   }
+
   .navbarMusicHeading {
     width: 42%;
   }
+
   .nav-overlay {
     width: 75%;
   }
 }
+
 @media screen and (max-width: 350px) {
   #homeheading1 {
     margin-left: auto;
     font-size: 12px;
     width: auto;
   }
+
   .footer {
     padding: 8px;
     font-size: 11px;
     text-align: center;
   }
+
   .login-container {
     padding: 30px;
     height: 33%;
     width: 220px;
   }
+
   .input-group input {
     width: 85%;
   }
+
   .login-button {
     width: 82%;
     margin-right: 10px;
   }
+
   .login-container h2 {
     font-size: 18px;
     margin-top: 0px;
   }
+
   .forgot-password {
     margin-right: 20px;
     margin-bottom: 60px;
   }
+
   .reset-container {
     padding: 30px;
     height: 33%;
     width: 220px;
   }
+
   .input-group input {
     width: 85%;
   }
+
   .reset-button {
     width: 82%;
     margin-right: 10px;
   }
+
   .reset-container h2 {
     font-size: 18px;
     margin-top: 0px;
@@ -2853,6 +3498,7 @@ margin-bottom: 80px;
   .paragraph {
     padding: 2px;
   }
+
   #btn5 {
     padding: 14px;
     margin-left: 20px;
@@ -2861,6 +3507,7 @@ margin-bottom: 80px;
     background-color: rgb(39, 35, 36);
     color: white;
   }
+
   .aboutheading1 {
     font-size: 28px;
   }
@@ -2875,11 +3522,13 @@ margin-bottom: 80px;
     background-color: #ff7e5f;
     color: white;
   }
+
   .container5,
   .container7,
   .midContainer {
     margin-left: 25px;
   }
+
   #btn5 {
     padding: 12px;
     margin-left: 5px;
@@ -2888,76 +3537,95 @@ margin-bottom: 80px;
     background-color: rgb(39, 35, 36);
     color: white;
   }
+
   .login-container {
     padding: 30px;
     height: 33%;
     width: 200px;
   }
+
   .input-group input {
     width: 85%;
   }
+
   .login-button {
     width: 86%;
     margin-right: 5px;
   }
+
   .login-container h2 {
     font-size: 18px;
     margin-top: 0px;
   }
+
   .forgot-password {
     margin-right: 20px;
     margin-bottom: 60px;
   }
+
   .reset-container {
     padding: 30px;
     height: 36%;
     width: 200px;
   }
+
   .input-group input {
     width: 85%;
   }
+
   .reset-button {
     width: 86%;
     margin-right: 5px;
   }
+
   .reset-container h2 {
     font-size: 18px;
     margin-top: 0px;
   }
+
   .aboutheading2 {
     margin-left: 20px;
   }
+
   .aboutcontainer3 {
     height: 550px;
   }
+
   .aboutparagraph1,
   .aboutparagraph2,
   .aboutparagraph3 {
     font-size: 15px;
   }
+
   .aboutheading1 {
     font-size: 28px;
   }
 }
+
 @media screen and (max-width: 300px) {
   .aboutcontainer3 {
     height: 600px;
   }
+
   .aboutcontainer4 {
     height: 580px;
   }
+
   .aboutcontainer5 {
     height: 580px;
   }
+
   .navbarMusicHeading {
     width: 49%;
   }
+
   .nav-overlay {
     width: 88%;
   }
 }
 
 @media screen and (max-width: 268px) {
+
   .container5,
   .container7,
   .midContainer {
@@ -2972,11 +3640,13 @@ margin-bottom: 80px;
     background-color: #ff7e5f;
     color: white;
   }
+
   #homeheading1 {
     margin-left: auto;
     font-size: 7px;
     width: auto;
   }
+
   #btn5 {
     padding: 10px;
     margin-left: 0px;
@@ -2986,87 +3656,109 @@ margin-bottom: 80px;
     color: white;
     margin-bottom: 10px;
   }
+
   .helpHeading2 {
     font-size: 20px;
     margin-bottom: 50px;
   }
+
   .questions {
     font-size: 20px;
   }
+
   .login-container {
     padding: 30px;
     height: 40%;
     width: 140px;
   }
+
   .input-group input {
     width: 85%;
   }
+
   .login-button {
     width: 86%;
     margin-left: 6px;
   }
+
   .login-container h2 {
     font-size: 18px;
     margin-top: 0px;
   }
+
   .forgot-password {
     margin-right: 20px;
     margin-bottom: 60px;
   }
+
   .reset-container {
     padding: 30px;
     height: 40%;
     width: 140px;
   }
+
   .input-group input {
     width: 85%;
   }
+
   .reset-button {
     width: 86%;
     margin-left: 6px;
   }
+
   .reset-container h2 {
     font-size: 18px;
     margin-top: 0px;
   }
+
   .aboutheading1 {
     font-size: 18px;
   }
+
   .aboutheading2 {
     margin-left: 10px;
   }
+
   .aboutcontainer3 {
     height: 620px;
     width: 79%;
     padding: 9px;
   }
+
   .aboutparagraph1,
   .aboutparagraph2,
   .aboutparagraph3 {
     font-size: 14px;
   }
+
   .createAccountheading2 {
     font-size: 22px;
   }
+
   .createAccountheading3 {
     font-size: 12px;
   }
+
   #createAccountheading1 {
     font-size: 24px;
     width: 100%;
     text-align: center;
   }
+
   .accountContainer3 {
     width: 90%;
     margin-top: 100px;
     border-radius: 20px;
   }
+
   .navbarMusicHeading {
     width: 54%;
   }
+
   .navbar li {
     margin-left: 45px;
   }
+
   #btn1,
   #btn2,
   #btn3 {

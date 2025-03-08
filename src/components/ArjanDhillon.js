@@ -4,7 +4,7 @@ import { actionCreator } from "../state";
 import PlayerControl from "./PlayerControl";
 import { useDispatch, useSelector } from "react-redux";
 import { playAudio, pauseAudio } from "../state/audioSlice";
-import { addFavourite, removeFavourite } from "../state/favouriteSlice";
+import { addFavorite, removeFavorite } from "../state/favouriteSlice";
 import { useNavigate } from "react-router-dom";
 
 
@@ -18,7 +18,8 @@ const ArjanDhillon = () => {
   const { isPlaying, currentSong, audioElement } = useSelector(
     (state) => state.audio
   );
-  const favouriteSongs = useSelector((state) => state.favourite.favouriteSongs);
+  const userID = useSelector((state) => state.user.userID);
+  const favouriteSongs = useSelector(state => state.favourite.songs) || [];
   const [repeat, setRepeat] = useState(false);
   
   useEffect(() => {
@@ -182,24 +183,51 @@ const ArjanDhillon = () => {
     }
   };
 
-const handleFavourite = () => {
-      // const isAuthenticated=find;
-      if (!isAuthenticated) {
-        setfind(true); // Set authentication state
-        navigate("/heart"); // Redirect to login/signup
-        return;
-      }
-        if (!currentSong) return;
-        const isFavourite = favouriteSongs.some(
-          (fav) => fav.id === currentSong.id
-        );
-  
-        if (isFavourite) {
-          dispatch(removeFavourite(currentSong.id));
-        } else {
-          dispatch(addFavourite(currentSong));
-        }
-    };
+const handleFavourite = async () => {
+     if (!isAuthenticated) {
+       navigate("/heart");
+       return;
+     }
+ 
+     if (!currentSong || !userID) return;
+ 
+     try {
+       // First check if the song is already a favorite
+       const isFavourite = favouriteSongs.some(fav => fav.id === currentSong.id);
+       
+       if (isFavourite) {
+         console.log("Song is already in favorites");
+         return;
+       }
+ 
+       const response = await fetch("http://172.20.10.4:5000/api/favSongs/add", {
+         method: "POST",
+         headers: { 
+           "Content-Type": "application/json",
+         },
+         body: JSON.stringify({ 
+           userID: userID,
+           songId: currentSong.id,
+           title: currentSong.title 
+         }),
+       });
+ 
+       const data = await response.json();
+       
+       if (response.ok) {
+         console.log("Song added to favorites:", data);
+         // Add the song to Redux store
+         dispatch(addFavorite({
+           id: currentSong.id,
+           title: currentSong.title
+         }));
+       } else {
+         console.error("Failed to add favorite:", data.message);
+       }
+     } catch (error) {
+       console.error("Error updating favorites:", error);
+     }
+   };
 
 
   const handleRepeat = () => {
@@ -225,7 +253,7 @@ const handleFavourite = () => {
   return (
     <>
       <div className="musicContainer1">
-        <div className="specialmusicContainer2">
+        <div className="specialmusicContainer3">
           {songs.map((song, index) => (
             <p
               key={song.id}

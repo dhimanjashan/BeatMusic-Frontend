@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { playAudio, pauseAudio } from "../state/audioSlice";
-import { addFavourite, removeFavourite } from "../state/favouriteSlice";
+import { addFavorite, removeFavorite } from "../state/favouriteSlice";
 import PlayerSystem from "./PlayerSystem";
 import PlayerControl from "./PlayerControl";
 import { useNavigate } from "react-router-dom";
@@ -16,7 +16,8 @@ const PunjabiMusic = () => {
   const { isPlaying, currentSong, audioElement } = useSelector(
     (state) => state.audio
   );
-  const favouriteSongs = useSelector((state) => state.favourite.favouriteSongs);
+  const userID = useSelector((state) => state.user.userID);
+  const favouriteSongs = useSelector(state => state.favourite.songs) || [];
   const [isLoading, setIsLoading] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 900);
 
@@ -311,24 +312,52 @@ const PunjabiMusic = () => {
       console.log("No more songs left!");
     }
   };
-  const handleFavourite = () => {
-      const isAuthenticated=find;
+ const handleFavourite = async () => {
       if (!isAuthenticated) {
-        setfind(true); // Set authentication state
-        navigate("/heart"); // Redirect to login/signup
+        navigate("/heart");
         return;
       }
-        if (!currentSong) return;
-        const isFavourite = favouriteSongs.some(
-          (fav) => fav.id === currentSong.id
-        );
   
+      if (!currentSong || !userID) return;
+  
+      try {
+        // First check if the song is already a favorite
+        const isFavourite = favouriteSongs.some(fav => fav.id === currentSong.id);
+        
         if (isFavourite) {
-          dispatch(removeFavourite(currentSong.id));
-        } else {
-          dispatch(addFavourite(currentSong));
+          console.log("Song is already in favorites");
+          return;
         }
+  
+        const response = await fetch("http://172.20.10.4:5000/api/favSongs/add", {
+          method: "POST",
+          headers: { 
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ 
+            userID: userID,
+            songId: currentSong.id,
+            title: currentSong.title 
+          }),
+        });
+  
+        const data = await response.json();
+        
+        if (response.ok) {
+          console.log("Song added to favorites:", data);
+          // Add the song to Redux store
+          dispatch(addFavorite({
+            id: currentSong.id,
+            title: currentSong.title
+          }));
+        } else {
+          console.error("Failed to add favorite:", data.message);
+        }
+      } catch (error) {
+        console.error("Error updating favorites:", error);
+      }
     };
+    
     useEffect(() => {
       if (find) {
         navigate("/heart"); // Redirect to auth page if not logged in
@@ -378,6 +407,7 @@ const PunjabiMusic = () => {
               isPlaying={isPlaying}
               handlePrevious={handlePrevious}
               handleFavourite={handleFavourite}
+        handleRepeat={handleRepeat}
             />
           ) : (
             <PlayerSystem

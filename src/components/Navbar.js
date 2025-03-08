@@ -1,13 +1,15 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import User from "./User";
-const Navbar = ({ activeLink, setActiveLink, logged }) => {
+import { useSelector } from "react-redux";
+
+const Navbar = ({ activeLink, setActiveLink }) => {
   const navigate = useNavigate();
   const [menuOpen, setMenuOpen] = useState(false);
   const navRef = useRef(null);
+  let isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
 
   const handleNavigation = (link, path) => {
-    console.log("clicked");
     setActiveLink(link);
     navigate(path);
     setMenuOpen(false);
@@ -86,7 +88,7 @@ const Navbar = ({ activeLink, setActiveLink, logged }) => {
                 Help
               </Link>
               <hr className={menuOpen ? "nav-links show" : "hr"} />
-              {!logged ? (
+              {!isAuthenticated ? (
                 <>
                   <Link
                     to="/login"

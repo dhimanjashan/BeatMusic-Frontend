@@ -1,24 +1,40 @@
 import { createSlice } from "@reduxjs/toolkit";
+// Fetch favorites from backend
+export const fetchFavorites = (userID) => async (dispatch) => {
+  try {
+    const response = await fetch(`http://localhost:5000/api/favSongs/${userID}`);
+    const data = await response.json();
 
-const favouriteSlice = createSlice({
+    if (response.ok && data.songs) {
+      dispatch(setFavorites(data.songs)); // No need for extra fetch calls
+    } else {
+      console.error("Invalid data format received:", data);
+    }
+  } catch (error) {
+    console.error("Error fetching favorites:", error);
+  }
+};
+
+
+
+const favoriteSlice = createSlice({
   name: "favourite",
   initialState: {
-    favouriteSongs: [],
+    songs: [],
   },
   reducers: {
-    addFavourite: (state, action) => {
-      const song = action.payload;
-      if (!state.favouriteSongs.some((fav) => fav.id === song.id)) {
-        state.favouriteSongs.push(song);
-      }
+    setFavorites: (state, action) => {
+      state.songs = action.payload;
     },
-    removeFavourite: (state, action) => {
-      state.favouriteSongs = state.favouriteSongs.filter(
-        (fav) => fav.id !== action.payload
-      );
+    addFavorite: (state, action) => {
+      state.songs.push(action.payload);
+    },
+    removeFavorite: (state, action) => {
+      state.songs = state.songs.filter(song => song.id !== action.payload);
     },
   },
 });
 
-export const { addFavourite, removeFavourite } = favouriteSlice.actions;
-export default favouriteSlice.reducer;
+export const { setFavorites, addFavorite, removeFavorite } =
+  favoriteSlice.actions;
+export default favoriteSlice.reducer;

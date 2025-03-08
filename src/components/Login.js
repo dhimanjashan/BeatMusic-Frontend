@@ -2,13 +2,18 @@ import React,{useState} from "react";
 import { useNavigate } from "react-router-dom";
 import Footer from "./Footer";
 import { useSelector,useDispatch } from "react-redux";
-import { login } from "../state/authSlice";
+import { login, logout } from "../state/authSlice";
 import { setUserID } from "../state/userSlice";
+import { setFavorites } from "../state/favouriteSlice";
+import { fetchFavorites } from "../state/favouriteSlice";
+import AlertModal from "./AlertModal"; // Import custom alert
 
 
 const Login = ({setlogged}) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const [showModal, setShowModal] = useState(false);
+
   let isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
   const handleReset = (e) => {
     e.preventDefault();
@@ -22,7 +27,9 @@ const [formData, setFormData] = useState({
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
-
+  const handleConfirm = () => {
+    setShowModal(false);
+  }
   const handleSubmit = async (e) => {
     e.preventDefault(); // Prevents page reload
 
@@ -36,11 +43,11 @@ const [formData, setFormData] = useState({
       });
       const data = await response.json();
       if (response.ok) {
+        dispatch(fetchFavorites(data.userId));
         console.log("Login successfully!");
         console.log(data.userId);
         dispatch(setUserID(data.userId));
         dispatch(login()); 
-        setlogged(true);
         // Clear input fields after submission
         setFormData({
           email: "",
@@ -48,12 +55,14 @@ const [formData, setFormData] = useState({
         });
         navigate('/showFavourite');
       } else {
-        console.error("Invalid credentials");
+        setShowModal(true);
+        // console.error("Invalid credentials");
       }
     } catch (error) {
       console.error("Error:", error);
     }
   };
+
   return (
     <>
       <div className="wrapper">
@@ -79,6 +88,14 @@ const [formData, setFormData] = useState({
             </p>
           </form>
         </div>
+        {showModal && (
+          <AlertModal
+            title="Check Credentials"
+            message="⚠️ Oops! The credentials you entered don’t match our records. Please double-check and try again. 🔄 If you haven't created an account yet, sign up first! ✨"
+            onConfirm={handleConfirm}
+            confirmText="OK"
+          />
+        )}
       </div>
       <Footer />
     </>

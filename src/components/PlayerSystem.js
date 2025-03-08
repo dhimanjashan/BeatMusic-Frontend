@@ -51,6 +51,13 @@ const PlayerSystem = ({
       };
     }, [audioElement]);
 
+ const [repeat, setRepeat] = useState(false);
+
+  const colorRepeat = () => {
+    setRepeat((prevRepeat) => !prevRepeat); // Toggle repeat state
+    handleRepeat(); 
+  };
+
   return (
     <>
       <div className="playerSystemContainer1">
@@ -64,7 +71,10 @@ const PlayerSystem = ({
 
         </div>
         <div className="playerSystemMusicplayerButton">
-          <i onClick={handleRepeat} className="fa-solid fa-repeat"></i>
+          <i onClick={colorRepeat} className="fa-solid fa-repeat"  style={{
+                color: repeat ? "cornsilk" : "black",
+                cursor: "pointer",
+              }}></i>
           <i
             onClick={handlePrevious}
             className="fa-solid fa-backward-fast fa-sm"

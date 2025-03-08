@@ -1,4 +1,4 @@
-import { playAudio, nextSong } from "../audioSlice";
+import { setFavorites } from "../favouriteSlice";
 
 export const play = (songPlay) => {
   return (dispatch) => {
@@ -57,4 +57,3 @@ export const pauseAudioAction = () => {
     });
   };
 };
-
