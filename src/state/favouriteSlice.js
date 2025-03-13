@@ -2,7 +2,9 @@ import { createSlice } from "@reduxjs/toolkit";
 // Fetch favorites from backend
 export const fetchFavorites = (userID) => async (dispatch) => {
   try {
-    const response = await fetch(`http://localhost:5000/api/favSongs/${userID}`);
+    const response = await fetch(
+      `http://localhost:5000/api/favSongs/${userID}`
+    );
     const data = await response.json();
 
     if (response.ok && data.songs) {
@@ -14,8 +16,6 @@ export const fetchFavorites = (userID) => async (dispatch) => {
     console.error("Error fetching favorites:", error);
   }
 };
-
-
 
 const favoriteSlice = createSlice({
   name: "favourite",
@@ -30,7 +30,7 @@ const favoriteSlice = createSlice({
       state.songs.push(action.payload);
     },
     removeFavorite: (state, action) => {
-      state.songs = state.songs.filter(song => song.id !== action.payload);
+      state.songs = state.songs.filter((song) => song.id !== action.payload);
     },
   },
 });

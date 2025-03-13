@@ -2,21 +2,20 @@ import React, { useRef, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { playAudio, pauseAudio } from "../state/audioSlice";
 import PlayerControl from "./PlayerControl";
-import { addFavorite, removeFavorite } from "../state/favouriteSlice";
+import { addFavorite } from "../state/favouriteSlice";
 import { useNavigate } from "react-router-dom";
 
 const NimratSongs = () => {
- const [repeat, setRepeat] = useState(false);
+  const [repeat, setRepeat] = useState(false);
   const audioRef = useRef(null);
-  const [find, setfind] = useState(false);
-    const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
   const dispatch = useDispatch();
-    const navigate = useNavigate();
+  const navigate = useNavigate();
   const { isPlaying, currentSong, audioElement } = useSelector(
     (state) => state.audio
   );
   const userID = useSelector((state) => state.user.userID);
-  const favouriteSongs = useSelector(state => state.favourite.songs) || [];
+  const favouriteSongs = useSelector((state) => state.favourite.songs) || [];
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
@@ -148,83 +147,81 @@ const NimratSongs = () => {
     }
   };
 
- const handleFavourite = async () => {
-     if (!isAuthenticated) {
-       navigate("/heart");
-       return;
-     }
- 
-     if (!currentSong || !userID) return;
- 
-     try {
-       // First check if the song is already a favorite
-       const isFavourite = favouriteSongs.some(fav => fav.id === currentSong.id);
-       
-       if (isFavourite) {
-         console.log("Song is already in favorites");
-         return;
-       }
- 
-       const response = await fetch("http://172.20.10.4:5000/api/favSongs/add", {
-         method: "POST",
-         headers: { 
-           "Content-Type": "application/json",
-         },
-         body: JSON.stringify({ 
-           userID: userID,
-           songId: currentSong.id,
-           title: currentSong.title 
-         }),
-       });
- 
-       const data = await response.json();
-       
-       if (response.ok) {
-         console.log("Song added to favorites:", data);
-         // Add the song to Redux store
-         dispatch(addFavorite({
-           id: currentSong.id,
-           title: currentSong.title
-         }));
-       } else {
-         console.error("Failed to add favorite:", data.message);
-       }
-     } catch (error) {
-       console.error("Error updating favorites:", error);
-     }
-   };
-   
-     useEffect(() => {
-       if (find) {
-         navigate("/heart"); // Redirect to auth page if not logged in
-       }
-     }, [find]);
+  const handleFavourite = async () => {
+    if (!isAuthenticated) {
+      navigate("/heart");
+      return;
+    }
 
- const handleRepeat = () => {
-     setRepeat(!repeat);
-   };
- 
-   useEffect(() => {
-     if (!audioElement) return;
-   
-     const handleEnded = () => {
-       if (repeat) {
-         audioElement.currentTime = 0;
-         audioElement.play();
-       } else {
-     handleNext();
-       }
-     };
-   
-     audioElement.addEventListener("ended", handleEnded);
-     
-     return () => {
-       audioElement.removeEventListener("ended", handleEnded);
-     };
-   }, [currentSong, isLoading, repeat, audioElement]);
+    if (!currentSong || !userID) return;
+
+    try {
+      // First check if the song is already a favorite
+      const isFavourite = favouriteSongs.some(
+        (fav) => fav.id === currentSong.id
+      );
+
+      if (isFavourite) {
+        console.log("Song is already in favorites");
+        return;
+      }
+
+      const response = await fetch("http://172.20.10.4:5000/api/favSongs/add", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          userID: userID,
+          songId: currentSong.id,
+          title: currentSong.title,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        // Add the song to Redux store
+        dispatch(
+          addFavorite({
+            id: currentSong.id,
+            title: currentSong.title,
+          })
+        );
+      } else {
+        console.error("Failed to add favorite:", data.message);
+      }
+    } catch (error) {
+      console.error("Error updating favorites:", error);
+    }
+  };
+
+  const handleRepeat = () => {
+    setRepeat(!repeat);
+  };
+
+  useEffect(() => {
+    if (!audioElement) return;
+
+    const handleEnded = () => {
+      if (repeat) {
+        audioElement.currentTime = 0;
+        audioElement.play();
+      } else {
+        handleNext();
+      }
+    };
+
+    audioElement.addEventListener("ended", handleEnded);
+
+    return () => {
+      audioElement.removeEventListener("ended", handleEnded);
+    };
+  }, [currentSong, isLoading, repeat, audioElement]);
 
   return (
     <>
+
       <div className="musicContainer1">
         <div className="specialmusicContainer2">
           {songs.map((song, index) => (
@@ -233,8 +230,8 @@ const NimratSongs = () => {
               onClick={() => handleClick(index)}
               style={{
                 cursor: "pointer",
-                color: currentSong?.id === song.id ? "white" : "black",
-                fontWeight: currentSong?.id === song.id ? "bolder" : "bold",
+                color: currentSong?.id === song.id ? "green" : "white",
+                fontWeight: currentSong?.id === song.id ? "bold" : "lighter",
               }}
             >
               {song.title}

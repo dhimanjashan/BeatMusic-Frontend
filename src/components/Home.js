@@ -1,305 +1,404 @@
-import React,{useEffect} from "react";
-import { useNavigate } from "react-router-dom";
-import { bindActionCreators } from "redux";
-import { useDispatch } from "react-redux";
-import { actionCreator } from "../state/index.js";
-import Footer from "./Footer";
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { playAudio, pauseAudio } from "../state/audioSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 const Home = ({ setActiveLink }) => {
   const navigate = useNavigate();
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [isVisible, setIsVisible] = useState(false);
+  const [visibleSlides, setVisibleSlides] = useState(4);
   const dispatch = useDispatch();
-  const { artistHeadline } = bindActionCreators(actionCreator, dispatch);
   const SET_HEADING = "SET_HEADING";
+  const [isLoading, setIsLoading] = useState(false);
+  const { isPlaying, currentSong, audioElement } = useSelector(
+    (state) => state.audio
+  );
 
   const changeHeading = (newHeading) => {
     dispatch({ type: "SET_HEADING", payload: newHeading });
     localStorage.setItem("heading", newHeading);
   };
 
-  const changeImage=(newImage)=>{
-    dispatch({type:"SET_IMAGE",payload:newImage});
-    localStorage.setItem("image",newImage); 
+  const changeImage = (newImage) => {
+    dispatch({ type: "SET_IMAGE", payload: newImage });
+    localStorage.setItem("image", newImage);
   }
 
-    useEffect(() => {
-      const storedHeading = localStorage.getItem("heading");
-      if (storedHeading) {
-        dispatch({ type: SET_HEADING, payload: storedHeading }); // ✅ Restore heading
-      }
-    }, [dispatch]);
+  useEffect(() => {
+    const storedHeading = localStorage.getItem("heading");
+    if (storedHeading) {
+      dispatch({ type: SET_HEADING, payload: storedHeading });
+    }
+  }, [dispatch]);
 
-  const handleamrinderClick = (e) => {
-    e.preventDefault();
-    navigate("/musiclist");
-    changeImage("amrinder-gill.jpg");
-    changeHeading("Hanji Shoneyo Suniye Song Amrinder Gill De 🎵");
-  };
-  const handlesunandaClick = (e) => {
-    e.preventDefault();
-    navigate("/musiclist");
-    changeImage("sunanda-sharma.jpg");
-    changeHeading("Hanji Shoneyo Suniye Song Sunanda Sharma De 🎵");
-  };
-  const handlearjanClick = (e) => {
-    e.preventDefault();
-    navigate("/musiclist");
-    changeImage("arjan-dhillon.jpg");
-    changeHeading("Hanji Shoneyo Suniye Song Arjan Dhillon De 🎵");
-  };
-  const handlenimratClick = (e) => {
-    e.preventDefault();
-    navigate("/musiclist");
-    changeImage("nimrat-khaira.jpg");
-    artistHeadline("Hanji Shoneyo Suniye Song Nimrat Khaira De 🎵");
-    changeHeading("Hanji Shoneyo Suniye Song Nimrat Khaira De 🎵");
-  };
-  const handlejordanClick = (e) => {
-    e.preventDefault();
-    navigate("/musiclist");
-    changeImage("jordan-sandhu.jpg");
-    changeHeading("Hanji Shoneyo Suniye Song Jordan Sandhu De 🎵");
-  };
-  const handleEdsheeranClick = (e) => {
-    e.preventDefault();
-    navigate("/musiclist");
-    changeImage("Ed-sheeran-cropped.jpg");
-    changeHeading("Here is the list of Ed Sheeran Songs 🎵");
-  };
-  const handleDualipaClick = (e) => {
-    e.preventDefault();
-    navigate("/musiclist");
-    changeImage("dua-lipa-cropped.jpg");
-    changeHeading("Here is the list of Dua Lipa Songs 🎵");
-  };
-  const handleJustinbieberClick = (e) => {
-    e.preventDefault();
-    navigate("/musiclist");
-    changeImage("justin-bieber-cropped.webp");
-    changeHeading("Here is the list of Justin Bieber Songs 🎵");
-  };
-  const handleOliviarodrigoClick = (e) => {
-    e.preventDefault();
-    navigate("/musiclist");
-    changeImage("olivia-rodrigocropped.jpg");
-    changeHeading("Here is the list of Olivia Rodrigo Songs 🎵");
-  };
-  const handleSamsmithClick = (e) => {
-    e.preventDefault();
-    navigate("/musiclist");
-    changeImage("sam-smith-cropped.jpg");
-    changeHeading("Here is the list of Sam Smith Songs 🎵");
-  };
 
-  const handleSimpleNavigation = (path) => {
+
+  const handleNavigation = (link) => {
+    setActiveLink(link);
+  }
+  const handleArtistClick = (path, setheading, artistImage) => {
+    console.log(path);
+    console.log(setheading);
     navigate(path);
-    window.scrollTo(0, 0);
+    changeHeading(setheading);
+    changeImage(artistImage);
   };
-  const handleloginNaviagtion = () => {
-    setActiveLink("newmusic");
-    navigate("/newmusic");
-    window.scrollTo(0, 0);
+
+
+  const featuredArtists = [
+    {
+      name: "Jordan Sandhu",
+      image: "jordan sandhu5.jpg",
+      artistImage: "jordan-sandhu.jpg",
+      path: "/musiclist",
+      description: "Rising star in Punjabi music industry",
+      setheading: "Hanji Sohneyo Suniye Song Jordan Sandhu De 🎵"
+
+    },
+    {
+      name: "Nimrat Khaira",
+      image: "nimrat khaira logo.jpg",
+      artistImage: "nimrat-khaira.jpg",
+      path: "/musiclist",
+      description: "Voice that touches hearts",
+      setheading: "Hanji Sohneyo Suniye Song Nimrat Khaira De 🎵"
+    },
+    {
+      name: "Arjan Dhillon",
+      image: "arjan dhillon.jpg",
+      artistImage: "arjan-dhillon.jpg",
+      path: "/musiclist",
+      description: "The powerful voice of Punjab",
+      setheading: "Hanji Sohneyo Suniye Song Arjan Dhillon De 🎵"
+    },
+    {
+      name: "Sunanda Sharma",
+      image: "sunanda sharma.png",
+      artistImage: "sunanda-sharma.jpg",
+      path: "/musiclist",
+      description: "Queen of Punjabi pop music",
+      setheading: "Hanji Sohneyo Suniye Song Sunanda Sharma De 🎵"
+
+    },
+    {
+      name: "Amrinder Gill",
+      image: "Amrinder Gill.jpg",
+      artistImage: "amrinder-gill.jpg",
+      path: "/musiclist",
+      description: "Known for his soulful songs",
+      setheading: "Hanji Sohneyo Suniye Song Amrinder Gill De 🎵"
+    },
+    // Add more artists here
+  ];
+
+  // Calculate number of pages based on visible slides
+  const [totalPages, setTotalPages] = useState(Math.ceil(featuredArtists.length / visibleSlides));
+
+  useEffect(() => {
+    setTotalPages(Math.ceil(featuredArtists.length / visibleSlides) || 1);
+  }, [featuredArtists.length, visibleSlides]);
+  const newReleases = [
+    {
+      title: "Latest Punjabi Hits",
+      image: "path_to_image",
+      path: "/newmusic",
+      description: "Fresh beats from Punjab"
+    },
+    {
+      title: "Trending Now",
+      image: "path_to_image",
+      path: "/punjabimusic",
+      description: "What's hot in Punjabi music"
+    }
+  ];
+
+  useEffect(() => {
+    setIsVisible(true);
+    const handleResize = () => {
+      if (window.innerWidth <= 480) {
+        setVisibleSlides(1);
+      } else if (window.innerWidth <= 768) {
+        setVisibleSlides(2);
+      } else {
+        setVisibleSlides(4);
+      }
+    };
+
+    handleResize(); // Initial call
+    window.addEventListener('resize', handleResize);
+
+    // Auto-slide
+    const slideInterval = setInterval(() => {
+      setCurrentSlide(prev => {
+        const nextSlide = prev + 1;
+        return nextSlide >= totalPages ? 0 : nextSlide;
+      });
+    }, 3000);
+
+    return () => {
+      clearInterval(slideInterval);
+      window.removeEventListener('resize', handleResize);
+    };
+  }, [totalPages]);
+
+  // Add trending songs data
+  const trendingSongs = [
+    {
+      title: "Defender",
+      artist: "Harf cheema",
+      plays: "20M+ plays",
+      image: "Harf cheema.jpg",
+      songID: "67a6d7e9ea4bf472388d60d7"
+    },
+    {
+      title: "Fomo",
+      artist: "Jordan Sandhu",
+      plays: "10M+ plays",
+      image: "jordan sandhu.jpg",
+      songID: "67d28db63147114aa1df0228"
+    },
+    {
+      title: "Ammi Wargiye Ni",
+      artist: "Shree Brar",
+      plays: "4M+ plays",
+      image: "shree brar.jpg",
+      songID: "67d28e123147114aa1df022a"
+    },
+    // Add more songs
+  ];
+
+
+  const API_URL = process.env.REACT_APP_API_URL || '';
+  const handleClick = async (songIndex) => {
+    if (isLoading) return;
+    setIsLoading(true);
+
+    const song = trendingSongs[songIndex];
+
+    try {
+      const response = await fetch(`${API_URL}/files/`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ songId: song.songID }),
+      });
+
+      const data = await response.json();
+      console.log("Received song data:", data);
+
+      if (!data.file_path || typeof data.file_path !== "string") {
+        console.error("Invalid file path received:", data.file_path);
+        return;
+      }
+
+      if (!audioElement) {
+        console.error("Audio element not found");
+        return;
+      }
+
+      audioElement.src = data.file_path;
+      audioElement.load();
+
+      audioElement.oncanplaythrough = async () => {
+        try {
+          await audioElement.play();
+          dispatch(playAudio({ songUrl: data.file_path, song }));
+        } catch (error) {
+          console.error("Error playing audio:", error);
+        }
+      };
+
+    } catch (error) {
+      console.error("Error fetching song:", error);
+    } finally {
+      setIsLoading(false);
+    }
   };
+
+
+
+  const handlePlayPause = (index) => {
+    if (!audioElement) return;
+
+    const song = trendingSongs[index];
+
+    if (isPlaying && currentSong?.id === song.id) {
+      audioElement.pause();
+      dispatch(pauseAudio());
+    } else {
+      handleClick(index);
+    }
+  };
+
+  const handleCategories = (path) => {
+    navigate(path);
+  }
+
 
   return (
-    <>
-      <h2 id="homeheading1">Top Punjabi Artist's playlist</h2>
-      <div className="container3">
-        <div className="box1">
-          <div className="card">
-            <img
-              src="Amrinder Gill.jpg"
-              id="image1"
-              onClick={handleamrinderClick}
-            ></img>
-          </div>
-          <button id="homebtn1" onClick={handleamrinderClick}>
-            Play Now
-          </button>
-        </div>
-        <div className="box1">
-          <div className="card">
-            <img
-              src="sunanda sharma.png"
-              id="image1"
-              onClick={handlesunandaClick}
-            ></img>
-          </div>
-          <button id="homebtn1" onClick={handlesunandaClick}>
-            Play Now
-          </button>
-        </div>
-        <div className="box1">
-          <div className="card">
-            <img
-              src="arjan dhillon.jpg"
-              id="image1"
-              onClick={handlearjanClick}
-            ></img>
-          </div>
-          <button id="homebtn1" onClick={handlearjanClick}>
-            Play Now
-          </button>
-        </div>
-        <div className="box1">
-          <div className="card">
-            <img
-              src="nimrat khaira logo.jpg"
-              id="image1"
-              onClick={handlenimratClick}
-            ></img>
-          </div>
-          <button id="homebtn1" onClick={handlenimratClick}>
-            Play Now
-          </button>
-        </div>
-        <div className="box1">
-          <div className="card">
-            <img
-              src="jordan sandhu.jpg"
-              id="image1"
-              onClick={handlejordanClick}
-            ></img>
-          </div>
-          <button id="homebtn1" onClick={handlejordanClick}>
-            Play Now
-          </button>
-        </div>
-      </div>
+    <div className="home-container">
+      {/* Hero Section */}
+      <section className="hero-section">
+        <h1 className="hero-title">Welcome to Punjabi Music Hub</h1>
+        <p className="hero-subtitle">Discover the Best of Punjabi Music</p>
+      </section>
 
-      <h2 id="homeheading1">Top English Artist's playlist</h2>
-      <div className="container4">
-        <div className="box1">
-          <div className="card">
-            <img
-              src="ed sheeran.jpg"
-              id="image1"
-              onClick={handleEdsheeranClick}
-            ></img>
-          </div>
-          <button id="homebtn1" onClick={handleEdsheeranClick}>
-            Play Now
-          </button>
-        </div>
-        <div className="box1">
-          <div className="card">
-            <img
-              src="dua lipa.jpg"
-              id="image1"
-              onClick={handleDualipaClick}
-            ></img>
-          </div>
-          <button id="homebtn1" onClick={handleDualipaClick}>
-            Play Now
-          </button>
-        </div>
-        <div className="box1">
-          <div className="card">
-            <img
-              src="justin bieber.jpg"
-              id="image1"
-              onClick={handleJustinbieberClick}
-            ></img>
-          </div>
-          <button id="homebtn1" onClick={handleJustinbieberClick}>
-            Play Now
-          </button>
-        </div>
-        <div className="box1">
-          <div className="card">
-            <img
-              src="olivia rodrigo.jpg"
-              id="image1"
-              onClick={handleOliviarodrigoClick}
-            ></img>
-          </div>
-          <button id="homebtn1" onClick={handleOliviarodrigoClick}>
-            Play Now
-          </button>
-        </div>
-        <div className="box1">
-          <div className="card">
-            <img
-              src="sam smith.jpg"
-              id="image1"
-              onClick={handleSamsmithClick}
-            ></img>
-          </div>
-          <button id="homebtn1" onClick={handleSamsmithClick}>
-            Play Now
-          </button>
-        </div>
-      </div>
-      <div className="bigContainer">
-        <div className="container5">
-          <h1 id="heading1">
-            <span>Listen</span>&nbsp;to new music
-          </h1>
-          <p className="paragraph">
-            Rabindranath Tagore: “Music fills the infinite between two souls. It
-            has its origin in the unseen, and it moves us in ways beyond words.
-            The melodies we cherish are not just sounds but echoes of the
-            emotions and dreams that live within us. Music is the purest form of
-            art, and bringing harmony to the world.”
-          </p>
+      {/* Featured Artists Carousel */}
+      <section className="featured-artists">
+        <h2>Featured Artists</h2>
+        <div className="carousel-container">
+          <div
+            className="carousel-track"
+            style={{
+              transform: `translateX(-${currentSlide * (100 / visibleSlides)}%)`,
+              transition: 'transform 0.5s ease-in-out'
+            }}
+          >
+            {featuredArtists.map((artist, index) => (
+              <Link
+                to={artist.path}
+                key={index}
+                className="artist-card"
+                onClick={() => handleArtistClick(artist.path, artist.setheading, artist.artistImage)}
 
-          <div className="container6">
-            <button
-              id="btn4"
-              onClick={() => handleSimpleNavigation("/punjabimusic")}
-            >
-              Punjabi Songs
-            </button>
-            <button
-              id="btn5"
-              onClick={() => handleSimpleNavigation("/englishsongs")}
-            >
-              English Songs
-            </button>
+                style={{ flex: `0 0 ${90 / visibleSlides}%`, transform: `translateX(-${(currentSlide * 0)}%)`, }}
+              >
+                <div className="artist-image-container">
+                  <img src={artist.image} alt={artist.name} />
+                </div>
+                <h3>{artist.name}</h3>
+                <p>{artist.description}</p>
+              </Link>
+            ))}
+          </div>
+          <div className="carousel-dots">
+            {[...Array(totalPages)].map((_, index) => (
+              <span
+                key={index}
+                className={`dot ${currentSlide === index ? 'active' : ''}`}
+                onClick={() => setCurrentSlide(index)}
+              />
+            ))}
           </div>
         </div>
+      </section>
 
-        <div className="midContainer">
-          <h1 id="heading1">
-            <span>Power</span>&nbsp;of Music
-          </h1>
-          <p className="paragraph">
-            Sarojini Naidu: "Music is the voice of the soul, the unspoken poetry
-            of the heart that transcends time and space. It is the gentle
-            whisper of the breeze, the rhythmic dance of raindrops, and the
-            eternal song of the universe. In its melody, the burdens of life are
-            lightened, and in its harmony, the spirit finds peace. Just as a
-            bird sings without reason, so does music flow freely."
-          </p>
+      {/* New Releases Section */}
+      <section className="new-releases">
+        <h2>New Releases</h2>
+        <div className="releases-grid">
+          {newReleases.map((release, index) => (
+            <Link to={release.path} key={index} className="release-card" onClick={() => handleNavigation(release.path)}>
+              <div className="release-content">
+                <h3>{release.title}</h3>
+                <p>{release.description}</p>
+              </div>
+            </Link>
+          ))}
         </div>
+      </section>
 
-        <div className="container7">
-          <h1 id="heading1">
-            <span>Feel</span>&nbsp;the Rhythm
-          </h1>
-          <p className="paragraph">
-            A. R. Rahman: "Music is not just a sound; it is an experience that
-            connects souls. It has the power to heal, to bring joy, and to
-            inspire change. A single melody can evoke a thousand emotions, and a
-            simple rhythm can unite people beyond borders. It is the language of
-            the heart, spoken and understood by all."
-          </p>
+      {/* Quick Links */}
+      <section className="quick-links">
+        <h2>Quick Access</h2>
+        <div className="links-grid">
+          <Link to="/showFavourite" className="quick-link-card" onClick={() => handleNavigation('/favourite')}>
+            <i className="fas fa-heart"></i>
+            <span>Your Favorites</span>
+          </Link>
+          <Link to="/punjabimusic" className="quick-link-card">
+            <i className="fas fa-music"></i>
+            <span>All Songs</span>
+          </Link>
+          <Link to="/newmusic" className="quick-link-card" onClick={() => handleNavigation('/newmusic')}>
+            <i className="fas fa-compact-disc"></i>
+            <span>New Releases</span>
+          </Link>
+        </div>
+      </section>
 
-          <div className="container6">
-            <button
-              id="btn4"
-              onClick={() => handleSimpleNavigation("/trendingsongs")}
-            >
-              Trending Songs
-            </button>
-            <button id="btn5" onClick={() => handleloginNaviagtion()}>
-              New Releases
-            </button>
+      {/* Trending Section */}
+      <section className="trending-section">
+        <h2>Trending This Week</h2>
+        <div className="trending-grid">
+          {trendingSongs.map((song, index) => (
+            <div key={index} className="trending-card">
+              <div className="trending-image">
+                <img src={song.image} alt={song.title} loading="lazy" />
+                <div
+                  className="play-overlay"
+                  onClick={() => handlePlayPause(index)}
+                  style={{ cursor: "pointer" }}
+                >
+                  <i className={isPlaying ? "fas fa-pause" : "fas fa-play"}  ></i>
+                </div>
+              </div>
+              <div className="trending-info">
+                <h3>{song.title}</h3>
+                <p>{song.artist}</p>
+                <span className="plays">{song.plays}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Categories Section */}
+      <section className="categories-section">
+        <h2>Browse Categories</h2>
+        <div className="categories-grid">
+          <div className="category-card romantic" onClick={() => handleCategories('/roadSongs')}>
+            <i className="fas fa-car"></i>
+            <h3>Driving & Road Trip</h3>
+          </div>
+          <div className="category-card party" onClick={() => handleCategories('/partySongs')}>
+            <i className="fas fa-music"></i>
+            <h3>Party</h3>
+          </div>
+          <div className="category-card devotional" onClick={() => handleCategories('/gamingSongs')}>
+            <i className="fas fa-gamepad" ></i>
+            <h3>Gaming Mode</h3>
+          </div>
+          <div className="category-card workout" onClick={() => handleCategories('/weddingSongs')}>
+            <i className="fas fa-users"></i>
+            <h3>Wedding</h3>
           </div>
         </div>
-      </div>
-      <div className="homeLastDiv"></div>
-      <Footer />
-    </>
+      </section>
+
+
+
+      {/* Footer Section */}
+      <footer className="home-footer">
+        <div className="footer-content">
+          <div className="footer-section">
+            <h3>About Us</h3>
+            <p>Your ultimate destination for Punjabi music</p>
+          </div>
+          <div className="footer-section">
+            <h3>Quick Links</h3>
+            <ul>
+              <li><Link to="/newmusic">New Releases</Link></li>
+              <li><Link to="/punjabimusic">Top Charts</Link></li>
+              <li><Link to="/showFavourite">Your Favorites</Link></li>
+            </ul>
+          </div>
+          <div className="footer-section">
+            <h3>Connect With Us</h3>
+            <div className="social-links">
+              <a href="https://www.linkedin.com/in/jashandeep-singh-50826833a/" target='blank'><i className="fab fa-linkedin"></i></a>
+              <a href="https://www.instagram.com/codingwithhappiness/" target='blank'><i className="fab fa-instagram"></i></a>
+              <a href="https://x.com/Jashan5909" target='blank'><i className="fab fa-twitter"></i></a>
+              <a href="https://www.youtube.com/@codingwith_happiness06/videos" target='blank'><i className="fab fa-youtube"></i></a>
+            </div>
+          </div>
+        </div>
+        <div className="footer-bottom">
+          <p>&copy; www.<span>Beat</span>Music.com. All rights reserved.</p>
+        </div>
+      </footer>
+    </div>
   );
 };
 

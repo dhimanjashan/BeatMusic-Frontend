@@ -1,16 +1,14 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Footer from "./Footer";
-import { useSelector } from "react-redux";
-import AlertModal from "./AlertModal"; // Import custom alert
+import AlertModal from "./AlertModal";
 
 const Reset = () => {
   const navigate = useNavigate();
-  const [alertTitle, setalertTitle] = useState('');
-  const [alertMessage, setalertMessage] = useState('');
+  const [alertTitle, setalertTitle] = useState("");
+  const [alertMessage, setalertMessage] = useState("");
   const [showModal, setShowModal] = useState(false);
   const [passwordLength, setpasswordLength] = useState(0);
-
 
   const [data, setData] = useState({
     email: "",
@@ -30,11 +28,10 @@ const Reset = () => {
 
   const handleReset = async (e) => {
     e.preventDefault(); // Prevent form reload
-    if(passwordLength<6){
+    if (passwordLength < 6) {
       setalertTitle("🔒 Password Length Error");
-    setalertMessage("Password must be at least 6 characters long");
-    setShowModal(true);
-      // alert("Password must be at least 6 characters long");
+      setalertMessage("Password must be at least 6 characters long");
+      setShowModal(true);
       return;
     }
     try {
@@ -50,7 +47,9 @@ const Reset = () => {
       if (response.ok) {
         setShowModal(true);
         setalertTitle("🔐 Password Changed!");
-        setalertMessage("✅ Your password has been reset! You can now log in with your new credentials.");
+        setalertMessage(
+          "✅ Your password has been reset! You can now log in with your new credentials."
+        );
 
         setData({
           email: "",
@@ -66,14 +65,16 @@ const Reset = () => {
   };
   const handleConfirm = () => {
     setShowModal(false);
-  }
+  };
   return (
     <>
       <div className="wrapper">
         <div className="reset-container">
           <h2>Reset Password</h2>
-          <p className="resetHeading">Enter your email to reset your password.</p>
-          <form >
+          <p className="resetHeading">
+            Enter your email to reset your password.
+          </p>
+          <form>
             <div className="input-group">
               <label htmlFor="email">Email Address</label>
               <input
@@ -107,11 +108,21 @@ const Reset = () => {
                 required
               />
             </div>
-            <button type="submit" className="reset-button" onClick={handleReset}> 
+            <button
+              type="submit"
+              className="reset-button"
+              onClick={handleReset}
+            >
               Reset Password
             </button>
             <p className="back-to-login">
-              <a href="/login" onClick={(e) => { e.preventDefault(); navigate("/login"); }}>
+              <a
+                href="/login"
+                onClick={(e) => {
+                  e.preventDefault();
+                  navigate("/login");
+                }}
+              >
                 Back to Login
               </a>
             </p>
@@ -123,6 +134,7 @@ const Reset = () => {
             message={alertMessage}
             onConfirm={handleConfirm}
             confirmText="OK"
+            type="success"
           />
         )}
       </div>

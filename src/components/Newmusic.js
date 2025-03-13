@@ -2,15 +2,13 @@ import React, { useEffect, useState, useRef } from "react";
 import PlayerSystem from "./PlayerSystem";
 import { useDispatch, useSelector } from "react-redux";
 import { playAudio, pauseAudio } from "../state/audioSlice";
-import { addFavorite, removeFavorite } from "../state/favouriteSlice";
+import { addFavorite } from "../state/favouriteSlice";
 import PlayerControl from "./PlayerControl";
 import { useNavigate } from "react-router-dom";
-import Heart from "./Heart";
 
 const Newmusic = () => {
   const audioRef = useRef(null);
   const [repeat, setRepeat] = useState(false);
-  const [find, setfind] = useState(false);
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
 
   const dispatch = useDispatch();
@@ -19,7 +17,7 @@ const Newmusic = () => {
     (state) => state.audio
   );
   const userID = useSelector((state) => state.user.userID);
-  const favouriteSongs = useSelector(state => state.favourite.songs) || [];
+  const favouriteSongs = useSelector((state) => state.favourite.songs) || [];
   const [isLoading, setIsLoading] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 900);
 
@@ -28,6 +26,14 @@ const Newmusic = () => {
   }, []);
 
   const newPunjabiSongs = [
+    {
+      id: "67d28db63147114aa1df0228",
+      title: "Fomo mp3 song by Jordan Sandhu.",
+    },
+    {
+      id: "67d28e123147114aa1df022a",
+      title: "Ammi Wargiye Ni mp3 song by Shree Brar.",
+    },
     { id: "67a45a6e5886b255ee475705", title: "Bhabhi Mp3 song by Nijjar." },
     {
       id: "67a45b5c5886b255ee475707",
@@ -208,57 +214,55 @@ const Newmusic = () => {
       console.log("No more songs left!");
     }
   };
- const handleFavourite = async () => {
-      if (!isAuthenticated) {
-        navigate("/heart");
+  const handleFavourite = async () => {
+    if (!isAuthenticated) {
+      navigate("/heart");
+      return;
+    }
+
+    if (!currentSong || !userID) return;
+
+    try {
+      // First check if the song is already a favorite
+      const isFavourite = favouriteSongs.some(
+        (fav) => fav.id === currentSong.id
+      );
+
+      if (isFavourite) {
+        console.log("Song is already in favorites");
         return;
       }
-  
-      if (!currentSong || !userID) return;
-  
-      try {
-        // First check if the song is already a favorite
-        const isFavourite = favouriteSongs.some(fav => fav.id === currentSong.id);
-        
-        if (isFavourite) {
-          console.log("Song is already in favorites");
-          return;
-        }
-  
-        const response = await fetch("http://172.20.10.4:5000/api/favSongs/add", {
-          method: "POST",
-          headers: { 
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ 
-            userID: userID,
-            songId: currentSong.id,
-            title: currentSong.title 
-          }),
-        });
-  
-        const data = await response.json();
-        
-        if (response.ok) {
-          console.log("Song added to favorites:", data);
-          // Add the song to Redux store
-          dispatch(addFavorite({
+
+      const response = await fetch("http://172.20.10.4:5000/api/favSongs/add", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          userID: userID,
+          songId: currentSong.id,
+          title: currentSong.title,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        console.log("Song added to favorites:", data);
+        // Add the song to Redux store
+        dispatch(
+          addFavorite({
             id: currentSong.id,
-            title: currentSong.title
-          }));
-        } else {
-          console.error("Failed to add favorite:", data.message);
-        }
-      } catch (error) {
-        console.error("Error updating favorites:", error);
+            title: currentSong.title,
+          })
+        );
+      } else {
+        console.error("Failed to add favorite:", data.message);
       }
-    };
-    
-  useEffect(() => {
-    if (find) {
-      navigate("/heart"); // Redirect to auth page if not logged in
+    } catch (error) {
+      console.error("Error updating favorites:", error);
     }
-  }, [find]);
+  };
 
   const handleRepeat = () => {
     setRepeat(!repeat);
@@ -303,7 +307,7 @@ const Newmusic = () => {
               isPlaying={isPlaying}
               handlePrevious={handlePrevious}
               handleFavourite={handleFavourite}
-        handleRepeat={handleRepeat}
+              handleRepeat={handleRepeat}
             />
           ) : (
             <PlayerSystem
@@ -321,8 +325,8 @@ const Newmusic = () => {
               onClick={() => handleClick(index)}
               style={{
                 cursor: "pointer",
-                color: currentSong?.id === song.id ? "white" : "black",
-                fontWeight: currentSong?.id === song.id ? "bolder" : "bold",
+                color: currentSong?.id === song.id ? "green" : "white",
+                fontWeight: currentSong?.id === song.id ? "bold" : "lighter",
               }}
             >
               {song.title}

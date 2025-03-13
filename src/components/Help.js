@@ -1,9 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Footer from "./Footer";
 
 const Help = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  })
+
   return (
     <>
+
       <div className="helpContainer2">
         <div className="helpContainer3">
           <h1 className="helpHeading2">Frequently asked</h1>
@@ -14,7 +19,7 @@ const Help = () => {
           </h2>
           <div className="faq-container">
             <div className="faq-item">
-              <label className="faq-question" for="faq1">
+              <label className="faq-question" htmlFor="faq1">
                 What is BeatMusic?
               </label>
               <input type="checkbox" id="faq1" />
@@ -24,7 +29,7 @@ const Help = () => {
               </div>
             </div>
             <div className="faq-item">
-              <label className="faq-question" for="faq2">
+              <label className="faq-question" htmlFor="faq2">
                 Is BeatMusic free to use?
               </label>
               <input type="checkbox" id="faq2" />
@@ -35,7 +40,7 @@ const Help = () => {
               </div>
             </div>
             <div className="faq-item">
-              <label className="faq-question" for="faq3">
+              <label className="faq-question" htmlFor="faq3">
                 How do I play a song on BeatMusic?
               </label>
               <input type="checkbox" id="faq3" />
@@ -44,7 +49,7 @@ const Help = () => {
               </div>
             </div>
             <div className="faq-item">
-              <label className="faq-question" for="faq4">
+              <label className="faq-question" htmlFor="faq4">
                 {" "}
                 What should I do if BeatMusic is not working properly?
               </label>
@@ -56,7 +61,7 @@ const Help = () => {
               </div>
             </div>
             <div className="faq-item">
-              <label className="faq-question" for="faq5">
+              <label className="faq-question" htmlFor="faq5">
                 {" "}
                 Does BeatMusic work on all devices and browsers?
               </label>
@@ -67,7 +72,7 @@ const Help = () => {
               </div>
             </div>
             <div className="faq-item">
-              <label className="faq-question" for="faq6">
+              <label className="faq-question" htmlFor="faq6">
                 How do I contact customer support?
               </label>
               <input type="checkbox" id="faq6" />
@@ -76,7 +81,7 @@ const Help = () => {
               </div>
             </div>
             <div className="faq-item">
-              <label className="faq-question" for="faq7">
+              <label className="faq-question" htmlFor="faq7">
                 Is my personal data safe on BeatMusic?
               </label>
               <input type="checkbox" id="faq7" />
@@ -86,7 +91,7 @@ const Help = () => {
               </div>
             </div>
             <div className="faq-item">
-              <label className="faq-question" for="faq8">
+              <label className="faq-question" htmlFor="faq8">
                 How do I delete my account permanently?
               </label>
               <input type="checkbox" id="faq8" />
@@ -96,14 +101,14 @@ const Help = () => {
               </div>
             </div>
             <div className="faq-item">
-              <label className="faq-question" for="faq9">
+              <label className="faq-question" htmlFor="faq9">
                 How do I organize my music library?
               </label>
               <input type="checkbox" id="faq9" />
               <div className="faq-answer">You can mark songs as favorites.</div>
             </div>
             <div className="faq-item">
-              <label className="faq-question" for="faq10">
+              <label className="faq-question" htmlFor="faq10">
                 Why is my music buffering or not playing?
               </label>
               <input type="checkbox" id="faq10" />

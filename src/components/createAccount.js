@@ -3,16 +3,14 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
 import Footer from "./Footer";
-import AlertModal from "./AlertModal"; // Import custom alert
-
+import AlertModal from "./AlertModal";
 
 const CreateAccount = ({ setActiveLink }) => {
   const navigate = useNavigate();
   const [showModal, setShowModal] = useState(false);
   const [passwordLength, setpasswordLength] = useState(0);
-  const [alertTitle, setalertTitle] = useState('');
-  const [alertMessage, setalertMessage] = useState('');
-
+  const [alertTitle, setalertTitle] = useState("");
+  const [alertMessage, setalertMessage] = useState("");
 
   const handleNavigation = () => {
     setActiveLink("login");
@@ -35,13 +33,12 @@ const CreateAccount = ({ setActiveLink }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault(); // Prevents page reload
-   if(passwordLength<6){
+    if (passwordLength < 6) {
       setalertTitle("🔒 Password Length Error");
-    setalertMessage("Password must be at least 6 characters long");
-    setShowModal(true);
-      // alert("Password must be at least 6 characters long");
+      setalertMessage("Password must be at least 6 characters long or fill the pending details");
+      setShowModal(true);
       return;
-   }
+    }
     try {
       const response = await fetch(
         "http://172.20.10.4:5000/api/users/register",
@@ -55,10 +52,11 @@ const CreateAccount = ({ setActiveLink }) => {
       );
 
       if (response.ok) {
-        console.log("Data stored successfully!");
         setShowModal(true);
         setalertTitle("🎉 Welcome Aboard!");
-        setalertMessage(" ✅ Your account has been successfully created. Get ready to explore and enjoy all the features! 🚀");
+        setalertMessage(
+          " ✅ Your account has been successfully created. Get ready to explore and enjoy all the features! 🚀"
+        );
         // Clear input fields after submission
         setFormData({
           firstName: "",
@@ -74,10 +72,11 @@ const CreateAccount = ({ setActiveLink }) => {
   };
   const handleConfirm = () => {
     setShowModal(false);
-  }
+  };
 
   return (
     <>
+
       <div className="accountContainer1">
         <h1 id="createAccountheading1">Hanji Sohneyo Bnalo Apna New Account</h1>
       </div>
@@ -102,7 +101,8 @@ const CreateAccount = ({ setActiveLink }) => {
               value={formData.firstName}
               type="string"
               placeholder="First Name"
-              className="custom-input" required
+              className="custom-input"
+              required
             ></input>
             <input
               name="email"
@@ -110,15 +110,17 @@ const CreateAccount = ({ setActiveLink }) => {
               value={formData.email} // Controlled input
               type="email"
               placeholder="Email"
-              className="custom-input" required
+              className="custom-input"
+              required
             ></input>
             <input
               name="password"
               onChange={handleChange}
-              value={formData.password} // Controlled input 
+              value={formData.password} // Controlled input
               type="password"
               placeholder="Password"
-              className="custom-input" required
+              className="custom-input"
+              required
             ></input>
             <button onClick={handleSubmit} className="createAccountbtn">
               Sign up
@@ -131,6 +133,7 @@ const CreateAccount = ({ setActiveLink }) => {
             message={alertMessage}
             onConfirm={handleConfirm}
             confirmText="OK"
+            type="success"
           />
         )}
       </div>

@@ -4,6 +4,7 @@ import Footer from "./Footer";
 const About = () => {
   return (
     <>
+
       <div className="aboutcontainer1">
         <h1 className="aboutheading1">About Padlo Sohneyo</h1>
       </div>
@@ -52,7 +53,7 @@ const About = () => {
           </p>
         </div>
       </div>
-      <Footer/>
+      <Footer />
     </>
   );
 };

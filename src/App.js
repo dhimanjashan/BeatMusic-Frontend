@@ -15,9 +15,13 @@ import AmrinderGill from "./components/AmrinderGill";
 import NimratSongs from "./components/NimratSongs";
 import EnglishSongs from "./components/EnglishSongs";
 import TrendingSongs from "./components/TrendingSongs";
+import PartySongs from "./components/PartySongs";
+import RoadSongs from "./components/RoadSongs";
+import WeddingSongs from "./components/WeddingSongs";
+import GamingSongs from "./components/GamingSongs";
 import PunjabiMusic from "./components/PunjabiMusic";
 import MusicApp from "./components/Music";
-import Reset from "./components/Reset"; 
+import Reset from "./components/Reset";
 import Heart from "./components/Heart";
 import ShowFavourite from "./components/ShowFavourite";
 import User from "./components/User";
@@ -25,15 +29,7 @@ import AlertModal from "./components/AlertModal";
 
 function App() {
   const [image, setImage] = useState("");
-  const [music, setMusic] = useState("");
-  const [isPlaying, setisPlaying] = useState(false);
-  const [favouriteTitle, setFavouriteTitle] = useState(null);
   const [activeLink, setActiveLink] = useState("");
-  const [song, setsong] = useState(null); 
-  const [favourite, setfavourite] = useState(false);
-  const [userID, setuserID] = useState(' ');
-const [alertMessage, setAlertMessage] = useState("");
-const [musicId,setmusicId]=useState(" ");
 
   return (
     <Router>
@@ -45,32 +41,20 @@ const [musicId,setmusicId]=useState(" ");
             element={<Home setImage={setImage} setActiveLink={setActiveLink} />}
           />
           <Route exact path="/newmusic" element={<Newmusic />} />
-          <Route
-            exact
-            path="/amrindergill"
-            element={<AmrinderGill setmusicId={setmusicId} />}
-          />
-          <Route
-            exact
-            path="/nimratkhaira"
-            element={<NimratSongs setisPlaying={setisPlaying} />}
-          />
-          <Route
-            exact
-            path="/playmusic"
-            element={<PlayerControl setfavourite={setfavourite} />}
-          />
-          <Route
-            exact
-            path="/favourite"
-            element={<Favourite song={song} favourite={favourite} />}
-          />
+          <Route exact path="/amrindergill" element={<AmrinderGill />} />
+          <Route exact path="/nimratkhaira" element={<NimratSongs />} />
+          <Route exact path="/playmusic" element={<PlayerControl />} />
+          <Route exact path="/favourite" element={<Favourite />} />
           <Route exact path="/about" element={<About />} />
-          <Route exact path="/login" element={<Login setuserID={setuserID} />} />
+          <Route exact path="/login" element={<Login />} />
           <Route exact path="/reset" element={<Reset />} />
           <Route exact path="/help" element={<Help />} />
           <Route exact path="/heart" element={<Heart />} />
-          <Route exact path="/user" element={<User musicId={musicId} />} />
+          <Route exact path="/user" element={<User />} />
+          <Route exact path="/partySongs" element={<PartySongs />} />
+          <Route exact path="/gamingSongs" element={<GamingSongs />} />
+          <Route exact path="/roadSongs" element={<RoadSongs />} />
+          <Route exact path="/weddingSongs" element={<WeddingSongs />} />
           <Route exact path="/alertModal" element={<AlertModal />} />
           <Route exact path="/showFavourite" element={<ShowFavourite />} />
           <Route exact path="/punjabimusic" element={<PunjabiMusic />} />
@@ -79,18 +63,14 @@ const [musicId,setmusicId]=useState(" ");
           <Route
             exact
             path="/musiclist"
-            element={<Musiclist image={image} music={music} />}
+            element={<Musiclist image={image} />}
           />
           <Route
             exact
             path="/createAccount"
             element={<CreateAccount setActiveLink={setActiveLink} />}
           />
-          <Route
-            exact
-            path="/musicapp"
-            element={<MusicApp favouriteTitle={favouriteTitle} />}
-          />
+          <Route exact path="/musicapp" element={<MusicApp />} />
         </Routes>
       </div>
     </Router>

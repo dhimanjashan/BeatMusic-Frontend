@@ -55,8 +55,8 @@ const Navbar = ({ activeLink, setActiveLink }) => {
               <li>
                 <Link
                   to="/newmusic"
-                  onClick={() => handleNavigation("newmusic", "/newmusic")}
-                  className={activeLink === "newmusic" ? "active" : ""}
+                  onClick={() => handleNavigation("/newmusic", "/newmusic")}
+                  className={activeLink === "/newmusic" ? "active" : ""}
                 >
                   New music
                 </Link>
@@ -64,8 +64,8 @@ const Navbar = ({ activeLink, setActiveLink }) => {
               <li>
                 <Link
                   to="/favourite"
-                  onClick={() => handleNavigation("favourite", "/favourite")}
-                  className={activeLink === "favourite" ? "active" : ""}
+                  onClick={() => handleNavigation("/favourite", "/favourite")}
+                  className={activeLink === "/favourite" ? "active" : ""}
                 >
                   Favourite
                 </Link>
@@ -108,7 +108,7 @@ const Navbar = ({ activeLink, setActiveLink }) => {
                   </button>
                 </>
               ) : (
-              <User/>
+                <User />
               )}
             </div>
           </ul>

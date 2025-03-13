@@ -2,10 +2,10 @@ import React, { useState, useEffect, useRef } from "react";
 import { useSelector } from "react-redux";
 import { logout } from "../state/authSlice";
 import { useDispatch } from "react-redux";
-import AlertModal from "./AlertModal"; // Import custom alert
-import { playAudio, pauseAudio } from "../state/audioSlice";
+import AlertModal from "./AlertModal";
+import { pauseAudio } from "../state/audioSlice";
 
-const User = ({ musicId }) => {
+const User = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const modalRef = useRef(null);
   const dispatch = useDispatch();
@@ -31,7 +31,6 @@ const User = ({ musicId }) => {
       );
       const fetchedData = await response.json();
       setUserData(fetchedData);
-      console.log(fetchedData);
     } catch (error) {
       console.error("Error:", error);
     }
@@ -40,7 +39,7 @@ const User = ({ musicId }) => {
   const handleLogout = () => {
     if (audioElement) {
       audioElement.pause();
-      audioElement.currentTime = 0; // Reset progress bar to beginning
+      audioElement.currentTime = 0;
     }
     setTimeout(() => {
       dispatch(pauseAudio());
@@ -53,32 +52,32 @@ const User = ({ musicId }) => {
 
   const handleFavoriteDelete = async (userID) => {
     try {
-      const response = await fetch('http://172.20.10.4:5000/api/favsongs/remove', {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ userID })
-
-      })
+      const response = await fetch(
+        "http://172.20.10.4:5000/api/favsongs/remove",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ userID }),
+        }
+      );
       const data = await response.json();
       if (response.ok) {
         console.log(data.message);
-      }
-      else {
+      } else {
         console.log("Favorite songs can not deleted successfully");
       }
     } catch (error) {
       console.error("Error to delete the songs:", error);
     }
-  }
+  };
 
   const handleDeleteClick = () => {
     setAlertMessage("");
-    setShowModal(true); // Show the modal when delete button is clicked
+    setShowModal(true);
   };
   const handleDelete = async () => {
-    console.log("Delete function executed");
     if (!userID) {
       setAlertMessage("User ID not found!");
       return;
@@ -94,7 +93,6 @@ const User = ({ musicId }) => {
         }
       );
       if (response.ok) {
-        console.log(alertMessage);
         handleFavoriteDelete(userID);
         setTimeout(() => {
           handleLogout();
@@ -109,7 +107,7 @@ const User = ({ musicId }) => {
       console.error("Error deleting account:", error);
       setAlertMessage("Error deleting account!");
     } finally {
-      setShowModal(false); // Hide modal regardless of outcome
+      setShowModal(false);
     }
   };
   useEffect(() => {
@@ -117,6 +115,7 @@ const User = ({ musicId }) => {
       console.log("Alert Message Updated:", alertMessage); // Debugging
     }
   }, [alertMessage]);
+
   const handleCancelDelete = () => {
     setShowModal(false);
   };
@@ -178,6 +177,7 @@ const User = ({ musicId }) => {
           cancelText="Cancel"
           onConfirm={handleDelete}
           onCancel={handleCancelDelete}
+          type="warning"
         />
       )}
     </div>

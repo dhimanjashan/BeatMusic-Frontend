@@ -13,9 +13,9 @@ const rootReducer = combineReducers({
   player: setSong,
   audio: audioReducer,
   favourite: favouriteReducer,
-  stringReducer:stringSlice,
-  artistImage:setimage,
-  auth: authReducer, 
+  stringReducer: stringSlice,
+  artistImage: setimage,
+  auth: authReducer,
   user: UserReducer,
 });
 

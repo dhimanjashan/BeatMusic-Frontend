@@ -54,7 +54,7 @@ const PlayerControl = ({
 
   const colorRepeat = () => {
     setRepeat((prevRepeat) => !prevRepeat); // Toggle repeat state
-    handleRepeat(); 
+    handleRepeat();
   };
 
   return (

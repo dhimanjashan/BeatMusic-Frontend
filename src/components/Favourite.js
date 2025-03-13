@@ -2,14 +2,12 @@ import { useSelector, useDispatch } from "react-redux";
 import React, { useState, useEffect } from "react";
 import PlayerControl from "./PlayerControl";
 import { playAudio, pauseAudio } from "../state/audioSlice";
-import { fetchFavorites, addFavorite, removeFavorite } from "../state/favouriteSlice";
-
+import { fetchFavorites } from "../state/favouriteSlice";
 
 const Favourite = () => {
   const userID = useSelector((state) => state.user.userID);
   const favouriteSongs = useSelector((state) => state.favourite.songs);
   let isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
-  console.log("Favourite Songs List:", favouriteSongs);
 
   const dispatch = useDispatch();
   const { isPlaying, currentSong, audioElement } = useSelector(
@@ -24,45 +22,45 @@ const Favourite = () => {
     }
   }, [dispatch, userID]);
 
-useEffect(() => {
-  window.scrollTo(0, 0);  // Scroll to top when component loads
-})
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  });
 
   const handleClick = async (songIndex) => {
     if (isLoading) return;
     setIsLoading(true);
     const song = favouriteSongs[songIndex];
     try {
-         const response = await fetch("http://172.20.10.4:5000/files/", {
-           method: "POST",
-           headers: { "Content-Type": "application/json" },
-           body: JSON.stringify({ songId: song.id }),
-         });
-   
-         const data = await response.json();
-         if (!data.file_path || typeof data.file_path !== "string") {
-           console.error("Invalid file path received:", data.file_path);
-           return;
-         }
-   
-         audioElement.src = data.file_path;
-         audioElement.load();
-   
-         audioElement.oncanplaythrough = () => {
-           audioElement
-             .play()
-             .then(() => {
-               dispatch(playAudio({ songUrl: data.file_path, song }));
-             })
-             .catch(error => {
-               console.error("Error playing audio:", error);
-             }); 
-         };
-       } catch (error) {
-         console.error("Error fetching data from backend:", error);
-       } finally {
-         setIsLoading(false);
-       }
+      const response = await fetch("http://172.20.10.4:5000/files/", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ songId: song.id }),
+      });
+
+      const data = await response.json();
+      if (!data.file_path || typeof data.file_path !== "string") {
+        console.error("Invalid file path received:", data.file_path);
+        return;
+      }
+
+      audioElement.src = data.file_path;
+      audioElement.load();
+
+      audioElement.oncanplaythrough = () => {
+        audioElement
+          .play()
+          .then(() => {
+            dispatch(playAudio({ songUrl: data.file_path, song }));
+          })
+          .catch((error) => {
+            console.error("Error playing audio:", error);
+          });
+      };
+    } catch (error) {
+      console.error("Error fetching data from backend:", error);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const handleNext = async () => {
@@ -124,6 +122,7 @@ useEffect(() => {
 
   return (
     <>
+
       <div className="favouriteContainer1">
         <h1 className="favouriteHeading1">
           Here The List Of Your Favourite Songs 🎵
@@ -138,8 +137,8 @@ useEffect(() => {
               onClick={() => handleClick(index)}
               style={{
                 cursor: "pointer",
-                color: currentSong?.id === song.id ? "white" : "black",
-                fontWeight: currentSong?.id === song.id ? "bolder" : "bold",
+                color: currentSong?.id === song.id ? "green" : "white",
+                fontWeight: currentSong?.id === song.id ? "bold" : "lighter",
               }}
             >
               {i++}. {song.title}{" "}

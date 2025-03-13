@@ -1,25 +1,22 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Footer from "./Footer";
-import { useSelector,useDispatch } from "react-redux";
-import { login, logout } from "../state/authSlice";
+import { useDispatch } from "react-redux";
+import { login } from "../state/authSlice";
 import { setUserID } from "../state/userSlice";
-import { setFavorites } from "../state/favouriteSlice";
 import { fetchFavorites } from "../state/favouriteSlice";
-import AlertModal from "./AlertModal"; // Import custom alert
+import AlertModal from "./AlertModal";
 
-
-const Login = ({setlogged}) => {
+const Login = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [showModal, setShowModal] = useState(false);
 
-  let isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
   const handleReset = (e) => {
     e.preventDefault();
     navigate("/reset");
   };
-const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
@@ -29,7 +26,7 @@ const [formData, setFormData] = useState({
   };
   const handleConfirm = () => {
     setShowModal(false);
-  }
+  };
   const handleSubmit = async (e) => {
     e.preventDefault(); // Prevents page reload
 
@@ -44,19 +41,16 @@ const [formData, setFormData] = useState({
       const data = await response.json();
       if (response.ok) {
         dispatch(fetchFavorites(data.userId));
-        console.log("Login successfully!");
-        console.log(data.userId);
         dispatch(setUserID(data.userId));
-        dispatch(login()); 
+        dispatch(login());
         // Clear input fields after submission
         setFormData({
           email: "",
           password: "",
         });
-        navigate('/showFavourite');
+        navigate("/showFavourite");
       } else {
         setShowModal(true);
-        // console.error("Invalid credentials");
       }
     } catch (error) {
       console.error("Error:", error);
@@ -65,19 +59,38 @@ const [formData, setFormData] = useState({
 
   return (
     <>
+
       <div className="wrapper">
         <div className="login-container">
           <h2>Welcome Back!</h2>
           <form action="#" method="POST">
             <div className="input-group">
               <label htmlFor="username">Email</label>
-              <input value={formData.email} onChange={handleChange} type="email" id="username" name="email" required />
+              <input
+                value={formData.email}
+                onChange={handleChange}
+                type="email"
+                id="username"
+                name="email"
+                required
+              />
             </div>
             <div className="input-group">
               <label htmlFor="password">Password</label>
-              <input value={formData.password} onChange={handleChange} type="password" id="password" name="password" required />
+              <input
+                value={formData.password}
+                onChange={handleChange}
+                type="password"
+                id="password"
+                name="password"
+                required
+              />
             </div>
-            <button onClick={handleSubmit} type="submit" className="login-button">
+            <button
+              onClick={handleSubmit}
+              type="submit"
+              className="login-button"
+            >
               Login
             </button>
             <p className="forgot-password">

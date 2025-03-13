@@ -5,41 +5,68 @@ import { playAudio, pauseAudio } from "../state/audioSlice";
 import { addFavorite } from "../state/favouriteSlice";
 import { useNavigate } from "react-router-dom";
 
-const AmrinderGill = ({setmusicId}) => {
+const AmrinderGill = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  
-  const { isPlaying, currentSong, audioElement } = useSelector(state => state.audio);
-  const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
-  const favouriteSongs = useSelector(state => state.favourite.songs) || [];
-  
+
+  const { isPlaying, currentSong, audioElement } = useSelector(
+    (state) => state.audio
+  );
+
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+  const favouriteSongs = useSelector((state) => state.favourite.songs) || [];
+
   const [isLoading, setIsLoading] = useState(false);
   const [repeat, setRepeat] = useState(false);
   const userID = useSelector((state) => state.user.userID);
-  
+
   const songs = [
-    { id: "679355ef47bdbe2186044204", title: "Dildarian song by Amrinder Gill" },
-    { id: "679358cf47bdbe2186044206", title: "Ki Samjhaiye song by Amrinder Gill" },
+    {
+      id: "679355ef47bdbe2186044204",
+      title: "Dildarian song by Amrinder Gill",
+    },
+    {
+      id: "679358cf47bdbe2186044206",
+      title: "Ki Samjhaiye song by Amrinder Gill",
+    },
     { id: "6793590947bdbe2186044208", title: "Yarrian song by Amrinder Gill" },
     { id: "6793599347bdbe218604420a", title: "Judaa song by Amrinder Gill" },
     { id: "679359d247bdbe218604420c", title: "Baapu song by Amrinder Gill" },
-    { id: "67935b8447bdbe2186044218", title: "Dubda Sooraj song by Amrinder Gill" },
-    { id: "67935a0347bdbe218604420e", title: "Kurta Suha - Angrej song by Amrinder Gill" },
+    {
+      id: "67935b8447bdbe2186044218",
+      title: "Dubda Sooraj song by Amrinder Gill",
+    },
+    {
+      id: "67935a0347bdbe218604420e",
+      title: "Kurta Suha - Angrej song by Amrinder Gill",
+    },
     { id: "67935a5847bdbe2186044210", title: "Supna song by Amrinder Gill" },
-    { id: "67935be147bdbe218604421a", title: "That Girl song by Amrinder Gill" },
-    { id: "67935a7f47bdbe2186044212", title: "Heerey - Love Punjab song by Amrinder Gill" },
-    { id: "67935acb47bdbe2186044214", title: "Chal Jindiye song by Amrinder Gill" },
-    { id: "67935b2647bdbe2186044216", title: "Ocean Eyes song by Amrinder Gill" },
+    {
+      id: "67935be147bdbe218604421a",
+      title: "That Girl song by Amrinder Gill",
+    },
+    {
+      id: "67935a7f47bdbe2186044212",
+      title: "Heerey - Love Punjab song by Amrinder Gill",
+    },
+    {
+      id: "67935acb47bdbe2186044214",
+      title: "Chal Jindiye song by Amrinder Gill",
+    },
+    {
+      id: "67935b2647bdbe2186044216",
+      title: "Ocean Eyes song by Amrinder Gill",
+    },
   ];
-
+  const API_URL = process.env.REACT_APP_API_URL || '';
   const handleClick = async (songIndex) => {
-    if (isLoading) return; 
+    if (isLoading) return;
     setIsLoading(true);
 
     const song = songs[songIndex];
-
+    console.log(API_URL);
     try {
-      const response = await fetch("http://172.20.10.4:5000/files/", {
+      const response = await fetch(`${API_URL}/files/`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ songId: song.id }),
@@ -54,8 +81,8 @@ const AmrinderGill = ({setmusicId}) => {
       audioElement.src = data.file_path;
       audioElement.load();
 
-      audioElement.oncanplaythrough = () => {
-        audioElement
+      audioElement.oncanplaythrough = async () => {
+        await audioElement
           .play()
           .then(() => {
             dispatch(playAudio({ songUrl: data.file_path, song }));
@@ -93,12 +120,17 @@ const AmrinderGill = ({setmusicId}) => {
 
   const handlePlayPause = () => {
     if (!audioElement) return;
-    if (isPlaying) {
-      audioElement.pause();
-      dispatch(pauseAudio());
-    } else {
-      audioElement.play();
-      dispatch(playAudio({ songUrl: currentSong.songUrl, song: currentSong }));
+    try {
+      if (isPlaying) {
+        audioElement.pause();
+        dispatch(pauseAudio());
+      } else {
+        audioElement.play();
+        dispatch(playAudio({ songUrl: currentSong.songUrl, song: currentSong }));
+      }
+
+    } catch (error) {
+      console.warn("Audio play error:", error.message);
     }
   };
 
@@ -113,26 +145,26 @@ const AmrinderGill = ({setmusicId}) => {
     try {
       // First check if the song is already a favorite
       const isFavourite = favouriteSongs.some(fav => fav.id === currentSong.id);
-      
+
       if (isFavourite) {
         console.log("Song is already in favorites");
         return;
       }
 
-      const response = await fetch("http://172.20.10.4:5000/api/favSongs/add", {
+      const response = await fetch(`${API_URL}/api/favSongs/add`, {
         method: "POST",
-        headers: { 
+        headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ 
+        body: JSON.stringify({
           userID: userID,
           songId: currentSong.id,
-          title: currentSong.title 
+          title: currentSong.title
         }),
       });
 
       const data = await response.json();
-      
+
       if (response.ok) {
         console.log("Song added to favorites:", data);
         // Add the song to Redux store
@@ -147,7 +179,7 @@ const AmrinderGill = ({setmusicId}) => {
       console.error("Error updating favorites:", error);
     }
   };
-  
+
 
   const handleRepeat = () => {
     setRepeat(!repeat);
@@ -158,7 +190,7 @@ const AmrinderGill = ({setmusicId}) => {
 
     const handleEnded = () => {
       if (repeat) {
-        audioElement.currentTime = 0;               
+        audioElement.currentTime = 0;
         audioElement.play();
       } else {
         handleNext();
@@ -179,11 +211,12 @@ const AmrinderGill = ({setmusicId}) => {
           {songs.map((song, index) => (
             <p
               key={song.id}
-              onClick={() => handleClick(index)}
+              onTouchStart={() => handleClick(index)}
+              onPointerDown={() => handleClick(index)}
               style={{
                 cursor: "pointer",
-                color: currentSong?.id === song.id ? "white" : "black",
-                fontWeight: currentSong?.id === song.id ? "bolder" : "bold",
+                color: currentSong?.id === song.id ? "green" : "white",
+                fontWeight: currentSong?.id === song.id ? "bold" : "lighter",
               }}
             >
               {song.title}
