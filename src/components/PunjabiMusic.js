@@ -32,8 +32,6 @@ const PunjabiMusic = () => {
       id: "67d28e123147114aa1df022a",
       title: "Ammi Wargiye Ni mp3 song by Shree Brar.",
     },
-    { id: "67a6d2beea4bf472388d60d1", title: "295 - Sidhu Moosewala." },
-    { id: "67a6d5f1ea4bf472388d60d3", title: "Bapu Zimidar - Jassi Gill." },
     {
       id: "67a6d728ea4bf472388d60d5",
       title: "Yes No mp3 song by Gulab Sidhu.",
@@ -41,6 +39,10 @@ const PunjabiMusic = () => {
     {
       id: "67a6d7e9ea4bf472388d60d7",
       title: "Defender new song by Harf Cheema.",
+    },
+    {
+      id: "67a6e85bea4bf472388d60ef",
+      title: "Andaaze song by Khan Bhaini.",
     },
     { id: "67a6d853ea4bf472388d60d9", title: "Got You song by G Khan." },
     {
@@ -77,10 +79,8 @@ const PunjabiMusic = () => {
       id: "67a6e780ea4bf472388d60ed",
       title: "Taur Tappa song by Shivjot.",
     },
-    {
-      id: "67a6e85bea4bf472388d60ef",
-      title: "Andaaze song by Khan Bhaini.",
-    },
+    { id: "67a6d2beea4bf472388d60d1", title: "295 - Sidhu Moosewala." },
+    { id: "67a6d5f1ea4bf472388d60d3", title: "Bapu Zimidar - Jassi Gill." },
     {
       id: "67a462eb5886b255ee47572d",
       title: "DONALI song by Harkirat Sangha.",
@@ -246,35 +246,29 @@ const PunjabiMusic = () => {
       title: "Karnatak song by Harkirat Sangha.",
     },
   ];
+
   const handleClick = async (songIndex) => {
     if (isLoading) return;
     setIsLoading(true);
 
     const song = songs[songIndex];
+    const API_URL = "http://localhost:5000";
     try {
-      const response = await fetch("http://172.20.10.4:5000/files/", {
-        method: "POST",
+      const response = await fetch(`${API_URL}/api/songs/${song.id}`, {
+        method: "GET",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ songId: song.id }),
       });
-      const data = await response.json();
-      console.log("Fetched song URL:", data.file_path); // Debugging
-
-      if (!data.file_path || typeof data.file_path !== "string") {
-        console.error("Invalid file path received:", data.file_path);
-        return;
-      }
+      const songUrl = response.url;
 
       if (audioElement) {
-        audioElement.src = data.file_path;
-        console.log("Audio elemet set to", audioElement.src);
+        audioElement.src = songUrl;
         audioElement.load();
 
         audioElement.oncanplaythrough = () => {
           audioElement
             .play()
             .then(() => {
-              dispatch(playAudio({ songUrl: data.file_path, song }));
+              dispatch(playAudio({ songUrl, song }));
             })
             .catch((error) => {
               console.error("Error playing audio:", error);
@@ -319,7 +313,6 @@ const PunjabiMusic = () => {
       console.log("No more songs left!");
     }
   };
-
 
   const handleFavourite = async () => {
     if (!isAuthenticated) {
@@ -401,7 +394,7 @@ const PunjabiMusic = () => {
     <>
       <div className="PunjabiSongsContainer">
         <h1 className="PunjabiSongsheading">
-          Hanji Sohneyo Sunlo Punjabi Songs 🎵
+          Explore the Best Punjabi Songs 🎵
         </h1>
       </div>
       <hr></hr>
@@ -432,7 +425,7 @@ const PunjabiMusic = () => {
               onClick={() => handleClick(index)}
               style={{
                 cursor: "pointer",
-                color: currentSong?.id === song.id ? "green" : "white",
+                color: currentSong?.id === song.id ? "#030710" : "white",
                 fontWeight: currentSong?.id === song.id ? "bold" : "lighter",
               }}
             >

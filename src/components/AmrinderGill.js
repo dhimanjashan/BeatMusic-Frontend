@@ -58,39 +58,36 @@ const AmrinderGill = () => {
       title: "Ocean Eyes song by Amrinder Gill",
     },
   ];
-  const API_URL = process.env.REACT_APP_API_URL || '';
+  const API_URL = process.env.REACT_APP_API_URL || "";
+
   const handleClick = async (songIndex) => {
     if (isLoading) return;
     setIsLoading(true);
 
     const song = songs[songIndex];
-    console.log(API_URL);
+    const API_URL = "http://localhost:5000";
     try {
-      const response = await fetch(`${API_URL}/files/`, {
-        method: "POST",
+      const response = await fetch(`${API_URL}/api/songs/${song.id}`, {
+        method: "GET",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ songId: song.id }),
       });
+      const songUrl = response.url;
 
-      const data = await response.json();
-      if (!data.file_path || typeof data.file_path !== "string") {
-        console.error("Invalid file path received:", data.file_path);
-        return;
+      if (audioElement) {
+        audioElement.src = songUrl;
+        audioElement.load();
+
+        audioElement.oncanplaythrough = () => {
+          audioElement
+            .play()
+            .then(() => {
+              dispatch(playAudio({ songUrl, song }));
+            })
+            .catch((error) => {
+              console.error("Error playing audio:", error);
+            });
+        };
       }
-
-      audioElement.src = data.file_path;
-      audioElement.load();
-
-      audioElement.oncanplaythrough = async () => {
-        await audioElement
-          .play()
-          .then(() => {
-            dispatch(playAudio({ songUrl: data.file_path, song }));
-          })
-          .catch(error => {
-            console.error("Error playing audio:", error);
-          });
-      };
     } catch (error) {
       console.error("Error fetching data from backend:", error);
     } finally {
@@ -100,7 +97,7 @@ const AmrinderGill = () => {
 
   const handleNext = async () => {
     if (isLoading || !currentSong) return;
-    const currentIndex = songs.findIndex(song => song.id === currentSong.id);
+    const currentIndex = songs.findIndex((song) => song.id === currentSong.id);
     if (currentIndex < songs.length - 1) {
       await handleClick(currentIndex + 1);
     } else {
@@ -110,7 +107,7 @@ const AmrinderGill = () => {
 
   const handlePrevious = async () => {
     if (isLoading || !currentSong) return;
-    const currentIndex = songs.findIndex(song => song.id === currentSong.id);
+    const currentIndex = songs.findIndex((song) => song.id === currentSong.id);
     if (currentIndex > 0) {
       await handleClick(currentIndex - 1);
     } else {
@@ -126,9 +123,10 @@ const AmrinderGill = () => {
         dispatch(pauseAudio());
       } else {
         audioElement.play();
-        dispatch(playAudio({ songUrl: currentSong.songUrl, song: currentSong }));
+        dispatch(
+          playAudio({ songUrl: currentSong.songUrl, song: currentSong })
+        );
       }
-
     } catch (error) {
       console.warn("Audio play error:", error.message);
     }
@@ -144,7 +142,9 @@ const AmrinderGill = () => {
 
     try {
       // First check if the song is already a favorite
-      const isFavourite = favouriteSongs.some(fav => fav.id === currentSong.id);
+      const isFavourite = favouriteSongs.some(
+        (fav) => fav.id === currentSong.id
+      );
 
       if (isFavourite) {
         console.log("Song is already in favorites");
@@ -159,7 +159,7 @@ const AmrinderGill = () => {
         body: JSON.stringify({
           userID: userID,
           songId: currentSong.id,
-          title: currentSong.title
+          title: currentSong.title,
         }),
       });
 
@@ -168,10 +168,12 @@ const AmrinderGill = () => {
       if (response.ok) {
         console.log("Song added to favorites:", data);
         // Add the song to Redux store
-        dispatch(addFavorite({
-          id: currentSong.id,
-          title: currentSong.title
-        }));
+        dispatch(
+          addFavorite({
+            id: currentSong.id,
+            title: currentSong.title,
+          })
+        );
       } else {
         console.error("Failed to add favorite:", data.message);
       }
@@ -179,7 +181,6 @@ const AmrinderGill = () => {
       console.error("Error updating favorites:", error);
     }
   };
-
 
   const handleRepeat = () => {
     setRepeat(!repeat);
@@ -215,7 +216,7 @@ const AmrinderGill = () => {
               onPointerDown={() => handleClick(index)}
               style={{
                 cursor: "pointer",
-                color: currentSong?.id === song.id ? "green" : "white",
+                color: currentSong?.id === song.id ? "#030710" : "white",
                 fontWeight: currentSong?.id === song.id ? "bold" : "lighter",
               }}
             >

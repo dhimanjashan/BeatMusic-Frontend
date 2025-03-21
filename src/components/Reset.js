@@ -3,12 +3,16 @@ import { useNavigate } from "react-router-dom";
 import Footer from "./Footer";
 import AlertModal from "./AlertModal";
 
-const Reset = () => {
+const Reset = ({ isNavOpen }) => {
   const navigate = useNavigate();
   const [alertTitle, setalertTitle] = useState("");
   const [alertMessage, setalertMessage] = useState("");
   const [showModal, setShowModal] = useState(false);
   const [passwordLength, setpasswordLength] = useState(0);
+  const [showPassword, setShowPassword] = useState(false);
+  const [showreEnterPassword, setShowreEnterPassword] = useState(false);
+  const [showIcon_1, setShowIcon_1] = useState(false);
+  const [showIcon_2, setShowIcon_2] = useState(false);
 
   const [data, setData] = useState({
     email: "",
@@ -18,6 +22,13 @@ const Reset = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+    if (name === "newpassword") {
+      setShowIcon_1(value.length > 0); // Show eye icon only for new password
+    }
+
+    if (name === "reenternewpassword") {
+      setShowIcon_2(value.length > 0); // Show eye icon only for re-entered password
+    }
 
     if (name === "newpassword") {
       setData({ ...data, newpassword: value });
@@ -68,7 +79,7 @@ const Reset = () => {
   };
   return (
     <>
-      <div className="wrapper">
+      <div className={isNavOpen ? "wrapper blur-background" : "wrapper"}>
         <div className="reset-container">
           <h2>Reset Password</h2>
           <p className="resetHeading">
@@ -88,25 +99,63 @@ const Reset = () => {
             </div>
             <div className="input-group">
               <label htmlFor="newpassword">Enter New Password</label>
-              <input
-                value={data.newpassword}
-                type="password"
-                id="newpassword"
-                name="newpassword"
-                onChange={handleChange}
-                required
-              />
+              <div className="resetpassword-container">
+                <input
+                  id="newpassword"
+                  name="newpassword"
+                  onChange={handleChange}
+                  value={data.newpassword}
+                  type={showPassword ? "text" : "password"}
+                  className="custom-input"
+                  required
+                />
+                <span
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="password-toggle"
+                >
+                  {showIcon_1 && ( // Show the eye icon only when input has text
+                    <i
+                      className={
+                        showPassword
+                          ? "fa-solid fa-eye-slash"
+                          : "fa-solid fa-eye"
+                      }
+                      onClick={() => setShowPassword(!showPassword)}
+                    ></i>
+                  )}
+                </span>
+              </div>
             </div>
             <div className="input-group">
               <label htmlFor="reenternewpassword">Re-Enter New Password</label>
-              <input
-                value={data.reenternewpassword}
-                type="password"
-                id="reenternewpassword"
-                name="reenternewpassword"
-                onChange={handleChange}
-                required
-              />
+              <div className="resetpassword-container">
+                <input
+                  id="reenternewpassword"
+                  name="reenternewpassword"
+                  onChange={handleChange}
+                  value={data.reenternewpassword}
+                  type={showreEnterPassword ? "text" : "password"}
+                  className="custom-input"
+                  required
+                />
+                <span
+                  onClick={() => setShowreEnterPassword(!showreEnterPassword)}
+                  className="password-toggle"
+                >
+                  {showIcon_2 && ( // Show the eye icon only when input has text
+                    <i
+                      className={
+                        showreEnterPassword
+                          ? "fa-solid fa-eye-slash"
+                          : "fa-solid fa-eye"
+                      }
+                      onClick={() =>
+                        setShowreEnterPassword(!showreEnterPassword)
+                      }
+                    ></i>
+                  )}
+                </span>
+              </div>
             </div>
             <button
               type="submit"
@@ -138,7 +187,7 @@ const Reset = () => {
           />
         )}
       </div>
-      <Footer />
+      <Footer isNavOpen={isNavOpen} />
     </>
   );
 };

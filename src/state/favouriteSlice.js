@@ -1,4 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
+
+const initialState = {
+  songs: JSON.parse(localStorage.getItem("favoriteSongs")) || [], // ✅ Load from localStorage
+};
+
 // Fetch favorites from backend
 export const fetchFavorites = (userID) => async (dispatch) => {
   try {
@@ -19,18 +24,19 @@ export const fetchFavorites = (userID) => async (dispatch) => {
 
 const favoriteSlice = createSlice({
   name: "favourite",
-  initialState: {
-    songs: [],
-  },
+  initialState,
   reducers: {
     setFavorites: (state, action) => {
       state.songs = action.payload;
+      localStorage.setItem("favoriteSongs", JSON.stringify(action.payload)); // ✅ Save to localStorage
     },
     addFavorite: (state, action) => {
       state.songs.push(action.payload);
+      localStorage.setItem("favoriteSongs", JSON.stringify(state.songs)); // ✅ Save updated list
     },
     removeFavorite: (state, action) => {
       state.songs = state.songs.filter((song) => song.id !== action.payload);
+      localStorage.setItem("favoriteSongs", JSON.stringify(state.songs)); // ✅ Save after removal
     },
   },
 });

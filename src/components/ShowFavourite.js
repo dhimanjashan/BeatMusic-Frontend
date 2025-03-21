@@ -1,9 +1,10 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-const ShowFavourite = () => {
+const ShowFavourite = ({ setActiveLink }) => {
   const navigate = useNavigate();
   const handleFavourite = () => {
+    setActiveLink("/favourite");
     navigate("/favourite");
   };
 

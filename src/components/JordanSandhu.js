@@ -5,7 +5,7 @@ import PlayerControl from "./PlayerControl";
 import { addFavorite } from "../state/favouriteSlice";
 import { useNavigate } from "react-router-dom";
 
-const JordanSandhu = () => {
+const JordanSandhu = ({ isNavOpen }) => {
   const audioRef = useRef(null);
   const [repeat, setRepeat] = useState(false);
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
@@ -21,7 +21,6 @@ const JordanSandhu = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-
   const songs = [
     {
       id: "67d28db63147114aa1df0228",
@@ -129,29 +128,23 @@ const JordanSandhu = () => {
     setIsLoading(true);
 
     const song = songs[songIndex];
-
+    const API_URL = "http://localhost:5000";
     try {
-      const response = await fetch("http://172.20.10.4:5000/files/", {
-        method: "POST",
+      const response = await fetch(`${API_URL}/api/songs/${song.id}`, {
+        method: "GET",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ songId: song.id }),
       });
-      const data = await response.json();
-
-      if (!data.file_path || typeof data.file_path !== "string") {
-        console.error("Invalid file path received:", data.file_path);
-        return;
-      }
+      const songUrl = response.url;
 
       if (audioElement) {
-        audioElement.src = data.file_path;
+        audioElement.src = songUrl;
         audioElement.load();
 
         audioElement.oncanplaythrough = () => {
           audioElement
             .play()
             .then(() => {
-              dispatch(playAudio({ songUrl: data.file_path, song }));
+              dispatch(playAudio({ songUrl, song }));
             })
             .catch((error) => {
               console.error("Error playing audio:", error);
@@ -189,7 +182,6 @@ const JordanSandhu = () => {
 
   const handlePlayPause = () => {
     if (!audioElement) return;
-
     if (isPlaying) {
       audioElement.pause();
       dispatch(pauseAudio());
@@ -208,7 +200,6 @@ const JordanSandhu = () => {
     if (!currentSong || !userID) return;
 
     try {
-      // First check if the song is already a favorite
       const isFavourite = favouriteSongs.some(
         (fav) => fav.id === currentSong.id
       );
@@ -233,7 +224,6 @@ const JordanSandhu = () => {
       const data = await response.json();
 
       if (response.ok) {
-        // Add the song to Redux store
         dispatch(
           addFavorite({
             id: currentSong.id,
@@ -273,16 +263,25 @@ const JordanSandhu = () => {
 
   return (
     <>
-
-      <div className="musicContainer1">
-        <div className="specialmusicContainer4">
+      <div
+        className={
+          isNavOpen ? "musicContainer1 blur-background" : "musicContainer1"
+        }
+      >
+        <div
+          className={
+            isNavOpen
+              ? "specialmusicContainer2 blur-background"
+              : "specialmusicContainer2"
+          }
+        >
           {songs.map((song, index) => (
             <p
               key={song.id}
               onClick={() => handleClick(index)}
               style={{
                 cursor: "pointer",
-                color: currentSong?.id === song.id ? "green" : "white",
+                color: currentSong?.id === song.id ? "#030710" : "white",
                 fontWeight: currentSong?.id === song.id ? "bold" : "lighter",
               }}
             >

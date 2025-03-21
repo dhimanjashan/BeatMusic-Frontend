@@ -1,15 +1,22 @@
 import React from "react";
 import Footer from "./Footer";
 
-const About = () => {
+const About = ({ isNavOpen }) => {
   return (
     <>
-
-      <div className="aboutcontainer1">
-        <h1 className="aboutheading1">About Padlo Sohneyo</h1>
+      <div
+        className={
+          isNavOpen ? "aboutcontainer1 blur-background" : "aboutcontainer1"
+        }
+      >
+        <h1 className="aboutheading1">Learn More About Us 📖</h1>
       </div>
       <hr className="aboutHr"></hr>
-      <div className="aboutcontainer2">
+      <div
+        className={
+          isNavOpen ? "aboutcontainer2 blur-background" : "aboutcontainer2"
+        }
+      >
         <div className="aboutcontainer3">
           <h1 className="aboutheading2">Introduction</h1>
           <p className="aboutparagraph1">
@@ -53,7 +60,7 @@ const About = () => {
           </p>
         </div>
       </div>
-      <Footer />
+      <Footer isNavOpen={isNavOpen} />
     </>
   );
 };

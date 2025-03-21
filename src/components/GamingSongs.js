@@ -26,7 +26,6 @@ const Newmusic = () => {
   }, []);
 
   const newPunjabiSongs = [
-
     {
       id: "67a4613a5886b255ee475721",
       title: "WAVY mp3 song by Karan Aujla.",
@@ -72,7 +71,8 @@ const Newmusic = () => {
     {
       id: "67a6d728ea4bf472388d60d5",
       title: "Yes No mp3 song by Gulab Sidhu.",
-    }, { id: "67a6d853ea4bf472388d60d9", title: "Got You song by G Khan." },
+    },
+    { id: "67a6d853ea4bf472388d60d9", title: "Got You song by G Khan." },
     {
       id: "67a6d8c7ea4bf472388d60db",
       title: "Nattiyaan song by Shipra Goyal.",
@@ -81,7 +81,8 @@ const Newmusic = () => {
       id: "67a6d9ddea4bf472388d60df",
       title: "La La La Hoi Pai Aa song by Hunar Sidhu.",
     },
-    { id: "67a6da47ea4bf472388d60e1", title: "Filter song by Gulab Sidhu." }, {
+    { id: "67a6da47ea4bf472388d60e1", title: "Filter song by Gulab Sidhu." },
+    {
       id: "67a6dabfea4bf472388d60e3",
       title: " Tera Yaar Rakane song by Shree Brar.",
     },
@@ -89,10 +90,12 @@ const Newmusic = () => {
       id: "67a6db77ea4bf472388d60e5",
       title: "Khalipan song by Nirvair Pannu.",
     },
-    { id: "67a6dbccea4bf472388d60e7", title: "Tikka song by Gulab Sidhu." }, {
+    { id: "67a6dbccea4bf472388d60e7", title: "Tikka song by Gulab Sidhu." },
+    {
       id: "67a6e85bea4bf472388d60ef",
       title: "Andaaze song by Khan Bhaini.",
-    }, {
+    },
+    {
       id: "67a6e943ea4bf472388d60f1",
       title: "Snapchat song by Surjit Bhullar.",
     },
@@ -103,24 +106,28 @@ const Newmusic = () => {
     {
       id: "679355ef47bdbe2186044204",
       title: "Dildarian song by Amrinder Gill",
-    }, {
+    },
+    {
       id: "67935b2647bdbe2186044216",
       title: "Ocean Eyes song by Amrinder Gill",
-    }, {
+    },
+    {
       id: "67937eff47bdbe2186044270",
       title: "Chann Chann Da mp3 song by Jordan Sandhu.",
     },
     {
       id: "67937f2347bdbe2186044272",
       title: "Pre Workout mp3 song by Jordan Sandhu.",
-    }, {
+    },
+    {
       id: "67937f9b47bdbe2186044276",
       title: "Do Vaari Jatt mp3 song by Jordan Sandhu.",
     },
     {
       id: "67937fcf47bdbe2186044278",
       title: "Teeje Week mp3 song by Jordan Sandhu in album Teeje Week.",
-    }, {
+    },
+    {
       id: "6793809447bdbe218604427e",
       title: "Freestyle mp3 song by Jordan Sandhu in album Fame - EP.",
     },
@@ -135,7 +142,8 @@ const Newmusic = () => {
     {
       id: "67a6ecacea4bf472388d60f9",
       title: "Aaye Haaye song by Karan Aujla.",
-    }, {
+    },
+    {
       id: "67a7096731755642e981aa89",
       title: "Hass Hass song by Diljit Dosanjh.",
     },
@@ -146,30 +154,23 @@ const Newmusic = () => {
     setIsLoading(true);
 
     const song = newPunjabiSongs[songIndex];
+    const API_URL = "http://localhost:5000";
     try {
-      const response = await fetch("http://172.20.10.4:5000/files/", {
-        method: "POST",
+      const response = await fetch(`${API_URL}/api/songs/${song.id}`, {
+        method: "GET",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ songId: song.id }),
       });
-      const data = await response.json();
-      console.log("Fetched song URL:", data.file_path); // Debugging
-
-      if (!data.file_path || typeof data.file_path !== "string") {
-        console.error("Invalid file path received:", data.file_path);
-        return;
-      }
+      const songUrl = response.url;
 
       if (audioElement) {
-        audioElement.src = data.file_path;
-        console.log("Audio elemet set to", audioElement.src);
+        audioElement.src = songUrl;
         audioElement.load();
 
         audioElement.oncanplaythrough = () => {
           audioElement
             .play()
             .then(() => {
-              dispatch(playAudio({ songUrl: data.file_path, song }));
+              dispatch(playAudio({ songUrl, song }));
             })
             .catch((error) => {
               console.error("Error playing audio:", error);
@@ -329,7 +330,7 @@ const Newmusic = () => {
               onClick={() => handleClick(index)}
               style={{
                 cursor: "pointer",
-                color: currentSong?.id === song.id ? "green" : "white",
+                color: currentSong?.id === song.id ? "#030710" : "white",
                 fontWeight: currentSong?.id === song.id ? "bold" : "lighter",
               }}
             >

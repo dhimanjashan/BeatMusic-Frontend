@@ -5,7 +5,7 @@ import { playAudio, pauseAudio } from "../state/audioSlice";
 import { addFavorite } from "../state/favouriteSlice";
 import { useNavigate } from "react-router-dom";
 
-const ArjanDhillon = () => {
+const ArjanDhillon = ({ isNavOpen }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
@@ -109,33 +109,29 @@ const ArjanDhillon = () => {
     setIsLoading(true);
 
     const song = songs[songIndex];
-
+    const API_URL = "http://localhost:5000";
     try {
-      const response = await fetch("http://172.20.10.4:5000/files/", {
-        method: "POST",
+      const response = await fetch(`${API_URL}/api/songs/${song.id}`, {
+        method: "GET",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ songId: song.id }),
       });
-      const data = await response.json();
+      const songUrl = response.url;
 
-      if (!data.file_path || typeof data.file_path !== "string") {
-        console.error("Invalid file path received:", data.file_path);
-        return;
+      if (audioElement) {
+        audioElement.src = songUrl;
+        audioElement.load();
+
+        audioElement.oncanplaythrough = () => {
+          audioElement
+            .play()
+            .then(() => {
+              dispatch(playAudio({ songUrl, song }));
+            })
+            .catch((error) => {
+              console.error("Error playing audio:", error);
+            });
+        };
       }
-
-      audioElement.src = data.file_path;
-      audioElement.load();
-
-      audioElement.oncanplaythrough = () => {
-        audioElement
-          .play()
-          .then(() => {
-            dispatch(playAudio({ songUrl: data.file_path, song }));
-          })
-          .catch((error) => {
-            console.error("Error playing audio:", error);
-          });
-      };
     } catch (error) {
       console.error("Error fetching data from backend:", error);
     } finally {
@@ -248,36 +244,42 @@ const ArjanDhillon = () => {
 
   return (
     <>
-      <div className="allcontainerColor">
-
-
-        <div className="musicContainer1">
-          <div className="specialmusicContainer3">
-            {songs.map((song, index) => (
-              <p
-                key={song.id}
-                onClick={() => handleClick(index)}
-                style={{
-                  cursor: "pointer",
-                  color: currentSong?.id === song.id ? "green" : "white",
-                  fontWeight: currentSong?.id === song.id ? "bold" : "lighter",
-                }}
-              >
-                {song.title}
-              </p>
-            ))}
-          </div>
+      <div
+        className={
+          isNavOpen ? "musicContainer1 blur-background" : "musicContainer1"
+        }
+      >
+        <div
+          className={
+            isNavOpen
+              ? "specialmusicContainer2 blur-background"
+              : "specialmusicContainer2"
+          }
+        >
+          {songs.map((song, index) => (
+            <p
+              key={song.id}
+              onClick={() => handleClick(index)}
+              style={{
+                cursor: "pointer",
+                color: currentSong?.id === song.id ? "#030710" : "white",
+                fontWeight: currentSong?.id === song.id ? "bold" : "lighter",
+              }}
+            >
+              {song.title}
+            </p>
+          ))}
         </div>
-        <PlayerControl
-          audio={audioElement}
-          handleNext={handleNext}
-          handlePlayPause={handlePlayPause}
-          isPlaying={isPlaying}
-          handlePrevious={handlePrevious}
-          handleRepeat={handleRepeat}
-          handleFavourite={handleFavourite}
-        />
       </div>
+      <PlayerControl
+        audio={audioElement}
+        handleNext={handleNext}
+        handlePlayPause={handlePlayPause}
+        isPlaying={isPlaying}
+        handlePrevious={handlePrevious}
+        handleRepeat={handleRepeat}
+        handleFavourite={handleFavourite}
+      />
     </>
   );
 };

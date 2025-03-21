@@ -1,48 +1,55 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useRef, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import User from "./User";
 import { useSelector } from "react-redux";
 
-const Navbar = ({ activeLink, setActiveLink }) => {
+const Navbar = ({
+  activeLink,
+  setActiveLink,
+  isNavOpen,
+  setIsNavOpen,
+  toggleNav,
+}) => {
   const navigate = useNavigate();
-  const [menuOpen, setMenuOpen] = useState(false);
   const navRef = useRef(null);
   let isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
 
   const handleNavigation = (link, path) => {
     setActiveLink(link);
     navigate(path);
-    setMenuOpen(false);
+    setIsNavOpen(false);
   };
   const handleClickOutside = (event) => {
     if (navRef.current && !navRef.current.contains(event.target)) {
-      setMenuOpen(false);
+      setIsNavOpen(false);
     }
   };
   useEffect(() => {
-    document.addEventListener("mousedown", handleClickOutside);
+    if (isNavOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, []);
+  }, [isNavOpen]);
 
   return (
     <>
-      <nav className="navbar" ref={navRef}>
-        <div className={menuOpen ? "nav-links show" : "musicHeading"}>
+      <nav className="navbar">
+        <div className={isNavOpen ? "nav-links show" : "musicHeading"}>
           <h1 className="navbarMusicHeading">
             <span>Beat</span>Music
           </h1>
         </div>
-        <div className="menu-toggle" onClick={() => setMenuOpen(!menuOpen)}>
+        <div className="menu-toggle" onClick={toggleNav}>
           &#9776;
         </div>
-        <div className={`nav-overlay ${menuOpen ? "open" : ""}`} ref={navRef}>
-          <button className="close-btn" onClick={() => setMenuOpen(false)}>
+        <div className={`nav-overlay ${isNavOpen ? "open" : ""}`} ref={navRef}>
+          <button className="close-btn" onClick={() => setIsNavOpen(false)}>
             &times;
           </button>
-          <ul className={menuOpen ? "nav-links show" : "nav-links"}>
-            <div className="container2">
+          <ul className={isNavOpen ? "show" : ""}>
+            <div className="container2 nav-links">
               <li>
                 <Link
                   to="/"
@@ -87,7 +94,7 @@ const Navbar = ({ activeLink, setActiveLink }) => {
               >
                 Help
               </Link>
-              <hr className={menuOpen ? "nav-links show" : "hr"} />
+              <hr className={isNavOpen ? "nav-links show" : "hr"} />
               {!isAuthenticated ? (
                 <>
                   <Link
@@ -108,7 +115,7 @@ const Navbar = ({ activeLink, setActiveLink }) => {
                   </button>
                 </>
               ) : (
-                <User />
+                <User setIsNavOpen={setIsNavOpen} />
               )}
             </div>
           </ul>

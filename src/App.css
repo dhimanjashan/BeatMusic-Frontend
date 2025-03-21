@@ -1,13 +1,10 @@
 body {
-  background: linear-gradient(45deg,
-      rgba(29, 185, 84, 0.2) 0%,
-      rgba(25, 20, 20, 0.8) 100%), black;
-  height: 100%;
+  background: linear-gradient(135deg, #1e3c72, #2a5298);
+  background-size: cover;
   margin: 0px;
   padding: 0px;
   font-family: "Nunito", sans-serif;
 }
-
 @keyframes gradientBG {
   0% {
     background-position: 12% 50%;
@@ -24,15 +21,14 @@ body {
 
 /* Navbar styles */
 span {
-  color: #1DB954;
+  color: #030710;
 }
 
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: rgba(29, 185, 84, 0.2);
-  /* background: rgba(0, 0, 0, 0.3);  */
+  background: linear-gradient(135deg, #4068b2, #1f3d71);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid rgba(247, 240, 240, 0.2);
@@ -41,7 +37,7 @@ span {
   height: 40px;
   top: 0px;
   position: sticky;
-  z-index: 1000;
+  z-index:1000;
 }
 
 .navbar h1 {
@@ -51,7 +47,7 @@ span {
 }
 
 .navbar h1 span {
-  color: #1DB954
+  color: #030710
 }
 
 .nav-links {
@@ -62,7 +58,7 @@ span {
 
 .nav-links li {
   display: inline;
-  margin-top: 0px;
+  margin-top: -10px;
 }
 
 .nav-links li a {
@@ -73,11 +69,11 @@ span {
 }
 
 .nav-links li a:hover {
-  color: #1DB954;
+  color: #030710;
 }
 
 .nav-links li a.active {
-  color: #1DB954;
+  color: #030710;
   font-weight: bold;
 }
 
@@ -104,38 +100,40 @@ span {
 .container2 a {
   color: white;
   text-decoration: none;
+  margin-top: -10px;
   font-size: 18px;
 }
 
 .container2 a.active {
-  color: #1DB954;
+  color: #030710;
   font-weight: bold;
 }
 
 .container2 a:hover {
-  color: #1DB954;
+  color: #030710;
 }
 
 .container2 hr {
   height: 20px;
   border: none;
   border-left: 1px solid white;
-  margin: 0 10px;
+  margin-top: 0px;
 }
 
 .container2 button {
   background: none;
-  color: #1DB954;
+  color: #030710;
   border: none;
   padding: 4px 20px;
   cursor: pointer;
   font-size: 16px;
   border-radius: 5px;
+  margin-top: -10px;
   margin-right: 20px;
 }
 
 .container2 button:hover {
-  color: #1ba04a;
+  color:  #0a1730;
 }
 
 /* Home css */
@@ -144,6 +142,7 @@ span {
   max-width: 1250px;
   margin: 0 auto;
   color: white;
+  z-index: 1;
 }
 
 .home-container::before {
@@ -161,12 +160,12 @@ span {
 .hero-section {
   text-align: center;
   padding: 60px 20px;
-  background: linear-gradient(135deg,
-      rgba(29, 185, 84, 0.8) 0%,
-      rgba(25, 20, 20, 0.9) 100%);
+  background: linear-gradient(135deg, #2c5092, #2a5298);
+
   border-radius: 15px;
   margin-bottom: 40px;
   color: white;
+  z-index: 2;
 }
 
 .hero-title {
@@ -196,7 +195,7 @@ span {
 
 .carousel-track {
   display: flex;
-  width: 100%;
+  width: 105%;
   transition: transform 0.5s ease-in-out;
 }
 
@@ -206,6 +205,9 @@ span {
   color: inherit;
   transition: transform 0.3s ease;
   flex-shrink: 0;
+  width: 100%;
+  box-sizing: border-box;
+  margin-left: 15px;
   /* Prevent cards from shrinking */
 }
 
@@ -246,7 +248,7 @@ span {
 }
 
 .dot.active {
-  background: #1DB954;
+  background: #030710;
 }
 
 /* New Releases Section */
@@ -272,7 +274,7 @@ span {
 
 /* Quick Links Section */
 .quick-links {
-  margin-top: 40px;
+  margin-top: 40px; 
 }
 
 .links-grid {
@@ -280,6 +282,7 @@ span {
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 20px;
   margin-top: 20px;
+  width: 100%;
 }
 
 .quick-link-card {
@@ -295,7 +298,7 @@ span {
 }
 
 .quick-link-card:hover {
-  background: #1DB954;
+  background: #030710;
   transform: translateY(-5px);
 }
 
@@ -394,7 +397,7 @@ span {
 }
 
 .plays {
-  color: #1DB954;
+  color: #030710;
   font-size: 0.9em;
 }
 
@@ -473,14 +476,14 @@ span {
   padding: 15px 30px;
   border: none;
   border-radius: 25px;
-  background: #1DB954;
+  background: #030710;
   color: white;
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
 .newsletter-form button:hover {
-  background: #15833c;
+  background: #060e1f;
 }
 
 /* PlayerControls's css */
@@ -493,14 +496,15 @@ span {
   overflow: hidden;
   z-index: -1;
   height: 83px;
-
+  left: 0px;
 }
 
 .music-player {
   height: 95px;
   width: 102%;
   font-size: 30px;
-  background: radial-gradient(circle, #00ff87 10%, #004d00 80%, #001f00 100%);
+  background: linear-gradient(135deg, #a9b0bd, #416199);
+
 }
 
 @keyframes matrixMove {
@@ -618,7 +622,7 @@ h2 {
 }
 
 .forgot-password a {
-  color: #1DB954;
+  color: #030710;
   text-decoration: none;
   font-weight: bold;
 }
@@ -732,23 +736,28 @@ h2 {
 }
 
 .musicContainer1 {
-  height: 100px;
+  height: 100%;
   width: 100%;
-  display: grid;
+  display: flex;
   align-items: center;
   color: white;
   position: relative;
   margin-left: 20px;
+  margin-top: 0;
   max-width: calc(100% - 20px);
+  padding-bottom: 0;
 }
 
 .specialmusicContainer2 {
-  height: 20%;
+ height: 100%;
   width: 100%;
   font-size: 18px;
-  position: sticky;
+  position: absolute;
   color: white;
+  margin: 612px auto;
+  padding-bottom: 0;
 }
+
 
 .specialmusicContainer3 {
   height: 50%;
@@ -772,6 +781,7 @@ h2 {
   text-align: center;
   width: 100%;
   overflow: auto;
+  z-index: 9999;
 }
 
 .musiclistheading1 {
@@ -780,7 +790,7 @@ h2 {
   justify-content: center;
   align-items: center;
   margin-bottom: 10px;
-  color: white;
+  color: white; 
   font-size: 32px;
   margin-top: 5px;
 }
@@ -909,25 +919,27 @@ h2 {
 
 .accountContainer2 {
   width: 100%;
-  height: 76vh;
+  height: 70vh; 
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
+  margin-bottom: 40px;
+  overflow: hidden;
 }
 
 .accountContainer3 {
   width: 40%;
-  height: 450px;
+  height: auto;
   background: rgba(255, 255, 255, 0.15);
   box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.3);
   border-radius: 20px;
   backdrop-filter: blur(20px);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
 }
 
 .accountContainer3:hover {
-  transform: scale(1.08);
   box-shadow: 0px 15px 40px rgba(0, 0, 0, 0.4);
 }
 
@@ -956,7 +968,7 @@ h2 {
   width: 100%;
   justify-content: center;
   align-items: center;
-  height: 70%;
+  height: auto;
 }
 
 .accountContainer4 input {
@@ -1003,6 +1015,51 @@ h2 {
   box-shadow: 0px 15px 40px rgba(0, 0, 0, 0.4);
 }
 
+/* Eye icon's css */
+
+.accountpassword-container,.loginpassword-container,.resetpassword-container {
+  position: relative;
+  width: 100%;
+}
+
+.custom-input {
+  width: 100%;
+  padding: 10px 40px 10px 10px; 
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.accountpassword-container i {
+  position: absolute;
+  right: 90px;
+  top: 36%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #888;
+  font-size: 18px;
+}
+
+.loginpassword-container i {
+  position: absolute;
+  right: 12px;
+  top: 54%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #888;
+  font-size: 18px;
+}
+.resetpassword-container i {
+  position: absolute;
+  right: 12px;
+  top: 54%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #888;
+  font-size: 18px;
+}
+
+
 /* Favourite component's css */
 
 .favouriteContainer1 {
@@ -1032,6 +1089,28 @@ h2 {
   margin-top: 30px;
   color: white;
 }
+
+.favouriteDelContainer {
+  position: relative;
+  padding: 0px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 10px;
+}
+
+.favouriteDelete {
+  position: absolute;
+  right: 10px;
+  transform: translateY(-50%);
+  font-size: 16px;
+  margin-top: -40px;
+}
+
+.favouriteDelete:hover {
+  cursor: pointer;
+}
+
 
 /* About component's css */
 .aboutcontainer1 {
@@ -1186,7 +1265,7 @@ h2 {
 }
 
 .questions {
-  color: #1DB954;
+  color: #0d3593;
   font-size: 70px;
   margin-top: -50px;
 }
@@ -1356,7 +1435,7 @@ input[type="checkbox"]:checked+.faq-answer {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: radial-gradient(circle, #00ff87 10%, #004d00 80%, #001f00 100%);
+  background: linear-gradient(135deg, #a9b0bd, #416199);
   position: fixed;
   border-radius: 400px;
   top: 175px;
@@ -1443,7 +1522,7 @@ input[type="checkbox"]:checked+.faq-answer {
 }
 
 .heartBtn:hover {
-  background: #1DB954;
+  background: #030710;
   transform: scale(1.05);
 }
 
@@ -1489,14 +1568,13 @@ input[type="checkbox"]:checked+.faq-answer {
   box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.3);
   animation: fadeIn 1.2s ease-in-out;
   margin-bottom: 80px;
+  margin-right: 20px;
+  margin-left: 20px;
 }
 
 .showHeading {
   font-size: 2.5rem;
   margin-bottom: 15px;
-  background: linear-gradient(90deg, #ffcc00, #ff0066);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
 }
 
 .showParagraph {
@@ -1546,6 +1624,7 @@ input[type="checkbox"]:checked+.faq-answer {
   width: 40px;
   height: 40px;
   border-radius: 50%;
+  margin-top: -8px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1638,6 +1717,112 @@ input[type="checkbox"]:checked+.faq-answer {
 #delete:hover {
   background: #007bff;
 }
+/* Center Profile Container */
+.userProfile-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* Profile Card */
+.userProfile-card {
+  width: 350px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  padding: 25px;
+  border-radius: 15px;
+  margin-right: 20px;
+  margin-left: 20px;
+  text-align: center;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease-in-out;
+}
+
+.userProfile-card:hover {
+  transform: translateY(-5px);
+}
+
+/* Header Background */
+.userProfile-header {
+  width: 100%;
+  height: 80px;
+  background: linear-gradient(90deg, #ff7e5f, #feb47b);
+  border-radius: 10px 10px 0 0;
+}
+
+/* Profile Image */
+.userProfile-img {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid white;
+  position: absolute;
+  top: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* User Name */
+.user-name {
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
+  margin-top: 60px;
+}
+
+/* User Email */
+.user-email {
+  font-size: 14px;
+  color: #ddd;
+  margin-bottom: 20px;
+}
+
+/* Button Group */
+.button-group {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Buttons */
+.logout-btn, .delete-btn {
+  flex: 1;
+  padding: 12px;
+  font-size: 14px;
+  font-weight: bold;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+}
+
+/* Logout Button */
+.logout-btn {
+  background: #3498db;
+  color: white;
+  margin-right: 8px;
+}
+
+.logout-btn:hover {
+  background: #2980b9;
+  transform: scale(1.05);
+}
+
+/* Delete Button */
+.delete-btn {
+  background: #e74c3c;
+  color: white;
+  margin-left: 8px;
+}
+
+.delete-btn:hover {
+  background: #c0392b;
+  transform: scale(1.05);
+}
+
 
 /* Alert's css */
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
@@ -1690,12 +1875,13 @@ input[type="checkbox"]:checked+.faq-answer {
   justify-content: center;
   margin-right: 15px;
   font-size: 20px;
+  color: white !important;
 
 }
 
 .alert-icon.success {
-  background-color: #2e7d32;
-
+  background-color: #28a745;
+  color: white !important;
 }
 
 .alert-icon.warning {
@@ -1712,7 +1898,7 @@ input[type="checkbox"]:checked+.faq-answer {
 
 .alert-modal-header h2 {
   margin: 0;
-  font-size: 1.3rem;
+  font-size: 16px;
   font-weight: 600;
   color: #212121;
   flex-grow: 1;
@@ -1739,6 +1925,7 @@ input[type="checkbox"]:checked+.faq-answer {
   color: #424242;
   font-size: 1rem;
   line-height: 1.5;
+  
 }
 
 .alert-modal-body p {
@@ -1780,7 +1967,7 @@ input[type="checkbox"]:checked+.faq-answer {
 }
 
 .confirm-button.success {
-  background-color: #2e7d32;
+  background-color: #28a745;
 }
 
 .confirm-button.warning {
@@ -1809,7 +1996,7 @@ input[type="checkbox"]:checked+.faq-answer {
 
 /* Content border colors based on type */
 .alert-modal-content.success {
-  border-top: 5px solid #2e7d32;
+  border-top: 5px solid #28a745;
 }
 
 .alert-modal-content.warning {
@@ -1922,7 +2109,7 @@ input[type="checkbox"]:checked+.faq-answer {
 }
 
 .footer-section ul li a:hover {
-  color: #1DB954;
+  color: #081228;
 }
 
 .social-links {
@@ -1937,7 +2124,7 @@ input[type="checkbox"]:checked+.faq-answer {
 }
 
 .social-links a:hover {
-  color: #1DB954;
+  color: #081228;
 }
 
 .footer-bottom {
@@ -2183,10 +2370,15 @@ input[type="checkbox"]:checked+.faq-answer {
   }
 
   .aboutcontainer2 {
-    margin-top: 45px;
+    display: flex;
+    margin-top: 105px;
     flex-direction: column;
     font-size: 16px;
-    margin-bottom: 45px;
+    margin-bottom: 145px;
+    height: auto;
+  }
+  .aboutcontainer1{
+    height: 100%;
   }
 }
 
@@ -2206,7 +2398,6 @@ input[type="checkbox"]:checked+.faq-answer {
 
   .accountContainer3 {
     width: 50%;
-    margin-top: 100px;
   }
 
   #createAccountheading1 {
@@ -2214,6 +2405,7 @@ input[type="checkbox"]:checked+.faq-answer {
     width: 100%;
     text-align: center;
   }
+
 }
 
 @media screen and (max-width: 900px) {
@@ -2248,6 +2440,7 @@ input[type="checkbox"]:checked+.faq-answer {
     width: 60%;
     padding: 4px;
   }
+
 }
 
 @media screen and (max-width: 840px) {
@@ -2262,7 +2455,6 @@ input[type="checkbox"]:checked+.faq-answer {
 
   .accountContainer3 {
     width: 60%;
-    margin-top: 100px;
   }
 
   #createAccountheading1 {
@@ -2276,6 +2468,7 @@ input[type="checkbox"]:checked+.faq-answer {
     font-size: 18px;
     width: 140px;
   }
+
 }
 
 @media screen and (max-width: 750px) {
@@ -2304,7 +2497,6 @@ input[type="checkbox"]:checked+.faq-answer {
 
   .accountContainer3 {
     width: 70%;
-    margin-top: 100px;
   }
 
   #createAccountheading1 {
@@ -2331,7 +2523,7 @@ input[type="checkbox"]:checked+.faq-answer {
     font-size: 25px;
     margin-top: -400px;
     display: flex;
-    flex-direction: column;
+    flex-direction: column; 
   }
 
   .musiclistImage {
@@ -2404,7 +2596,6 @@ input[type="checkbox"]:checked+.faq-answer {
 
   .accountContainer3 {
     width: 80%;
-    margin-top: 100px;
   }
 
   #createAccountheading1 {
@@ -2443,13 +2634,6 @@ input[type="checkbox"]:checked+.faq-answer {
     height: 500px;
     width: 75%;
     padding: 4px;
-  }
-
-  .aboutcontainer2 {
-    margin-top: 45px;
-    flex-direction: column;
-    font-size: 14px;
-    margin-bottom: 45px;
   }
 
   .aboutparagraph1,
@@ -2498,20 +2682,14 @@ input[type="checkbox"]:checked+.faq-answer {
   }
 
   .aboutcontainer5 {
-    height: 520px;
+    height: 580px;
     width: 79%;
     padding: 9px;
+    margin-bottom: 20px;
   }
 
   .aboutparagraph1 {
     font-size: 18px;
-  }
-
-  .aboutcontainer2 {
-    margin-top: 45px;
-    flex-direction: column;
-    font-size: 14px;
-    margin-bottom: 45px;
   }
 
   .aboutparagraph1,
@@ -2526,7 +2704,7 @@ input[type="checkbox"]:checked+.faq-answer {
 
   .accountContainer3 {
     width: 90%;
-    margin-top: 100px;
+    height: 60%;
   }
 
   #createAccountheading1 {
@@ -2537,6 +2715,7 @@ input[type="checkbox"]:checked+.faq-answer {
 }
 
 @media screen and (max-width: 490px) {
+  
   .musicContainer1 {
     width: 100%;
     height: 100%;
@@ -2596,7 +2775,7 @@ input[type="checkbox"]:checked+.faq-answer {
   }
 
   .aboutcontainer5 {
-    height: 580px;
+    height: 590px;
     width: 79%;
     padding: 9px;
   }
@@ -2630,13 +2809,20 @@ input[type="checkbox"]:checked+.faq-answer {
     font-size: 18px;
     margin-top: -390px;
   }
-
+.aboutheading1{
+    text-align: center;
+}
   .aboutheading2 {
     margin-left: 60px;
   }
 
+  .aboutcontainer2 {
+    margin-top: 50px;
+    height: 100%;
+  }
+
   .aboutcontainer3 {
-    height: 560px;
+    height: 580px;
   }
 
   .aboutcontainer4 {
@@ -2644,7 +2830,7 @@ input[type="checkbox"]:checked+.faq-answer {
   }
 
   .aboutcontainer5 {
-    height: 520px;
+    height: 540px;
   }
 
   .aboutparagraph1,
@@ -2656,11 +2842,19 @@ input[type="checkbox"]:checked+.faq-answer {
   .aboutheading3 {
     margin-right: 70px;
   }
+  .accountContainer2{
+    height: 78vh;
+    margin-bottom: 100px;
+  }
+  .accountContainer3 {
+    width: 90%;
+    margin-top: 40px;
+  }
 }
 
 @media screen and (max-width: 380px) {
   .musicContainer1 {
-    width: 100%;
+    width: 100%;        
     height: 100%;
     top: 0;
     left: 0;
@@ -2731,7 +2925,7 @@ input[type="checkbox"]:checked+.faq-answer {
 
   .accountContainer3 {
     width: 90%;
-    margin-top: 60px;
+    margin-top: 260px;
   }
 
   #createAccountheading1 {
@@ -2739,6 +2933,7 @@ input[type="checkbox"]:checked+.faq-answer {
     width: 100%;
     text-align: center;
   }
+  
 }
 
 @media screen and (max-width: 300px) {
@@ -2763,7 +2958,7 @@ input[type="checkbox"]:checked+.faq-answer {
   .accountContainer3 {
     width: 90%;
     height: 90%;
-    margin-top: 100px;
+    margin-top: 300px;
   }
 
   #createAccountheading1 {
@@ -2796,10 +2991,12 @@ input[type="checkbox"]:checked+.faq-answer {
   .questions {
     font-size: 60px;
   }
-
+.musicContainer2{
+  margin-top: auto;
+}
   .musicContainer1 {
-    margin-left: 32px;
-    margin-top: -380px;
+    top: -370px;
+   margin: auto;
     padding-bottom: 30px;
     width: auto;
     font-size: 18px;
@@ -2852,13 +3049,17 @@ input[type="checkbox"]:checked+.faq-answer {
 }
 
 @media screen and (max-width: 1160px) {
-
+.blur-background {
+  filter: blur(5px);
+  transition: filter 0.3s ease-in-out;
+  pointer-events: none; /* Prevent clicks on blurred content */
+}
   .navbar {
     padding: 9px 15px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    z-index: 1000;
+    z-index: 9999;
   }
 
   .close-btn {
@@ -2872,28 +3073,32 @@ input[type="checkbox"]:checked+.faq-answer {
     cursor: pointer;
   }
 
+  /* Mobile menu overlay */
   .nav-overlay {
     position: fixed;
-    top: -100%;
+    top: 0;
     left: 0;
-    width: 40%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.95);
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(135deg, #4068b2, #1f3d71);
+    display: flex;
     align-items: center;
     justify-content: center;
-    transition: left 0.6s cubic-bezier(1, 0, 0, 1);
     z-index: 999;
+    transition: left 0.3s ease;
+    visibility: hidden;
+    opacity: 0;
   }
 
   .nav-overlay.open {
-    top: 0;
-    right: 50px;
+    visibility: visible;
+    opacity: 1;
   }
 
   .navbarMusicHeading {
     width: 22%;
     text-align: center;
-    margin-top: -2px;
+    margin-top: 5px;
     font-size: 24px;
   }
 
@@ -2904,13 +3109,13 @@ input[type="checkbox"]:checked+.faq-answer {
     align-content: center;
     text-align: center;
     position: absolute;
-    top: 30px;
+    top: 20px;
     font-size: 24px;
     right: 20px;
     width: 100%;
     padding: 0px 0;
     transition: max-height 2s ease-in-out;
-    z-index: 1000;
+    z-index: 9999;
   }
 
   .container2 {
@@ -2922,7 +3127,7 @@ input[type="checkbox"]:checked+.faq-answer {
     gap: 70px;
     padding: 0px;
     line-height: 1;
-    margin-top: -20px;
+    margin-top: 0px;
     margin-bottom: 15px;
     z-index: 1000;
     font-size: 20px;
@@ -2970,7 +3175,6 @@ input[type="checkbox"]:checked+.faq-answer {
 
   .menu-toggle {
     display: block;
-    margin-right: 0px;
   }
 
   .playerSystemContainer1 {
@@ -3054,7 +3258,7 @@ input[type="checkbox"]:checked+.faq-answer {
     font-size: 30px;
     margin-left: 0px;
     color: black;
-    background: radial-gradient(circle, #00ff87 10%, #004d00 80%, #001f00 100%);
+    background: linear-gradient(135deg, #a9b0bd, #416199);
   }
 }
 
@@ -3081,7 +3285,6 @@ input[type="checkbox"]:checked+.faq-answer {
 
   .artist-card {
     flex: 0 0 50% !important;
-    /* Override inline style for tablets */
   }
 
   .quick-link-card {
@@ -3107,9 +3310,6 @@ input[type="checkbox"]:checked+.faq-answer {
 }
 
 @media screen and (max-width: 600px) {
-
-
-
 
   .helpHeading2 {
     font-size: 40px;
@@ -3159,6 +3359,13 @@ input[type="checkbox"]:checked+.faq-answer {
 
   .nav-overlay {
     width: 50%;
+  }
+  .close-btn {
+    right: 10px;
+    position: absolute;
+  }
+  .accountpassword-container i {
+    right: 70px;
   }
 }
 
@@ -3212,6 +3419,9 @@ input[type="checkbox"]:checked+.faq-answer {
   .nav-overlay {
     width: 60%;
   }
+  .accountpassword-container i {
+    right: 60px;
+  }
 }
 
 @media screen and (max-width: 520px) {
@@ -3231,13 +3441,10 @@ input[type="checkbox"]:checked+.faq-answer {
 
   .artist-card {
     flex: 0 0 100% !important;
-    /* Override inline style for mobile */
   }
 }
 
 @media screen and (max-width: 450px) {
-
-
 
   .PunjabiSongsheading {
     font-size: 22px;
@@ -3296,6 +3503,9 @@ input[type="checkbox"]:checked+.faq-answer {
   .nav-overlay {
     width: 65%;
   }
+  .accountpassword-container i {
+    right: 55px;
+  }
 }
 
 @media screen and (max-width: 390px) {
@@ -3327,7 +3537,7 @@ input[type="checkbox"]:checked+.faq-answer {
   .login-container {
     margin-bottom: 80px;
     padding: 30px;
-    height: 45%;
+    height: 50%;
     width: 250px;
   }
 
@@ -3346,19 +3556,21 @@ input[type="checkbox"]:checked+.faq-answer {
   }
 
   .forgot-password {
-    margin-right: 20px;
+    margin-right: 10px;
     margin-bottom: 60px;
   }
 
+
   .reset-container {
-    margin-bottom: 80px;
+    margin-bottom: 40px;
     padding: 30px;
-    height: 40%;
+    height: 68%;
     width: 250px;
   }
 
   .input-group input {
     width: 92%;
+    height: 14px;
   }
 
   .reset-button {
@@ -3367,7 +3579,7 @@ input[type="checkbox"]:checked+.faq-answer {
   }
 
   .reset-container h2 {
-    font-size: 18px;
+    font-size: 16px;
     margin-top: 0px;
   }
 
@@ -3376,21 +3588,66 @@ input[type="checkbox"]:checked+.faq-answer {
   }
 
   .accountContainer2 {
-    margin-bottom: 120px;
-    margin-top: 0px;
+    margin-top: -80px;
+    margin-bottom: 60px;
   }
 
   .accountContainer3 {
-    height: 95%;
+    height: 76%;
     width: 85%;
   }
 
   .navbarMusicHeading {
     width: 42%;
   }
-
+.close-btn{
+  right: -20px;
+}
   .nav-overlay {
     width: 75%;
+  }
+
+  .carousel-container {
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .carousel-track {
+    width: 100%;
+  }
+
+  .artist-card {
+    width: 100%;
+    margin: 0;
+  }
+
+  .artist-card:hover {
+    margin: 0;
+    width: 100%;
+  }
+
+  .artist-image-container {
+    width: 100%;
+    max-width: 200px;
+    margin: 0 auto;
+  }
+
+  .carousel-track p {
+    margin-left: 60px;
+  }
+
+  .carousel-track h3 {
+    margin-left: 100px;
+  }
+  .trending-section h2{
+    margin-left: 30px;
+  }
+  .trending-card{
+    width: 80%;
+    margin-left: 36px;
+  }
+  .accountpassword-container i {
+    right: 50px;
   }
 }
 
@@ -3619,7 +3876,7 @@ input[type="checkbox"]:checked+.faq-answer {
   }
 
   .createAccountheading2 {
-    font-size: 22px;
+    font-size: 20px;
   }
 
   .createAccountheading3 {
@@ -3627,14 +3884,14 @@ input[type="checkbox"]:checked+.faq-answer {
   }
 
   #createAccountheading1 {
-    font-size: 24px;
+    font-size: 20px;
     width: 100%;
     text-align: center;
   }
 
   .accountContainer3 {
     width: 90%;
-    margin-top: 100px;
+    margin-top: 300px;
     border-radius: 20px;
   }
 
@@ -3650,6 +3907,12 @@ input[type="checkbox"]:checked+.faq-answer {
   #btn2,
   #btn3 {
     margin-right: 40px;
+  }
+  .aboutcontainer3{
+height: 620px;
+  }
+  .accountpassword-container i {
+    right: 30px;
   }
 }
 
@@ -3696,3 +3959,6 @@ input[type="checkbox"]:checked+.faq-answer {
     transform: scale(1);
   }
 }
+
+
+

@@ -26,29 +26,67 @@ import Heart from "./components/Heart";
 import ShowFavourite from "./components/ShowFavourite";
 import User from "./components/User";
 import AlertModal from "./components/AlertModal";
+import UserDetails from "./components/UserDetails";
 
 function App() {
   const [image, setImage] = useState("");
   const [activeLink, setActiveLink] = useState("");
+  const [isNavOpen, setIsNavOpen] = useState(false);
+
+  const toggleNav = () => {
+    setIsNavOpen(!isNavOpen);
+  };
 
   return (
     <Router>
-      <Navbar activeLink={activeLink} setActiveLink={setActiveLink} />
+      <Navbar
+        activeLink={activeLink}
+        setActiveLink={setActiveLink}
+        isNavOpen={isNavOpen}
+        setIsNavOpen={setIsNavOpen}
+        toggleNav={toggleNav}
+      />
       <div className="container">
         <Routes>
           <Route
             path="/"
-            element={<Home setImage={setImage} setActiveLink={setActiveLink} />}
+            element={
+              <Home setActiveLink={setActiveLink} isNavOpen={isNavOpen} />
+            }
           />
-          <Route exact path="/newmusic" element={<Newmusic />} />
+          <Route
+            exact
+            path="/newmusic"
+            element={<Newmusic isNavOpen={isNavOpen} />}
+          />
           <Route exact path="/amrindergill" element={<AmrinderGill />} />
-          <Route exact path="/nimratkhaira" element={<NimratSongs />} />
+          <Route
+            exact
+            path="/nimratkhaira"
+            element={<NimratSongs isNavOpen={isNavOpen} />}
+          />
           <Route exact path="/playmusic" element={<PlayerControl />} />
-          <Route exact path="/favourite" element={<Favourite />} />
-          <Route exact path="/about" element={<About />} />
-          <Route exact path="/login" element={<Login />} />
-          <Route exact path="/reset" element={<Reset />} />
-          <Route exact path="/help" element={<Help />} />
+          <Route
+            exact
+            path="/favourite"
+            element={<Favourite isNavOpen={isNavOpen} />}
+          />
+          <Route
+            exact
+            path="/about"
+            element={<About isNavOpen={isNavOpen} />}
+          />
+          <Route
+            exact
+            path="/login"
+            element={<Login isNavOpen={isNavOpen} />}
+          />
+          <Route
+            exact
+            path="/reset"
+            element={<Reset isNavOpen={isNavOpen} />}
+          />
+          <Route exact path="/help" element={<Help isNavOpen={isNavOpen} />} />
           <Route exact path="/heart" element={<Heart />} />
           <Route exact path="/user" element={<User />} />
           <Route exact path="/partySongs" element={<PartySongs />} />
@@ -56,10 +94,19 @@ function App() {
           <Route exact path="/roadSongs" element={<RoadSongs />} />
           <Route exact path="/weddingSongs" element={<WeddingSongs />} />
           <Route exact path="/alertModal" element={<AlertModal />} />
-          <Route exact path="/showFavourite" element={<ShowFavourite />} />
+          <Route
+            exact
+            path="/showFavourite"
+            element={<ShowFavourite setActiveLink={setActiveLink} />}
+          />
           <Route exact path="/punjabimusic" element={<PunjabiMusic />} />
           <Route exact path="/englishsongs" element={<EnglishSongs />} />
           <Route exact path="/trendingsongs" element={<TrendingSongs />} />
+          <Route
+            exact
+            path="/userDetails"
+            element={<UserDetails setActiveLink={setActiveLink} />}
+          />
           <Route
             exact
             path="/musiclist"
@@ -68,7 +115,12 @@ function App() {
           <Route
             exact
             path="/createAccount"
-            element={<CreateAccount setActiveLink={setActiveLink} />}
+            element={
+              <CreateAccount
+                setActiveLink={setActiveLink}
+                isNavOpen={isNavOpen}
+              />
+            }
           />
           <Route exact path="/musicapp" element={<MusicApp />} />
         </Routes>

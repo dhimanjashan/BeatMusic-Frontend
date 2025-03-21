@@ -1,16 +1,23 @@
 import React, { useEffect } from "react";
 import Footer from "./Footer";
 
-const Help = () => {
+const Help = ({ isNavOpen }) => {
   useEffect(() => {
     window.scrollTo(0, 0);
-  })
+  });
 
   return (
     <>
-
-      <div className="helpContainer2">
-        <div className="helpContainer3">
+      <div
+        className={
+          isNavOpen ? "helpContainer2 blur-background" : "helpContainer2"
+        }
+      >
+        <div
+          className={
+            isNavOpen ? "helpContainer3 blur-background" : "helpContainer3"
+          }
+        >
           <h1 className="helpHeading2">Frequently asked</h1>
           <h2 className="questions">questions</h2>
           <h2 className="helpHeading3">
@@ -18,7 +25,9 @@ const Help = () => {
             some features?
           </h2>
           <div className="faq-container">
-            <div className="faq-item">
+            <div
+              className={isNavOpen ? "faq-item blur-background" : "faq-item"}
+            >
               <label className="faq-question" htmlFor="faq1">
                 What is BeatMusic?
               </label>
@@ -96,8 +105,8 @@ const Help = () => {
               </label>
               <input type="checkbox" id="faq8" />
               <div className="faq-answer">
-                Go to Settings &gt; Account &gt; Delete Account. Once deleted,
-                your data cannot be recovered.
+                Go to Account &gt; Delete Account. Once deleted, your data
+                cannot be recovered.
               </div>
             </div>
             <div className="faq-item">
@@ -121,7 +130,7 @@ const Help = () => {
           </div>
         </div>
       </div>
-      <Footer />
+      <Footer isNavOpen={isNavOpen} />
     </>
   );
 };

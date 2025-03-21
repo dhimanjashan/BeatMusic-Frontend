@@ -1,13 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { playAudio, pauseAudio } from "../state/audioSlice";
 import { useDispatch, useSelector } from "react-redux";
 
-const Home = ({ setActiveLink }) => {
+const Home = ({ setActiveLink, isNavOpen }) => {
   const navigate = useNavigate();
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [isVisible, setIsVisible] = useState(false);
   const [visibleSlides, setVisibleSlides] = useState(4);
   const dispatch = useDispatch();
   const SET_HEADING = "SET_HEADING";
@@ -24,7 +23,7 @@ const Home = ({ setActiveLink }) => {
   const changeImage = (newImage) => {
     dispatch({ type: "SET_IMAGE", payload: newImage });
     localStorage.setItem("image", newImage);
-  }
+  };
 
   useEffect(() => {
     const storedHeading = localStorage.getItem("heading");
@@ -33,11 +32,36 @@ const Home = ({ setActiveLink }) => {
     }
   }, [dispatch]);
 
+  useEffect(() => {
+    const handleKeyPress = (e) => {
+      if (
+        e.code === "Space" &&
+        e.target.tagName !== "INPUT" &&
+        e.target.tagName !== "TEXTAREA"
+      ) {
+        e.preventDefault(); // Prevent page scroll
+        if (currentSong && audioElement) {
+          if (isPlaying) {
+            audioElement.pause();
+            dispatch(pauseAudio());
+          } else {
+            audioElement.play();
+            dispatch(
+              playAudio({ songUrl: audioElement.src, song: currentSong })
+            );
+          }
+        }
+      }
+    };
 
+    window.addEventListener("keydown", handleKeyPress);
+    return () => window.removeEventListener("keydown", handleKeyPress);
+  }, [dispatch, isPlaying, currentSong, audioElement]);
 
   const handleNavigation = (link) => {
     setActiveLink(link);
-  }
+  };
+
   const handleArtistClick = (path, setheading, artistImage) => {
     console.log(path);
     console.log(setheading);
@@ -46,7 +70,6 @@ const Home = ({ setActiveLink }) => {
     changeImage(artistImage);
   };
 
-
   const featuredArtists = [
     {
       name: "Jordan Sandhu",
@@ -54,47 +77,47 @@ const Home = ({ setActiveLink }) => {
       artistImage: "jordan-sandhu.jpg",
       path: "/musiclist",
       description: "Rising star in Punjabi music industry",
-      setheading: "Hanji Sohneyo Suniye Song Jordan Sandhu De 🎵"
-
+      setheading: "Hanji Sohneyo Suniye Song Jordan Sandhu De 🎵",
     },
     {
       name: "Nimrat Khaira",
-      image: "nimrat khaira logo.jpg",
-      artistImage: "nimrat-khaira.jpg",
+      image: "nimrat-khaira.jpg",
+      artistImage: "Nimrat Khaira.jpg",
       path: "/musiclist",
       description: "Voice that touches hearts",
-      setheading: "Hanji Sohneyo Suniye Song Nimrat Khaira De 🎵"
+      setheading: "Hanji Sohneyo Suniye Song Nimrat Khaira De 🎵",
     },
     {
       name: "Arjan Dhillon",
-      image: "arjan dhillon.jpg",
-      artistImage: "arjan-dhillon.jpg",
+      image: "arjan-dhillon.jpg",
+      artistImage: "arjan dhillon.jpg",
       path: "/musiclist",
       description: "The powerful voice of Punjab",
-      setheading: "Hanji Sohneyo Suniye Song Arjan Dhillon De 🎵"
+      setheading: "Hanji Sohneyo Suniye Song Arjan Dhillon De 🎵",
     },
     {
       name: "Sunanda Sharma",
-      image: "sunanda sharma.png",
-      artistImage: "sunanda-sharma.jpg",
+      image: "sunanda-sharma.jpg",
+      artistImage: "Sunanda Sharma.jpg",
       path: "/musiclist",
       description: "Queen of Punjabi pop music",
-      setheading: "Hanji Sohneyo Suniye Song Sunanda Sharma De 🎵"
-
+      setheading: "Hanji Sohneyo Suniye Song Sunanda Sharma De 🎵",
     },
     {
       name: "Amrinder Gill",
-      image: "Amrinder Gill.jpg",
-      artistImage: "amrinder-gill.jpg",
+      image: "amrinder-gill.jpg",
+      artistImage: "Amrinder Gill.jpg",
       path: "/musiclist",
       description: "Known for his soulful songs",
-      setheading: "Hanji Sohneyo Suniye Song Amrinder Gill De 🎵"
+      setheading: "Hanji Sohneyo Suniye Song Amrinder Gill De 🎵",
     },
     // Add more artists here
   ];
 
   // Calculate number of pages based on visible slides
-  const [totalPages, setTotalPages] = useState(Math.ceil(featuredArtists.length / visibleSlides));
+  const [totalPages, setTotalPages] = useState(
+    Math.ceil(featuredArtists.length / visibleSlides)
+  );
 
   useEffect(() => {
     setTotalPages(Math.ceil(featuredArtists.length / visibleSlides) || 1);
@@ -104,18 +127,17 @@ const Home = ({ setActiveLink }) => {
       title: "Latest Punjabi Hits",
       image: "path_to_image",
       path: "/newmusic",
-      description: "Fresh beats from Punjab"
+      description: "Fresh beats from Punjab",
     },
     {
       title: "Trending Now",
       image: "path_to_image",
       path: "/punjabimusic",
-      description: "What's hot in Punjabi music"
-    }
+      description: "What's hot in Punjabi music",
+    },
   ];
 
   useEffect(() => {
-    setIsVisible(true);
     const handleResize = () => {
       if (window.innerWidth <= 480) {
         setVisibleSlides(1);
@@ -127,19 +149,19 @@ const Home = ({ setActiveLink }) => {
     };
 
     handleResize(); // Initial call
-    window.addEventListener('resize', handleResize);
-
+    window.addEventListener("resize", handleResize);
     // Auto-slide
-    const slideInterval = setInterval(() => {
-      setCurrentSlide(prev => {
-        const nextSlide = prev + 1;
-        return nextSlide >= totalPages ? 0 : nextSlide;
-      });
-    }, 3000);
+    let slideInterval;
+    if (window.innerWidth > 700) {
+      // Auto-slide only for large screens
+      slideInterval = setInterval(() => {
+        setCurrentSlide((prev) => (prev + 1) % totalPages);
+      }, 3000);
+    }
 
     return () => {
+      window.removeEventListener("resize", handleResize);
       clearInterval(slideInterval);
-      window.removeEventListener('resize', handleResize);
     };
   }, [totalPages]);
 
@@ -150,80 +172,98 @@ const Home = ({ setActiveLink }) => {
       artist: "Harf cheema",
       plays: "20M+ plays",
       image: "Harf cheema.jpg",
-      songID: "67a6d7e9ea4bf472388d60d7"
+      songID: "67a6d7e9ea4bf472388d60d7",
     },
     {
       title: "Fomo",
       artist: "Jordan Sandhu",
       plays: "10M+ plays",
       image: "jordan sandhu.jpg",
-      songID: "67d28db63147114aa1df0228"
+      songID: "67d28db63147114aa1df0228",
     },
     {
       title: "Ammi Wargiye Ni",
       artist: "Shree Brar",
       plays: "4M+ plays",
       image: "shree brar.jpg",
-      songID: "67d28e123147114aa1df022a"
+      songID: "67d28e123147114aa1df022a",
     },
     // Add more songs
   ];
 
-
-  const API_URL = process.env.REACT_APP_API_URL || '';
+  const API_URL = process.env.REACT_APP_API_URL || "";
   const handleClick = async (songIndex) => {
     if (isLoading) return;
     setIsLoading(true);
 
     const song = trendingSongs[songIndex];
+    console.log("Attempting to play song:", song);
 
     try {
+      // Fix the song ID key to match the backend expectation
       const response = await fetch(`${API_URL}/files/`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ songId: song.songID }),
+        body: JSON.stringify({ songId: song.songID }), // Ensure this matches your backend
       });
+
+      if (!response.ok) {
+        throw new Error(`Server responded with ${response.status}`);
+      }
 
       const data = await response.json();
       console.log("Received song data:", data);
 
       if (!data.file_path || typeof data.file_path !== "string") {
         console.error("Invalid file path received:", data.file_path);
+        setIsLoading(false);
         return;
       }
 
       if (!audioElement) {
         console.error("Audio element not found");
+        setIsLoading(false);
         return;
       }
 
+      // Stop current playback
+      audioElement.pause();
       audioElement.src = data.file_path;
       audioElement.load();
 
       audioElement.oncanplaythrough = async () => {
         try {
           await audioElement.play();
-          dispatch(playAudio({ songUrl: data.file_path, song }));
+          dispatch(
+            playAudio({
+              songUrl: data.file_path,
+              song: {
+                ...song,
+                id: song.songID,
+              },
+            })
+          );
         } catch (error) {
           console.error("Error playing audio:", error);
+        } finally {
+          setIsLoading(false);
         }
       };
 
+      audioElement.onerror = () => {
+        console.error("Audio element error");
+        setIsLoading(false);
+      };
     } catch (error) {
       console.error("Error fetching song:", error);
-    } finally {
       setIsLoading(false);
     }
   };
 
-
-
   const handlePlayPause = (index) => {
-    if (!audioElement) return;
-
     const song = trendingSongs[index];
 
-    if (isPlaying && currentSong?.id === song.id) {
+    if (isPlaying && currentSong && currentSong.id === song.songID) {
       audioElement.pause();
       dispatch(pauseAudio());
     } else {
@@ -233,11 +273,52 @@ const Home = ({ setActiveLink }) => {
 
   const handleCategories = (path) => {
     navigate(path);
-  }
+  };
+  useEffect(() => {
+    let touchStartX = 0;
+    let touchEndX = 0;
 
+    const handleTouchStart = (e) => {
+      touchStartX = e.touches[0].clientX;
+    };
+
+    const handleTouchMove = (e) => {
+      touchEndX = e.touches[0].clientX;
+    };
+
+    const handleTouchEnd = () => {
+      const swipeDistance = touchStartX - touchEndX;
+
+      if (swipeDistance > 50) {
+        setCurrentSlide((prev) => (prev + 1 < totalPages ? prev + 1 : 0));
+      } else if (swipeDistance < -50) {
+        setCurrentSlide((prev) => (prev - 1 >= 0 ? prev - 1 : totalPages - 1));
+      }
+    };
+
+    const carousel = document.querySelector(".carousel-container");
+
+    if (carousel) {
+      carousel.addEventListener("touchstart", handleTouchStart);
+      carousel.addEventListener("touchmove", handleTouchMove);
+      carousel.addEventListener("touchend", handleTouchEnd);
+    }
+
+    return () => {
+      if (carousel) {
+        carousel.removeEventListener("touchstart", handleTouchStart);
+        carousel.removeEventListener("touchmove", handleTouchMove);
+        carousel.removeEventListener("touchend", handleTouchEnd);
+      }
+    };
+  }, [totalPages]);
 
   return (
-    <div className="home-container">
+    <div
+      className={
+        isNavOpen ? "home-container blur-background" : "home-container"
+      }
+    >
       {/* Hero Section */}
       <section className="hero-section">
         <h1 className="hero-title">Welcome to Punjabi Music Hub</h1>
@@ -251,8 +332,10 @@ const Home = ({ setActiveLink }) => {
           <div
             className="carousel-track"
             style={{
-              transform: `translateX(-${currentSlide * (100 / visibleSlides)}%)`,
-              transition: 'transform 0.5s ease-in-out'
+              transform: `translateX(-${
+                currentSlide * (100 / visibleSlides)
+              }%)`,
+              transition: "transform 0.5s ease-in-out",
             }}
           >
             {featuredArtists.map((artist, index) => (
@@ -260,9 +343,17 @@ const Home = ({ setActiveLink }) => {
                 to={artist.path}
                 key={index}
                 className="artist-card"
-                onClick={() => handleArtistClick(artist.path, artist.setheading, artist.artistImage)}
-
-                style={{ flex: `0 0 ${90 / visibleSlides}%`, transform: `translateX(-${(currentSlide * 0)}%)`, }}
+                onClick={() =>
+                  handleArtistClick(
+                    artist.path,
+                    artist.setheading,
+                    artist.artistImage
+                  )
+                }
+                style={{
+                  flex: `0 0 ${90 / visibleSlides}%`,
+                  transform: `translateX(-${currentSlide * 0}%)`,
+                }}
               >
                 <div className="artist-image-container">
                   <img src={artist.image} alt={artist.name} />
@@ -276,7 +367,7 @@ const Home = ({ setActiveLink }) => {
             {[...Array(totalPages)].map((_, index) => (
               <span
                 key={index}
-                className={`dot ${currentSlide === index ? 'active' : ''}`}
+                className={`dot ${currentSlide === index ? "active" : ""}`}
                 onClick={() => setCurrentSlide(index)}
               />
             ))}
@@ -289,7 +380,12 @@ const Home = ({ setActiveLink }) => {
         <h2>New Releases</h2>
         <div className="releases-grid">
           {newReleases.map((release, index) => (
-            <Link to={release.path} key={index} className="release-card" onClick={() => handleNavigation(release.path)}>
+            <Link
+              to={release.path}
+              key={index}
+              className="release-card"
+              onClick={() => handleNavigation(release.path)}
+            >
               <div className="release-content">
                 <h3>{release.title}</h3>
                 <p>{release.description}</p>
@@ -303,7 +399,11 @@ const Home = ({ setActiveLink }) => {
       <section className="quick-links">
         <h2>Quick Access</h2>
         <div className="links-grid">
-          <Link to="/showFavourite" className="quick-link-card" onClick={() => handleNavigation('/favourite')}>
+          <Link
+            to="/favourite"
+            className="quick-link-card"
+            onClick={() => handleNavigation("/favourite")}
+          >
             <i className="fas fa-heart"></i>
             <span>Your Favorites</span>
           </Link>
@@ -311,7 +411,11 @@ const Home = ({ setActiveLink }) => {
             <i className="fas fa-music"></i>
             <span>All Songs</span>
           </Link>
-          <Link to="/newmusic" className="quick-link-card" onClick={() => handleNavigation('/newmusic')}>
+          <Link
+            to="/newmusic"
+            className="quick-link-card"
+            onClick={() => handleNavigation("/newmusic")}
+          >
             <i className="fas fa-compact-disc"></i>
             <span>New Releases</span>
           </Link>
@@ -331,7 +435,7 @@ const Home = ({ setActiveLink }) => {
                   onClick={() => handlePlayPause(index)}
                   style={{ cursor: "pointer" }}
                 >
-                  <i className={isPlaying ? "fas fa-pause" : "fas fa-play"}  ></i>
+                  <i className={isPlaying ? "fas fa-pause" : "fas fa-play"}></i>
                 </div>
               </div>
               <div className="trending-info">
@@ -348,26 +452,36 @@ const Home = ({ setActiveLink }) => {
       <section className="categories-section">
         <h2>Browse Categories</h2>
         <div className="categories-grid">
-          <div className="category-card romantic" onClick={() => handleCategories('/roadSongs')}>
+          <div
+            className="category-card romantic"
+            onClick={() => handleCategories("/roadSongs")}
+          >
             <i className="fas fa-car"></i>
             <h3>Driving & Road Trip</h3>
           </div>
-          <div className="category-card party" onClick={() => handleCategories('/partySongs')}>
+          <div
+            className="category-card party"
+            onClick={() => handleCategories("/partySongs")}
+          >
             <i className="fas fa-music"></i>
             <h3>Party</h3>
           </div>
-          <div className="category-card devotional" onClick={() => handleCategories('/gamingSongs')}>
-            <i className="fas fa-gamepad" ></i>
+          <div
+            className="category-card devotional"
+            onClick={() => handleCategories("/gamingSongs")}
+          >
+            <i className="fas fa-gamepad"></i>
             <h3>Gaming Mode</h3>
           </div>
-          <div className="category-card workout" onClick={() => handleCategories('/weddingSongs')}>
+          <div
+            className="category-card workout"
+            onClick={() => handleCategories("/weddingSongs")}
+          >
             <i className="fas fa-users"></i>
             <h3>Wedding</h3>
           </div>
         </div>
       </section>
-
-
 
       {/* Footer Section */}
       <footer className="home-footer">
@@ -379,23 +493,48 @@ const Home = ({ setActiveLink }) => {
           <div className="footer-section">
             <h3>Quick Links</h3>
             <ul>
-              <li><Link to="/newmusic">New Releases</Link></li>
-              <li><Link to="/punjabimusic">Top Charts</Link></li>
-              <li><Link to="/showFavourite">Your Favorites</Link></li>
+              <li>
+                <Link to="/newmusic">New Releases</Link>
+              </li>
+              <li>
+                <Link to="/punjabimusic">Top Charts</Link>
+              </li>
+              <li>
+                <Link to="/showFavourite">Your Favorites</Link>
+              </li>
             </ul>
           </div>
           <div className="footer-section">
             <h3>Connect With Us</h3>
             <div className="social-links">
-              <a href="https://www.linkedin.com/in/jashandeep-singh-50826833a/" target='blank'><i className="fab fa-linkedin"></i></a>
-              <a href="https://www.instagram.com/codingwithhappiness/" target='blank'><i className="fab fa-instagram"></i></a>
-              <a href="https://x.com/Jashan5909" target='blank'><i className="fab fa-twitter"></i></a>
-              <a href="https://www.youtube.com/@codingwith_happiness06/videos" target='blank'><i className="fab fa-youtube"></i></a>
+              <a
+                href="https://www.linkedin.com/in/jashandeep-singh-50826833a/"
+                target="blank"
+              >
+                <i className="fab fa-linkedin"></i>
+              </a>
+              <a
+                href="https://www.instagram.com/codingwithhappiness/"
+                target="blank"
+              >
+                <i className="fab fa-instagram"></i>
+              </a>
+              <a href="https://x.com/Jashan5909" target="blank">
+                <i className="fab fa-twitter"></i>
+              </a>
+              <a
+                href="https://www.youtube.com/@codingwith_happiness06/videos"
+                target="blank"
+              >
+                <i className="fab fa-youtube"></i>
+              </a>
             </div>
           </div>
         </div>
         <div className="footer-bottom">
-          <p>&copy; www.<span>Beat</span>Music.com. All rights reserved.</p>
+          <p>
+            &copy; www.<span>Beat</span>Music.com. All rights reserved.
+          </p>
         </div>
       </footer>
     </div>

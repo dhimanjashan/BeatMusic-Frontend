@@ -6,7 +6,7 @@ import { addFavorite } from "../state/favouriteSlice";
 import PlayerControl from "./PlayerControl";
 import { useNavigate } from "react-router-dom";
 
-const Newmusic = () => {
+const Newmusic = ({ isNavOpen }) => {
   const audioRef = useRef(null);
   const [repeat, setRepeat] = useState(false);
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
@@ -142,30 +142,23 @@ const Newmusic = () => {
     setIsLoading(true);
 
     const song = newPunjabiSongs[songIndex];
+    const API_URL = "http://localhost:5000";
     try {
-      const response = await fetch("http://172.20.10.4:5000/files/", {
-        method: "POST",
+      const response = await fetch(`${API_URL}/api/songs/${song.id}`, {
+        method: "GET",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ songId: song.id }),
       });
-      const data = await response.json();
-      console.log("Fetched song URL:", data.file_path); // Debugging
-
-      if (!data.file_path || typeof data.file_path !== "string") {
-        console.error("Invalid file path received:", data.file_path);
-        return;
-      }
+      const songUrl = response.url;
 
       if (audioElement) {
-        audioElement.src = data.file_path;
-        console.log("Audio elemet set to", audioElement.src);
+        audioElement.src = songUrl;
         audioElement.load();
 
         audioElement.oncanplaythrough = () => {
           audioElement
             .play()
             .then(() => {
-              dispatch(playAudio({ songUrl: data.file_path, song }));
+              dispatch(playAudio({ songUrl, song }));
             })
             .catch((error) => {
               console.error("Error playing audio:", error);
@@ -292,13 +285,21 @@ const Newmusic = () => {
   }, []);
   return (
     <>
-      <div className="newmusicContainer">
-        <h1 className="newmusicheading">
-          Hanji Sohneyo Sunlo New Punjabi Songs 🎵
-        </h1>
+      <div
+        className={
+          isNavOpen ? "newmusicContainer blur-background" : "newmusicContainer"
+        }
+      >
+        <h1 className="newmusicheading">New Punjabi Vibes Just for You 🎵</h1>
       </div>
       <hr className="newMusicHr"></hr>
-      <div className="newmusicContainer1">
+      <div
+        className={
+          isNavOpen
+            ? "newmusicContainer1 blur-background"
+            : "newmusicContainer1"
+        }
+      >
         <div className="newmusicContainer2">
           {isMobile ? (
             <PlayerControl
@@ -325,7 +326,7 @@ const Newmusic = () => {
               onClick={() => handleClick(index)}
               style={{
                 cursor: "pointer",
-                color: currentSong?.id === song.id ? "green" : "white",
+                color: currentSong?.id === song.id ? "#030710" : "white",
                 fontWeight: currentSong?.id === song.id ? "bold" : "lighter",
               }}
             >
