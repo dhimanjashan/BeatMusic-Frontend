@@ -1,6 +1,8 @@
 body {
   background: linear-gradient(135deg, #1e3c72, #2a5298);
   background-size: cover;
+  min-height: 100vh;
+  background-attachment: fixed;
   margin: 0px;
   padding: 0px;
   font-family: "Nunito", sans-serif;
@@ -37,7 +39,7 @@ span {
   height: 40px;
   top: 0px;
   position: sticky;
-  z-index:1000;
+  z-index: 1000;
 }
 
 .navbar h1 {
@@ -47,7 +49,7 @@ span {
 }
 
 .navbar h1 span {
-  color: #030710
+  color: #030710;
 }
 
 .nav-links {
@@ -133,7 +135,7 @@ span {
 }
 
 .container2 button:hover {
-  color:  #0a1730;
+  color: #0a1730;
 }
 
 /* Home css */
@@ -146,7 +148,7 @@ span {
 }
 
 .home-container::before {
-  content: '';
+  content: "";
   position: fixed;
   top: 0;
   left: 0;
@@ -161,7 +163,6 @@ span {
   text-align: center;
   padding: 60px 20px;
   background: linear-gradient(135deg, #2c5092, #2a5298);
-
   border-radius: 15px;
   margin-bottom: 40px;
   color: white;
@@ -208,7 +209,6 @@ span {
   width: 100%;
   box-sizing: border-box;
   margin-left: 15px;
-  /* Prevent cards from shrinking */
 }
 
 .artist-card:hover {
@@ -274,7 +274,7 @@ span {
 
 /* Quick Links Section */
 .quick-links {
-  margin-top: 40px; 
+  margin-top: 40px;
 }
 
 .links-grid {
@@ -451,7 +451,11 @@ span {
 .newsletter-section {
   margin: 60px 0;
   padding: 60px;
-  background: linear-gradient(45deg, rgba(29, 185, 84, 0.1), rgba(0, 0, 0, 0.3));
+  background: linear-gradient(
+    45deg,
+    rgba(29, 185, 84, 0.1),
+    rgba(0, 0, 0, 0.3)
+  );
   border-radius: 15px;
   text-align: center;
 }
@@ -504,7 +508,6 @@ span {
   width: 102%;
   font-size: 30px;
   background: linear-gradient(135deg, #a9b0bd, #416199);
-
 }
 
 @keyframes matrixMove {
@@ -749,15 +752,15 @@ h2 {
 }
 
 .specialmusicContainer2 {
- height: 100%;
   width: 100%;
   font-size: 18px;
-  position: absolute;
+  position: relative;
   color: white;
-  margin: 612px auto;
-  padding-bottom: 0;
+  margin: 160px auto;
+  padding: 20px 0;
+  min-height: 100px;
+  overflow: auto;
 }
-
 
 .specialmusicContainer3 {
   height: 50%;
@@ -790,7 +793,7 @@ h2 {
   justify-content: center;
   align-items: center;
   margin-bottom: 10px;
-  color: white; 
+  color: white;
   font-size: 32px;
   margin-top: 5px;
 }
@@ -844,7 +847,6 @@ h2 {
   color: white;
   font-size: 28px;
   padding: 10px;
-
 }
 
 .newMusicHr {
@@ -869,7 +871,6 @@ h2 {
   padding: 20px 30px;
   font-size: 1.2rem;
   font-weight: bold;
-
 }
 
 .newmusicimageContainer {
@@ -878,7 +879,6 @@ h2 {
   display: flex;
   justify-content: center;
   align-items: center;
-
 }
 
 .newmusicImage {
@@ -911,7 +911,6 @@ h2 {
   border: none;
 }
 
-
 .login-container:hover {
   transform: scale(1.08);
   box-shadow: 0px 15px 40px rgba(0, 0, 0, 0.4);
@@ -919,13 +918,12 @@ h2 {
 
 .accountContainer2 {
   width: 100%;
-  height: 70vh; 
+  height: 70vh;
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
   margin-bottom: 40px;
-  overflow: hidden;
 }
 
 .accountContainer3 {
@@ -936,7 +934,6 @@ h2 {
   border-radius: 20px;
   backdrop-filter: blur(20px);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  overflow: hidden;
 }
 
 .accountContainer3:hover {
@@ -985,7 +982,6 @@ h2 {
   transition: all 0.3s ease;
 }
 
-
 .custom-input::placeholder {
   color: black;
   opacity: 1;
@@ -1017,14 +1013,16 @@ h2 {
 
 /* Eye icon's css */
 
-.accountpassword-container,.loginpassword-container,.resetpassword-container {
+.accountpassword-container,
+.loginpassword-container,
+.resetpassword-container {
   position: relative;
   width: 100%;
 }
 
 .custom-input {
   width: 100%;
-  padding: 10px 40px 10px 10px; 
+  padding: 10px 40px 10px 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
   font-size: 16px;
@@ -1058,7 +1056,6 @@ h2 {
   color: #888;
   font-size: 18px;
 }
-
 
 /* Favourite component's css */
 
@@ -1110,7 +1107,6 @@ h2 {
 .favouriteDelete:hover {
   cursor: pointer;
 }
-
 
 /* About component's css */
 .aboutcontainer1 {
@@ -1325,7 +1321,7 @@ input[type="checkbox"] {
   display: none;
 }
 
-input[type="checkbox"]:checked+.faq-answer {
+input[type="checkbox"]:checked + .faq-answer {
   display: block;
 }
 
@@ -1487,6 +1483,8 @@ input[type="checkbox"]:checked+.faq-answer {
 .heartContainer {
   text-align: center;
   margin-bottom: 50px;
+  margin-right: 20px;
+  margin-left: 20px;
 }
 
 /* Card with smooth shadow */
@@ -1648,7 +1646,7 @@ input[type="checkbox"]:checked+.faq-answer {
   position: fixed;
   top: 35px;
   transform: translateX(-50%) scale(0.9);
-  background: rgba(141, 134, 134, 1.0);
+  background: rgba(141, 134, 134, 1);
   backdrop-filter: blur(25px);
   border-radius: 20px;
   padding: 40px;
@@ -1788,7 +1786,8 @@ input[type="checkbox"]:checked+.faq-answer {
 }
 
 /* Buttons */
-.logout-btn, .delete-btn {
+.logout-btn,
+.delete-btn {
   flex: 1;
   padding: 12px;
   font-size: 14px;
@@ -1822,7 +1821,6 @@ input[type="checkbox"]:checked+.faq-answer {
   background: #c0392b;
   transform: scale(1.05);
 }
-
 
 /* Alert's css */
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
@@ -1876,7 +1874,6 @@ input[type="checkbox"]:checked+.faq-answer {
   margin-right: 15px;
   font-size: 20px;
   color: white !important;
-
 }
 
 .alert-icon.success {
@@ -1925,7 +1922,6 @@ input[type="checkbox"]:checked+.faq-answer {
   color: #424242;
   font-size: 1rem;
   line-height: 1.5;
-  
 }
 
 .alert-modal-body p {
@@ -2137,7 +2133,6 @@ input[type="checkbox"]:checked+.faq-answer {
   color: #b3b3b3;
   margin: 0;
 }
-
 
 /* Responsiveness Starts from here */
 @media screen and (max-width: 2500px) {
@@ -2377,7 +2372,7 @@ input[type="checkbox"]:checked+.faq-answer {
     margin-bottom: 145px;
     height: auto;
   }
-  .aboutcontainer1{
+  .aboutcontainer1 {
     height: 100%;
   }
 }
@@ -2405,7 +2400,6 @@ input[type="checkbox"]:checked+.faq-answer {
     width: 100%;
     text-align: center;
   }
-
 }
 
 @media screen and (max-width: 900px) {
@@ -2440,7 +2434,6 @@ input[type="checkbox"]:checked+.faq-answer {
     width: 60%;
     padding: 4px;
   }
-
 }
 
 @media screen and (max-width: 840px) {
@@ -2468,7 +2461,6 @@ input[type="checkbox"]:checked+.faq-answer {
     font-size: 18px;
     width: 140px;
   }
-
 }
 
 @media screen and (max-width: 750px) {
@@ -2523,7 +2515,7 @@ input[type="checkbox"]:checked+.faq-answer {
     font-size: 25px;
     margin-top: -400px;
     display: flex;
-    flex-direction: column; 
+    flex-direction: column;
   }
 
   .musiclistImage {
@@ -2715,7 +2707,6 @@ input[type="checkbox"]:checked+.faq-answer {
 }
 
 @media screen and (max-width: 490px) {
-  
   .musicContainer1 {
     width: 100%;
     height: 100%;
@@ -2809,9 +2800,9 @@ input[type="checkbox"]:checked+.faq-answer {
     font-size: 18px;
     margin-top: -390px;
   }
-.aboutheading1{
+  .aboutheading1 {
     text-align: center;
-}
+  }
   .aboutheading2 {
     margin-left: 60px;
   }
@@ -2842,7 +2833,7 @@ input[type="checkbox"]:checked+.faq-answer {
   .aboutheading3 {
     margin-right: 70px;
   }
-  .accountContainer2{
+  .accountContainer2 {
     height: 78vh;
     margin-bottom: 100px;
   }
@@ -2854,7 +2845,7 @@ input[type="checkbox"]:checked+.faq-answer {
 
 @media screen and (max-width: 380px) {
   .musicContainer1 {
-    width: 100%;        
+    width: 100%;
     height: 100%;
     top: 0;
     left: 0;
@@ -2933,7 +2924,6 @@ input[type="checkbox"]:checked+.faq-answer {
     width: 100%;
     text-align: center;
   }
-  
 }
 
 @media screen and (max-width: 300px) {
@@ -2969,8 +2959,6 @@ input[type="checkbox"]:checked+.faq-answer {
 }
 
 @media screen and (max-width: 1409px) {
-
-
   .helpContainer3 {
     width: 85%;
     height: 90%;
@@ -2991,12 +2979,12 @@ input[type="checkbox"]:checked+.faq-answer {
   .questions {
     font-size: 60px;
   }
-.musicContainer2{
-  margin-top: auto;
-}
+  .musicContainer2 {
+    margin-top: auto;
+  }
   .musicContainer1 {
     top: -370px;
-   margin: auto;
+    margin: auto;
     padding-bottom: 30px;
     width: auto;
     font-size: 18px;
@@ -3025,7 +3013,6 @@ input[type="checkbox"]:checked+.faq-answer {
 }
 
 @media screen and (max-width: 1320px) {
-
   .playerSystemContainer1 {
     top: 285px;
     width: 30%;
@@ -3049,11 +3036,11 @@ input[type="checkbox"]:checked+.faq-answer {
 }
 
 @media screen and (max-width: 1160px) {
-.blur-background {
-  filter: blur(5px);
-  transition: filter 0.3s ease-in-out;
-  pointer-events: none; /* Prevent clicks on blurred content */
-}
+  .blur-background {
+    filter: blur(5px);
+    transition: filter 0.3s ease-in-out;
+    pointer-events: none; /* Prevent clicks on blurred content */
+  }
   .navbar {
     padding: 9px 15px;
     display: flex;
@@ -3063,9 +3050,10 @@ input[type="checkbox"]:checked+.faq-answer {
   }
 
   .close-btn {
-    position: absolute;
+    position: fixed;
     top: 15px;
-    right: -8px;
+
+    width: 10%;
     background: none;
     color: white;
     font-size: 36px;
@@ -3088,6 +3076,7 @@ input[type="checkbox"]:checked+.faq-answer {
     transition: left 0.3s ease;
     visibility: hidden;
     opacity: 0;
+    overflow-y: auto;
   }
 
   .nav-overlay.open {
@@ -3171,6 +3160,7 @@ input[type="checkbox"]:checked+.faq-answer {
 
   .musicHeading {
     margin-top: 15px;
+    overflow-y: auto;
   }
 
   .menu-toggle {
@@ -3200,7 +3190,6 @@ input[type="checkbox"]:checked+.faq-answer {
 }
 
 @media screen and (max-width: 1000px) {
-
   .playerSystemContainer1 {
     top: 315px;
     width: 34%;
@@ -3224,7 +3213,6 @@ input[type="checkbox"]:checked+.faq-answer {
 }
 
 @media screen and (max-width: 900px) {
-
   .helpHeading2 {
     font-size: 50px;
   }
@@ -3292,10 +3280,7 @@ input[type="checkbox"]:checked+.faq-answer {
   }
 }
 
-
 @media screen and (max-width: 700px) {
-
-
   .login-container {
     padding: 30px;
     height: 40%;
@@ -3310,7 +3295,6 @@ input[type="checkbox"]:checked+.faq-answer {
 }
 
 @media screen and (max-width: 600px) {
-
   .helpHeading2 {
     font-size: 40px;
     margin-bottom: 50px;
@@ -3445,7 +3429,6 @@ input[type="checkbox"]:checked+.faq-answer {
 }
 
 @media screen and (max-width: 450px) {
-
   .PunjabiSongsheading {
     font-size: 22px;
     padding: 10px;
@@ -3453,7 +3436,7 @@ input[type="checkbox"]:checked+.faq-answer {
 
   .login-container {
     padding: 30px;
-    height: 33%;
+    height: auto;
     width: 250px;
   }
 
@@ -3509,7 +3492,6 @@ input[type="checkbox"]:checked+.faq-answer {
 }
 
 @media screen and (max-width: 390px) {
-
   .footer {
     padding: 8px;
     font-size: 12px;
@@ -3535,9 +3517,9 @@ input[type="checkbox"]:checked+.faq-answer {
   }
 
   .login-container {
-    margin-bottom: 80px;
-    padding: 30px;
-    height: 50%;
+    padding: 20px;
+    margin-bottom: 30px;
+    height: auto;
     width: 250px;
   }
 
@@ -3557,9 +3539,8 @@ input[type="checkbox"]:checked+.faq-answer {
 
   .forgot-password {
     margin-right: 10px;
-    margin-bottom: 60px;
+    margin-bottom: 0px;
   }
-
 
   .reset-container {
     margin-bottom: 40px;
@@ -3589,20 +3570,18 @@ input[type="checkbox"]:checked+.faq-answer {
 
   .accountContainer2 {
     margin-top: -80px;
-    margin-bottom: 60px;
+    margin-bottom: 190px;
   }
 
   .accountContainer3 {
-    height: 76%;
+    height: auto;
     width: 85%;
   }
 
   .navbarMusicHeading {
     width: 42%;
   }
-.close-btn{
-  right: -20px;
-}
+
   .nav-overlay {
     width: 75%;
   }
@@ -3639,10 +3618,10 @@ input[type="checkbox"]:checked+.faq-answer {
   .carousel-track h3 {
     margin-left: 100px;
   }
-  .trending-section h2{
+  .trending-section h2 {
     margin-left: 30px;
   }
-  .trending-card{
+  .trending-card {
     width: 80%;
     margin-left: 36px;
   }
@@ -3652,8 +3631,6 @@ input[type="checkbox"]:checked+.faq-answer {
 }
 
 @media screen and (max-width: 350px) {
-
-
   .footer {
     padding: 8px;
     font-size: 11px;
@@ -3707,16 +3684,12 @@ input[type="checkbox"]:checked+.faq-answer {
 }
 
 @media screen and (max-width: 340px) {
-
-
   .aboutheading1 {
     font-size: 28px;
   }
 }
 
 @media screen and (max-width: 315px) {
-
-
   .login-container {
     padding: 30px;
     height: 33%;
@@ -3804,8 +3777,6 @@ input[type="checkbox"]:checked+.faq-answer {
 }
 
 @media screen and (max-width: 268px) {
-
-
   .helpHeading2 {
     font-size: 20px;
     margin-bottom: 50px;
@@ -3868,7 +3839,6 @@ input[type="checkbox"]:checked+.faq-answer {
     margin-left: 10px;
   }
 
-
   .aboutparagraph1,
   .aboutparagraph2,
   .aboutparagraph3 {
@@ -3908,8 +3878,8 @@ input[type="checkbox"]:checked+.faq-answer {
   #btn3 {
     margin-right: 40px;
   }
-  .aboutcontainer3{
-height: 620px;
+  .aboutcontainer3 {
+    height: 620px;
   }
   .accountpassword-container i {
     right: 30px;
@@ -3929,7 +3899,7 @@ height: 620px;
 }
 
 .tap-to-play button {
-  background-color: #1DB954;
+  background-color: #1db954;
   color: white;
   border: none;
   border-radius: 30px;
@@ -3959,6 +3929,3 @@ height: 620px;
     transform: scale(1);
   }
 }
-
-
-

@@ -22,39 +22,48 @@ const AmrinderGill = () => {
 
   const songs = [
     {
-      id: "679355ef47bdbe2186044204",
+      id: "Dildarian_-_Amrinder_Gill_qkzja4",
       title: "Dildarian song by Amrinder Gill",
     },
     {
-      id: "679358cf47bdbe2186044206",
+      id: "Ki_Samjhaiye_-_Amrinder_Gill_amvhkf",
       title: "Ki Samjhaiye song by Amrinder Gill",
     },
-    { id: "6793590947bdbe2186044208", title: "Yarrian song by Amrinder Gill" },
-    { id: "6793599347bdbe218604420a", title: "Judaa song by Amrinder Gill" },
-    { id: "679359d247bdbe218604420c", title: "Baapu song by Amrinder Gill" },
     {
-      id: "67935b8447bdbe2186044218",
+      id: "Yaarian_-_-_Amrinder_Gill_swpfih",
+      title: "Yarrian song by Amrinder Gill",
+    },
+    {
+      id: "Judaa_3_Title_Track_-_Amrinder_Gill_ncstcr",
+      title: "Judaa song by Amrinder Gill",
+    },
+    { id: "Bapu_-_Amrinder_Gill_i6435b", title: "Baapu song by Amrinder Gill" },
+    {
+      id: "Dubda_Sooraj_-_Amrinder_Gill_qwxkpo",
       title: "Dubda Sooraj song by Amrinder Gill",
     },
     {
-      id: "67935a0347bdbe218604420e",
+      id: "Kurta_-_Amrinder_Gill_vdb4is",
       title: "Kurta Suha - Angrej song by Amrinder Gill",
     },
-    { id: "67935a5847bdbe2186044210", title: "Supna song by Amrinder Gill" },
     {
-      id: "67935be147bdbe218604421a",
+      id: "Supna_-_Amrinder_Gill_j1rp1t",
+      title: "Supna song by Amrinder Gill",
+    },
+    {
+      id: "That_Girl_-_Amrinder_Gill_mhkphf",
       title: "That Girl song by Amrinder Gill",
     },
     {
-      id: "67935a7f47bdbe2186044212",
+      id: "Heerey_-_Amrinder_Gill_tiictn",
       title: "Heerey - Love Punjab song by Amrinder Gill",
     },
     {
-      id: "67935acb47bdbe2186044214",
+      id: "Chal_Jindiye_-_Amrinder_Gill_gehvee",
       title: "Chal Jindiye song by Amrinder Gill",
     },
     {
-      id: "67935b2647bdbe2186044216",
+      id: "Ocean_Eyes_-_Amrinder_Gill_x0ajoo",
       title: "Ocean Eyes song by Amrinder Gill",
     },
   ];
@@ -65,13 +74,20 @@ const AmrinderGill = () => {
     setIsLoading(true);
 
     const song = songs[songIndex];
-    const API_URL = "http://localhost:5000";
+    const API_URL = "http://172.20.10.4:5000";
     try {
       const response = await fetch(`${API_URL}/api/songs/${song.id}`, {
         method: "GET",
         headers: { "Content-Type": "application/json" },
       });
-      const songUrl = response.url;
+      const data = await response.json();
+      const songUrl = data.file_path;
+      console.log("Fetched Song URL:", songUrl);
+
+      if (!songUrl) {
+        console.error("Invalid file path received:", songUrl);
+        return;
+      }
 
       if (audioElement) {
         audioElement.src = songUrl;

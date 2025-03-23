@@ -42,7 +42,6 @@ const Login = ({ isNavOpen }) => {
         },
         body: JSON.stringify(formData),
       });
-      // const data = await response.json();
       const json = await response.json();
 
       if (response.ok) {
@@ -58,7 +57,6 @@ const Login = ({ isNavOpen }) => {
         localStorage.setItem("userId", decodedToken.user.id);
         dispatch(setUserID(decodedToken.user.id));
         dispatch(login());
-        // Clear input fields after submission
         setFormData({
           email: "",
           password: "",

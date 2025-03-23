@@ -27,128 +27,128 @@ const Newmusic = () => {
 
   const newPunjabiSongs = [
     {
-      id: "67a463195886b255ee47572f",
+      id: "Bars_-_Shubh_ylgaun",
       title: "Bars mp3 song by Shubh in album Bars.",
     },
     {
-      id: "67a464155886b255ee475737",
+      id: "MEHFIL_-_Gulab_Sidhu_inzztw",
       title: "Mehfil mp3 song by Gulab Sidhu in album Mehfil.",
     },
     {
-      id: "6793809447bdbe218604427e",
+      id: "Freestyle_-_Jordan_Sandhu_tohesy",
       title: "Freestyle mp3 song by Jordan Sandhu in album Fame - EP.",
     },
     {
-      id: "679380b647bdbe2186044280",
+      id: "Gasoline_-_Jordan_Sandhu_jjh1zz",
       title: "Gasoline mp3 song by Jordan Sandhu.",
     },
     {
-      id: "679380e547bdbe2186044282",
+      id: "Tu_Te_Sharab_DjPunjab.Farm_pztapa",
       title: "Tu Te Sharab mp3 song by Jordan Sandhu in album Tu Te Sharab.",
     },
-    { id: "67a6d5f1ea4bf472388d60d3", title: "Bapu Zimidar - Jassi Gill." },
+    { id: "Bapu_Zimidar_hmqxlz", title: "Bapu Zimidar - Jassi Gill." },
     {
-      id: "67a6d728ea4bf472388d60d5",
+      id: "Yes_No_-_Gulab_Sidhu_mh0h34",
       title: "Yes No mp3 song by Gulab Sidhu.",
     },
-    { id: "67a6d853ea4bf472388d60d9", title: "Got You song by G Khan." },
+    { id: "Got_You_-_G_Khan_nfkweh", title: "Got You song by G Khan." },
     {
-      id: "67a6d8c7ea4bf472388d60db",
+      id: "Nattiyaan_-_Shipra_Goyal_tt5zqc",
       title: "Nattiyaan song by Shipra Goyal.",
     },
     {
-      id: "67a6d941ea4bf472388d60dd",
+      id: "Pyaar_Hoya_-_Hustinder_pf5o2x",
       title: "Pyaar Hoya song by Hustinder. ",
     },
     {
-      id: "67a6d9ddea4bf472388d60df",
+      id: "La_La_La_La_Hoi_Pai_Aa_-_Hunar_Sidhu_jcpbo9",
       title: "La La La Hoi Pai Aa song by Hunar Sidhu.",
     },
-    { id: "67a6da47ea4bf472388d60e1", title: "Filter song by Gulab Sidhu." },
+    { id: "Filter_-_Gulab_Sidhu_cvqdpx", title: "Filter song by Gulab Sidhu." },
     {
-      id: "67a6dabfea4bf472388d60e3",
+      id: "Tera_Yaar_Rakane_-_Shree_Brar_iyujc9",
       title: " Tera Yaar Rakane song by Shree Brar.",
     },
     {
-      id: "67937f9b47bdbe2186044276",
+      id: "Do_Vaari_Jatt_1_sojk1a",
       title: "Do Vaari Jatt mp3 song by Jordan Sandhu.",
     },
     {
-      id: "67937fcf47bdbe2186044278",
+      id: "Teeje_Week_-_Jordan_Sandhu_i4wets",
       title: "Teeje Week mp3 song by Jordan Sandhu in album Teeje Week.",
     },
     {
-      id: "67a6db77ea4bf472388d60e5",
+      id: "Khalipan_-_Nirvair_Pannu_wxhyaq",
       title: "Khalipan song by Nirvair Pannu.",
     },
-    { id: "67a6dbccea4bf472388d60e7", title: "Tikka song by Gulab Sidhu." },
+    { id: "Tikka_-_Gulab_Sidhu_k36iv6", title: "Tikka song by Gulab Sidhu." },
     {
-      id: "67a6e85bea4bf472388d60ef",
+      id: "Andaaze_-_Khan_Bhaini_o2xomj",
       title: "Andaaze song by Khan Bhaini.",
     },
     {
-      id: "67a6e943ea4bf472388d60f1",
+      id: "Snapchat_-_Surjit_Bhullar_ponrhs",
       title: "Snapchat song by Surjit Bhullar.",
     },
     {
-      id: "67a6e9eeea4bf472388d60f3",
+      id: "Dont_You_Dare_-_Hustinder_m2hhmf",
       title: "Don't You Dare by Hustinder.",
     },
     {
-      id: "67a6eb9dea4bf472388d60f5",
+      id: "Sohneya_Sunidhi_Chauhan_Happy_Raikoti_vqc9vy",
       title: "Sohneya song by Happy Raikoti.",
     },
     {
-      id: "67a6ec01ea4bf472388d60f7",
+      id: "Lahore_-_Gulab_Sidhu_foaaqk",
       title: "Lahore song by Gulab Sidhu.",
     },
     {
-      id: "67d28db63147114aa1df0228",
+      id: "Fomo_1_ohz3qx",
       title: "Fomo mp3 song by Jordan Sandhu.",
     },
-    { id: "67a45a6e5886b255ee475705", title: "Bhabhi Mp3 song by Nijjar." },
+    { id: "Bhabhi_-_Nijjar_fujgbw", title: "Bhabhi Mp3 song by Nijjar." },
     {
-      id: "67a45b5c5886b255ee475707",
+      id: "Tu_Takkri_-_Hustinder_uatz0k",
       title: "Tu Takkri Mp3 song by Hustinder.",
     },
     {
-      id: "67a45df45886b255ee475709",
+      id: "Defender_DJJOhAL.Com_a6cio1",
       title: "Defender MP3 Song by Harf Cheema.",
     },
     {
-      id: "67a7123531755642e981aaa5",
+      id: "Karnatak_-_Harkirat_Sangha_pdtugc",
       title: "Karnatak mp3 song by Harkirat Sangha.",
     },
     {
-      id: "67a45e845886b255ee47570d",
+      id: "Not_Sure_-_Cheema_Y_bmsvhm",
       title: "Not Sure Mp3 song by Cheema Y.",
     },
     {
-      id: "67a45eb65886b255ee47570f",
+      id: "Bachke_Bachke_Karan_Aujla_que6w0",
       title: "Bachke Bachke mp3 song by Karan Aujla in album Still Rollin.",
     },
     {
-      id: "67a45f585886b255ee475711",
+      id: "Rangeen_icvuhd",
       title: "Rangeen Mp3 Song From Album Rangeen by Gurnam Bhullar.",
     },
     {
-      id: "67a4613a5886b255ee475721",
+      id: "Wavy_-_Karan_Aujla_xv4izd",
       title: "WAVY mp3 song by Karan Aujla.",
     },
     {
-      id: "67a462eb5886b255ee47572d",
+      id: "DONALI_-_Harkirat_Sangha_a2lzoh",
       title: "DONALI mp3 song by Harkirat Sangha Starboy X.",
     },
     {
-      id: "67a6ecacea4bf472388d60f9",
+      id: "Aaye_Haaye_-_Karan_Aujla_kjflbl",
       title: "Aaye Haaye song by Karan Aujla.",
     },
     {
-      id: "67a7096731755642e981aa89",
+      id: "128-Hass_Hass_-_Diljit_Dosanjh_128_Kbps_xwmbnw",
       title: "Hass Hass song by Diljit Dosanjh.",
     },
     {
-      id: "67a709b931755642e981aa8b",
+      id: "Talk_DJJOhAL.Com_fxj05r",
       title: "Talk song by Jordan Sandhu.",
     },
   ];
@@ -158,13 +158,20 @@ const Newmusic = () => {
     setIsLoading(true);
 
     const song = newPunjabiSongs[songIndex];
-    const API_URL = "http://localhost:5000";
+    const API_URL = "http://172.20.10.4:5000";
     try {
       const response = await fetch(`${API_URL}/api/songs/${song.id}`, {
         method: "GET",
         headers: { "Content-Type": "application/json" },
       });
-      const songUrl = response.url;
+      const data = await response.json();
+      const songUrl = data.file_path;
+      console.log("Fetched Song URL:", songUrl);
+
+      if (!songUrl) {
+        console.error("Invalid file path received:", songUrl);
+        return;
+      }
 
       if (audioElement) {
         audioElement.src = songUrl;

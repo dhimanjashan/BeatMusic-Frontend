@@ -19,7 +19,7 @@ const Favourite = ({ isNavOpen }) => {
   let i = 1;
   useEffect(() => {
     if (userID) {
-      dispatch(fetchFavorites(userID)); // Fetch favorite songs when component loads
+      dispatch(fetchFavorites(userID));
     }
   }, [dispatch, userID]);
 

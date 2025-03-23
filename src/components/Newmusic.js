@@ -27,112 +27,112 @@ const Newmusic = ({ isNavOpen }) => {
 
   const newPunjabiSongs = [
     {
-      id: "67d28db63147114aa1df0228",
+      id: "Fomo_1_ohz3qx",
       title: "Fomo mp3 song by Jordan Sandhu.",
     },
     {
-      id: "67d28e123147114aa1df022a",
+      id: "Ammi_Wargiye_Ni_-_Shree_Brar_rq59b9",
       title: "Ammi Wargiye Ni mp3 song by Shree Brar.",
     },
-    { id: "67a45a6e5886b255ee475705", title: "Bhabhi Mp3 song by Nijjar." },
+    { id: "Bhabhi_-_Nijjar_fujgbw", title: "Bhabhi Mp3 song by Nijjar." },
     {
-      id: "67a45b5c5886b255ee475707",
+      id: "Tu_Takkri_-_Hustinder_uatz0k",
       title: "Tu Takkri Mp3 song by Hustinder.",
     },
     {
-      id: "67a45df45886b255ee475709",
+      id: "Defender_DJJOhAL.Com_a6cio1",
       title: "Defender MP3 Song by Harf Cheema.",
     },
     {
-      id: "67a45e325886b255ee47570b",
+      id: "Barkat_-_Ranjit_Bawa_sxfp1e",
       title: "Barkat Mp3 song by Ranjit Bawa.",
     },
     {
-      id: "67a7123531755642e981aaa5",
+      id: "Karnatak_-_Harkirat_Sangha_pdtugc",
       title: "Karnatak mp3 song by Harkirat Sangha.",
     },
     {
-      id: "67a45e845886b255ee47570d",
+      id: "Not_Sure_-_Cheema_Y_bmsvhm",
       title: "Not Sure Mp3 song by Cheema Y.",
     },
     {
-      id: "67a45eb65886b255ee47570f",
+      id: "Bachke_Bachke_Karan_Aujla_que6w0",
       title: "Bachke Bachke mp3 song by Karan Aujla in album Still Rollin.",
     },
     {
-      id: "67a45f585886b255ee475711",
+      id: "Rangeen_icvuhd",
       title: "Rangeen Mp3 Song From Album Rangeen by Gurnam Bhullar.",
     },
     {
-      id: "67a45f965886b255ee475713",
+      id: "Lock_-_Sidhu_Moose_Wala_u3d1vw",
       title: "Lock mp3 song by Sidhu Moose Wala The Kidd in album Lock.",
     },
     {
-      id: "67a45fd45886b255ee475715",
+      id: "Buckle_Up_-_Shubh_e6l5ek",
       title: "Buckle Up mp3 song by Shubh in album Buckle Up.",
     },
     {
-      id: "67a460145886b255ee475717",
+      id: "Main_Aa_Reha_-_Juss_comzc5",
       title: "Main Aa Reha mp3 song by Juss MixSingh.",
     },
     {
-      id: "67a4604b5886b255ee475719",
+      id: "Carti_-_Shubh_srdi7z",
       title: "Carti mp3 song by Shubh in album Carti.",
     },
     {
-      id: "67a460885886b255ee47571b",
+      id: "Rumaal_-_Maninder_Buttar_fblcpo",
       title: "Rumaal mp3 song by Maninder Buttar.",
     },
     {
-      id: "67a460c35886b255ee47571d",
+      id: "Bai_Kol_-_R_Nait_uujror",
       title: "Bai Kol mp3 song by R Nait JP47 Mad Mix.",
     },
     {
-      id: "67a461025886b255ee47571f",
+      id: "Dheeth_Jatta_-_Chandra_Brar_bdsems",
       title: "Dheeth Jatta Mp3 song by Chandra Brar.",
     },
     {
-      id: "67a4613a5886b255ee475721",
+      id: "Wavy_-_Karan_Aujla_xv4izd",
       title: "WAVY mp3 song by Karan Aujla.",
     },
     {
-      id: "67a4616f5886b255ee475723",
+      id: "Sit_Down_Son_-_Navaan_Sandhu_e88nul",
       title: "Sit Down Son mp3 song by Navaan Sandhu Avvy Rxtro.",
     },
     {
-      id: "67a4625b5886b255ee475729",
+      id: "Maavan_Arjan_Dhillon_kqi8cb",
       title: "Maavan Mp3 Song by Arjan Dhillon.",
     },
     {
-      id: "67a462955886b255ee47572b",
+      id: "Ki_Hoya_PenduJatt.Com.Se_utay6l",
       title: "Ki Hoya mp3 song by B Praak Afsana Khan.",
     },
     {
-      id: "67a462eb5886b255ee47572d",
+      id: "DONALI_-_Harkirat_Sangha_a2lzoh",
       title: "DONALI mp3 song by Harkirat Sangha Starboy X.",
     },
     {
-      id: "67a463195886b255ee47572f",
+      id: "Bars_-_Shubh_ylgaun",
       title: "Bars mp3 song by Shubh in album Bars.",
     },
     {
-      id: "67a463465886b255ee475731",
+      id: "GG_-_Gurinder_Gill_lwab20",
       title: "GG mp3 song by Gurinder Gill.",
     },
     {
-      id: "67a463735886b255ee475733",
+      id: "Moon_Calling_-_Gur_Sidhu_rvdgyz",
       title: "Moon Calling mp3 song by Gur Sidhu Neha Kakkar.",
     },
     {
-      id: "67a463aa5886b255ee475735",
+      id: "Tooti_Boldi_-_Hunar_Sidhu_dhym8d",
       title: "Tooti Boldi mp3 song by Hunar Sidhu in album Tooti Boldi.",
     },
     {
-      id: "67a464155886b255ee475737",
+      id: "MEHFIL_-_Gulab_Sidhu_inzztw",
       title: "Mehfil mp3 song by Gulab Sidhu in album Mehfil.",
     },
     {
-      id: "67a464515886b255ee475739",
+      id: "Zero_Tolerance_DjPunjab.Farm_xwawvc",
       title: "Zero Tolerance mp3 song by Sukh Kairon in album Zero Tolerance.",
     },
   ];
@@ -142,13 +142,20 @@ const Newmusic = ({ isNavOpen }) => {
     setIsLoading(true);
 
     const song = newPunjabiSongs[songIndex];
-    const API_URL = "http://localhost:5000";
+    const API_URL = "http://172.20.10.4:5000";
     try {
       const response = await fetch(`${API_URL}/api/songs/${song.id}`, {
         method: "GET",
         headers: { "Content-Type": "application/json" },
       });
-      const songUrl = response.url;
+      const data = await response.json();
+      const songUrl = data.file_path;
+      console.log("Fetched Song URL:", songUrl);
+
+      if (!songUrl) {
+        console.error("Invalid file path received:", songUrl);
+        return;
+      }
 
       if (audioElement) {
         audioElement.src = songUrl;

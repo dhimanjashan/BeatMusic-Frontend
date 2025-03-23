@@ -25,224 +25,227 @@ const PunjabiMusic = () => {
   }, []);
   const songs = [
     {
-      id: "67d28db63147114aa1df0228",
+      id: "Fomo_1_ohz3qx",
       title: "Fomo mp3 song by Jordan Sandhu.",
     },
     {
-      id: "67d28e123147114aa1df022a",
+      id: "Ammi_Wargiye_Ni_-_Shree_Brar_rq59b9",
       title: "Ammi Wargiye Ni mp3 song by Shree Brar.",
     },
     {
-      id: "67a6d728ea4bf472388d60d5",
+      id: "Yes_No_-_Gulab_Sidhu_mh0h34",
       title: "Yes No mp3 song by Gulab Sidhu.",
     },
     {
-      id: "67a6d7e9ea4bf472388d60d7",
+      id: "Defender_DJJOhAL.Com_a6cio1",
       title: "Defender new song by Harf Cheema.",
     },
     {
-      id: "67a6e85bea4bf472388d60ef",
+      id: "Andaaze_-_Khan_Bhaini_o2xomj",
       title: "Andaaze song by Khan Bhaini.",
     },
-    { id: "67a6d853ea4bf472388d60d9", title: "Got You song by G Khan." },
+    { id: "Got_You_-_G_Khan_nfkweh", title: "Got You song by G Khan." },
     {
-      id: "67a6d8c7ea4bf472388d60db",
+      id: "Nattiyaan_-_Shipra_Goyal_tt5zqc",
       title: "Nattiyaan song by Shipra Goyal.",
     },
     {
-      id: "67a6d941ea4bf472388d60dd",
+      id: "Pyaar_Hoya_-_Hustinder_pf5o2x",
       title: "Pyaar Hoya song by Hustinder. ",
     },
     {
-      id: "67a6d9ddea4bf472388d60df",
+      id: "La_La_La_La_Hoi_Pai_Aa_-_Hunar_Sidhu_jcpbo9",
       title: "La La La Hoi Pai Aa song by Hunar Sidhu.",
     },
-    { id: "67a6da47ea4bf472388d60e1", title: "Filter song by Gulab Sidhu." },
+    { id: "Filter_-_Gulab_Sidhu_cvqdpx", title: "Filter song by Gulab Sidhu." },
     {
-      id: "67a6dabfea4bf472388d60e3",
+      id: "Tera_Yaar_Rakane_-_Shree_Brar_iyujc9",
       title: " Tera Yaar Rakane song by Shree Brar.",
     },
     {
-      id: "67a6db77ea4bf472388d60e5",
+      id: "Khalipan_-_Nirvair_Pannu_wxhyaq",
       title: "Khalipan song by Nirvair Pannu.",
     },
-    { id: "67a6dbccea4bf472388d60e7", title: "Tikka song by Gulab Sidhu." },
+    { id: "Tikka_-_Gulab_Sidhu_k36iv6", title: "Tikka song by Gulab Sidhu." },
     {
-      id: "67a6e6a1ea4bf472388d60e9",
+      id: "Roti_Pani_1_rdcbk2",
       title: "Roti Pani song by Jass Bajwa.",
     },
     {
-      id: "67a6e71dea4bf472388d60eb",
+      id: "Sarpanchi_uxtwjl",
       title: "Sarpanchi song by Gulab Sidhu.",
     },
     {
-      id: "67a6e780ea4bf472388d60ed",
+      id: "Taur_Tappa_1_ry2mt9",
       title: "Taur Tappa song by Shivjot.",
     },
-    { id: "67a6d2beea4bf472388d60d1", title: "295 - Sidhu Moosewala." },
-    { id: "67a6d5f1ea4bf472388d60d3", title: "Bapu Zimidar - Jassi Gill." },
+    { id: "295_-_Sidhu_Moose_Wala_ilcxrt", title: "295 - Sidhu Moosewala." },
+    { id: "Bapu_Zimidar_hmqxlz", title: "Bapu Zimidar - Jassi Gill." },
     {
-      id: "67a462eb5886b255ee47572d",
+      id: "DONALI_-_Harkirat_Sangha_a2lzoh",
       title: "DONALI song by Harkirat Sangha.",
     },
     {
-      id: "67a464155886b255ee475737",
+      id: "MEHFIL_-_Gulab_Sidhu_inzztw",
       title: "Mehfil song by Gulab Sidhu.",
     },
     {
-      id: "67a6e943ea4bf472388d60f1",
+      id: "Snapchat_-_Surjit_Bhullar_ponrhs",
       title: "Snapchat song by Surjit Bhullar.",
     },
     {
-      id: "67a6e9eeea4bf472388d60f3",
+      id: "Dont_You_Dare_-_Hustinder_m2hhmf",
       title: "Don't You Dare by Hustinder.",
     },
     {
-      id: "67a6eb9dea4bf472388d60f5",
+      id: "Sohneya_Sunidhi_Chauhan_Happy_Raikoti_vqc9vy",
       title: "Sohneya song by Happy Raikoti.",
     },
     {
-      id: "67a6ec01ea4bf472388d60f7",
+      id: "Lahore_-_Gulab_Sidhu_foaaqk",
       title: "Lahore song by Gulab Sidhu.",
     },
     {
-      id: "67a6ecacea4bf472388d60f9",
+      id: "Aaye_Haaye_-_Karan_Aujla_kjflbl",
       title: "Aaye Haaye song by Karan Aujla.",
     },
     {
-      id: "67a6ee35ea4bf472388d60fb",
+      id: "Tiyariyan_Satinder_Sartaaj_kq5wrc",
       title: "Tiyariyan song by Satinder Sartaaj.",
     },
-    { id: "67a6eec1ea4bf472388d60fd", title: " Sade Jehe song by R Nait." },
+    { id: "Sade_Jehe_-_R_Nait_w5g6fa", title: " Sade Jehe song by R Nait." },
     {
-      id: "67a6ef13ea4bf472388d60ff",
+      id: "Sunday_Dilpreet_Dhillon_Gurlez_Akhtar_mlpjqs",
       title: "Sunday song by Dilpreet Dhillon.",
     },
     {
-      id: "67a7077231755642e981aa81",
+      id: "Nazran_-_Nirvair_Pannu_yfe07w",
       title: "Nazran song by Nirvair Pannu.",
     },
     {
-      id: "67a707ea31755642e981aa83",
+      id: "Jawani_-_Gulab_Sidhu_p0it8l",
       title: "Jawani song by Gulab Sidhu.",
     },
     {
-      id: "67a45e845886b255ee47570d",
+      id: "Not_Sure_-_Cheema_Y_bmsvhm",
       title: "Not Sure Mp3 song by Cheema Y.",
     },
     {
-      id: "67a45b5c5886b255ee475707",
+      id: "Tu_Takkri_-_Hustinder_uatz0k",
       title: "Tu Takkri Mp3 song by Hustinder.",
     },
     {
-      id: "67a45f585886b255ee475711",
+      id: "Rangeen_icvuhd",
       title: "Rangeen Song by Gurnam Bhullar.",
     },
     {
-      id: "67a7088c31755642e981aa85",
+      id: "Blackia_-_Geeta_Zaildar_ujgjtu",
       title: "Blackia song by Geeta Zaildar.",
     },
     {
-      id: "67a708f431755642e981aa87",
+      id: "Gucci_Gabhru_1_ndvcoe",
       title: "Gucci Gabhru song by Harkirat Sangha.",
     },
     {
-      id: "67a7096731755642e981aa89",
+      id: "128-Hass_Hass_-_Diljit_Dosanjh_128_Kbps_xwmbnw",
       title: "Hass Hass song by Diljit Dosanjh.",
     },
     {
-      id: "67a709b931755642e981aa8b",
+      id: "Talk_DJJOhAL.Com_fxj05r",
       title: "Talk song by Jordan Sandhu.",
     },
     {
-      id: "679371b947bdbe2186044246",
+      id: "Tu_Jdo_Auna_b91xys",
       title: "Tu Jdo Auna song by Arjan Dhillon.",
     },
     {
-      id: "67a70a5c31755642e981aa8d",
+      id: "Laara_-_Nirvair_Pannu_um1gjp",
       title: "Laara song by Nirvair Pannu.",
     },
     {
-      id: "67937ffa47bdbe218604427a",
+      id: "Mirrors_-_Jordan_Sandhu_itmrav",
       title: "Mirrors song by Jordan Sandhu.",
     },
-    { id: "67a70b0a31755642e981aa8f", title: "Veham song by Harf Cheema." },
     {
-      id: "67a70b9531755642e981aa91",
+      id: "Veham_-Harf_Cheema-_JattZone.com_rylvpb",
+      title: "Veham song by Harf Cheema.",
+    },
+    {
+      id: "Off_Roading_1_mto0kb",
       title: "Off Roading by Khan Bhaini.",
     },
     {
-      id: "67a70c5131755642e981aa93",
+      id: "Vehli_Janta_2_zfbtzg",
       title: "Vehli Janta song by Kulbir Jhinjer.",
     },
     {
-      id: "67a70cc731755642e981aa95",
+      id: "Pakhe_Chalde_-_Jass_Bajwa_n5ox3d",
       title: "Pakhe Chalde song by Jass Bajwa.",
     },
     {
-      id: "6793841247bdbe2186044298",
+      id: "Nimm_Thalle_1_rj3moo",
       title: "Nimm Thalle song by Jordan Sandhu.",
     },
-    { id: "67a70dc931755642e981aa99", title: "Taj  song by Veet Baljit." },
+    { id: "_Taj_-_Veet_Baljit_gdz7fa", title: "Taj  song by Veet Baljit." },
     {
-      id: "67a70d6131755642e981aa97",
+      id: "Gol_Chowk_-_Hustinder_phzdcz",
       title: " Gol Chowk song by Hustinder.",
     },
-    { id: "67a70e1631755642e981aa9b", title: "Be Mine song by Shubh." },
+    { id: "Be_Mine_-_Shubh_ahramc", title: "Be Mine song by Shubh." },
     {
-      id: "67a70e7e31755642e981aa9d",
+      id: "Changa_Changa_-_R_Nait_uddtcn",
       title: "Changa Changa song by R Nait.",
     },
     {
-      id: "67a70fca31755642e981aa9f",
+      id: "Fella_S_Forever_-_Hustinder_vzybus",
       title: "Fella S Forever song by Hustinder.",
     },
     {
-      id: "6793352647bdbe21860441f9",
+      id: "Time_Chakda_-_Nimrat_Khaira_cutnos",
       title: "Time Chakda song by Nimrat Khaira.",
     },
     {
-      id: "679376c047bdbe218604426a",
+      id: "Opinion_-_Raag.Fm_rzd3e5",
       title: "Opinion song by Arjan Dhillon.",
     },
     {
-      id: "679367b347bdbe2186044242",
+      id: "Parlour_Te_1_whyxoy",
       title: "Parlour Te song by Sunanda Sharma.",
     },
     {
-      id: "6793745c47bdbe2186044256",
+      id: "Brats_-_Arjan_Dhillon_c1lnfo",
       title: "Brats song by Arjan Dhillon.",
     },
     {
-      id: "67a45e325886b255ee47570b",
+      id: "Barkat_-_Ranjit_Bawa_sxfp1e",
       title: "Barkat song by Ranjit Bawa.",
     },
     {
-      id: "67a710ff31755642e981aaa1",
+      id: "Cat_Walk_-_Hustinder_lqx9li",
       title: "Cat Walk song by Hustinder.",
     },
     {
-      id: "6793751f47bdbe218604425e",
+      id: "Hommie_Call_-_Raag.Fm_woftsn",
       title: "Hommie Call song by Arjan Dhillon.",
     },
     {
-      id: "679383de47bdbe2186044296",
+      id: "Zulfaan_1_p1oluv",
       title: "Zulfaan song by Jordan Sandhu.",
     },
     {
-      id: "67a4613a5886b255ee475721",
+      id: "Wavy_-_Karan_Aujla_xv4izd",
       title: "WAVY song by Karan Aujla.",
     },
     {
-      id: "6793740047bdbe2186044252",
+      id: "Parallel_Thoughts_-_Raag.Fm_krqefp",
       title: "Parallel Thoughts song by Arjan Dhillon.",
     },
     {
-      id: "67a711c131755642e981aaa3",
+      id: "Gall_Mukk_Gyi_-_Nimrat_Khaira_r7f6ta",
       title: "Gall Mukk Gyi song by Nimrat Khaira.",
     },
     {
-      id: "67a7123531755642e981aaa5",
+      id: "Karnatak_-_Harkirat_Sangha_pdtugc",
       title: "Karnatak song by Harkirat Sangha.",
     },
   ];
@@ -252,13 +255,20 @@ const PunjabiMusic = () => {
     setIsLoading(true);
 
     const song = songs[songIndex];
-    const API_URL = "http://localhost:5000";
+    const API_URL = "http://172.20.10.4:5000";
     try {
       const response = await fetch(`${API_URL}/api/songs/${song.id}`, {
         method: "GET",
         headers: { "Content-Type": "application/json" },
       });
-      const songUrl = response.url;
+      const data = await response.json();
+      const songUrl = data.file_path;
+      console.log("Fetched Song URL:", songUrl);
+
+      if (!songUrl) {
+        console.error("Invalid file path received:", songUrl);
+        return;
+      }
 
       if (audioElement) {
         audioElement.src = songUrl;

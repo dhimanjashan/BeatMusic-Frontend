@@ -23,101 +23,101 @@ const JordanSandhu = ({ isNavOpen }) => {
   }, []);
   const songs = [
     {
-      id: "67d28db63147114aa1df0228",
+      id: "Fomo_1_ohz3qx",
       title: "Fomo mp3 song by Jordan Sandhu.",
     },
     {
-      id: "67937e6a47bdbe218604426c",
+      id: "Tareefan_1_uaeyb2",
       title: "Tareefan mp3 song by Jordan Sandhu in album Tareefan.",
     },
     {
-      id: "67937ed747bdbe218604426e",
+      id: "Munda_Sardaran_Da_1_bbdocf",
       title: "Munda Sardaran Da mp3 song by Jordan Sandhu.",
     },
     {
-      id: "67937eff47bdbe2186044270",
+      id: "Chann_Chann_-_Jordan_Sandhu_upj3ee",
       title: "Chann Chann Da mp3 song by Jordan Sandhu.",
     },
     {
-      id: "67937f2347bdbe2186044272",
+      id: "Pre_Workout_-_Jordan_Sandhu_mw1esw",
       title: "Pre Workout mp3 song by Jordan Sandhu.",
     },
     {
-      id: "67937f6e47bdbe2186044274",
+      id: "Chobbar_1_wwmyji",
       title: "Chobbar mp3 song by Jordan Sandhu.",
     },
     {
-      id: "67937f9b47bdbe2186044276",
+      id: "Do_Vaari_Jatt_1_sojk1a",
       title: "Do Vaari Jatt mp3 song by Jordan Sandhu.",
     },
     {
-      id: "67937fcf47bdbe2186044278",
+      id: "Teeje_Week_-_Jordan_Sandhu_i4wets",
       title: "Teeje Week mp3 song by Jordan Sandhu in album Teeje Week.",
     },
     {
-      id: "67937ffa47bdbe218604427a",
+      id: "Mirrors_-_Jordan_Sandhu_itmrav",
       title: "Mirrors mp3 song by Jordan Sandhu.",
     },
     {
-      id: "6793806a47bdbe218604427c",
+      id: "Black_Effect_1_vrfr71",
       title:
         "Black Effect mp3 song by Jordan Sandhu in album Black Effect - Single.",
     },
     {
-      id: "6793809447bdbe218604427e",
+      id: "Freestyle_-_Jordan_Sandhu_tohesy",
       title: "Freestyle mp3 song by Jordan Sandhu in album Fame - EP.",
     },
     {
-      id: "679380b647bdbe2186044280",
+      id: "Gasoline_-_Jordan_Sandhu_jjh1zz",
       title: "Gasoline mp3 song by Jordan Sandhu.",
     },
     {
-      id: "679380e547bdbe2186044282",
+      id: "Tu_Te_Sharab_DjPunjab.Farm_pztapa",
       title: "Tu Te Sharab mp3 song by Jordan Sandhu in album Tu Te Sharab.",
     },
     {
-      id: "6793812c47bdbe2186044284",
+      id: "Jimmewari_-_Jordan_Sandhu_t3d5v8",
       title: "Jimmewari mp3 song by Jordan Sandhu.",
     },
     {
-      id: "679381e247bdbe2186044286",
+      id: "Season_-_Jordan_Sandhu_b9rkjr",
       title: "Season mp3 song by Jordan Sandhu.",
     },
     {
-      id: "6793820b47bdbe2186044288",
+      id: "Love_Like_This_-_Jordan_Sandhu_jmvxbc",
       title: "Love Like This mp3 song by Jordan Sandhu.",
     },
     {
-      id: "6793823b47bdbe218604428a",
+      id: "Never_Hear_Out_feat._Noval_Toor_-_Jordan_Sandhu_ygyvjd",
       title: "Never Hear Out mp3 song by Jordan Sandhu.",
     },
     {
-      id: "6793826c47bdbe218604428c",
+      id: "At_A_Loss_-_Jordan_Sandhu_x2ppmg",
       title: "At a Loss mp3 song by Jordan Sandhu.",
     },
     {
-      id: "679382a147bdbe218604428e",
+      id: "Rafflan_De_Butt_-_Jordan_Sandhu_kircrk",
       title: "Rafflan De Butt mp3 song by Jordan Sandhu.",
     },
     {
-      id: "679382f347bdbe2186044290",
+      id: "Everyone_Asks_-_Jordan_Sandhu_zlvof7",
       title: "Everyone Asks mp3 song by Jordan Sandhu.",
     },
     {
-      id: "6793832b47bdbe2186044292",
+      id: "128-Rank_1_-_Never_Before_128_Kbps_sgcf3j",
       title: "Rank 1 mp3 song by Jordan Sandhu in album Rank 1 - Single.",
     },
     {
-      id: "6793835547bdbe2186044294",
+      id: "Shehar_Vichon_Geda_-_Raag.Fm_lyf4sa",
       title:
         "Shehar Vichon Geda mp3 song by Jordan Sandhu in album Shehar Vichon Geda - Single.",
     },
     {
-      id: "679383de47bdbe2186044296",
+      id: "Zulfaan_1_p1oluv",
       title: "Zulfaan mp3 song by Jordan Sandhu in album Zulfaan - Single.",
     },
     {
-      id: "6793841247bdbe2186044298",
+      id: "Nimm_Thalle_1_rj3moo",
       title:
         "Nimm Thalle mp3 song by Jordan Sandhu in album Nimm Thalle - Single.",
     },
@@ -128,13 +128,20 @@ const JordanSandhu = ({ isNavOpen }) => {
     setIsLoading(true);
 
     const song = songs[songIndex];
-    const API_URL = "http://localhost:5000";
+    const API_URL = "http://172.20.10.4:5000";
     try {
       const response = await fetch(`${API_URL}/api/songs/${song.id}`, {
         method: "GET",
         headers: { "Content-Type": "application/json" },
       });
-      const songUrl = response.url;
+      const data = await response.json();
+      const songUrl = data.file_path; // ✅ Use file_path from response
+      console.log("Fetched Song URL:", songUrl);
+  
+      if (!songUrl) {
+        console.error("Invalid file path received:", songUrl);
+        return;
+      }
 
       if (audioElement) {
         audioElement.src = songUrl;

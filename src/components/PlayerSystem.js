@@ -43,7 +43,7 @@ const PlayerSystem = ({
       const width = rect.width;
       const percentage = clickX / width;
       audioElement.currentTime = percentage * audioElement.duration;
-      audioElement.play(); // Play the song after seeking
+      audioElement.play();
     };
 
     progressContainer.addEventListener("click", handleProgressClick);

@@ -172,39 +172,36 @@ const Home = ({ setActiveLink, isNavOpen }) => {
       artist: "Harf cheema",
       plays: "20M+ plays",
       image: "Harf cheema.jpg",
-      songID: "67a6d7e9ea4bf472388d60d7",
+      songID: "Defender_DJJOhAL.Com_a6cio1",
     },
     {
       title: "Fomo",
       artist: "Jordan Sandhu",
       plays: "10M+ plays",
       image: "jordan sandhu.jpg",
-      songID: "67d28db63147114aa1df0228",
+      songID: "Fomo_1_ohz3qx",
     },
     {
       title: "Ammi Wargiye Ni",
       artist: "Shree Brar",
       plays: "4M+ plays",
       image: "shree brar.jpg",
-      songID: "67d28e123147114aa1df022a",
+      songID: "Ammi_Wargiye_Ni_-_Shree_Brar_rq59b9",
     },
     // Add more songs
   ];
 
-  const API_URL = process.env.REACT_APP_API_URL || "";
   const handleClick = async (songIndex) => {
     if (isLoading) return;
     setIsLoading(true);
 
     const song = trendingSongs[songIndex];
-    console.log("Attempting to play song:", song);
-
+    const API_URL = "http://172.20.10.4:5000";
     try {
       // Fix the song ID key to match the backend expectation
-      const response = await fetch(`${API_URL}/files/`, {
-        method: "POST",
+      const response = await fetch(`${API_URL}/api/songs/${song.songID}`, {
+        method: "GET",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ songId: song.songID }), // Ensure this matches your backend
       });
 
       if (!response.ok) {
@@ -212,23 +209,17 @@ const Home = ({ setActiveLink, isNavOpen }) => {
       }
 
       const data = await response.json();
-      console.log("Received song data:", data);
+      const songUrl = data.file_path; // ✅ Use file_path from response
+      console.log("Fetched Song URL:", songUrl);
 
-      if (!data.file_path || typeof data.file_path !== "string") {
-        console.error("Invalid file path received:", data.file_path);
-        setIsLoading(false);
-        return;
-      }
-
-      if (!audioElement) {
-        console.error("Audio element not found");
-        setIsLoading(false);
+      if (!songUrl) {
+        console.error("Invalid file path received:", songUrl);
         return;
       }
 
       // Stop current playback
       audioElement.pause();
-      audioElement.src = data.file_path;
+      audioElement.src = songUrl;
       audioElement.load();
 
       audioElement.oncanplaythrough = async () => {
@@ -236,7 +227,7 @@ const Home = ({ setActiveLink, isNavOpen }) => {
           await audioElement.play();
           dispatch(
             playAudio({
-              songUrl: data.file_path,
+              songUrl: songUrl,
               song: {
                 ...song,
                 id: song.songID,

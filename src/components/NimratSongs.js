@@ -24,51 +24,51 @@ const NimratSongs = ({ isNavOpen }) => {
   }, []);
   const songs = [
     {
-      id: "6791f5d2bcb2c977364113ba",
+      id: "Sohne_Sohne_Suit_-_Nimrat_Khaira_qvj4l2",
       title: "Sohne Sohne Suit mp3 song by Nimrat Khaira.",
     },
     {
-      id: "67931e76f7a1211383f70d37",
+      id: "Suit_ncvgpu",
       title: "Suit mp3 song by Nimrat Khaira featuring Mankirt Aulakh.",
     },
     {
-      id: "6793349547bdbe21860441f0",
+      id: "Ranihaar_-_Nimrat_Khaira_psgiho",
       title: "Ranihaar mp3 song by Nimrat Khaira.",
     },
     {
-      id: "679334c947bdbe21860441f3",
+      id: "Designer_-_Nimrat_Khaira_r10foz",
       title: "Designer mp3 song by Nimrat Khaira.",
     },
     {
-      id: "679334f247bdbe21860441f5",
+      id: "Lehnga_-_Nimrat_Khaira_el9fqx",
       title: "Lehnga mp3 song by Nimrat Khaira.",
     },
     {
-      id: "6793350b47bdbe21860441f7",
+      id: "Ishq_Kacheri_-_Nimrat_Khaira_amzmex",
       title: "Ishq Kacheri mp3 song by Nimrat Khaira.",
     },
     {
-      id: "6793352647bdbe21860441f9",
+      id: "Time_Chakda_-_Nimrat_Khaira_cutnos",
       title: "Time Chakda mp3 song by Nimrat Khaira.",
     },
     {
-      id: "6793354647bdbe21860441fc",
+      id: "SP_De_Rank_Wargi_-_Nimrat_Khaira_mk9btg",
       title: "SP De Rank Wargi mp3 song by Nimrat Khaira.",
     },
     {
-      id: "67a711c131755642e981aaa3",
+      id: "Gall_Mukk_Gyi_-_Nimrat_Khaira_r7f6ta",
       title: "Gall Mukk Gyi mp3 song by Nimrat Khaira",
     },
     {
-      id: "6793357147bdbe21860441fe",
+      id: "Salute_Vajde_-_Nimrat_Khaira_ofnw7k",
       title: "Salute Vajde mp3 song by Nimrat Khaira.",
     },
     {
-      id: "6793358c47bdbe2186044200",
+      id: "Rohb_Rakhdi_-_Nimrat_Khaira_vsjpvu",
       title: "Rohab Rakhdi mp3 song by Nimrat Khaira.",
     },
     {
-      id: "679335a747bdbe2186044202",
+      id: "Sira_E_Hou_-_Amrit_Maan_orwczh",
       title: "Sira E Hou mp3 song by Nimrat Khaira featuring Amrit Maan.",
     },
   ];
@@ -79,18 +79,21 @@ const NimratSongs = ({ isNavOpen }) => {
     setIsLoading(true);
 
     const song = songs[songIndex];
-    const API_URL = "http://localhost:5000";
+    console.log("Selected Song ID:", song.id);
+    const API_URL = "http://172.20.10.4:5000";
     try {
       const response = await fetch(`${API_URL}/api/songs/${song.id}`, {
         method: "GET",
         headers: { "Content-Type": "application/json" },
       });
-      const songUrl = response.url;
+      const data = await response.json();
+      const songUrl = data.file_path;
+      console.log("Fetched Song URL:", songUrl);
 
-      // if (!data.file_path || typeof data.file_path !== "string") {
-      //   console.error("Invalid file path received:", data.file_path);
-      //   return;
-      // }
+      if (!songUrl) {
+        console.error("Invalid file path received:", songUrl);
+        return;
+      }
 
       if (audioElement) {
         audioElement.src = songUrl;
@@ -202,25 +205,25 @@ const NimratSongs = ({ isNavOpen }) => {
   };
 
   useEffect(() => {
-    if (!audioRef.current) return;
+    if (!audioElement) return;
 
     const handleEnded = () => {
       if (repeat) {
-        audioRef.current.currentTime = 0;
-        audioRef.current.play();
+        audioElement.currentTime = 0;
+        audioElement.play();
       } else {
         handleNext();
       }
     };
 
-    audioRef.current.addEventListener("ended", handleEnded);
+    audioElement.addEventListener("ended", handleEnded);
 
     return () => {
-      if (audioRef.current) {
-        audioRef.current.removeEventListener("ended", handleEnded);
+      if (audioElement) {
+        audioElement.removeEventListener("ended", handleEnded);
       }
     };
-  }, [currentSong, isLoading, repeat, audioRef.current]);
+  }, [currentSong, isLoading, repeat, audioElement]);
 
   return (
     <>

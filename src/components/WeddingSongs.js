@@ -27,144 +27,144 @@ const Newmusic = () => {
 
   const newPunjabiSongs = [
     {
-      id: "679367b347bdbe2186044242",
+      id: "Parlour_Te_1_whyxoy",
       title: "Parlour Te mp3 song by Sunanda Sharma.",
     },
     {
-      id: "6793678447bdbe2186044240",
+      id: "Lipstick_Bindiyan_1_rn8tid",
       title: "Lipstick Bindiyan mp3 song by Sunanda Sharma.",
     },
     {
-      id: "67d28db63147114aa1df0228",
+      id: "Fomo_1_ohz3qx",
       title: "Fomo mp3 song by Jordan Sandhu.",
     },
-    { id: "67a45a6e5886b255ee475705", title: "Bhabhi Mp3 song by Nijjar." },
+    { id: "Bhabhi_-_Nijjar_fujgbw", title: "Bhabhi Mp3 song by Nijjar." },
     {
-      id: "67a45b5c5886b255ee475707",
+      id: "Tu_Takkri_-_Hustinder_uatz0k",
       title: "Tu Takkri Mp3 song by Hustinder.",
     },
     {
-      id: "67a45df45886b255ee475709",
+      id: "Defender_DJJOhAL.Com_a6cio1",
       title: "Defender MP3 Song by Harf Cheema.",
     },
     {
-      id: "67a7123531755642e981aaa5",
+      id: "Karnatak_-_Harkirat_Sangha_pdtugc",
       title: "Karnatak mp3 song by Harkirat Sangha.",
     },
     {
-      id: "67a45e845886b255ee47570d",
+      id: "Not_Sure_-_Cheema_Y_bmsvhm",
       title: "Not Sure Mp3 song by Cheema Y.",
     },
     {
-      id: "67a45eb65886b255ee47570f",
+      id: "Bachke_Bachke_Karan_Aujla_que6w0",
       title: "Bachke Bachke mp3 song by Karan Aujla in album Still Rollin.",
     },
     {
-      id: "6791f5d2bcb2c977364113ba",
+      id: "Sohne_Sohne_Suit_-_Nimrat_Khaira_qvj4l2",
       title: "Sohne Sohne Suit mp3 song by Nimrat Khaira.",
     },
     {
-      id: "67931e76f7a1211383f70d37",
+      id: "Suit_ncvgpu",
       title: "Suit mp3 song by Nimrat Khaira featuring Mankirt Aulakh.",
     },
     {
-      id: "6793349547bdbe21860441f0",
+      id: "MEHFIL_-_Gulab_Sidhu_inzztw",
+      title: "Mehfil mp3 song by Gulab Sidhu in album Mehfil.",
+    },
+    { id: "Bapu_Zimidar_hmqxlz", title: "Bapu Zimidar - Jassi Gill." },
+    {
+      id: "Yes_No_-_Gulab_Sidhu_mh0h34",
+      title: "Yes No mp3 song by Gulab Sidhu.",
+    },
+    {
+      id: "Ranihaar_-_Nimrat_Khaira_psgiho",
       title: "Ranihaar mp3 song by Nimrat Khaira.",
     },
     {
-      id: "679334c947bdbe21860441f3",
+      id: "Designer_-_Nimrat_Khaira_r10foz",
       title: "Designer mp3 song by Nimrat Khaira.",
     },
+    { id: "Got_You_-_G_Khan_nfkweh", title: "Got You song by G Khan." },
     {
-      id: "67a464155886b255ee475737",
-      title: "Mehfil mp3 song by Gulab Sidhu in album Mehfil.",
-    },
-    { id: "67a6d5f1ea4bf472388d60d3", title: "Bapu Zimidar - Jassi Gill." },
-    {
-      id: "67a6d728ea4bf472388d60d5",
-      title: "Yes No mp3 song by Gulab Sidhu.",
-    },
-    { id: "67a6d853ea4bf472388d60d9", title: "Got You song by G Khan." },
-    {
-      id: "67a6d8c7ea4bf472388d60db",
+      id: "Nattiyaan_-_Shipra_Goyal_tt5zqc",
       title: "Nattiyaan song by Shipra Goyal.",
     },
     {
-      id: "67a6d9ddea4bf472388d60df",
+      id: "La_La_La_La_Hoi_Pai_Aa_-_Hunar_Sidhu_jcpbo9",
       title: "La La La Hoi Pai Aa song by Hunar Sidhu.",
     },
     {
-      id: "6793352647bdbe21860441f9",
+      id: "Time_Chakda_-_Nimrat_Khaira_cutnos",
       title: "Time Chakda mp3 song by Nimrat Khaira.",
     },
     {
-      id: "6793354647bdbe21860441fc",
+      id: "SP_De_Rank_Wargi_-_Nimrat_Khaira_mk9btg",
       title: "SP De Rank Wargi mp3 song by Nimrat Khaira.",
     },
-    { id: "67a6da47ea4bf472388d60e1", title: "Filter song by Gulab Sidhu." },
+    { id: "Filter_-_Gulab_Sidhu_cvqdpx", title: "Filter song by Gulab Sidhu." },
     {
-      id: "67a6dabfea4bf472388d60e3",
+      id: "Tera_Yaar_Rakane_-_Shree_Brar_iyujc9",
       title: " Tera Yaar Rakane song by Shree Brar.",
     },
     {
-      id: "67a6db77ea4bf472388d60e5",
+      id: "Khalipan_-_Nirvair_Pannu_wxhyaq",
       title: "Khalipan song by Nirvair Pannu.",
     },
-    { id: "67a6dbccea4bf472388d60e7", title: "Tikka song by Gulab Sidhu." },
+    { id: "Tikka_-_Gulab_Sidhu_k36iv6", title: "Tikka song by Gulab Sidhu." },
     {
-      id: "67a6e85bea4bf472388d60ef",
+      id: "Andaaze_-_Khan_Bhaini_o2xomj",
       title: "Andaaze song by Khan Bhaini.",
     },
     {
-      id: "67a6e943ea4bf472388d60f1",
+      id: "Snapchat_-_Surjit_Bhullar_ponrhs",
       title: "Snapchat song by Surjit Bhullar.",
     },
     {
-      id: "67a6e9eeea4bf472388d60f3",
+      id: "Dont_You_Dare_-_Hustinder_m2hhmf",
       title: "Don't You Dare by Hustinder.",
     },
     {
-      id: "6793358c47bdbe2186044200",
+      id: "Rohb_Rakhdi_-_Nimrat_Khaira_vsjpvu",
       title: "Rohab Rakhdi mp3 song by Nimrat Khaira.",
     },
     {
-      id: "679335a747bdbe2186044202",
+      id: "Sira_E_Hou_-_Amrit_Maan_orwczh",
       title: "Sira E Hou mp3 song by Nimrat Khaira featuring Amrit Maan.",
     },
     {
-      id: "679355ef47bdbe2186044204",
+      id: "Dildarian_-_Amrinder_Gill_qkzja4",
       title: "Dildarian song by Amrinder Gill",
     },
     {
-      id: "67935b2647bdbe2186044216",
+      id: "Ocean_Eyes_-_Amrinder_Gill_x0ajoo",
       title: "Ocean Eyes song by Amrinder Gill",
     },
     {
-      id: "67937eff47bdbe2186044270",
+      id: "Chann_Chann_-_Jordan_Sandhu_upj3ee",
       title: "Chann Chann Da mp3 song by Jordan Sandhu.",
     },
     {
-      id: "67937f2347bdbe2186044272",
+      id: "Pre_Workout_-_Jordan_Sandhu_mw1esw",
       title: "Pre Workout mp3 song by Jordan Sandhu.",
     },
     {
-      id: "67937f9b47bdbe2186044276",
+      id: "Do_Vaari_Jatt_1_sojk1a",
       title: "Do Vaari Jatt mp3 song by Jordan Sandhu.",
     },
     {
-      id: "67937fcf47bdbe2186044278",
+      id: "Teeje_Week_-_Jordan_Sandhu_i4wets",
       title: "Teeje Week mp3 song by Jordan Sandhu in album Teeje Week.",
     },
     {
-      id: "679380e547bdbe2186044282",
+      id: "Tu_Te_Sharab_DjPunjab.Farm_pztapa",
       title: "Tu Te Sharab mp3 song by Jordan Sandhu in album Tu Te Sharab.",
     },
     {
-      id: "67a6ecacea4bf472388d60f9",
+      id: "Aaye_Haaye_-_Karan_Aujla_kjflbl",
       title: "Aaye Haaye song by Karan Aujla.",
     },
     {
-      id: "67a7096731755642e981aa89",
+      id: "128-Hass_Hass_-_Diljit_Dosanjh_128_Kbps_xwmbnw",
       title: "Hass Hass song by Diljit Dosanjh.",
     },
   ];
@@ -180,8 +180,14 @@ const Newmusic = () => {
         method: "GET",
         headers: { "Content-Type": "application/json" },
       });
-      const songUrl = response.url;
+      const data = await response.json();
+      const songUrl = data.file_path;
+      console.log("Fetched Song URL:", songUrl);
 
+      if (!songUrl) {
+        console.error("Invalid file path received:", songUrl);
+        return;
+      }
       if (audioElement) {
         audioElement.src = songUrl;
         audioElement.load();

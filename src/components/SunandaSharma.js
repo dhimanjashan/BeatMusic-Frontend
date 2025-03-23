@@ -24,76 +24,76 @@ const SunandaSharma = ({ isNavOpen }) => {
 
   const songs = [
     {
-      id: "679363ec47bdbe218604421d",
+      id: "Jatt_Disda_1_ttfxqu",
       title: "Jatt Disda mp3 song by Sunanda Sharma.",
     },
     {
-      id: "6793671a47bdbe218604423c",
+      id: "Udh_Di_Phiran_1_wtedig",
       title: "Udh Di Phiran mp3 song by Sunanda Sharma.",
     },
     {
-      id: "6793674547bdbe218604423e",
+      id: "Billi_Akh_-_Raag.Fm_lcvvoc",
       title: "Billi Akh mp3 song by Sunanda Sharma.",
     },
     {
-      id: "6793645a47bdbe218604421f",
+      id: "Patake_-_Raag.Fm_exprdy",
       title: "Patake mp3 song by Sunanda Sharma.",
     },
     {
-      id: "679364c947bdbe2186044221",
+      id: "Jatt_Yamla_qxjdn3",
       title: "Jatt Yamla mp3 song by Sunanda Sharma.",
     },
     {
-      id: "6793653a47bdbe2186044225",
+      id: "Jaani_Tera_Naa_1_d51wsm",
       title: "Jaani Tera Naa mp3 song by Sunanda Sharma.",
     },
     {
-      id: "6793656d47bdbe2186044227",
+      id: "Koke_1_gcpibx",
       title: "Koke mp3 song by Sunanda Sharma.",
     },
     {
-      id: "6793659047bdbe2186044229",
+      id: "Morni_1_fxt7ar",
       title: "Morni mp3 song by Sunanda Sharma.",
     },
     {
-      id: "679365b147bdbe218604422b",
+      id: "Sandal_1_ktu4wc",
       title: "Sandal mp3 song by Sunanda Sharma.",
     },
     {
-      id: "679365d147bdbe218604422d",
+      id: "Ban_1_nw6d36",
       title: "Ban mp3 song by Sunanda Sharma.",
     },
     {
-      id: "679365fe47bdbe218604422f",
+      id: "Nanki_Da_Veer_1_wkasjp",
       title: "Nanki Da Veer mp3 song by Sunanda Sharma.",
     },
     {
-      id: "6793662d47bdbe2186044231",
+      id: "Duji_Vaar_Pyar_1_osrh1e",
       title: "Duji Vaar Pyar mp3 song by Sunanda Sharma.",
     },
     {
-      id: "6793665a47bdbe2186044233",
+      id: "Pagal_Nahi_Hona_1_hni0su",
       title: "Pagal Nahi Hona mp3 song by Sunanda Sharma.",
     },
     {
-      id: "679366a347bdbe2186044236",
+      id: "Chori_Chori_1_buxx43",
       title: "Chorri Chorri mp3 song by Sunanda Sharma.",
     },
     {
-      id: "679366c947bdbe2186044238",
+      id: "Saadi_Yaad_1_k4ryus",
       title: "Saadi Yaad mp3 song by Sunanda Sharma.",
     },
     {
-      id: "679366f447bdbe218604423a",
+      id: "9_9_Mashukan_1_j1en8c",
       title: "9-9 Mashukan mp3 song by Sunanda Sharma.",
     },
     {
-      id: "679367b347bdbe2186044242",
+      id: "Parlour_Te_1_whyxoy",
       title:
         "Parlour Te mp3 song by Sunanda Sharma in album Mittran Da Challeya Truck Ni.",
     },
     {
-      id: "6793678447bdbe2186044240",
+      id: "Lipstick_Bindiyan_1_rn8tid",
       title:
         "Lipstick Bindiyan mp3 song by Sunanda Sharma in album Mittran Da Challeya Truck Ni.",
     },
@@ -110,7 +110,13 @@ const SunandaSharma = ({ isNavOpen }) => {
         method: "GET",
         headers: { "Content-Type": "application/json" },
       });
-      const songUrl = response.url;
+      const data = await response.json();
+      const songUrl = data.file_path;
+
+      if (!songUrl) {
+        console.error("Invalid file path received:", songUrl);
+        return;
+      }
 
       if (audioElement) {
         audioElement.src = songUrl;

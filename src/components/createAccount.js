@@ -162,7 +162,7 @@ const CreateAccount = ({ setActiveLink, isNavOpen }) => {
                 onClick={() => setShowPassword(!showPassword)}
                 className="password-toggle"
               >
-                {showIcon && ( // Show the eye icon only when input has text
+                {showIcon && (
                   <i
                     className={
                       showPassword ? "fa-solid fa-eye-slash" : "fa-solid fa-eye"

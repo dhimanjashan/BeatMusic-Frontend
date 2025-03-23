@@ -23,83 +23,83 @@ const ArjanDhillon = ({ isNavOpen }) => {
 
   const songs = [
     {
-      id: "67936f1e47bdbe2186044244",
+      id: "Gutt_-_Raag.Fm_k58j9w",
       title: "Gutt mp3 song by Arjan Dhillon.",
     },
     {
-      id: "679371b947bdbe2186044246",
+      id: "Tu_Jdo_Auna_b91xys",
       title: "Tu Jdo Auna mp3 song by Arjan Dhillon.",
     },
     {
-      id: "6793721d47bdbe2186044248",
+      id: "2-2_Asle_-_Arjan_Dhillon_vuvccp",
       title: "2-2 Asle mp3 song by Arjan Dhillon.",
     },
     {
-      id: "679372a347bdbe218604424a",
+      id: "Vatt_Da_Raula_1_fb5vaf",
       title: "Vatt Da Raula mp3 song by Arjan Dhillon.",
     },
     {
-      id: "679372ea47bdbe218604424c",
+      id: "Sher-E-Panjab_-_Arjan_Dhillon_hymvcz",
       title: "Sher-E-Panjab mp3 song by Arjan Dhillon.",
     },
     {
-      id: "6793738147bdbe218604424e",
+      id: "Jawani_-_Raag.Fm_cxnt8s",
       title: "Jawani mp3 song by Arjan Dhillon.",
     },
     {
-      id: "679373ce47bdbe2186044250",
+      id: "Zigana_-_Arjan_Dhillon_micchn",
       title: "Zigana mp3 song by Arjan Dhillon.",
     },
     {
-      id: "6793740047bdbe2186044252",
+      id: "Parallel_Thoughts_-_Raag.Fm_krqefp",
       title: "Parallel Thoughts mp3 song by Arjan Dhillon.",
     },
     {
-      id: "6793742e47bdbe2186044254",
+      id: "Panjabi-Arjan-Dhillon_pnatk6",
       title: "Panjabi mp3 song by Arjan Dhillon.",
     },
     {
-      id: "6793745c47bdbe2186044256",
+      id: "Brats_-_Arjan_Dhillon_c1lnfo",
       title: "Brats mp3 song by Arjan Dhillon.",
     },
     {
-      id: "679374a947bdbe2186044258",
+      id: "Jeona_-_Raag.Fm_osixyy",
       title: "Jeona mp3 song by Arjan Dhillon.",
     },
     {
-      id: "679374d047bdbe218604425a",
+      id: "Rabb_-_Raag.Fm_mqfylw",
       title: "Rabb mp3 song by Arjan Dhillon.",
     },
     {
-      id: "679374f547bdbe218604425c",
+      id: "More_Beautiful_-_Raag.Fm_epi5oq",
       title: "More Beautiful mp3 song by Arjan Dhillon.",
     },
     {
-      id: "6793751f47bdbe218604425e",
+      id: "Hommie_Call_-_Raag.Fm_woftsn",
       title: "Hommie Call mp3 song by Arjan Dhillon.",
     },
     {
-      id: "6793753f47bdbe2186044260",
+      id: "Hold_On_-_Raag.Fm_mc0hdt",
       title: "Hold On mp3 song by Arjan Dhillon.",
     },
     {
-      id: "6793762047bdbe2186044262",
+      id: "Dunia-Arjan-Dhillon_uuocq8",
       title: "Dunia mp3 song by Arjan Dhillon.",
     },
     {
-      id: "6793764547bdbe2186044264",
+      id: "Bai_Bai_-_Raag.Fm_f90gqc",
       title: "Bai Bai mp3 song by Arjan Dhillon.",
     },
     {
-      id: "6793766a47bdbe2186044266",
+      id: "25-25_-_Raag.Fm_eismfr",
       title: "25-25 mp3 song by Arjan Dhillon.",
     },
     {
-      id: "6793768947bdbe2186044268",
+      id: "Calculations_-_Raag.Fm_xlxuwh",
       title: "Calculations mp3 song by Arjan Dhillon.",
     },
     {
-      id: "679376c047bdbe218604426a",
+      id: "Opinion_-_Raag.Fm_rzd3e5",
       title: "Opinion mp3 song by Arjan Dhillon.",
     },
   ];
@@ -115,7 +115,14 @@ const ArjanDhillon = ({ isNavOpen }) => {
         method: "GET",
         headers: { "Content-Type": "application/json" },
       });
-      const songUrl = response.url;
+      const data = await response.json();
+      const songUrl = data.file_path;
+      console.log("Fetched Song URL:", songUrl);
+
+      if (!songUrl) {
+        console.error("Invalid file path received:", songUrl);
+        return;
+      }
 
       if (audioElement) {
         audioElement.src = songUrl;

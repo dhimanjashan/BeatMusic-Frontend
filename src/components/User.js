@@ -66,13 +66,16 @@ const User = ({ setIsNavOpen }) => {
 
   const handleFavoriteDelete = async (userID) => {
     try {
-      const response = await fetch("http://172.20.10.4:5000/api/favsongs/remove", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ userID }),
-      });
+      const response = await fetch(
+        "http://172.20.10.4:5000/api/favsongs/remove",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ userID }),
+        }
+      );
       const data = await response.json();
       if (response.ok) {
         console.log(data.message);
@@ -96,12 +99,15 @@ const User = ({ setIsNavOpen }) => {
       return;
     }
     try {
-      const response = await fetch(`http://172.20.10.4:5000/api/users/jashan/${userID}`, {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      const response = await fetch(
+        `http://172.20.10.4:5000/api/users/jashan/${userID}`,
+        {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
       if (response.ok) {
         handleFavoriteDelete(userID);
         setTimeout(() => {
@@ -183,18 +189,10 @@ const User = ({ setIsNavOpen }) => {
             <p>{userData?.email || "No Email Available"}</p>
           </div>
           <div className="btn-container">
-            <button
-              className="userBtn"
-              id="logout"
-              onClick={handleLogout}
-            >
+            <button className="userBtn" id="logout" onClick={handleLogout}>
               Logout
             </button>
-            <button
-              className="userBtn"
-              id="delete"
-              onClick={handleDeleteClick}
-            >
+            <button className="userBtn" id="delete" onClick={handleDeleteClick}>
               Delete
             </button>
           </div>
