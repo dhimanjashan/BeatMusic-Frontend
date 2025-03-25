@@ -6,7 +6,7 @@ import { addFavorite } from "../state/favouriteSlice";
 import PlayerControl from "./PlayerControl";
 import { useNavigate } from "react-router-dom";
 
-const Newmusic = () => {
+const Newmusic = ({ isNavOpen }) => {
   const audioRef = useRef(null);
   const [repeat, setRepeat] = useState(false);
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
@@ -174,7 +174,7 @@ const Newmusic = () => {
     setIsLoading(true);
 
     const song = newPunjabiSongs[songIndex];
-    const API_URL = "http://localhost:5000";
+    const API_URL = "https://beatmusic-backend.onrender.com";
     try {
       const response = await fetch(`${API_URL}/api/songs/${song.id}`, {
         method: "GET",
@@ -264,17 +264,20 @@ const Newmusic = () => {
         return;
       }
 
-      const response = await fetch("http://172.20.10.4:5000/api/favSongs/add", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          userID: userID,
-          songId: currentSong.id,
-          title: currentSong.title,
-        }),
-      });
+      const response = await fetch(
+        "https://beatmusic-backend.onrender.com/api/favSongs/add",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            userID: userID,
+            songId: currentSong.id,
+            title: currentSong.title,
+          }),
+        }
+      );
 
       const data = await response.json();
 
@@ -313,6 +316,7 @@ const Newmusic = () => {
     return () => {
       audio.removeEventListener("ended", handleEnded);
     };
+    // eslint-disable-next-line
   }, [currentSong, isLoading, repeat]);
   useEffect(() => {
     const handleResize = () => {
@@ -323,13 +327,23 @@ const Newmusic = () => {
   }, []);
   return (
     <>
-      <div className="newmusicContainer">
+      <div
+        className={
+          isNavOpen ? "newmusicContainer blur-background" : "newmusicContainer"
+        }
+      >
         <h1 className="newmusicheading">
           Dance & Celebrate with These Wedding Hits 😊🎵
         </h1>
       </div>
       <hr className="newMusicHr"></hr>
-      <div className="newmusicContainer1">
+      <div
+        className={
+          isNavOpen
+            ? "newmusicContainer1 blur-background"
+            : "newmusicContainer1"
+        }
+      >
         <div className="newmusicContainer2">
           {isMobile ? (
             <PlayerControl

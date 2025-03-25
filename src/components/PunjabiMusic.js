@@ -6,7 +6,7 @@ import PlayerSystem from "./PlayerSystem";
 import PlayerControl from "./PlayerControl";
 import { useNavigate } from "react-router-dom";
 
-const PunjabiMusic = () => {
+const PunjabiMusic = ({ isNavOpen }) => {
   const audioRef = useRef(null);
   const [repeat, setRepeat] = useState(false);
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
@@ -98,6 +98,14 @@ const PunjabiMusic = () => {
       title: "Don't You Dare by Hustinder.",
     },
     {
+      id: "Mashoor_Ho_Giya_1_skv6vx",
+      title: "Mashoor Ho Giya mp3 song by Jordan Sandhu.",
+    },
+    {
+      id: "Peacock_1_sdiqo2",
+      title: "Peacock mp3 song by Jordan Sandhu.",
+    },
+    {
       id: "Sohneya_Sunidhi_Chauhan_Happy_Raikoti_vqc9vy",
       title: "Sohneya song by Happy Raikoti.",
     },
@@ -108,6 +116,10 @@ const PunjabiMusic = () => {
     {
       id: "Aaye_Haaye_-_Karan_Aujla_kjflbl",
       title: "Aaye Haaye song by Karan Aujla.",
+    },
+    {
+      id: "Mitran_Di_Chhatri_-_Babbu_Maan_lorx9q",
+      title: "Mitran Di Chhatri song by Babbu Maan.",
     },
     {
       id: "Tiyariyan_Satinder_Sartaaj_kq5wrc",
@@ -133,6 +145,38 @@ const PunjabiMusic = () => {
     {
       id: "Tu_Takkri_-_Hustinder_uatz0k",
       title: "Tu Takkri Mp3 song by Hustinder.",
+    },
+    {
+      id: "Thank_God_-_Jordan_Sandhu_sqwjth",
+      title: "Thank God mp3 song by Jordan Sandhu.",
+    },
+    {
+      id: "DJJOhAL.Com_3_yul1o6",
+      title: "Bebe Di Pasand mp3 song by Jordan Sandhu.",
+    },
+    {
+      id: "Ajj_Kal_Ajj_Kal_-_Nimrat_Khaira_luijko",
+      title: "Ajj Kal Ajj Kal mp3 song by Nimrat Khaira.",
+    },
+    {
+      id: "Jaan_-_Nimrat_Khaira_gihuys",
+      title: "Jaan mp3 song by Nimrat Khaira.",
+    },
+    {
+      id: "Photo_-_Nimrat_Khaira_pk7qxd",
+      title: "Photo mp3 song by Nimrat Khaira.",
+    },
+    {
+      id: "Blink_-_Nimrat_Khaira_oauzuf",
+      title: "Blink mp3 song by Nimrat Khaira.",
+    },
+    {
+      id: "Ki_Karde_Je_PenduJatt.Com.Se_gbayxi",
+      title: "Ki Karde Je mp3 song by Nimrat Khaira.",
+    },
+    {
+      id: "Sangdi_Sangdi_-_Tarsem_Jassar_q3uogr",
+      title: "Sangdi Sangdi mp3 song by Nimrat Khaira.",
     },
     {
       id: "Rangeen_icvuhd",
@@ -190,6 +234,10 @@ const PunjabiMusic = () => {
     {
       id: "Gol_Chowk_-_Hustinder_phzdcz",
       title: " Gol Chowk song by Hustinder.",
+    },
+    {
+      id: "Snowfall_1_knz73b",
+      title: "Snowfall mp3 song by Jordan Sandhu.",
     },
     { id: "Be_Mine_-_Shubh_ahramc", title: "Be Mine song by Shubh." },
     {
@@ -255,7 +303,7 @@ const PunjabiMusic = () => {
     setIsLoading(true);
 
     const song = songs[songIndex];
-    const API_URL = "http://172.20.10.4:5000";
+    const API_URL = "https://beatmusic-backend.onrender.com";
     try {
       const response = await fetch(`${API_URL}/api/songs/${song.id}`, {
         method: "GET",
@@ -343,17 +391,20 @@ const PunjabiMusic = () => {
         return;
       }
 
-      const response = await fetch("http://172.20.10.4:5000/api/favSongs/add", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          userID: userID,
-          songId: currentSong.id,
-          title: currentSong.title,
-        }),
-      });
+      const response = await fetch(
+        "https://beatmusic-backend.onrender.com/api/favSongs/add",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            userID: userID,
+            songId: currentSong.id,
+            title: currentSong.title,
+          }),
+        }
+      );
 
       const data = await response.json();
 
@@ -392,6 +443,7 @@ const PunjabiMusic = () => {
     return () => {
       audio.removeEventListener("ended", handleEnded);
     };
+    // eslint-disable-next-line
   }, [currentSong, isLoading, repeat]);
   useEffect(() => {
     const handleResize = () => {
@@ -402,14 +454,26 @@ const PunjabiMusic = () => {
   }, []);
   return (
     <>
-      <div className="PunjabiSongsContainer">
+      <div
+        className={
+          isNavOpen
+            ? "PunjabiSongsContainer blur-background"
+            : "PunjabiSongsContainer"
+        }
+      >
         <h1 className="PunjabiSongsheading">
           Explore the Best Punjabi Songs 🎵
         </h1>
       </div>
       <hr></hr>
-      <div className="punjabiSongsContainer2">
-        <div className="punjabiSongsContainer3">
+      <div
+        className={
+          isNavOpen
+            ? "newmusicContainer1 blur-background"
+            : "newmusicContainer1"
+        }
+      >
+        <div className="newmusicContainer2">
           {isMobile ? (
             <PlayerControl
               handleNext={handleNext}

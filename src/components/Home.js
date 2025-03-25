@@ -196,7 +196,7 @@ const Home = ({ setActiveLink, isNavOpen }) => {
     setIsLoading(true);
 
     const song = trendingSongs[songIndex];
-    const API_URL = "http://172.20.10.4:5000";
+    const API_URL = "https://beatmusic-backend.onrender.com";
     try {
       // Fix the song ID key to match the backend expectation
       const response = await fetch(`${API_URL}/api/songs/${song.songID}`, {
@@ -524,7 +524,8 @@ const Home = ({ setActiveLink, isNavOpen }) => {
         </div>
         <div className="footer-bottom">
           <p>
-            &copy; www.<span>Beat</span>Music.com. All rights reserved.
+            &copy; www.<span>Beat</span>Music.com. All rights reserved. Designed
+            by Jashan
           </p>
         </div>
       </footer>

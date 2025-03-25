@@ -1,9 +1,13 @@
 import React from "react";
 
-const ArtistImages = ({ image }) => {
+const ArtistImages = ({ image, isNavOpen }) => {
   return (
     <>
-      <div className="musiclistImage">
+      <div
+        className={
+          isNavOpen ? "musiclistImage blur-background" : "musiclistImage"
+        }
+      >
         <div id="artistImage">
           <img src={image}></img>
         </div>

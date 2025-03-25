@@ -22,7 +22,6 @@ export const playAudioAction = (songUrl, song) => {
     const { audioElement } = audio;
 
     if (!audioElement.src || audioElement.src !== songUrl) {
-      // Stop previous playback
       audioElement.pause();
       audioElement.currentTime = 0;
 

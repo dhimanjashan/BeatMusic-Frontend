@@ -58,7 +58,7 @@ const CreateAccount = ({ setActiveLink, isNavOpen }) => {
     if (isValidEmail(userEmail)) {
       try {
         const response = await fetch(
-          "http://172.20.10.4:5000/api/users/register",
+          "https://beatmusic-backend.onrender.com/api/users/register",
           {
             method: "POST",
             headers: {

@@ -27,6 +27,42 @@ const JordanSandhu = ({ isNavOpen }) => {
       title: "Fomo mp3 song by Jordan Sandhu.",
     },
     {
+      id: "Snowfall_1_knz73b",
+      title: "Snowfall mp3 song by Jordan Sandhu.",
+    },
+    {
+      id: "Positivity_1_cv3n90",
+      title: "Positivity mp3 song by Jordan Sandhu.",
+    },
+    {
+      id: "Thank_God_-_Jordan_Sandhu_sqwjth",
+      title: "Thank God mp3 song by Jordan Sandhu.",
+    },
+    {
+      id: "DJJOhAL.Com_3_yul1o6",
+      title: "Bebe Di Pasand mp3 song by Jordan Sandhu.",
+    },
+    {
+      id: "Sardaar_Bandey_1_fhpxkp",
+      title: "Sardar Bandey mp3 song by Jordan Sandhu.",
+    },
+    {
+      id: "Birthday_-_Jordan_Sandhu_sdgqmg",
+      title: "Birthday mp3 song by Jordan Sandhu.",
+    },
+    {
+      id: "Out_Of_Stock_1_srbhkt",
+      title: "Out Of Stock mp3 song by Jordan Sandhu.",
+    },
+    {
+      id: "Jattiye_Ni_hmd2bq",
+      title: "Jattiye Ni mp3 song by Jordan Sandhu.",
+    },
+    {
+      id: "Band_Theke_1_d7sflt",
+      title: "Band Theke mp3 song by Jordan Sandhu.",
+    },
+    {
       id: "Tareefan_1_uaeyb2",
       title: "Tareefan mp3 song by Jordan Sandhu in album Tareefan.",
     },
@@ -36,7 +72,27 @@ const JordanSandhu = ({ isNavOpen }) => {
     },
     {
       id: "Chann_Chann_-_Jordan_Sandhu_upj3ee",
-      title: "Chann Chann Da mp3 song by Jordan Sandhu.",
+      title: "Chann Chann mp3 song by Jordan Sandhu.",
+    },
+    {
+      id: "Jyada_Jachdi_1_mjhp4b",
+      title: "Jyada Jachdi mp3 song by Jordan Sandhu.",
+    },
+    {
+      id: "Mashoor_Ho_Giya_1_skv6vx",
+      title: "Mashoor Ho Giya mp3 song by Jordan Sandhu.",
+    },
+    {
+      id: "Peacock_1_sdiqo2",
+      title: "Peacock mp3 song by Jordan Sandhu.",
+    },
+    {
+      id: "Ford_Baapu_Da_1_bcsgrr",
+      title: "Ford Bapu Da mp3 song by Jordan Sandhu.",
+    },
+    {
+      id: "Botal_Free_1_iiewia",
+      title: "Botal Free mp3 song by Jordan Sandhu.",
     },
     {
       id: "Pre_Workout_-_Jordan_Sandhu_mw1esw",
@@ -84,6 +140,11 @@ const JordanSandhu = ({ isNavOpen }) => {
       title: "Season mp3 song by Jordan Sandhu.",
     },
     {
+      id: "Nimm_Thalle_1_rj3moo",
+      title:
+        "Nimm Thalle mp3 song by Jordan Sandhu in album Nimm Thalle - Single.",
+    },
+    {
       id: "Love_Like_This_-_Jordan_Sandhu_jmvxbc",
       title: "Love Like This mp3 song by Jordan Sandhu.",
     },
@@ -116,11 +177,6 @@ const JordanSandhu = ({ isNavOpen }) => {
       id: "Zulfaan_1_p1oluv",
       title: "Zulfaan mp3 song by Jordan Sandhu in album Zulfaan - Single.",
     },
-    {
-      id: "Nimm_Thalle_1_rj3moo",
-      title:
-        "Nimm Thalle mp3 song by Jordan Sandhu in album Nimm Thalle - Single.",
-    },
   ];
 
   const handleClick = async (songIndex) => {
@@ -128,7 +184,7 @@ const JordanSandhu = ({ isNavOpen }) => {
     setIsLoading(true);
 
     const song = songs[songIndex];
-    const API_URL = "http://172.20.10.4:5000";
+    const API_URL = "https://beatmusic-backend.onrender.com";
     try {
       const response = await fetch(`${API_URL}/api/songs/${song.id}`, {
         method: "GET",
@@ -137,7 +193,7 @@ const JordanSandhu = ({ isNavOpen }) => {
       const data = await response.json();
       const songUrl = data.file_path; // ✅ Use file_path from response
       console.log("Fetched Song URL:", songUrl);
-  
+
       if (!songUrl) {
         console.error("Invalid file path received:", songUrl);
         return;
@@ -216,17 +272,20 @@ const JordanSandhu = ({ isNavOpen }) => {
         return;
       }
 
-      const response = await fetch("http://172.20.10.4:5000/api/favSongs/add", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          userID: userID,
-          songId: currentSong.id,
-          title: currentSong.title,
-        }),
-      });
+      const response = await fetch(
+        "https://beatmusic-backend.onrender.com/api/favSongs/add",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            userID: userID,
+            songId: currentSong.id,
+            title: currentSong.title,
+          }),
+        }
+      );
 
       const data = await response.json();
 
@@ -266,6 +325,7 @@ const JordanSandhu = ({ isNavOpen }) => {
     return () => {
       audioElement.removeEventListener("ended", handleEnded);
     };
+    // eslint-disable-next-line
   }, [currentSong, isLoading, repeat, audioElement]);
 
   return (

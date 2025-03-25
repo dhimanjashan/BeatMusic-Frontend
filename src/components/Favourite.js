@@ -32,13 +32,20 @@ const Favourite = ({ isNavOpen }) => {
     setIsLoading(true);
 
     const song = favouriteSongs[songIndex];
-    const API_URL = "http://localhost:5000";
+    const API_URL = "https://beatmusic-backend.onrender.com";
     try {
       const response = await fetch(`${API_URL}/api/songs/${song.id}`, {
         method: "GET",
         headers: { "Content-Type": "application/json" },
       });
-      const songUrl = response.url;
+      const data = await response.json();
+      const songUrl = data.file_path; // ✅ Use file_path from response
+      console.log("Fetched Song URL:", songUrl);
+
+      if (!songUrl) {
+        console.error("Invalid file path received:", songUrl);
+        return;
+      }
 
       if (audioElement) {
         audioElement.src = songUrl;
@@ -136,7 +143,7 @@ const Favourite = ({ isNavOpen }) => {
     dispatch(setFavorites(updatedFavorites));
     try {
       const response = await fetch(
-        "http://172.20.10.4:5000/api/favSongs/removeSong/",
+        "https://beatmusic-backend.onrender.com/api/favSongs/removeSong/",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },

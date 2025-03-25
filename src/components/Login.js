@@ -35,13 +35,16 @@ const Login = ({ isNavOpen }) => {
     e.preventDefault(); // Prevents page reload
 
     try {
-      const response = await fetch("http://172.20.10.4:5000/api/users/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
+      const response = await fetch(
+        "https://beatmusic-backend.onrender.com/api/users/login",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        }
+      );
       const json = await response.json();
 
       if (response.ok) {

@@ -35,8 +35,28 @@ const ArjanDhillon = ({ isNavOpen }) => {
       title: "2-2 Asle mp3 song by Arjan Dhillon.",
     },
     {
+      id: "Chah_Pindan_Di_-_Djjohal.fm_v1vjot",
+      title: "Chah Pindan Di mp3 song by Arjan Dhillon.",
+    },
+    {
+      id: "Hun_Ok_Hoye_Pye_aa_-_Djjohal.fm_gpafr8",
+      title: "Hun Ok Hoye Pye aa mp3 song by Arjan Dhillon.",
+    },
+    {
       id: "Vatt_Da_Raula_1_fb5vaf",
       title: "Vatt Da Raula mp3 song by Arjan Dhillon.",
+    },
+    {
+      id: "Paparazzi_-_Djjohal.fm_qmc5hd",
+      title: "Paparazzi mp3 song by Arjan Dhillon.",
+    },
+    {
+      id: "Style_-_Djjohal.fm_eca7uo",
+      title: "Style mp3 song by Arjan Dhillon.",
+    },
+    {
+      id: "Nain_-_Djjohal.fm_dxb0qd",
+      title: "Nain mp3 song by Arjan Dhillon.",
     },
     {
       id: "Sher-E-Panjab_-_Arjan_Dhillon_hymvcz",
@@ -45,6 +65,49 @@ const ArjanDhillon = ({ isNavOpen }) => {
     {
       id: "Jawani_-_Raag.Fm_cxnt8s",
       title: "Jawani mp3 song by Arjan Dhillon.",
+    },
+    {
+      id: "Worldwide_-_Djjohal.fm_kbudew",
+      title: "Worldwide mp3 song by Arjan Dhillon.",
+    },
+    {
+      id: "Calculations_-_Djjohal.fm_tkqryl",
+      title: "Calculations mp3 song by Arjan Dhillon.",
+    },
+    {
+      id: "Hazur_-_Djjohal.fm_pkbqb9",
+      title: "Hazur mp3 song by Arjan Dhillon.",
+    },
+    {
+      id: "Heer_-_Djjohal.fm_1_uoiyjy",
+      title: "Heer mp3 song by Arjan Dhillon.",
+    },
+    {
+      id: "Hot_Shit_-_Djjohal.fm_gngv3x",
+      title: "Hot Shit mp3 song by Arjan Dhillon.",
+    }, {
+      id: "Ki_Karde_Je_PenduJatt.Com.Se_gbayxi",
+      title: "Ki Karde Je mp3 song by Nimrat Khaira.",
+    },
+    {
+      id: "Likhari_-_Djjohal.fm_d51kp6",
+      title: "Likhari mp3 song by Arjan Dhillon.",
+    },
+    {
+      id: "Daaru_Sasti_-_Djjohal.fm_gt1odp",
+      title: "Daaru Sasti mp3 song by Arjan Dhillon.",
+    },
+    {
+      id: "Tha_Karke_-_Djjohal.fm_dbozpy",
+      title: "Tha Karke mp3 song by Arjan Dhillon.",
+    },
+    {
+      id: "Munde_Pindan_De_-_Djjohal.fm_b4pphx",
+      title: "Munde Pindan De mp3 song by Arjan Dhillon.",
+    },
+    {
+      id: "Long_Back_-_Djjohal.fm_yv9by2",
+      title: "Long Back mp3 song by Arjan Dhillon.",
     },
     {
       id: "Zigana_-_Arjan_Dhillon_micchn",
@@ -109,7 +172,7 @@ const ArjanDhillon = ({ isNavOpen }) => {
     setIsLoading(true);
 
     const song = songs[songIndex];
-    const API_URL = "http://localhost:5000";
+    const API_URL = "https://beatmusic-backend.onrender.com";
     try {
       const response = await fetch(`${API_URL}/api/songs/${song.id}`, {
         method: "GET",
@@ -199,17 +262,20 @@ const ArjanDhillon = ({ isNavOpen }) => {
         return;
       }
 
-      const response = await fetch("http://172.20.10.4:5000/api/favSongs/add", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          userID: userID,
-          songId: currentSong.id,
-          title: currentSong.title,
-        }),
-      });
+      const response = await fetch(
+        "https://beatmusic-backend.onrender.com/api/favSongs/add",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            userID: userID,
+            songId: currentSong.id,
+            title: currentSong.title,
+          }),
+        }
+      );
 
       const data = await response.json();
 
@@ -247,6 +313,7 @@ const ArjanDhillon = ({ isNavOpen }) => {
     return () => {
       audio.removeEventListener("ended", handleEnded);
     };
+    // eslint-disable-next-line
   }, [currentSong, isLoading, repeat]);
 
   return (

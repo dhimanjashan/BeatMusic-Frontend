@@ -46,13 +46,16 @@ const Reset = ({ isNavOpen }) => {
       return;
     }
     try {
-      const response = await fetch("http://172.20.10.4:5000/api/users/reset", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      });
+      const response = await fetch(
+        "https://beatmusic-backend.onrender.com/api/users/reset",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        }
+      );
       const fetchedData = await response.json();
 
       if (response.ok) {

@@ -6,12 +6,8 @@ import AmrinderGill from "./AmrinderGill";
 import SunandaSharma from "./SunandaSharma";
 import ArjanDhillon from "./ArjanDhillon";
 import JordanSandhu from "./JordanSandhu";
-import EdSheeran from "./EdSheeran";
-import DuaLipa from "./DuaLipa";
-import OliviaRodrigo from "./OliviaRodrigo";
-import SamSmith from "./SamSmith";
 
-const Musiclist = () => {
+const Musiclist = ({ isNavOpen }) => {
   const heading = useSelector((state) => state.stringReducer.heading);
   let storedHeading = localStorage.getItem("heading");
   let storedImage = localStorage.getItem("image");
@@ -19,7 +15,7 @@ const Musiclist = () => {
     <>
       <h1 className="musiclistheading1">{heading}</h1>
       <hr className="musiclistHr"></hr>
-      <ArtistImages image={storedImage} />
+      <ArtistImages image={storedImage} isNavOpen={isNavOpen} />
       <div>
         {storedHeading === "Hanji Sohneyo Suniye Song Nimrat Khaira De 🎵" ? (
           <NimratSongs />
@@ -37,21 +33,6 @@ const Musiclist = () => {
         )}
         {storedHeading === "Hanji Sohneyo Suniye Song Jordan Sandhu De 🎵" && (
           <JordanSandhu />
-        )}
-        {storedHeading === "Here is the list of Ed Sheeran Songs 🎵" && (
-          <EdSheeran />
-        )}
-        {storedHeading === "Here is the list of Dua Lipa Songs 🎵" && (
-          <DuaLipa />
-        )}
-        {storedHeading === "Here is the list of Justin Bieber Songs 🎵" && (
-          <DuaLipa />
-        )}
-        {storedHeading === "Here is the list of Olivia Rodrigo Songs 🎵" && (
-          <OliviaRodrigo />
-        )}
-        {storedHeading === "Here is the list of Sam Smith Songs 🎵" && (
-          <SamSmith />
         )}
       </div>
     </>

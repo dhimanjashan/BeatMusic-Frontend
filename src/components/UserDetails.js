@@ -19,7 +19,7 @@ const UserDetails = ({ setActiveLink }) => {
       const fetchUserData = async () => {
         try {
           const response = await fetch(
-            `http://172.20.10.4:5000/api/users/${userID}`,
+            `https://beatmusic-backend.onrender.com/api/users/${userID}`,
             {
               method: "GET",
               headers: {
@@ -57,7 +57,7 @@ const UserDetails = ({ setActiveLink }) => {
   const handleFavoriteDelete = async (userID) => {
     try {
       const response = await fetch(
-        "http://172.20.10.4:5000/api/favsongs/remove",
+        "https://beatmusic-backend.onrender.com/api/favsongs/remove",
         {
           method: "POST",
           headers: {
@@ -85,7 +85,7 @@ const UserDetails = ({ setActiveLink }) => {
     }
     try {
       const response = await fetch(
-        `http://172.20.10.4:5000/api/users/jashan/${userID}`,
+        `https://beatmusic-backend.onrender.com/api/users/jashan/${userID}`,
         {
           method: "DELETE",
           headers: {

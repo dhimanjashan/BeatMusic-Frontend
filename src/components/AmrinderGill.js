@@ -22,8 +22,68 @@ const AmrinderGill = () => {
 
   const songs = [
     {
+      id: "Darling_Jatt_Di_1_k9gvtu",
+      title: "Darling Jatt Di song by Amrinder Gill",
+    },
+    {
+      id: "Aa_Ja_Diljaaniya_1_qie6qq",
+      title: "Aa Ja Diljaaniya song by Amrinder Gill",
+    },
+    {
+      id: "Reflection_a1z1rv",
+      title: "Reflection song by Amrinder Gill",
+    },
+    {
+      id: "Socha_Vich_-_Amrinder_Gill_cjnlww",
+      title: "Socha Vich Tu song by Amrinder Gill",
+    },
+    {
+      id: "Bahut_Nede_1_wfx4hq",
+      title: "Bahut Nede song by Amrinder Gill",
+    },
+    {
+      id: "Akhian_Nimanian_1_yl0vft",
+      title: "Akhian Nimanian song by Amrinder Gill",
+    },
+    {
+      id: "Adore_1_zhbx3w",
+      title: "Adore song by Amrinder Gill",
+    },
+    {
+      id: "Band_Darvaze_1_rlh3t5",
+      title: "Band Darvaze song by Amrinder Gill",
+    },
+    {
+      id: "Daana_Paani_1_mqzh7c",
+      title: "Daana Paani song by Amrinder Gill",
+    },
+    {
+      id: "Akhar_dqe7ql",
+      title: "Akhar song by Amrinder Gill",
+    },
+    {
+      id: "Chunni_Lahoriye_1_qss1za",
+      title: "Chunni Lahoriye song by Amrinder Gill",
+    },
+    {
+      id: "Zindagi_b72cyp",
+      title: "Zindagi song by Amrinder Gill",
+    },
+    {
+      id: "Chan_Da_Tukda_fxds8w",
+      title: "Chan Da Tukda song by Amrinder Gill",
+    },
+    {
       id: "Dildarian_-_Amrinder_Gill_qkzja4",
       title: "Dildarian song by Amrinder Gill",
+    },
+    {
+      id: "Family_Di_Member_r2jdoi",
+      title: "Family Di Member song by Amrinder Gill",
+    },
+    {
+      id: "Hanju_no38sw",
+      title: "Hanju song by Amrinder Gill",
     },
     {
       id: "Ki_Samjhaiye_-_Amrinder_Gill_amvhkf",
@@ -74,7 +134,7 @@ const AmrinderGill = () => {
     setIsLoading(true);
 
     const song = songs[songIndex];
-    const API_URL = "http://172.20.10.4:5000";
+    const API_URL = "https://beatmusic-backend.onrender.com";
     try {
       const response = await fetch(`${API_URL}/api/songs/${song.id}`, {
         method: "GET",
@@ -219,6 +279,7 @@ const AmrinderGill = () => {
     return () => {
       audioElement.removeEventListener("ended", handleEnded);
     };
+    // eslint-disable-next-line
   }, [currentSong, isLoading, repeat, audioElement]);
 
   return (

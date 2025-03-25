@@ -13,8 +13,6 @@ import Musiclist from "./components/Musiclist";
 import CreateAccount from "./components/createAccount";
 import AmrinderGill from "./components/AmrinderGill";
 import NimratSongs from "./components/NimratSongs";
-import EnglishSongs from "./components/EnglishSongs";
-import TrendingSongs from "./components/TrendingSongs";
 import PartySongs from "./components/PartySongs";
 import RoadSongs from "./components/RoadSongs";
 import WeddingSongs from "./components/WeddingSongs";
@@ -29,7 +27,6 @@ import AlertModal from "./components/AlertModal";
 import UserDetails from "./components/UserDetails";
 
 function App() {
-  const [image, setImage] = useState("");
   const [activeLink, setActiveLink] = useState("");
   const [isNavOpen, setIsNavOpen] = useState(false);
 
@@ -89,19 +86,37 @@ function App() {
           <Route exact path="/help" element={<Help isNavOpen={isNavOpen} />} />
           <Route exact path="/heart" element={<Heart />} />
           <Route exact path="/user" element={<User />} />
-          <Route exact path="/partySongs" element={<PartySongs />} />
-          <Route exact path="/gamingSongs" element={<GamingSongs />} />
-          <Route exact path="/roadSongs" element={<RoadSongs />} />
-          <Route exact path="/weddingSongs" element={<WeddingSongs />} />
+          <Route
+            exact
+            path="/partySongs"
+            element={<PartySongs isNavOpen={isNavOpen} />}
+          />
+          <Route
+            exact
+            path="/gamingSongs"
+            element={<GamingSongs isNavOpen={isNavOpen} />}
+          />
+          <Route
+            exact
+            path="/roadSongs"
+            element={<RoadSongs isNavOpen={isNavOpen} />}
+          />
+          <Route
+            exact
+            path="/weddingSongs"
+            element={<WeddingSongs isNavOpen={isNavOpen} />}
+          />
           <Route exact path="/alertModal" element={<AlertModal />} />
           <Route
             exact
             path="/showFavourite"
             element={<ShowFavourite setActiveLink={setActiveLink} />}
           />
-          <Route exact path="/punjabimusic" element={<PunjabiMusic />} />
-          <Route exact path="/englishsongs" element={<EnglishSongs />} />
-          <Route exact path="/trendingsongs" element={<TrendingSongs />} />
+          <Route
+            exact
+            path="/punjabimusic"
+            element={<PunjabiMusic isNavOpen={isNavOpen} />}
+          />
           <Route
             exact
             path="/userDetails"
@@ -110,7 +125,7 @@ function App() {
           <Route
             exact
             path="/musiclist"
-            element={<Musiclist image={image} />}
+            element={<Musiclist isNavOpen={isNavOpen} />}
           />
           <Route
             exact

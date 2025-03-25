@@ -104,7 +104,7 @@ const SunandaSharma = ({ isNavOpen }) => {
     setIsLoading(true);
 
     const song = songs[songIndex];
-    const API_URL = "http://localhost:5000";
+    const API_URL = "https://beatmusic-backend.onrender.com";
     try {
       const response = await fetch(`${API_URL}/api/songs/${song.id}`, {
         method: "GET",
@@ -193,17 +193,20 @@ const SunandaSharma = ({ isNavOpen }) => {
         return;
       }
 
-      const response = await fetch("http://172.20.10.4:5000/api/favSongs/add", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          userID: userID,
-          songId: currentSong.id,
-          title: currentSong.title,
-        }),
-      });
+      const response = await fetch(
+        "https://beatmusic-backend.onrender.com/api/favSongs/add",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            userID: userID,
+            songId: currentSong.id,
+            title: currentSong.title,
+          }),
+        }
+      );
 
       const data = await response.json();
 
@@ -244,6 +247,7 @@ const SunandaSharma = ({ isNavOpen }) => {
     return () => {
       audioElement.removeEventListener("ended", handleEnded);
     };
+    // eslint-disable-next-line
   }, [currentSong, isLoading, repeat, audioElement]);
 
   return (

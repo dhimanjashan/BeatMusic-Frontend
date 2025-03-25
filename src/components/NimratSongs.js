@@ -32,8 +32,60 @@ const NimratSongs = ({ isNavOpen }) => {
       title: "Suit mp3 song by Nimrat Khaira featuring Mankirt Aulakh.",
     },
     {
+      id: "Supna_Laavan_Da_-_Nimrat_Khaira_r2xix2",
+      title: "Supna Lavaan Da mp3 song by Nimrat Khaira.",
+    },
+    {
       id: "Ranihaar_-_Nimrat_Khaira_psgiho",
       title: "Ranihaar mp3 song by Nimrat Khaira.",
+    },
+    {
+      id: "Tohar_-_Nimrat_Khaira_mpr5zg",
+      title: "Tohar mp3 song by Nimrat Khaira.",
+    },
+    {
+      id: "Ajj_Kal_Ajj_Kal_-_Nimrat_Khaira_luijko",
+      title: "Ajj Kal Ajj Kal mp3 song by Nimrat Khaira.",
+    },
+    {
+      id: "Jaan_-_Nimrat_Khaira_gihuys",
+      title: "Jaan mp3 song by Nimrat Khaira.",
+    },
+    {
+      id: "Photo_-_Nimrat_Khaira_pk7qxd",
+      title: "Photo mp3 song by Nimrat Khaira.",
+    },
+    {
+      id: "Blink_-_Nimrat_Khaira_oauzuf",
+      title: "Blink mp3 song by Nimrat Khaira.",
+    },
+    {
+      id: "Ki_Karde_Je_PenduJatt.Com.Se_gbayxi",
+      title: "Ki Karde Je mp3 song by Nimrat Khaira.",
+    },
+    {
+      id: "Sangdi_Sangdi_-_Tarsem_Jassar_q3uogr",
+      title: "Sangdi Sangdi mp3 song by Nimrat Khaira.",
+    },
+    {
+      id: "What_Ve_-_Diljit_Dosanjh_sfzwof",
+      title: "What Ve mp3 song by Nimrat Khaira.",
+    },
+    {
+      id: "Dasi_Kithe_Rehna_-_Arjan_Dhillon_kigba5",
+      title: "Dasi Kithe Rehna mp3 song by Nimrat Khaira.",
+    },
+    {
+      id: "Chan_Wargi_-_Diljit_Dosanjh_stzvjw",
+      title: "Chan Wargi mp3 song by Nimrat Khaira.",
+    },
+    {
+      id: "Shikayatan_-_Nimrat_Khaira_ayotgk",
+      title: "Shikayatan mp3 song by Nimrat Khaira.",
+    },
+    {
+      id: "Gulabi_Rang_-_Nimrat_Khaira_bu5rpl",
+      title: "Gulabi Rang mp3 song by Nimrat Khaira.",
     },
     {
       id: "Designer_-_Nimrat_Khaira_r10foz",
@@ -80,7 +132,7 @@ const NimratSongs = ({ isNavOpen }) => {
 
     const song = songs[songIndex];
     console.log("Selected Song ID:", song.id);
-    const API_URL = "http://172.20.10.4:5000";
+    const API_URL = "https://beatmusic-backend.onrender.com";
     try {
       const response = await fetch(`${API_URL}/api/songs/${song.id}`, {
         method: "GET",
@@ -170,17 +222,20 @@ const NimratSongs = ({ isNavOpen }) => {
         return;
       }
 
-      const response = await fetch("http://172.20.10.4:5000/api/favSongs/add", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          userID: userID,
-          songId: currentSong.id,
-          title: currentSong.title,
-        }),
-      });
+      const response = await fetch(
+        "https://beatmusic-backend.onrender.com/api/favSongs/add",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            userID: userID,
+            songId: currentSong.id,
+            title: currentSong.title,
+          }),
+        }
+      );
 
       const data = await response.json();
 
@@ -223,6 +278,7 @@ const NimratSongs = ({ isNavOpen }) => {
         audioElement.removeEventListener("ended", handleEnded);
       }
     };
+    // eslint-disable-next-line
   }, [currentSong, isLoading, repeat, audioElement]);
 
   return (

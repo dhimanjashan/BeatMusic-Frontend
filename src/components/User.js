@@ -29,7 +29,7 @@ const User = ({ setIsNavOpen }) => {
       navigate("/userDetails");
       return;
     }
-    const API_URL = "http://localhost:5000";
+    const API_URL = "https://beatmusic-backend.onrender.com";
     try {
       const response = await fetch(`${API_URL}/api/users/${userID}`, {
         method: "GET",
@@ -67,7 +67,7 @@ const User = ({ setIsNavOpen }) => {
   const handleFavoriteDelete = async (userID) => {
     try {
       const response = await fetch(
-        "http://172.20.10.4:5000/api/favsongs/remove",
+        "https://beatmusic-backend.onrender.com/api/favsongs/remove",
         {
           method: "POST",
           headers: {
@@ -100,7 +100,7 @@ const User = ({ setIsNavOpen }) => {
     }
     try {
       const response = await fetch(
-        `http://172.20.10.4:5000/api/users/jashan/${userID}`,
+        `https://beatmusic-backend.onrender.com/api/users/jashan/${userID}`,
         {
           method: "DELETE",
           headers: {

@@ -19,7 +19,7 @@ const Newmusic = ({ isNavOpen }) => {
   const userID = useSelector((state) => state.user.userID);
   const favouriteSongs = useSelector((state) => state.favourite.songs) || [];
   const [isLoading, setIsLoading] = useState(false);
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 900);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 1100);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -33,6 +33,13 @@ const Newmusic = ({ isNavOpen }) => {
     {
       id: "Ammi_Wargiye_Ni_-_Shree_Brar_rq59b9",
       title: "Ammi Wargiye Ni mp3 song by Shree Brar.",
+    },
+    {
+      id: "Tell_Me_Honestly_-_Ammy_Virk_qhwo2e",
+      title: "Tell Me Honestly mp3 song by Ammy Virk.",
+    },{
+      id: "Mirrors_-_Jordan_Sandhu_itmrav",
+      title: "Mirrors mp3 song by Jordan Sandhu.",
     },
     { id: "Bhabhi_-_Nijjar_fujgbw", title: "Bhabhi Mp3 song by Nijjar." },
     {
@@ -142,7 +149,7 @@ const Newmusic = ({ isNavOpen }) => {
     setIsLoading(true);
 
     const song = newPunjabiSongs[songIndex];
-    const API_URL = "http://172.20.10.4:5000";
+    const API_URL = "https://beatmusic-backend.onrender.com";
     try {
       const response = await fetch(`${API_URL}/api/songs/${song.id}`, {
         method: "GET",
@@ -233,17 +240,20 @@ const Newmusic = ({ isNavOpen }) => {
         return;
       }
 
-      const response = await fetch("http://172.20.10.4:5000/api/favSongs/add", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          userID: userID,
-          songId: currentSong.id,
-          title: currentSong.title,
-        }),
-      });
+      const response = await fetch(
+        "https://beatmusic-backend.onrender.com/api/favSongs/add",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            userID: userID,
+            songId: currentSong.id,
+            title: currentSong.title,
+          }),
+        }
+      );
 
       const data = await response.json();
 
@@ -282,7 +292,8 @@ const Newmusic = ({ isNavOpen }) => {
     return () => {
       audio.removeEventListener("ended", handleEnded);
     };
-  }, [currentSong, isLoading, repeat]);
+    // eslint-disable-next-line
+  }, [currentSong, isLoading, repeat, audioElement]);
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 900);
