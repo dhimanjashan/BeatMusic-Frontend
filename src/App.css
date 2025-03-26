@@ -2149,6 +2149,13 @@ input[type="checkbox"]:checked + .faq-answer {
     width: 30%;
     height: 820px;
   }
+  .social-links {
+    display: flex;
+    gap: 25px;
+  }
+  .carousel-dots {
+    gap: 20px;
+  }
 }
 
 @media screen and (max-width: 3500px) {
@@ -2197,13 +2204,6 @@ input[type="checkbox"]:checked + .faq-answer {
 
   .musicContainer1 {
     margin-top: -1020px;
-  }
-  .social-links {
-    display: flex;
-    gap: 25px;
-  }
-  .carousel-dots {
-    gap: 20px;
   }
 }
 
