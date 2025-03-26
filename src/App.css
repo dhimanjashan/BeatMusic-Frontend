@@ -2165,7 +2165,7 @@ input[type="checkbox"]:checked + .faq-answer {
 }
 @media screen and (max-width: 2500px) {
   .playerSystemContainer1 {
-    top:165px;
+    top:135px;
     width: 30%;
     height: 420px;
   }
@@ -3041,7 +3041,7 @@ input[type="checkbox"]:checked + .faq-answer {
   }
 
   .playerSystemContainer1 {
-    top: 255px;
+    top: 145px;
     width: 30%;
     height: 420px;
   }
@@ -3218,7 +3218,7 @@ input[type="checkbox"]:checked + .faq-answer {
   }
 
   .playerSystemContainer1 {
-    top: 255px;
+    top: 145px;
     width: 31%;
     height: 370px;
   }
@@ -3244,7 +3244,7 @@ input[type="checkbox"]:checked + .faq-answer {
 
 @media screen and (max-width: 1000px) {
   .playerSystemContainer1 {
-    top: 315px;
+    top: 205px;
     width: 34%;
     height: 320px;
   }
