@@ -2140,14 +2140,32 @@ input[type="checkbox"]:checked + .faq-answer {
 }
 
 /* Responsiveness Starts from here */
+@media screen and (max-width: 4000px) {
+  .playerSystemContainer1 {
+    top: 555px;
+    width: 30%;
+    height: 820px;
+  }
+}
+
 @media screen and (max-width: 3500px) {
   #artistImage {
     margin-bottom: -800px;
     margin-left: 1200px;
     margin-top: 120px;
   }
+  .playerSystemContainer1 {
+    top:555px;
+    width: 30%;
+    height: 720px;
+  }
 }
 @media screen and (max-width: 2500px) {
+  .playerSystemContainer1 {
+    top: 255px;
+    width: 30%;
+    height: 420px;
+  }
   #artistImage {
     margin-bottom: 120px;
     margin-left: 1200px;
