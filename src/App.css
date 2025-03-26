@@ -1461,7 +1461,7 @@ input[type="checkbox"]:checked + .faq-answer {
   margin-top: 44px;
   margin-left: 0px;
   border: 1px solid black;
-  border-radius: 8px;
+  border-radius: 20px;
 }
 
 .playerSystemProgressBar:hover {
@@ -1472,7 +1472,10 @@ input[type="checkbox"]:checked + .faq-answer {
   width: 0;
   height: 100%;
 }
-
+.progress-barSystem {
+  width: 100%;
+  height: 4px;
+}
 /* Container Styling */
 .bigHeartContainer {
   display: flex;
@@ -2162,7 +2165,7 @@ input[type="checkbox"]:checked + .faq-answer {
 }
 @media screen and (max-width: 2500px) {
   .playerSystemContainer1 {
-    top: 255px;
+    top:165px;
     width: 30%;
     height: 420px;
   }

@@ -92,13 +92,13 @@ const PlayerSystem = ({
       <div className="playerSystemContainer1">
         <div className="playerSystemProgressBar">
           <div
-            className="progress-bar"
+            className="progress-barSystem"
             ref={progressContainerRef}
             style={{ cursor: "pointer" }}
           >
             <div
               className="progress"
-              style={{ width: `${progress}%`, backgroundColor: "black" }}
+              style={{ width: `${progress}%`, backgroundColor: "cornsilk" }}
             ></div>
           </div>
         </div>
