@@ -86,7 +86,7 @@ const Help = ({ isNavOpen }) => {
               </label>
               <input type="checkbox" id="faq6" />
               <div className="faq-answer">
-                Email us at support@BeatMusic.com for assistance.
+                Email us at beatmusicservice@gmail.com for assistance.
               </div>
             </div>
             <div className="faq-item">
