@@ -327,7 +327,7 @@ const JordanSandhu = ({ isNavOpen }) => {
     };
     // eslint-disable-next-line
   }, [currentSong, isLoading, repeat, audioElement]);
-
+console.log(isNavOpen);
   return (
     <>
       <div

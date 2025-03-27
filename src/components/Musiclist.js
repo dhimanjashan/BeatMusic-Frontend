@@ -18,21 +18,21 @@ const Musiclist = ({ isNavOpen }) => {
       <ArtistImages image={storedImage} isNavOpen={isNavOpen} />
       <div>
         {storedHeading === "Hanji Sohneyo Suniye Song Nimrat Khaira De 🎵" ? (
-          <NimratSongs />
+          <NimratSongs isNavOpen={isNavOpen} />
         ) : (
           ""
         )}
         {storedHeading === "Hanji Sohneyo Suniye Song Amrinder Gill De 🎵" && (
-          <AmrinderGill />
+          <AmrinderGill isNavOpen={isNavOpen} />
         )}
         {storedHeading === "Hanji Sohneyo Suniye Song Sunanda Sharma De 🎵" && (
-          <SunandaSharma />
+          <SunandaSharma isNavOpen={isNavOpen} />
         )}
         {storedHeading === "Hanji Sohneyo Suniye Song Arjan Dhillon De 🎵" && (
-          <ArjanDhillon />
+          <ArjanDhillon isNavOpen={isNavOpen} />
         )}
         {storedHeading === "Hanji Sohneyo Suniye Song Jordan Sandhu De 🎵" && (
-          <JordanSandhu />
+          <JordanSandhu isNavOpen={isNavOpen} />
         )}
       </div>
     </>

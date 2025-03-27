@@ -2292,7 +2292,7 @@ input[type="checkbox"]:checked + .faq-answer {
 }
 @media screen and (max-width: 1400px) {
   #artistImage {
-    margin-bottom: 1100px;
+    margin-bottom: 550px;
     margin-left: 800px;
   }
 }
