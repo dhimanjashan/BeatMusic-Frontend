@@ -158,10 +158,6 @@ const ArjanDhillon = ({ isNavOpen }) => {
       title: "25-25 mp3 song by Arjan Dhillon.",
     },
     {
-      id: "Calculations_-_Raag.Fm_xlxuwh",
-      title: "Calculations mp3 song by Arjan Dhillon.",
-    },
-    {
       id: "Opinion_-_Raag.Fm_rzd3e5",
       title: "Opinion mp3 song by Arjan Dhillon.",
     },
