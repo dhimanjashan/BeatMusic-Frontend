@@ -35,6 +35,10 @@ const Newmusic = ({ isNavOpen }) => {
       title: "Ammi Wargiye Ni mp3 song by Shree Brar.",
     },
     {
+      id: "Muchh_-_Nirvair_Pannu_wfh2ov",
+      title: "Muchh mp3 song by Nirvair Pannu.",
+    },
+    {
       id: "Tell_Me_Honestly_-_Ammy_Virk_qhwo2e",
       title: "Tell Me Honestly mp3 song by Ammy Virk.",
     },{
